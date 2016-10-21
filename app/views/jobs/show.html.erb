@@ -13,3 +13,22 @@ Level of Interest: <%= @job.level_of_interest %>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %><br />
 Category: <%= @job.category.nil? ? 'not assigned' : @job.category.title %>
+<br>
+Comments:
+<% @job.comments.each do |comment| %>
+<%= comment.content %><br />
+<% end  %>
+<br>
+
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+<%#= render partial: 'comments/form'  %>
+
+<%= form_for [ @company, @job, @comment ] do |f| %>
+<p>
+  <%= f.label :content %><br/>
+  <%= f.text_area :content %>
+</p>
+<p>
+  <%= f.submit "Submit" %>
+</p>
+<% end %>

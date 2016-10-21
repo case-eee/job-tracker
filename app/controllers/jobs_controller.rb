@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_company, only: [:index, :new, :edit, :create]
+  before_action :set_company, only: [:index, :new, :edit, :create, :show]
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -9,14 +9,15 @@ class JobsController < ApplicationController
 
   def new
     # @company = Company.find(params[:company_id])
-
     @job = Job.new()
     @categories = Category.all
+    @comment = Comment.new(job_id: params[:job_id])
   end
 
   def create
     # @company = Company.find(params[:company_id])
     @job = @company.jobs.new(job_params)
+    # @comment = @company.jobs.comment.new()
     # @category = @job.category.new(category)
     if @job.save
       # require 'pry'; binding.pry
@@ -28,6 +29,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def edit
