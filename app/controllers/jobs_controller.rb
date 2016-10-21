@@ -1,14 +1,14 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:index, :edit, :update, :new, :create, :destroy]
+  before_action :set_company
+  before_action :set_new_comment, only: [:new, :show]
 
   def index
     @jobs = @company.jobs
   end
 
   def new
-    @job = Job.new()
-    @categories = Category.all
+    @job = Job.new
   end
 
   def create
@@ -23,10 +23,10 @@ class JobsController < ApplicationController
   end
 
   def show
+    @sorted_comments = Job.sorted_comments(@job)
   end
 
   def edit
-    @categories = Category.all
   end
 
   def update
@@ -57,6 +57,11 @@ class JobsController < ApplicationController
 
   def set_company
     @company = Company.find(params[:company_id])
+  end
+
+  def set_new_comment
+    @comment = Comment.new
+    @comment.job_id = @job_id
   end
 
 end
