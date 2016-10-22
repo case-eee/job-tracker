@@ -2,6 +2,7 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :set_company
   before_action :set_new_comment, only: [:new, :show]
+  before_action :set_new_contact , only: [:new, :show, :index]
 
   def index
     @jobs = @company.jobs
@@ -61,7 +62,12 @@ class JobsController < ApplicationController
 
   def set_new_comment
     @comment = Comment.new
-    @comment.job_id = @job_id
+    @comment.job_id = @job.id
+  end
+
+  def set_new_contact
+    @contact = Contact.new
+    @contact.company_id = @company_id
   end
 
 end
