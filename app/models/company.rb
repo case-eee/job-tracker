@@ -4,4 +4,21 @@ class Company < ActiveRecord::Base
 
   has_many :jobs, dependent: :destroy
   has_many :contacts, dependent: :destroy
+
+  def self.sorted_companies
+    order(:city)
+  end
+
+  def self.sorted_interests
+    joins(:jobs).
+    order("jobs.level_of_interest DESC")
+  end
+
+  def self.top_three_interests
+    joins(:jobs).
+    group(:name).
+    order("AVG(jobs.level_of_interest) DESC").
+    limit(3).
+    pluck(:name, "AVG(jobs.level_of_interest)")
+  end
 end

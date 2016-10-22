@@ -1,11 +1,12 @@
+require_relative '../helpers/job_helper'
+
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :set_company
-  before_action :set_new_comment, only: [:new, :show]
-  before_action :set_new_contact , only: [:new, :show, :index]
+  before_action :set_company, except: [:index]
+  before_action :set_comment_contact, only: [:new, :show, :index]
 
   def index
-    @jobs = @company.jobs
+    @company, @jobs = JobHelper.get_params(params)
   end
 
   def new
@@ -24,7 +25,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    @sorted_comments = Job.sorted_comments(@job)
+    @sorted_comments = @job.sorted_comments
   end
 
   def edit
@@ -60,14 +61,9 @@ class JobsController < ApplicationController
     @company = Company.find(params[:company_id])
   end
 
-  def set_new_comment
+  def set_comment_contact
     @comment = Comment.new
-    @comment.job_id = @job.id
-  end
-
-  def set_new_contact
     @contact = Contact.new
-    @contact.company_id = @company_id
   end
 
 end

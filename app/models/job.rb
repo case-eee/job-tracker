@@ -5,7 +5,12 @@ class Job < ActiveRecord::Base
   belongs_to :category
   has_many :comments
 
-  def self.sorted_comments(job)
-    job.comments.order(created_at: :desc)
+  def sorted_comments
+    comments.order(created_at: :desc)
   end
+
+  def self.sorted_interests
+    order(level_of_interest: :desc)
+  end
+
 end

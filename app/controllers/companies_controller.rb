@@ -1,8 +1,11 @@
+require_relative '../helpers/company_helper'
+
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   def index
-    @companies = Company.all
+    @companies = CompanyHelper.get_params(params)
+    @interest = true if params[:sort] == "interest"
   end
 
   def new
