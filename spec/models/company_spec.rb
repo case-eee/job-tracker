@@ -33,5 +33,16 @@ describe Company do
       company = Company.new(name: "Dropbox", city: "Denver")
       expect(company).to respond_to(:jobs)
     end
+
+    it "has many contacts" do
+      company = Company.new(name: "Dropbox", city: "Denver")
+      expect(company).to respond_to(:contacts)
+    end
+  end
+
+  describte ".sort_by_city" do
+    it "companies by city in alphabetic order" do
+      
+    end
   end
 end
