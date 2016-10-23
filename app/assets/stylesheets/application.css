@@ -16,6 +16,21 @@
   text-align: center;
 }
 
+.header3
+{
+  padding-left: 20%;
+  padding-bottom: 1%;
+}
+
+.header4
+{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 40px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  text-align: center;
+}
+
  table.tableSection {
      display: table;
      width: 60%;
@@ -42,7 +57,8 @@
      padding: 5px;
  }
 
- table.tableSection th {
+table.tableSection th,
+table.tableContact th {
      border-bottom: 1px dotted black;
      font-size: 24px;
      font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -87,4 +103,111 @@ table a {
   padding-top: 10%;
   padding-bottom: 10%;
   font-size: 24px;
+}
+
+table.tableContact {
+    display: table;
+    width: 60%;
+    font-size: 20px;
+    margin: 0px auto;
+    font-weight: lighter;
+}
+
+table.tableContact th, table.tableContact  td {
+    width: 30%;
+    padding: 5px;
+}
+
+table.tableVertical {
+    display: table;
+    width: 60%;
+    font-size: 20px;
+    margin-left:30%;
+    margin-right:30%;
+    font-weight: lighter;
+}
+
+.tablespace
+{
+  padding-: 15%;
+}
+
+table.tableVertical th {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.buttonForm form {
+  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 150px);
+  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 150px);
+  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 150px);
+  margin: auto;
+  position: relative;
+  width: 400px;
+  height: 300px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 24px;
+  font-weight: lighter;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #999;
+  border: inset 1px solid #333;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.commentForm form {
+  height: 150px;
+}
+
+.commentForm textarea {
+  width: 370px;
+}
+
+.buttonForm input {
+  width: 375px;
+  display: block;
+  border: 1px solid #999;
+  height: 25px;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.buttonForm textarea#feedback {
+  width: 375px;
+  height: 150px;
+  display: block;
+}
+
+.buttonForm button {
+  width: 100px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: #09C;
+  color: #fff;
+  font-family: Tahoma, Geneva, sans-serif;
+  height: 30px;
+  border-radius: 15px;
+  border: 1p solid #999;
+}
+
+.buttonForm input.button:hover {
+  background: #fff;
+  color: #09C;
+}
+
+.comments
+{
+  text-align: left;
+  font-size: 24px;
+  padding-top: 2%;
+}
+.texter
+{
+  font-size: 16px;
 }

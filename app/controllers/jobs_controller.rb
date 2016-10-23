@@ -26,6 +26,7 @@ class JobsController < ApplicationController
 
   def show
     @sorted_comments = @job.sorted_comments
+    @job.category.nil? ? @category = '' : @category = @job.category.title
   end
 
   def edit

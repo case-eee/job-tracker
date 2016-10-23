@@ -1,14 +1,36 @@
-Title: <%= @job.title %><br/>
+<%= render partial: "shared/default_navbar" %>
 
-Description: <%= @job.description %><br/>
+<h3 class="header4"><%= @job.title %> at <%= @job.company.name %></h3>
 
-Level of Interest: <%= @job.level_of_interest %><br/>
-
-Category: <%= @job.category.nil? ? '' : @job.category.title %><br/>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %> <br/>
-
-Tags: <% @job.tags.each do |tag| %> <%= link_to tag.title, tag_path(tag) %> <% end %>
+<table class="tableVertical">
+  <caption class="newCompany"><%=link_to "Back", company_jobs_path(@job.company) %></caption>
+  <tr>
+    <th>Title</th>
+    <td><%= @job.title %></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><%= @job.description %></td>
+  </tr>
+  <tr>
+    <th>Level of Interest</th>
+    <td><%= @job.level_of_interest %></td>
+  </tr>
+  <tr>
+    <th>Category</th>
+    <td><%= @category %></td>
+  </tr>
+  <tr>
+    <th>Company</th>
+    <td><%= link_to @job.company.name, company_path(@job.company) %></td>
+  </tr>
+  <tr>
+    <th>Tags</th>
+    <td><% @job.tags.each do |tag| %>
+      <%= link_to tag.title, tag_path(tag) %><% end %>
+    </td>
+  </tr>
+</table>
 
 <%= render partial: "comments/form" %>
 <%= render partial: "jobs/comment", collection: @sorted_comments %>
