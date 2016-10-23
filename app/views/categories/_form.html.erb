@@ -1,0 +1,10 @@
+<div class="buttonForm categoryForm">
+<%= form_for @category do |f| %>
+  <%= render partial: "shared/errors", locals: { target: @category } %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %><br/>
+
+  <%= f.submit %>
+<% end %>
+</div>

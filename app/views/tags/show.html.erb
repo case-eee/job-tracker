@@ -1,0 +1,18 @@
+
+<h3 class="header2">All jobs for <strong><%= @tag.title %></strong></h3>
+
+<table class="tableSection tableContact">
+  <caption class="newCompany"><%= link_to "Back", categories_path %>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Level of Interest</th>
+  </tr>
+  <% @tag.jobs.each do |job| %>
+  <tr>
+    <td><%= link_to job.title, company_job_path(job.company, job) %></td>
+    <td><%= job.description %></td>
+    <td><%= job.level_of_interest %></td>
+  </tr>
+  <% end %>
+</table>

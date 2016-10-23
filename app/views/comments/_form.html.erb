@@ -1,0 +1,12 @@
+
+<div class="buttonForm commentForm">
+<%= form_for [@company, @job, @comment ] do |f| %>
+  <p>
+    <%= f.label :content, "Comment" %><br/>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>
+</div>

@@ -1,0 +1,10 @@
+<div class="buttonForm commentForm">
+  <%= form_for @tag do |f| %>
+    <%= render partial: "shared/errors", locals: { target: @tag } %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %><br/>
+
+    <%= f.submit %>
+  <% end %>
+  </div>
