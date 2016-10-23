@@ -5,7 +5,6 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = CompanyHelper.get_params(params)
-    @interest = true if params[:sort] == "interest"
   end
 
   def new

@@ -9,10 +9,10 @@ class Company < ActiveRecord::Base
     order(:city)
   end
 
-  def self.sorted_interests
-    joins(:jobs).
-    order("jobs.level_of_interest DESC")
-  end
+  # def self.sorted_interests
+  #   joins(:jobs).
+  #   order("jobs.level_of_interest DESC")
+  # end
 
   def self.top_three_interests
     joins(:jobs).
@@ -20,5 +20,10 @@ class Company < ActiveRecord::Base
     order("AVG(jobs.level_of_interest) DESC").
     limit(3).
     pluck(:name, "AVG(jobs.level_of_interest)")
+  end
+
+  def self.location_count
+    joins(:jobs).group(:city).order('count_id desc').count('id')
+
   end
 end

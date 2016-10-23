@@ -16,4 +16,17 @@ describe "User creates a new job" do
     expect(page).to have_content("Developer")
     expect(page).to have_content("80")
   end
+
+  scenario "a user enter invalid data" do
+    company = Company.create(name: "ESPN", city: "LA")
+    visit new_company_job_path(company)
+
+    fill_in "job[title]", with: ""
+    fill_in "job[description]", with: "So fun!"
+    fill_in "job[level_of_interest]", with: 80
+
+    click_button "Create"
+
+    expect(page).to have_content("Title can't be blank")
+  end
 end
