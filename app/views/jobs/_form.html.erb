@@ -1,20 +1,22 @@
-<%= form_for [@company, @job] do |f| %>
-  <%= render partial: "shared/errors", locals: { target: @job } %>
+<div class="buttonForm jobForm">
+  <%= form_for [@company, @job] do |f| %>
+    <%= render partial: "shared/errors", locals: { target: @job } %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br/>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+    <%= f.label :description %>
+    <%= f.text_field :description %><br/>
 
-  <%= f.label :level_of_interest %>
-  <%= f.number_field :level_of_interest %>
+    <%= f.label :level_of_interest %>
+    <%= f.number_field :level_of_interest %><br/>
 
-  <%= f.label :category %>
-  <%= f.collection_select :category_id, Category.all,:id,:title, include_blank: true %>
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all,:id,:title, include_blank: true %><br/>
 
-  <%= f.label :tag_list %>
-  <%= f.text_field :tag_list %>
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list %><br/>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.submit %>
+  <% end %>
+</div>

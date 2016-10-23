@@ -1,36 +1,5 @@
 @import "compass/css3";
 
-.header{
-  padding-top: 12%;
-  padding-bottom: 3%;
-  margin-left: 21%;
-  font-size: 30px;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-}
-
-.header2
-{
-  padding-top: 5%;
-  font-size: 40px;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  text-align: center;
-}
-
-.header3
-{
-  padding-left: 20%;
-  padding-bottom: 1%;
-}
-
-.header4
-{
-  padding-top: 5%;
-  padding-bottom: 5%;
-  font-size: 40px;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  text-align: center;
-}
-
  table.tableSection {
      display: table;
      width: 60%;
@@ -79,12 +48,14 @@ table.tableContact th {
   text-align: center;
 }
 
-table a:hover {
+table a:hover,
+.newCatg a:hover {
   font-size: 30px;
   background: #f6f6f6;
 }
 
-table a {
+table a,
+.newCatg a {
   text-decoration: none;
   color: #000;
 
@@ -159,12 +130,21 @@ table.tableVertical th {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 }
 
-.commentForm form {
+.commentForm form,
+.categoryForm form {
   height: 150px;
+}
+
+.companyForm form {
+  height: 200px;
 }
 
 .commentForm textarea {
   width: 370px;
+}
+
+.jobForm form {
+  height: 400px;
 }
 
 .buttonForm input {
@@ -210,4 +190,42 @@ table.tableVertical th {
 .texter
 {
   font-size: 16px;
+}
+
+.header{
+  padding-top: 12%;
+  padding-bottom: 3%;
+  margin-left: 21%;
+  font-size: 30px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.header2
+{
+  padding-top: 5%;
+  font-size: 40px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  text-align: center;
+  padding-bottom: 2%;
+}
+
+.header3
+{
+  padding-left: 20%;
+  padding-bottom: 1%;
+}
+
+.header4
+{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 40px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  text-align: center;
+}
+
+.newCatg{
+  font-size: 26px;
+  padding-top: 1%;
+  padding-left: 30%;
 }
