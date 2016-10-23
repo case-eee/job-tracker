@@ -13,5 +13,8 @@
   <%= f.label :category %>
   <%= f.collection_select :category_id, Category.all,:id,:title, include_blank: true %>
 
+  <%= f.label :tag_list %>
+  <%= f.text_field :tag_list %>
+
   <%= f.submit %>
 <% end %>

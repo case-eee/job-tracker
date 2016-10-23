@@ -9,11 +9,6 @@ class Company < ActiveRecord::Base
     order(:city)
   end
 
-  # def self.sorted_interests
-  #   joins(:jobs).
-  #   order("jobs.level_of_interest DESC")
-  # end
-
   def self.top_three_interests
     joins(:jobs).
     group(:name).
@@ -24,6 +19,5 @@ class Company < ActiveRecord::Base
 
   def self.location_count
     joins(:jobs).group(:city).order('count_id desc').count('id')
-
   end
 end

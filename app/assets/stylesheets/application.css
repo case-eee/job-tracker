@@ -1,15 +1,36 @@
+@import "compass/css3";
+
+.header{
+  padding-top: 12%;
+  padding-bottom: 3%;
+  margin-left: 21%;
+  font-size: 30px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.header2
+{
+  padding-top: 5%;
+  font-size: 40px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  text-align: center;
+}
 
  table.tableSection {
      display: table;
-     width: 50%;
+     width: 60%;
+     font-size: 20px;
+     margin: 0px auto;
+     font-weight: lighter;
  }
+
  table.tableSection thead, table.tableSection tbody {
      float: left;
      width: 100%;
  }
  table.tableSection tbody {
      overflow: auto;
-     height: 150px;
+     height: 400px;
  }
  table.tableSection tr {
      width: 100%;
@@ -17,9 +38,53 @@
      text-align: left;
  }
  table.tableSection th, table.tableSection td {
-     width: 33%;
+     width: 80%;
+     padding: 5px;
  }
 
- table.allJobs tbody {
+ table.tableSection th {
+     border-bottom: 1px dotted black;
+     font-size: 24px;
+     font-family: "Trebuchet MS", Helvetica, sans-serif;
+ }
+
+ table.allJobs tbody,
+ table.tableTwo tbody {
    overflow: visible;
  }
+
+ .navbar {
+   position: fixed;
+   top: 0px;
+ }
+
+ .error {
+  padding-top: 10%;
+  text-align: center;
+}
+
+table a:hover {
+  font-size: 30px;
+  background: #f6f6f6;
+}
+
+table a {
+  text-decoration: none;
+  color: #000;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+  display: block;
+}
+
+.newCompany
+{
+  caption-side: bottom;
+  text-align: left;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  font-size: 24px;
+}

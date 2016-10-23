@@ -6,7 +6,9 @@ Level of Interest: <%= @job.level_of_interest %><br/>
 
 Category: <%= @job.category.nil? ? '' : @job.category.title %><br/>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+Company: <%= link_to @job.company.name, company_path(@job.company) %> <br/>
+
+Tags: <% @job.tags.each do |tag| %> <%= link_to tag.title, tag_path(tag) %> <% end %>
 
 <%= render partial: "comments/form" %>
 <%= render partial: "jobs/comment", collection: @sorted_comments %>

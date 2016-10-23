@@ -1,12 +1,18 @@
-<h3>All Companies</h3></br>
+<%= render partial: "shared/default_navbar" %>
 
-<%= link_to "New Company", new_company_path %>
+<h3 class="header2">All Companies</h3></br>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %> - <%= company.city %>
-    <br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+<div >
+  <table class="tableSection tableTwo">
+    <caption class="newCompany"><%=link_to "New Company", new_company_path %></caption>
+    <tr><th>Company</th><th></th><th></th></tr>
+    <% @companies.each do |company| %>
+    <tr>
+      <td><%= link_to "#{company.name} - #{company.city}", company_path(company) %></td>
+      <td><%= link_to "Edit", edit_company_path(company) %></td>
+      <td><%= link_to "Delete", company_path(company), method: "delete" %></td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

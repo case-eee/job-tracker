@@ -15,4 +15,11 @@ Rails.application.routes.draw do
   resources :jobs, only: [:index]
 
   resources :tags
+
+  root 'dashboard#index'
+
+  get '/redirect' => 'dashboard#redirect'
+
+  get '/errors' => 'dashboard#errors'
+  
 end
