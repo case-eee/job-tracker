@@ -6,8 +6,8 @@ class CreateComments < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    
-    add_foreign_key :comments, :jobs, column: :job_id
+
+    add_foreign_key :comments, :jobs, column: :job_id, on_delete: :cascade
     add_index "comments", ["job_id"], name: "index_comments_on_job_id", using: :btree
   end
 end

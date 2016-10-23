@@ -10,7 +10,9 @@ describe "User creates a new contact" do
     fill_in "contact[position]", with: "A Position"
     fill_in "contact[email]", with: "An Email"
 
-    click_button "Submit"
+    within('.new_contact') do
+      click_button "Submit"
+    end
 
     expect(page).to have_content "A Name"
     expect(page).to have_content "A Position"
@@ -27,8 +29,10 @@ describe "User creates a new contact" do
     fill_in "contact[position]", with: ""
     fill_in "contact[email]", with: "An Email"
 
-    click_button "Submit"
-
+    within('.new_contact') do
+      click_button "Submit"
+    end
+    
     expect(page).to have_content "Information missing"
     end
 end

@@ -2,22 +2,22 @@
 <html>
 <head>
   <title>JobTracker</title>
-  <%= stylesheet_link_tag 'application', 'bootstrap', 'bootstrap.min' %>
-  <%= javascript_include_tag 'application' 'boostrap', 'bootstrap.min','npm', 'data-turbolinks-track' => true %>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <%= stylesheet_link_tag 'application', 'bootstrap', 'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'boostrap', 'bootstrap.min', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <%= render partial: "shared/default_navbar" %>
+
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
   <% end %>
+
   <div class="container-fullwidth">
     <%= yield %>
-  </div>
-  <div>
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </div>
 </body>
 </html>

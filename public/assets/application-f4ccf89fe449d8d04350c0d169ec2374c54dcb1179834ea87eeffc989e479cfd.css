@@ -1,10 +1,4 @@
-/*
-  *= require_tree .
-  *= require_self
-  *= require jquery-ui
- */
-
-  table.tableSection {
+ table.tableSection {
      display: table;
      width: 60%;
      font-size: 20px;
@@ -145,10 +139,6 @@ table.tableVertical th {
 
 .commentForm textarea {
   width: 370px;
-}
-
-.commentForm {
-  padding-bottom: 4%;
 }
 
 .jobForm form {

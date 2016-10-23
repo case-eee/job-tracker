@@ -30,8 +30,7 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company.update(company_params)
-    if @company.save
+    if @company.update(company_params)
       flash[:success] = "#{@company.name} updated!"
       redirect_to company_path(@company)
     else
@@ -40,7 +39,7 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    @company.delete
+    @company.destroy
 
     flash[:success] = "#{@company.name} was successfully deleted!"
     redirect_to companies_path

@@ -78,10 +78,10 @@ ActiveRecord::Schema.define(version: 20161023005441) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "comments", "jobs"
+  add_foreign_key "comments", "jobs", on_delete: :cascade
   add_foreign_key "contacts", "companies"
   add_foreign_key "jobs", "categories"
   add_foreign_key "jobs", "companies"
-  add_foreign_key "jobs_tags", "jobs"
-  add_foreign_key "jobs_tags", "tags"
+  add_foreign_key "jobs_tags", "jobs", on_delete: :cascade
+  add_foreign_key "jobs_tags", "tags", on_delete: :cascade
 end

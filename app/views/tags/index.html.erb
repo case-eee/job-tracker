@@ -1,12 +1,11 @@
 <h3 class="header2">All Tags</h3></br>
 
-
 <div>
   <table class="tableSection tableTwo">
     <caption class="newCompany"><%=link_to "New Tag", new_tag_path %></caption>
     <tr><th>Title</th><th></th><th></th></tr>
     <% @tags.each do |tag| %>
-    <tr>
+    <tr class=tag_<%= tag.id %>>
       <td><%= link_to "#{tag.title}", tag_path(tag) %></td>
       <td><%= link_to "Edit", edit_tag_path(tag) %></td>
       <td><%= link_to "Delete", tag_path(tag), method: "delete" %></td>

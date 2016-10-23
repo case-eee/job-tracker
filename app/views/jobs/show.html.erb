@@ -1,7 +1,7 @@
 <h3 class="header4"><%= @job.title %> at <%= @job.company.name %></h3>
 
 <table class="tableVertical">
-  <caption class="newCompany"><%=link_to "Back", company_jobs_path(@job.company) %></caption>
+  <caption class="newCompany"><%=link_to "Jobs", company_jobs_path(@job.company) %></caption>
   <tr>
     <th>Title</th>
     <td><%= @job.title %></td>
@@ -31,4 +31,4 @@
 </table>
 
 <%= render partial: "comments/form" %>
-<%= render partial: "jobs/comment", collection: @sorted_comments %>
+<%= render partial: "comment", collection: @sorted_comments %>

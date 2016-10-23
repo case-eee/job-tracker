@@ -4,7 +4,7 @@ class CreateContacts < ActiveRecord::Migration
       t.text :full_name
       t.text :position
       t.text :email
-      t.references :company, index: true, foreign_key: true
+      t.references :company, index: true, foreign_key: true, on_delete: :cascade
 
       t.timestamps null: false
     end

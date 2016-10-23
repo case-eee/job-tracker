@@ -2,9 +2,7 @@
 
   <div class="row">
     <div class='col-md-4'>
-
       <h3 class='header'>Jobs By Interest</h3>
-
       <table class="tableSection interestLevel">
         <thead>
           <tr><th>Interest Level</th><th># of Jobs</th></tr>
@@ -21,9 +19,7 @@
     </div>
 
     <div class='col-md-4'>
-
       <h3 class="header">Jobs by Location</h3>
-
       <table class="tableSection jobsLocation">
         <thead>
           <tr><th>Location</th><th># of Jobs</th></tr>
@@ -40,14 +36,12 @@
     </div>
 
     <div class='col-md-4'>
-
       <h3 class="header">My Top Companies</h3>
-
       <table class="tableSection averageInterest">
         <tr><th>Company</th><th>Average Interest</th></tr>
         <% @companies.each do |company| %>
         <tr class=company_<%= company.first %>>
-          <td><%= company.first %></td>
+          <td><%= link_to company.first, company_path(Company.find_by(name: company.first)) %></td>
           <td><%= company.last.round(2) %></td>
         </tr>
         <% end %>

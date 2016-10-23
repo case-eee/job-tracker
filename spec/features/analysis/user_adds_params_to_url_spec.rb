@@ -4,7 +4,7 @@ describe "User adds location param in URL" do
   scenario "a user sees companies sorted by location" do
     company_1, company_2 = create_list(:company, 2)
 
-    visit '/companies?sort=location'
+    visit companies_path(sort: "location")
 
     expect(company_2.city).to appear_before(company_1.city)
   end

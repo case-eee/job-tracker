@@ -5,10 +5,10 @@
     <caption class="newCompany"><%=link_to "New Company", new_company_path %></caption>
     <tr><th>Company</th><th></th><th></th></tr>
     <% @companies.each do |company| %>
-    <tr>
+    <tr class=company_<%= company.id %>>
       <td><%= link_to "#{company.name} - #{company.city}", company_path(company) %></td>
       <td><%= link_to "Edit", edit_company_path(company) %></td>
-      <td><%= link_to "Delete", company_path(company), method: "delete" %></td>
+      <td><%= link_to "Delete", company_path(company), 'data-method' => :delete%></td>
     </tr>
     <% end %>
   </table>
