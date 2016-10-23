@@ -3,9 +3,7 @@ require_relative '../helpers/company_helper'
 class DashboardController < ApplicationController
 
   def index
-    @jobs = Job.job_count
-    @companies = Company.top_three_interests
-    @locations = Company.location_count
+    @jobs, @companies, @locations = CompanyHelper.get_dashboard
 
     render :index
   end

@@ -13,7 +13,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
 
     if @tag.save
-      flash[:success] = "#{@tag.title} added!"
+      flash[:success] = "#{@tag.title} was successfully added!"
       redirect_to tag_path(@tag)
     else
       render :new
@@ -27,9 +27,7 @@ class TagsController < ApplicationController
   end
 
   def update
-    @tag.update(tag_params)
-    if @tag.save
-      flash[:success] = "#{@tag.title} updated!"
+    if @tag.update(tag_params)
       redirect_to tag_path(@tag)
     else
       render :edit

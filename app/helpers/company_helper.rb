@@ -21,4 +21,12 @@ module CompanyHelper
     end
   end
 
+  def get_dashboard
+    jobs = Job.job_count
+    companies = Company.top_three_interests
+    locations = Company.location_count
+
+    [jobs, companies, locations]
+  end
+
 end

@@ -12,4 +12,14 @@ describe "User sees one category" do
     expect(page).to have_content(category.title)
     expect(page).to have_content(job.title)
   end
+
+  scenario "a user can click job link" do
+    company = create(:company_with_jobs)
+    job = company.jobs.first
+    category = job.category
+
+    visit category_path(category)
+
+    expect(page).to have_link(job.title, company_job_path(company, job))
+  end
 end

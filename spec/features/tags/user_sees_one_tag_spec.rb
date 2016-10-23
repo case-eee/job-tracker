@@ -6,7 +6,7 @@ describe "User sees one tag" do
 
     visit tag_path(tag)
 
-    expect(current_path).to eq("/tags/#{tag.id}")
+    expect(current_path).to eq(tag_path(tag))
     expect(page).to have_content(tag.title)
     expect(page).to have_content(tag.jobs.first.title)
     expect(page).to have_content(tag.jobs.last.title)

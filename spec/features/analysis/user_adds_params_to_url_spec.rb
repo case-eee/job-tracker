@@ -54,4 +54,16 @@ describe "User visit dashboard page" do
 
     expect(page).to have_link(company.city, companies_path(:location => company.city))
   end
+
+  scenario "user sees jobs sorted by interest" do
+    company = create(:company_with_jobs)
+    job_1 = company.jobs.first
+    job_2 = company.jobs.last
+
+    visit jobs_path(sorted: "interest")
+
+    expect(job_1.title).to appear_before(job_2.title)
+    expect(page).to have_link(job_1.title, company_job_path(company, job_1))
+    expect(page).to have_link(job_2.title, company_job_path(company, job_2))
+  end
 end

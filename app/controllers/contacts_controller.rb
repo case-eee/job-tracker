@@ -1,9 +1,9 @@
+require_relative '../helpers/contact_helper'
+
 class ContactsController < ApplicationController
 
   def create
-    @contact = Contact.new(contact_params)
-    @contact.company_id = params[:company_id]
-    @company = @contact.company
+    @contact, @company = ContactHelper.get_params(params, contact_params)
 
     if @contact.save
       flash[:success] = "Contact added!"
