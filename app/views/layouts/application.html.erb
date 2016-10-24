@@ -10,6 +10,20 @@
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
   <% end %>
+
+<div class='navbar navbar-default'>
+      <a href='/' class='navbar-brand'>Pages:</a>
+                    <a href="/dashboard"> Homepage</a>
+                    <a href="/companies"> Companies</a>
+                    <a href="/categories"> Categories</a>
+
+
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src='js/bootstrap.js'></script>
+  </div>
+
 <%= yield %>
 
 </body>
