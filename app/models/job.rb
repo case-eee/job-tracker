@@ -26,7 +26,7 @@ class Job < ActiveRecord::Base
   end
 
   def tag_list=(tags_string)
-    tag_names = tags_string.split(",").collect{|s| s.strip.downcase}.uniq
+    tag_names = tags_string.split(",").collect{|string| string.strip.downcase}.uniq
     new_or_found_tags = tag_names.collect { |title| Tag.find_or_create_by(title: title) }
     self.tags = new_or_found_tags
   end
