@@ -1,0 +1,7 @@
+<h3>List of jobs sorted by level of interest:</h3>
+
+<ul>Job Title: Level of Interest</ul>
+
+<% @jobs.each do |job| %>
+  <ul><%= job.title%>: <%= job.level_of_interest %></ul>
+<% end %>

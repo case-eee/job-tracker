@@ -7,4 +7,17 @@ Description: <%= @job.description %>
 Level of Interest: <%= @job.level_of_interest %>
 <br>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+Company: <%= link_to @job.company.name, company_path(@job.company) %><br />
+Category: <%= category_helper %>
+<br>
+<br>
+
+<%= link_to "Edit", edit_company_job_path(@job.company, @job) %>
+<%= link_to "Delete", company_job_path(@job.company, @job), method: :delete %><br />
+
+<h3>Comments:</h3>
+
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+<%= render partial: 'comments/form'  %>
+
+<h3><%= link_to "Back to Jobs list", company_jobs_path %></h3
