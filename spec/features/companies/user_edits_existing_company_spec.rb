@@ -12,4 +12,14 @@ describe "User edits an existing company" do
     expect(page).to have_content("EA Sports")
     expect(page).to_not have_content("ESPN")
   end
+
+  scenario "a user edits with invalid data" do
+    company = Company.create(name: "Google", city: "San Francisco")  
+    visit edit_company_path(company)
+
+    fill_in "company[name]", with: ""
+    click_button "Update"
+  
+    expect(page).to have_content("Name can't be blank")
+  end
 end

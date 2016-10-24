@@ -1,0 +1,22 @@
+<h3 class="header3">Add a Contact</h3>
+
+<div class="buttonForm">
+  <%= form_for [@contact ] do |f| %>
+    <p>
+      <%= f.label :full_name, "Name" %><br/>
+      <%= f.text_field :full_name %>
+    </p>
+    <p>
+      <%= f.label :position %><br/>
+      <%= f.text_field :position %>
+    </p>
+    <p>
+      <%= f.label :email %><br/>
+      <%= f.text_field :email %>
+      <%= hidden_field_tag :company_id, @company.id %>
+    </p>
+    <p>
+      <%= f.submit 'Submit' %>
+    </p>
+  <% end %>
+</div>

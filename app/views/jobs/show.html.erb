@@ -1,10 +1,34 @@
-Title: <%= @job.title %>
-<br>
+<h3 class="header4"><%= @job.title %> at <%= @job.company.name %></h3>
 
-Description: <%= @job.description %>
-<br>
+<table class="tableVertical">
+  <caption class="newCompany"><%=link_to "Jobs", company_jobs_path(@job.company) %></caption>
+  <tr>
+    <th>Title</th>
+    <td><%= @job.title %></td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><%= @job.description %></td>
+  </tr>
+  <tr>
+    <th>Level of Interest</th>
+    <td><%= @job.level_of_interest %></td>
+  </tr>
+  <tr>
+    <th>Category</th>
+    <td><%= @category %></td>
+  </tr>
+  <tr>
+    <th>Company</th>
+    <td><%= link_to @job.company.name, company_path(@job.company) %></td>
+  </tr>
+  <tr>
+    <th>Tags</th>
+    <td><% @job.tags.each do |tag| %>
+      <%= link_to tag.title, tag_path(tag) %><% end %>
+    </td>
+  </tr>
+</table>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<%= render partial: "comments/form" %>
+<%= render partial: "comment", collection: @sorted_comments %>

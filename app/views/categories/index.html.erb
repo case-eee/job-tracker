@@ -1,0 +1,15 @@
+<h3 class="header2">All Categories</h3></br>
+
+<div>
+  <table class="tableSection tableTwo">
+    <caption class="newCompany"><%=link_to "New Category", new_category_path %></caption>
+    <tr><th>Category</th><th></th><th></th></tr>
+    <% @categories.each do |category| %>
+    <tr class=category_<%= category.id %>>
+      <td><%= link_to "#{category.title}", category_path(category) %></td>
+      <td><%= link_to "Edit", edit_category_path(category) %></td>
+      <td><%= link_to "Delete", category_path(category), method: "delete" %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

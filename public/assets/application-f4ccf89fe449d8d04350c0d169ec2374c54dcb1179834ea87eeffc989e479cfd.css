@@ -1,0 +1,229 @@
+ table.tableSection {
+     display: table;
+     width: 60%;
+     font-size: 20px;
+     margin: 0px auto;
+     font-weight: lighter;
+ }
+
+ table.tableSection thead, table.tableSection tbody {
+     float: left;
+     width: 100%;
+ }
+ table.tableSection tbody {
+     overflow: auto;
+     height: 400px;
+ }
+ table.tableSection tr {
+     width: 100%;
+     display: table;
+     text-align: left;
+ }
+ table.tableSection th, table.tableSection td {
+     width: 80%;
+     padding: 5px;
+ }
+
+table.tableSection th,
+table.tableContact th {
+     border-bottom: 1px dotted black;
+     font-size: 24px;
+     font-family: "Trebuchet MS", Helvetica, sans-serif;
+ }
+
+ table.allJobs tbody,
+ table.tableTwo tbody {
+   overflow: visible;
+ }
+
+ .navbar {
+   position: fixed;
+   top: 0px;
+ }
+
+ .error {
+  padding-top: 10%;
+  text-align: center;
+}
+
+table a:hover,
+.newCatg a:hover {
+  font-size: 30px;
+  background: #f6f6f6;
+}
+
+table a,
+.newCatg a {
+  text-decoration: none;
+  color: #000;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+  display: block;
+}
+
+.newCompany
+{
+  caption-side: bottom;
+  text-align: left;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  font-size: 24px;
+}
+
+table.tableContact {
+    display: table;
+    width: 60%;
+    font-size: 20px;
+    margin: 0px auto;
+    font-weight: lighter;
+}
+
+table.tableContact th, table.tableContact  td {
+    width: 30%;
+    padding: 5px;
+}
+
+table.tableVertical {
+    display: table;
+    width: 60%;
+    font-size: 20px;
+    margin-left:30%;
+    margin-right:30%;
+    font-weight: lighter;
+}
+
+.tablespace
+{
+  padding-: 15%;
+}
+
+table.tableVertical th {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.buttonForm form {
+  background: -webkit-linear-gradient(bottom, #CCCCCC, #EEEEEE 150px);
+  background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 150px);
+  background: linear-gradient(bottom, #CCCCCC, #EEEEEE 150px);
+  margin: auto;
+  position: relative;
+  width: 400px;
+  height: 300px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 24px;
+  font-weight: lighter;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #999;
+  border: inset 1px solid #333;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.commentForm form,
+.categoryForm form {
+  height: 150px;
+}
+
+.companyForm form {
+  height: 200px;
+}
+
+.commentForm textarea {
+  width: 370px;
+}
+
+.jobForm form {
+  height: 400px;
+}
+
+.buttonForm input {
+  width: 375px;
+  display: block;
+  border: 1px solid #999;
+  height: 25px;
+  -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.buttonForm textarea#feedback {
+  width: 375px;
+  height: 150px;
+  display: block;
+}
+
+.buttonForm button {
+  width: 100px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: #09C;
+  color: #fff;
+  font-family: Tahoma, Geneva, sans-serif;
+  height: 30px;
+  border-radius: 15px;
+  border: 1p solid #999;
+}
+
+.buttonForm input.button:hover {
+  background: #fff;
+  color: #09C;
+}
+
+.comments
+{
+  text-align: left;
+  font-size: 24px;
+  padding-top: 2%;
+}
+.texter
+{
+  font-size: 16px;
+}
+
+.header{
+  padding-top: 12%;
+  padding-bottom: 3%;
+  margin-left: 21%;
+  font-size: 30px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.header2
+{
+  padding-top: 5%;
+  font-size: 40px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  text-align: center;
+  padding-bottom: 2%;
+}
+
+.header3
+{
+  padding-left: 20%;
+  padding-bottom: 1%;
+}
+
+.header4
+{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-size: 40px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  text-align: center;
+}
+
+.newCatg{
+  font-size: 26px;
+  padding-top: 1%;
+  padding-left: 30%;
+}

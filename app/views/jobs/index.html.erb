@@ -1,5 +1,5 @@
-All Jobs for <strong><%= @company.name %></strong>
-
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
+<% if @company %>
+  <%= render partial: "company_job_index" %>
+<% else %>
+  <%= render partial: "job_index" %>
 <% end %>

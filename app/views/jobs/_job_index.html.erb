@@ -1,0 +1,15 @@
+<h3 class="header2">All Jobs!</h3><br/>
+
+<table class="tableSection allJobs">
+  <thead>
+    <tr><th>Job</th><th>Level of Interest</th></tr>
+  </thead>
+  <tbody>
+    <% @jobs.each do |job| %>
+    <tr class=job_<%= job.id %>>
+      <td><%= link_to "#{job.title} at #{job.company.name}", company_job_path(job.company, job) %></td>
+      <td><%= job.level_of_interest %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table></br>

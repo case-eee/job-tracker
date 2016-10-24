@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-offset-3 col-md-6 col-md-offset-3 comments">
+    <div class="comment_#{<%= comment.id %>} commentContainer">
+      <p class="comment"><%= comment.content %></p>
+      <p class = "texter">Posted <%= distance_of_time_in_words(comment.job.created_at, comment.created_at, include_seconds: true) %> later </p>
+    </div>
+  </div>
+</div>
