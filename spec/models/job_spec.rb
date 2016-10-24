@@ -27,5 +27,45 @@ describe Job do
       job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo")
       expect(job).to respond_to(:company)
     end
+    it "belongs to a category" do
+      job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo", category_id: 1)
+      expect(job).to respond_to(:category)
+    end
+    it "has many comments" do
+      job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo", category_id: 1)
+      expect(job).to respond_to(:comments)
+    end
+  end
+
+  describe ".sort_by_interest" do
+    it "sorts jobs by level of interest" do
+      jobs = create_list(:job, 3)
+
+      sorted = Job.sort_by_interest
+
+      expect(sorted.first.level_of_interest).to eq(10)
+      expect(sorted.second.level_of_interest).to eq(20)
+    end
+  end
+
+  describe ".breakdown_by_level_of_interest" do
+    it "breaks down jobs by level of interest" do
+      jobs = create_list(:job, 3)
+
+      breakdowns = Job.breakdown_by_level_of_interest
+
+      expect(breakdowns.first).to eq("20: 1")
+      expect(breakdowns.second).to eq("60: 1")
+    end
+  end
+
+  describe ".average_level_of_interest" do
+    it "calculates average level of interest" do
+      jobs = create_list(:job, 3)
+
+      average = Job.average_level_of_interest
+
+      expect(average).to eq(30)
+    end
   end
 end

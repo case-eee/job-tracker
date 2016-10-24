@@ -1,0 +1,366 @@
+/*webscom15.css  jan 2015   ver8  15-1 */
+  /* GLOBAL SETTING */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl,  dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, menu
+ {	border: 0; 	font-family: inherit; font-size:100%; font-style: inherit; font-weight: inherit; margin: 0; outline: 0; padding: 0; vertical-align: baseline; }
+article, aside, cite, footer, header, hgroup, nav, section, time, menu  {display: block;}
+/*CLASSES*/
+.lef{text-align:left;}
+.cen{text-align:center;}
+.rig{text-align:right;}
+/* floating division */
+.frig{float:right; padding-left:5%;}
+.flef{float:left; padding-right:5%; }
+.clearL { clear:left; }
+.clearR { clear:right;}
+.clearB { clear:both;}
+.clearfix:after {   content: "";   display: table;   clear: both; }
+img 	{ border : 0; max-width:100%;}
+table, thead,  tr, th, td, tbody {max-width:100%;}
+/* BOXES   */
+pre,  blockquote {width:90%; padding:2%;  margin:20px auto; }
+blockquote {    border-left:12px double #0a0; }
+code{padding:8px 5px; display:block; ;}
+/* ==========================================boxes  To consolidate box classes into 3 - explain, announce and sidetrack */
+.explain, .sidetrack  {background:#fce0b1; padding:10px;}
+.screen {background-color:transparent;  border:2px solid #000;}
+.signup, .click{background:#ddff98; border:2px solid red; }
+.broadcast{background:#ffc; }
+.explain, .announce{width:90%; padding: 2% 4%;  margin:20px auto; border-top:15px solid #f9c367; border-bottom:15px solid #f9c367;}
+.contnote {background:#edffcb;border:3px solid #060; }
+.announce{background:#eee;  }
+.screen{/* html5 coding */}
+/*txt class */
+.hilite{ padding:10px; text-align:center; /*locate and remark*/ width:80%; margin:30px auto 10px;}
+.hilite{-webkit-border-radius:13; -moz-border-radius:13; border-radius: 10px;}
+p.day{ padding:10px; margin-top:70px; /*locate and remark - SBI */}
+.letterspace{letter-spacing:2px; /* for abbr items  in nav */ }
+/*FONT FAMILY font setting*/
+html{font-size:100%;}
+
+h1, h2, h3, h4, h5, h6 {font-family: "times new roman", times, serif;  font-weight:normal; }
+body {font-family: Verdana, Arial, Helvetica, sans-serif; color: #000;  /*line-height:1.4; verdana used for small screen*/ }
+article {font-family: istokregular, verdana,  georgia;}
+@font-face {
+    font-family: 'istokregular';
+src: url('../_fonts/istok-regular.eot');
+src: url('../_fonts/istok-regular.eot?#iefix') format('embedded-opentype'),
+          url('../_fonts/istok-regular.woff2') format('woff2'),
+          url('../_fonts/istok-regular.woff') format('woff'),
+          url('../_fonts/istok-regular.ttf') format('truetype'),
+          url('../_fonts/istok-regular.svg#istokregular') format('svg');
+}
+@font-face {
+    font-family: 'istokbold';
+    src: url('../_fonts/istok-bold.eot');
+    src: url('../_fonts/istok-bold.eot?#iefix') format('embedded-opentype'),
+                url('../_fonts/istok-bold.woff2') format('woff2'),
+                url('../_fonts/istok-bold.woff') format('woff'),
+                url('../_fonts/istok-bold.ttf') format('truetype'),
+                url('../_fonts/istok-bold.svg#istokbold') format('svg');
+}
+@font-face {
+    font-family: 'istokitalic';
+    src: url('../_fonts/istok-italic.eot');
+    src: url('../_fonts/istok-italic.eot?#iefix') format('embedded-opentype'),
+                url('../_fonts/istok-italic.woff2') format('woff2'),
+                url('../_fonts/istok-italic.woff') format('woff'),
+                url('../_fonts/istok-italic.ttf') format('truetype'),
+                url('../_fonts/istok-italic.svg#istokitalic') format('svg');
+}
+article {font-family: istokregular, 'Istok Web', 'alegreya sans', 'Arimo', 'Tenor Sans',    arial,  sans-serif;  line-height:1.4rem;}
+.explain, .announce{font-family:georgia, times, serif; }
+.para1 {font-family:georgia, times, serif; font-style:italic;}
+b, strong {font-weight:bold;}
+article b, article strong, .content31 dt {font-family:istokbold;}
+
+em, italic{font-family:istokitalic;}
+pre  { font-family:"courier new", courier,monospace;  }
+code { font-family:monospace, arial, sans-serif;  }
+sup{margin-top:-4px;}
+p.domain { font-family: "times new roman", times, serif; }
+#webtitle{ font-family:"times new roman", times, serif; color:#006; font-style:italic;background:transparent ; }
+#t1 {  font-family: arial, impact, sans-serif; }
+blockquote, .subscribe {font-family:georgia; font-style:italic; text-align:center;}
+p.gotop a {  font-family: impact, arial,  sans-serif;  /* go top of page */}
+.topbar, .botbar {font-family:georgia; /* top bottom in subscribe box */}
+/* FONT SIZE*/
+h1{font-size:2rem; line-height:1.3; text-align:center; color:red; margin-top:0; }
+h2, h3, h4{font-size:1.2rem;  font-style:italic; margin-top:20px; font-weight:bold;}
+ code,pre, code p {font-size:0.7rem}
+ abbr { border-bottom:1px dashed red; }
+cite{text-align:right;}
+strong{font-weight:bold;}
+em{font-style:italic;}
+q {}
+blockquote { line-height:1.5;}
+p{ margin-top:15px; margin-bottom:10px; }
+ul,ol {list-style-position:inside; margin-left:5px;}
+/* dl { margin:15px 0; }
+dt {margin-top:15px; margin-bottom:5px; }
+dd {margin-left:15px; margin-bottom:20px;} */
+dt{margin-bottom:10px;}
+a:link {color:#0000ff; text-decoration: underline;}
+a:visited {color: #663399;text-decoration: underline;}
+a:hover {color: #f00; text-decoration: underline;}
+.explain h2{margin-top:0;}
+/* BACKGROUND COLORS */
+body{background:#fff; /*temp*/}
+mark {background:yellow;}
+pre{background-color:#eaeEEe;}
+code{background-color:#eae8be;}
+blockquote{background:#CCFB5D; }
+#head {  background:#c38;background:#ac004e;}
+p.domain{  background:#c38;background:#ac004e;}
+p.domain a { color:yellow;  }
+p.domain .s {color:#CCFB5D;   /*the s in websdiy*/ }
+p.domain a:hover {background:#106fb7; color:white;  background:#4263C5; }
+p.domain span .s a:hover {color:red;  }
+nav {background:#ffe;}
+article{background:white;}
+#content3{background:white;}
+p.day{background:#9dff00;}
+.hilite{background:#9dff00;}
+#sb2, #sb2fix, #sbres2 {background:#ffe;}
+#sb2 h5, #sb2fix h5,  #sbres2 h5 { background:#000; color:#fc3; background:#eee; color:#ac004e; background:#8CBED6; background:#ddd}
+#sb2 dl, #sb2fix dl, #sbres2 dl{  background:#eee;  }
+#sb2 dt, #sb2fix dt, #sbres2 dt {color:#333;background:#eee;}
+#sb2 dd, #sb2fix dd, #sbres2 dd { background:#ffe;}
+.here{background:#e5e5e5; text-align:right; font-style:italic;}
+.sideoffer{background:#ffe;}
+.c39 {background:white;}
+.f1, .f2, .f3{ background:transparent;}
+.myphoto{background:#ccc;}
+#gplus{background:transparent;}
+.f3{background:white;}
+.googlesearch{background:transparent;}
+#footer{background:#ac004e;}
+#footnote{background:transparent;}
+/* ========================================   Layout  style for websdiy2015  ==========  */
+#wrap1, #wraphp{}
+#head {height:105px; text-align:center; padding:0; }
+.domain{width:80%; margin:0 auto;  height:60px;}
+p.domain {font-size:2.5rem; line-height:1.4; font-style:italic; letter-spacing:5px; font-weight:bold;    }
+p.domain a {text-decoration:none;  padding:5px 5px 10px 5px;}
+nav{width:100%;  height:40px;     }
+#t1 {width:100%;  height:0px;  padding-top:10px;  text-align:center; }
+#t1 ul{text-align:center;}
+#t1 ul li {display: inline;  font-size:0.65rem; line-height:1.5; padding-right:9px ; margin-top:5px;}
+#t1 a{color:#ac004e; text-decoration:none;}
+/* article */
+#content3, #content4{ margin-top:0px; }
+.content31, .content41{width:90%; margin:0 auto; padding:0; }
+article h1{font-size:1.5rem; padding:25px 0 20px;}
+article  {font-size:0.8rem;}
+.explain, .announce {font-size:0.7rem;}
+.para1{color:#333; }
+.para1{ font-size:1.5rem;  padding:15px 0 0px; line-height:1.3;}
+article ol, article ul {margin: 20px 0 0 10px;}
+article li {margin-bottom:10px;}
+article dt{font-weight:bold;}
+#sbres1{display:none; /*sidebar1 for display ads in resources*/}
+#sb2, #sb2fix,  #sbres2 {  width:90%;  text-align:center; margin:0 auto;}
+#sb2 h5, #sb2fix h5, #sbres2 h5 {margin:0; text-align:center;  padding: 5px 0;  font-size:1rem; line-height:1.4; }
+#sb2 dl, #sb2fix dl, #sbres2 dl{ font-size:0.7rem; text-align:left; line-height:1.7;}
+#sb2 dt, #sb2fix dt, #sbres2 dt { padding:2px 10px; }
+#sb2 dd, #sb2fix dd, #sbres2 dd {  margin:0; border-bottom:1px solid #eee; padding:5px; margin-bottom:2px;}
+#sb2 dd a, #sb2fix dd a,#sbres2 dd a{text-decoration:none;}
+#sb2fixsub{width:100%; margin-top:30px; outline:1px solid blue; background:white;}
+.subscribe{  line-height:1.5;}
+.subscribe h5{margin:0; padding:5px;  font-style:normal; font-size:1.3rem; background:#fc3;}
+.topbar, .botbar{background: blue; width:100%; height:30px; padding:10px 0;}
+.topbar a, .botbar a{ color:white; }
+.topbar, .botbar{font-size:1.2rem;}
+.sb2padd{padding:15px; text-align:center; }
+.adsimg {margin-top:10px;  text-align:center; width:100%;}
+.sbrwdad{ margin:10px auto;  }
+.sideoffer {display:block;  outline:1px solid #ccc; margin-bottom:10px;  padding:5px;}
+.sideoffer dd{display:none; margin-bottom:2px; font-size:0.9rem;}
+.sideoffer  dl:hover dd{display:block;/* to show and collapse menu */}
+/*.content32  renamed 39 to be the last row above footer */
+.c39, .c39res{width:100%;   clear:both;    margin-top:20px;  /* social box above footer */ padding-top:5px; border-top:3px double #333;}
+.f1, .f2, .f3{width:100%;   height:50px;margin-bottom:20px  /*class f2 join replaced by fixed addthis on left bar*/}
+.f2{display:none;}
+.myphoto{float:left; width:50px; height:50px; margin:0 7px; }
+#gplus{clear:right;  float:left; width:50%; height:50px; margin-left:2px;}
+.gbutton{float:left; height:25px; clear:right; margin-top:5px;}
+.byme{float:left;  width:100%; height:20px; margin:0; }
+.byme a{font-size:0.6rem;  line-height:1;}
+.addthis_button_compact{font-size:0.8rem; /*TEXT-SHARE*/}
+.f3{ text-align:center;}
+.googlesearch { float:left; clear:both; width:95%; margin-bottom:20px;}
+input[type=text] { width:80%; /*google search*/}
+#footer{  width:100%;  clear:both; }
+#footnote{  margin:0 auto ; padding:0; }
+#footnote { font-size:0.6rem;  color:#eee; text-align:center; padding:5px 0 0;}
+#footnote a {/*:link, #footnote p  a:visited, #footnote p  a:hover */color:#fc3; text-decoration:none;}
+#footnote  a:hover{color:#eef;}
+p.gotop a{ text-align:cente;   font-size:0.8rem;  /* gotop button or txt */ }
+#t3all,#t3bar #t3ban {/*display:none;*/ }
+
+@media screen and (min-width: 500px)   {
+h2, h3, h4{font-size:1.25rem;}
+#head {width:100%;   height:35px; position:fixed;  top:0; left:0; z-index:10; padding:0;  border-top:5px solid #fc3; border-bottom:5px solid #fc3;}
+.domain{float:left;  width:100px ; margin:0; text-align:left; height:35px; }
+p.domain {font-size:1.5rem; line-height:1.4; letter-spacing:1.5px;  }
+p.domain a { padding:5px 25px 6px 5px }
+p.domain  a:link, p.domain  a:visited, p.domain a:hover, p.domain a:active {text-decoration:none;  }
+p.domain  a:hover{ border-top:5px solid #fc3;  border-bottom:5px solid #fc6; background:black; /*border transparent if no strips*/}
+/*do not change domain setting - height, width and padding  500*/
+nav{width:52%;   float:right; background:transparent; text-align:right;   }
+#t1 {  font-family:  impact, arial, sans-serif; }
+nav #t1{height:30px;  padding:0; margin:0; width:100%;margin-top:0px; float:right; text-align:right; background:transparent;}
+nav #t1 a, #t2 a{text-decoration:none;  }
+nav #t1 ul { display:inline; text-align:right; margin:0; padding:0px;  background:transparent; }
+nav #t1 ul li{margin-right:3px; padding:0 3px; text-align:right; background:transparent; font-size:0.8rem; line-height:1;}
+nav #t1 ul li a{ color:#eee;    background:transparent; }
+nav #t1 ul li a:hover{text-decoration:underline; color:yellow; background:transparent; }
+/* article 500 */
+#content3, #content4 {width:80%;  margin:50px auto 0;   z-index:0; padding-top:0px }
+.content31, .content41{width:90%; margin:0px auto; padding:0 0 20px; }
+article h1{font-size:2rem;  padding:40px 0 20px;}
+article {font-size:0.9rem;}
+.explain, .announce{font-size:0.8rem;}
+.para1{}
+ .para1{ font-size:1.6rem; line-height:1.3; }
+#sb2, #sb2fix, #sbres2{width:68%; }
+.adsimg{}
+#sb2fixsub{width:70%; margin:0 auto;}
+.topbar, .botbar{font-size:1.25rem;}
+.c39, .c39res { margin:0 auto;  height:50px; clear:both;  padding-bottom:0px;    height:65px;}
+.f1, .f2, .f3{float:left;  height:50px; }
+.f1{width:48%; background:white;  height:50px;}
+.myphoto{float:left; width:50px; height:50px; margin:0 5px 0 0;}
+#gplus{ width:70%; float:left; clear:right;}
+.byme{font-size:0.8rem; line-height:0.5; background:transparent;}
+.f3{float:right; width:45%; background:white; height:50px;  }
+.googlesearch{ float:right; }
+input[type=text] {  width:55%; /*google search 500*/ ;}
+input[type=submit] {float:right; margin-top:2px;/*to keep inline with search input*/}
+#footer{ margin-top:15px; }
+#footnote { font-size:0.6rem; }
+}
+
+@media screen and (min-width: 700px)   {
+h2, h3, h4{font-size:1.3rem;}
+nav{width:37%;}
+article h1{font-size:2.1rem;}
+article{font-size:1rem;}
+.explain, .announce{font-size:0.85rem;}
+.para1{font-size:1.7rem; }
+#sb2, #sb2fix, #sbres2, .c39, .c39res {width:80%; float:none;}
+#sbres2 menu{float:none;}
+.banss250{float:right;}
+menu {float:left; width:45%;  margin:0 auto 20px;  }
+.f3 {float:right; width:45%; clear:right; text-align:right; margin:0;}
+.sideoffer{/*display:block;  */width:50%; float:right;   text-align:left;   margin-bottom:30px; outline:1px solid #ccc; padding:1%;   }
+.sideoffer p{font-size:0.9rem; }
+.c39{clear:both;  }
+#footnote{font-size:.65rem;}
+}
+
+@media screen and (min-width: 900px) {
+#content3, #content4, .c39, .c39res{width:62%; margin-left:80px; float:left; }
+#sb2fix, #sb2fixsub {float:none; position:fixed; width:26%; top:50px ; right: 5px;  outline:none; margin:0;}
+#sb2, #sbres2{float:right; width:26%; margin-top:5px; margin-right:5px; }
+menu{ width:100%; float:none; }
+.adsimg{ float:none; margin:0px auto; width:100%; }
+h2, h3, h4{font-size:1.35rem;}
+#head{  z-index:10; position:static;}
+.domain{ position:fixed; top:0px; left:0;}
+p.domain  { border-top:5px solid #fc6; border-bottom:5px solid #fc6;}
+#content3, #content4{  margin-top:0px; }
+.content31, .content41{padding:0 0 20px; }
+/* article 900 */
+article h1{font-size:2.3rem; }
+article {font-size:1.1rem; line-height:1.5;}
+.explain, .announce{font-size:0.9rem;}
+.para1{font-size:1.8rem; }
+ .para1{  padding: 10px 0 ; }
+nav{width:30%; }
+#t1{width:35%; clear:right; float:right; height:35px;  padding:10px 0 0 0; margin:0; text-align:center;  background:#ac004e; }
+#t1 a, #t2 a{text-decoration:none; }
+#t1 ul { display:inline; text-align:left; margin:10px 10px 0 0; padding:0;  background:#ac004e; float:right; }
+#t1 ul li{margin-right:3px; padding:3px; text-align:left; background:transparent; font-size:0.75rem; line-height:0.75; }
+#t1 ul li a{ color:#eee;    background:transparent; }
+#t1 ul li a:hover{text-decoration:underline; color:yellow; background:transparent; }
+.letterspace{letter-spacing:2px;/* for abbr items */ }
+/* side bar 900 */
+#sb2 dl, #sb2fix dl, #sbres2 dl {font-size:0.75rem;}
+#sb2 dt, #sb2fix dt, #sbres2 dt{font-weight:bold; margin-left:15px; margin-bottom:2px; }
+#sb2 dd, #sb2fix dd, #sbres2 dd{margin-bottom:1px; }
+#sb2 dd, #sb2fix dd, #sbres2 dd {padding:2px 10px;}
+.topbar, .botbar{margin:0;}
+.subscrbe h5{margin:0;}
+.banss250{max-width:95%; float:none; margin:0 auto; height:50%;}
+.sideoffer{width:90%; height:auto; margin:0 auto;  float:none; clear:both;}
+.sbrwdad{  width:30%; position:fixed; top:40px; right:0;  }
+/* f1 - f3 900*/
+.c39, .c39res {  height:50px; clear:both;  margin-bottom:30px; }
+.f1, .f2, .f3{float:left;   clear:right; height:50px; /* inside c32 */}
+.f1{background:white;  height:50px; }
+.myphoto{float:left;  height:45px; margin:2px 7px; }
+#gplus{background:transparent; width:70%; float:left; clear:right;}
+.gbutton{float:left; height:25px; clear:right; margin-top:3px;}
+.byme{float:left;  width:100%; height:20px; margin:0; }
+.f3{float:right; width:50%;  height:50px; }
+.googlesearch{clear:right;    margin-bottom:0px;  width:95%; }
+input[type=text] { width:70%; /*google search*/}
+ /*footer*/
+#footer{clear:both;  margin: 30px 0 0 0;  }
+#footnote{   padding:5px 0;    padding-top:0px;     }
+#footnote { font-size: 0.7rem;   line-height:1.6; }
+p.gotop a{font-size:1.2rem; letter-spacing:1px;}
+}
+
+@media screen and (min-width: 1000px) {
+#content3, #content4, .c39  {width:64%; margin-left:80px; float:left; }
+#content4{margin-left:2%; }
+#sb2, #sb2fix, #sb2fixsub {width:24%;}
+#sbres1{width:160px; float:left; display:block; margin-left:1px;}
+#sbres2{width:17%; float:right;}
+.c39res{width:64%; margin-left:2%;}
+}
+
+@media screen and (min-width: 1100px)  {
+#content3, .c39{width:65%;}
+#sb2{width:23%; margin-right:1%; margin-top:3px;}
+#sb2fix{ width:23%; position:fixed; top:48px; right:1%; margin:0; outline:none;}
+#sbres2{width:18%;}
+
+h2, h3, h4{font-size:1.4rem;}
+article h1{font-size:2.3rem;}
+article {font-size:1.2rem; line-height:1.6;}
+.explain, .announce{font-size:1rem;}
+.para1{font-size:1.9rem; }
+code p{font-size:0.7rem;}
+nav{width:27%;}
+#sb2 dl, #sb2fix dl, #sbres2 dl {font-size:0.8rem;}
+#footnote{font-size:0.75rem;}
+}
+/* for /pages - click to show  and hide */
+.text_container{ padding:10px 0px 20px; }
+.hidden>div {    display:none;}
+.visible>div {    display:block;}
+
+
+/* OUTLINE FOR DIV AND OTHER TAGS
+.content31{outline:1px solid orange}
+.banss250{outline:1px solid red;}
+#sb2 {outline:1px solid black;}
+ #sb2fix {outline:1px solid green;}
+article{outline:1px solid blue;}
+div *{outline:1px solid red;}
+==========================
+WEBSCOM15 EXPLAINED
+wrap1 blank
+900 onward - domain fixed
+webtitle  - title in masthead
+xbar141 - ads on left - not activated yet - http://code.jquery.com/jquery-1.7.min.js needed before /body
+sbres1 resources advert - google 160x600 hidden below 1000 /
+sbres2 resources menu
+.sbrwdad sidebar rwd ads by google
+c39res
+<p class="adsimg"><div class="banss250">
+sideoffer -see resources t2-res
+===========================================
+*/

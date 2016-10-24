@@ -27,6 +27,6 @@ class Company < ActiveRecord::Base
   end
 
   def self.format_results(input)
-    input.map { |pair| pair.join(": ")}
+    input.map { |pair|  pair.join(": ")}
   end
 end
