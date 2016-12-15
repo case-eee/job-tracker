@@ -39,7 +39,6 @@ group :development, :test do
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'shoulda-matchers'
   gem 'orderly'
   gem 'faker'
 end

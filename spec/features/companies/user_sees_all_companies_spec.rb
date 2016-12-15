@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "User sees all companies" do
-  scenario "a user sees all the companies" do
+  scenario "in database" do
     company_one, company_two = create_list(:company, 2)
 
     visit companies_path
