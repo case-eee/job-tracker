@@ -1,5 +1,12 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h2>All Jobs for <strong><%= @company.name %></strong></h2>
 
 <% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
+  <ul>
+    <li><%= link_to "#{job.title} at #{job.company.name}", company_job_path(@company, job) %></li>
+  </ul>
 <% end %>
+
+
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <%= link_to "Companies", companies_path, class:"btn btn-primary"%>
+</div>

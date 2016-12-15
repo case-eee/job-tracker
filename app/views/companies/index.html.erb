@@ -1,9 +1,14 @@
-<h3>All Companies</h3>
+<h1>All Companies</h1>
 
 <% @companies.each do |company| %>
   <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
+    <h3> <%= link_to company.name, company_path(company) %></h3> 
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <%= link_to "Edit", edit_company_path(company), class: "btn btn-warning" %>
+      <%= link_to "Delete", company_path(company), method: "delete", class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+      <br/><br/>
+    </div>
   </ul>
 <% end %>
+
+
