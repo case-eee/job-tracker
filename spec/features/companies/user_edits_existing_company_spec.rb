@@ -2,14 +2,17 @@ require 'rails_helper'
 
 describe "User edits an existing company" do
   scenario "a user can edit a company" do
-    company = Company.create!(name: "ESPN")
+    company = create(:company)
+    first_name = company.name
+    new_name = "EA Sports"
+    
     visit edit_company_path(company)
 
-    fill_in "company[name]", with: "EA Sports"
+    fill_in "company[name]", with: new_name
     click_button "Update"
 
-    expect(current_path).to eq("/companies/#{Company.last.id}/jobs")
-    expect(page).to have_content("EA Sports")
-    expect(page).to_not have_content("ESPN")
+    expect(current_path).to eq company_jobs_path(company)
+    expect(page).to have_content new_name
+    expect(page).to_not have_content first_name
   end
 end
