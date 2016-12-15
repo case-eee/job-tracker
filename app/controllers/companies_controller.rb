@@ -13,6 +13,7 @@ class CompaniesController < ApplicationController
       flash[:success] = "#{@company.name} added!"
       redirect_to company_path(@company)
     else
+      @errors = @company.errors
       render :new
     end
   end
@@ -33,6 +34,7 @@ class CompaniesController < ApplicationController
       flash[:success] = "#{@company.name} updated!"
       redirect_to company_path(@company)
     else
+      @errors = @company.errors
       render :edit
     end
   end
@@ -40,7 +42,6 @@ class CompaniesController < ApplicationController
   def destroy
     company = Company.find(params[:id])
     company.delete
-
     flash[:success] = "#{company.name} was successfully deleted!"
     redirect_to companies_path
   end
