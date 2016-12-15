@@ -18,4 +18,16 @@ describe "User creates a new job" do
     expect(page).to have_content("80")
     expect(page).to have_content("Denver")
   end
+
+  scenario "it does not save if not valid" do
+    company = Company.create!(name: "ESPN")
+    visit new_company_job_path(company)    
+    fill_in "job[description]", with: "So fun!"
+    fill_in "job[level_of_interest]", with: 80
+    fill_in "job[city]", with: "Denver"
+
+    click_button "Create"
+
+    expect(page).to have_content("Title can't be blank")
+  end
 end
