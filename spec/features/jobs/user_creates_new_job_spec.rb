@@ -18,4 +18,45 @@ describe "User creates a new job" do
     expect(page).to have_content("80")
     expect(page).to have_content("Denver")
   end
+
+  describe "validations" do
+    it "must have a title" do
+      company = create(:company)
+      visit new_company_job_path(company)
+
+      fill_in("job[title]", with: nil)
+      fill_in("job[description]", with: "So fun!")
+      fill_in("job[level_of_interest]", with: 80)
+      fill_in("job[city]", with: "Denver")
+      click_button("Create Job")
+
+      expect(Job.count).to eq(0)
+    end
+
+    it "must have a level of interest" do
+      company = create(:company)
+      visit new_company_job_path(company)
+
+      fill_in("job[title]", with: "Janitor")
+      fill_in("job[description]", with: "So fun!")
+      fill_in("job[level_of_interest]", with: nil)
+      fill_in("job[city]", with: "Denver")
+      click_button("Create")
+
+      expect(Job.count).to eq(0)
+
+    end
+    it "must have a city" do
+      company = create(:company)
+      visit new_company_job_path(company)
+
+      fill_in("job[title]", with: "Janitor")
+      fill_in("job[description]", with: "So fun!")
+      fill_in("job[level_of_interest]", with: 80)
+      fill_in("job[city]", with: nil)
+      click_button("Create")
+
+      expect(Job.count).to eq(0)
+    end
+  end
 end
