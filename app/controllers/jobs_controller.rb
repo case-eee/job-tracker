@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
-    @jobs = @company.jobs
+    @company_jobs = @company.jobs
+    @header = header(:index)
   end
 
   def new
@@ -41,4 +42,21 @@ class JobsController < ApplicationController
   def job_params
     params.require(:job).permit(:title, :description, :level_of_interest, :city)
   end
+
+  def header_index
+    header = init_hash(false)
+    header[:title] = "List of Available Jobs at "
+    header[:show_add] = true
+    header[:show_name] = true
+    return header
+  end
+
+  def header(route)
+    return header_index if route == :index
+  end
+
+  def init_hash(value)
+    Hash.new(value)
+  end
+
 end

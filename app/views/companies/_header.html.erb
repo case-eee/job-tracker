@@ -1,0 +1,20 @@
+<h1><%= @header[:title] %>
+  <% if @header[:show_name]%>
+    <span class="label label-default">
+      <%= @company.name %>
+    </span>
+  <% end %>
+  <% if @header[:show_add]%>
+    <%= link_to "Add Company", new_company_path, class: "btn btn-default" %>
+  <% end %>
+  <% if @header[:show_edit]%>
+    <%= link_to "Edit Company Details", edit_company_path(@company), class: "btn btn-warning" %>
+  <% end %>
+  <% if @header[:show_delete]%>
+    <%= link_to "Delete Company", company_path(@company), method: :delete, class: "btn btn-danger" %>
+  <% end %>
+</h1>
+
+<% if @header[:show_index]%>
+  <p><%= link_to "Back to Company List", companies_path, class: "btn btn-primary btn-xs" %></p>
+<% end %>

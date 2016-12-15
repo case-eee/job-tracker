@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 describe "User deletes existing company" do
-  scenario "a user can delete a company" do
+  scenario "a user can delete a company from the Company Index page" do
     company = Company.create(name: "ESPN")
     visit companies_path
 
-    within(".company_#{company.id}") do
-      click_link "Delete"
-    end
+    click_on "Delete"
 
-    expect(page).to have_content("ESPN was successfully deleted!")
+    visit companies_path
+
+    expect(page).not_to have_content(company.name)
+    expect(Company.count).to eq(0)
   end
 end

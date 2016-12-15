@@ -1,9 +1,15 @@
-<h3>All Companies</h3>
+<%= render partial: "header" %>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+  <table class = "table">
+    <tr>
+      <th>Name</th>
+      <th class = "text-center" colspan = "2">Action</th>
+    </tr>
+    <% @companies.each do |company|%>
+      <tr>
+        <td><%= link_to company.name, company_path(company) %></td>
+        <td class = "text-center"><%= link_to "Edit", edit_company_path(company), class: "btn btn-warning" %></td>
+        <td class = "text-center"><%= link_to "Delete", company_path(company), method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+    <% end  %>
+  </table>

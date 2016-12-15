@@ -1,13 +1,12 @@
-Title: <%= @job.title %>
-<br>
+<%= render partial: "header" %>
 
-Description: <%= @job.description %>
-<br>
-
-Level of Interest: <%= @job.level_of_interest %>
-<br>
-
-City: <%= @job.city %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<table class = "table">
+  <tr>
+    <th>Title</th>
+  </tr>
+  <% @company_jobs.each do |company_job|%>
+    <tr>
+      <td><%= link_to company_job.title, company_job_path(@company, company_job) %></td>
+    </tr>
+  <% end  %>
+</table>

@@ -1,5 +1,12 @@
-All Jobs for <strong><%= @company.name %></strong>
+<%= render partial: "header" %>
 
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<table class = "table">
+  <tr>
+    <th>Title</th>
+  </tr>
+  <% @company_jobs.each do |company_job|%>
+    <tr>
+      <td><%= link_to company_job.title, company_job_path(@company, company_job) %></td>
+    </tr>
+  <% end  %>
+</table>
