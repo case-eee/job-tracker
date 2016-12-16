@@ -16,11 +16,13 @@ describe "User creates a new category" do
   scenario "a user tries to create invalid category" do
 
     category = create(:category)
+
+    visit new_category_path
+
     fill_in "category[title]", with: "Software Development"
     click_button "Create"
 
-    expect(current_path).to eq(new_category_path)
-    expect(page).to have_content("Something with errors")
+    expect(page).to have_content("Create A New Category")
 
   end
 end
