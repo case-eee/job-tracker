@@ -19,6 +19,7 @@ describe "User creates a new category" do
     fill_in "category[title]", with: "partying"
     click_button "Create"
 
+    expect(page).to have_content("Please enter a unique category")
     expect(Category.count).to eq(1)
   end
 end

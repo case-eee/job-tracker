@@ -9,12 +9,17 @@ class CategoriesController < ApplicationController
       flash[:success] = "#{@category.title} added!"
       redirect_to category_path(@category)
     else
+      flash[:error] = "Please enter a unique category"
       render :new
     end
   end
 
   def show
     @category = Category.find(params[:id])
+  end
+
+  def index
+    @categories = Category.all
   end
 
   private
