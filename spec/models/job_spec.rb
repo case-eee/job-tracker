@@ -18,6 +18,10 @@ describe Job do
 
       context "belongs to a company" do
         it {should belong_to(:company)}
-    end
+      end
+
+      context "belongs to a category" do
+        it {should belong_to(:category)}
+      end
   end
 end
