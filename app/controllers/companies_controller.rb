@@ -39,6 +39,7 @@ class CompaniesController < ApplicationController
 
   def destroy
     company = Company.find(params[:id])
+    company.jobs.delete_all
     company.delete
 
     flash[:success] = "#{company.name} was successfully deleted!"
