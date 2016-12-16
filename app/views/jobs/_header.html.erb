@@ -23,3 +23,6 @@
 <% if @header[:show_index]%>
   <p><%= link_to "Back to Job List", company_jobs_path, class: "btn btn-primary btn-xs" %></p>
 <% end %>
+<% if @header[:show_company_index]%>
+  <p><%= link_to "Back to Company List", companies_path, class: "btn btn-primary btn-xs" %></p>
+<% end %>

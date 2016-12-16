@@ -48,6 +48,7 @@ class JobsController < ApplicationController
       redirect_to company_job_path(@company, @job)
     else
       @errors = @job.errors.full_messages
+      @job = Job.find(params[:id])
       @header = header(:edit)
       @form = form(:edit)
       render :edit
@@ -55,7 +56,8 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    # implement on your own!
+    Job.destroy(params[:id])
+    redirect_to company_jobs_path(params[:company_id])
   end
 
   private
@@ -69,6 +71,7 @@ class JobsController < ApplicationController
     header[:title] = "List of Available Jobs at "
     header[:show_add] = true
     header[:show_name] = true
+    header[:show_company_index] = true
     return header
   end
 
@@ -76,6 +79,7 @@ class JobsController < ApplicationController
     header = init_hash(true)
     header[:title] = "Details for "
     header[:show_add] = false
+    header[:show_company_index] = false
     return header
   end
 
