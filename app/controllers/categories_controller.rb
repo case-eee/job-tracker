@@ -25,6 +25,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
+  end
 
   def update
     if @category.update(category_params)
@@ -35,7 +36,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-    def destroy
+  def destroy
     title = @category.title
     @category.destroy
     flash[:deleted] = "The opportunity to be a #{title} has been destroyed forever in the fires of Mt. Doom." 
