@@ -10,10 +10,11 @@
 
     <%= f.text_field :city %>
 
-    <%= f.text_field :category %>
+    <%= f.collection_select :category_id, @categories.order(:title),:id, :title, include_blank: false %>
 
     <%= f.submit nil, class: "btn btn-success" %>
     
     <% end %>
   </div>
 </div>
+

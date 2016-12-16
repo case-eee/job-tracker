@@ -11,7 +11,6 @@ describe "User creates a new job" do
     fill_in "job[description]", with: "So fun!"
     fill_in "job[level_of_interest]", with: 80
     fill_in "job[city]", with: "Denver"
-    fill_in "job[category]", with: category.id
 
     click_button "Create"
 
@@ -22,7 +21,7 @@ describe "User creates a new job" do
     expect(page).to have_content job.title
     expect(page).to have_content job.level_of_interest
     expect(page).to have_content job.city
-    expect(page).to have_content job.category
+    expect(page).to have_content job.category.title
   end
 
   scenario "with invalid attributes" do
