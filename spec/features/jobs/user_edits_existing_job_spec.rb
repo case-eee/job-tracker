@@ -6,7 +6,9 @@ RSpec.feature "User edits an existing job" do
     job = create(:job)
     company.jobs << job
 
-    visit edit_company_job_path(company, job)
+    visit company_job_path(company, job)
+    click_on "Edit"
+    expect(current_path).to eq(edit_company_job_path(company, job))
 
     fill_in "job[title]", with: "Web Developer"
     fill_in "job[description]", with: "develops websites"
