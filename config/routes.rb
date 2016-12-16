@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index]
 
-  resources :companies do
+  resources :companies, :categories do
     resources :jobs
   end
 
