@@ -22,6 +22,23 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    Category.update(params[:id], category_params)
+    redirect_to categories_path
+  end
+
+  def destroy
+    category = Category.find(params[:id])
+    category.delete
+
+    flash[:alert] = "#{category.title} was successfully deleted!"
+    redirect_to categories_path
+  end
+
   private
 
   def category_params
