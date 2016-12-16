@@ -1,3 +1,8 @@
+<div class="back-link">
+  <span>&#10094;</span>
+  <%= link_to "Back to #{@job.company.name}", company_path(@job.company) %>
+</div>
+
 <table class="index-display">
   <tr>
     <th>Title</th>
@@ -31,7 +36,5 @@
   </tr>
 </table>
 
-<div class="back-link">
-  <span>&#10094;</span>
-  <%= link_to "Back to #{@job.company.name}", company_path(@job.company) %>
-</div>
+
+<%= link_to "New Comment", company_job_comment_path %>

@@ -46,6 +46,11 @@ a {
   color: #111c27;
 }
 
+a:hover {
+  text-decoration: underline;
+  color: seagreen;
+}
+
 .index-display {
   margin: 20px;
   table-layout: fixed;
@@ -82,50 +87,11 @@ form {
   transform: translateX(-8px);
 }
 
-/*== Buttons == */
-
-.new-item {
-  max-width: 110px;
-  min-height: 20px;
-  margin: 5px;
-  padding: 5px;
-  text-align: center;
-  border-radius: 5%;
-  background: #0C0CE8;
-  box-shadow: 1px 1px 5px #888888;
+form {
+  padding: 20px 20px;
+  border: 2px black;
 }
 
-.new-item a {
-  text-decoration: none;
-  color: white;
-}
-
-.edit-item {
-  margin: 5px;
-  width: 110px;
-  height: 20px;
-  padding: 5px;
-  border-radius: 5%;
-  background: #E8B20C;
-  box-shadow: 1px 1px 5px #888888;
-}
-
-.edit-item a {
-  text-decoration: none;
-  color: white;
-}
-
-.delete-item {
-  margin: 5px;
-  width: 110px;
-  height: 20px;
-  padding: 5px;
-  border-radius: 5%;
-  background: #FF0000;
-  box-shadow: 1px 1px 5px #888888;
-}
-
-.delete-item a {
-  text-decoration: none;
-  color: white;
+label {
+  display: block;
 }

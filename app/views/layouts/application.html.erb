@@ -8,17 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav>
-    <h1>Job Tracker</h1>
-    <span class="nav-links">
-      <span class="link">
-        <%= link_to "Companies", companies_path %>
-      </span>
-      <span class="link">
-        <%= link_to "Categories", categories_path %>
-      </span>
-    </span>
-  </nav>
+  <%= render partial: 'layouts/nav.html.erb' %>
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
   <% end %>
