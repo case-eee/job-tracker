@@ -9,7 +9,7 @@ describe "User can create a new category" do
 
       fill_in "Title", with: title
 
-      click_button "Create Category"
+      click_on "Create Category"
 
       expect(page).to have_content "Web Development"
       expect(current_path).to eql("/categories/#{Category.first.id}")
