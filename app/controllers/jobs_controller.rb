@@ -21,19 +21,28 @@ class JobsController < ApplicationController
   end
 
   def show
+    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
   end
 
   def edit
-    # implement on your own!
+    @company = Company.find(params[:company_id])
+    @job = Job.find(params[:id])
   end
 
   def update
-    # implement on your own!
+    @job = Job.update(params[:id] ,job_params)
+    @company = Company.find(params[:company_id])
+    redirect_to company_job_path(@company, @job)
   end
 
   def destroy
-    # implement on your own!
+    @job = Job.find(params[:id])
+    @company = Company.find(params[:company_id])
+    @job.destroy
+
+    flash[:success] = "#{@job.title} at #{@company.name} was successfully deleted!"
+    redirect_to company_jobs_path(@company)
   end
 
   private
