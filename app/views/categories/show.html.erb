@@ -1,0 +1,12 @@
+<h1><%= @category.title %></h1>
+
+<ul>
+<% @category.jobs.each do |job| %>
+  <li><%= link_to job.title, company_job_path(job.company, job) %></li>
+<% end %>
+</ul>
+
+<div class="back-link">
+  <span>&#10094;</span>
+  <%= link_to "Return to All Categories", categories_path %>
+</div>

@@ -1,18 +1,37 @@
-Title: <%= @job.title %>
-<br>
+<table class="index-display">
+  <tr>
+    <th>Title</th>
+    <td><%= @job.title %></td>
+    <td>
+      <div class="edit-item">
+        <%= link_to "Edit", edit_company_job_path(@job.company, @job) %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><%= @job.description %></td>
+    <td>
+      <div class="delete-item">
+        <%= link_to "Delete", company_job_path(@job.company, @job), method: :delete %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>Level of Interest</th>
+    <td><%= @job.level_of_interest %></td>
+  </tr>
+  <tr>
+    <th>City</th>
+    <td><%= @job.city %></td>
+  </tr>
+  <tr>
+    <th>Company</th>
+    <td><%= link_to @job.company.name, company_path(@job.company) %></td>
+  </tr>
+</table>
 
-Description: <%= @job.description %>
-<br>
-
-Level of Interest: <%= @job.level_of_interest %>
-<br>
-
-City: <%= @job.city %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
-<br>
-
-<%= link_to "Edit", edit_company_job_path(@job.company, @job) %>
-<br>
-<%= link_to "Delete", company_job_path(@job.company, @job), method: :delete %>
+<div class="back-link">
+  <span>&#10094;</span>
+  <%= link_to "Back to #{@job.company.name}", company_path(@job.company) %>
+</div>

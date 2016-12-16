@@ -1,5 +1,11 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h1>All Jobs for <strong><%= @company.name %></strong></h1>
 
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<ul class="index-display">
+  <% @company.jobs.each do |job| %>
+    <li class="item"><%= link_to job.title, company_job_path(@company, job) %> at <%= job.company.name %></li>
+  <% end %>
+</ul>
+
+<div class="new-item">
+  <%= link_to "Add New Job for #{@company.name}", new_company_job_path(@company) %>
+</div>

@@ -1,3 +1,5 @@
 <h2>Create a new job at <%= @company.name %> here!</h2>
 
 <%= render partial: "form" %>
+
+<p>Don't see the category you're looking for? <%= link_to "Click here", new_category_path %> to add it.
