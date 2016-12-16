@@ -38,7 +38,7 @@ class JobsController < ApplicationController
   def destroy
     title = @job.title
     @job.destroy
-    flash[:deleted] = "#{title} was destroyed forever in the fires of Mt. Doom." 
+    flash[:deleted] = "The opportunity to be a #{title} has been destroyed forever in the fires of Mt. Doom." 
     redirect_to company_jobs_path(@company)
   end
 
