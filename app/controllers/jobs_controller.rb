@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  
+
   def index
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
@@ -22,18 +22,26 @@ class JobsController < ApplicationController
   end
 
   def show
-    binding.pry
     @job = Job.find(params[:id])
-    @company = Company.find(params[:company_id])
-    redirect_to company_job_path(@company,@job)
+    @company = @job.company
+
+    render :show
   end
 
   def edit
-    # implement on your own!
+    @job = Job.find(params[:id])
+    @company = @job.company
   end
 
   def update
-    # implement on your own!
+    @job = Job.find(params[:id])
+    @company = @job.company
+    if @job.update(job_params)
+      flash[:success] = "You updated #{@job.title} at #{@company.name}"
+      redirect_to company_job_path(@company, @job)
+    else
+      render :edit
+    end
   end
 
   def destroy
