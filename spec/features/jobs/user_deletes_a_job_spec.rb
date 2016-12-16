@@ -6,11 +6,11 @@ describe "User deletes an existing job" do
     job = company.jobs.create(title: "Developer", description: "So fun!", level_of_interest: 80, city: "Denver")
 
     visit company_jobs_path(company)
-    save_and_open_page
+
     within(".job_#{job.id}") do
       click_link "Delete"
     end
 
-    expect(page).to have_content("ESPN was successfully deleted!")
+    expect(page).to have_content("Developer was successfully deleted!")
   end
 end
