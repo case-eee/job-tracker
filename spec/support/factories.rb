@@ -10,7 +10,7 @@ FactoryGirl.define do
 
   factory :job do
     title              { Faker::Company.profession }
-    description        { Faker::Company.catch_phrase }
+    description        { Faker::Company.bs }
     level_of_interest  Random.new.rand(100)
     city               { Faker::Address.city }
   end

@@ -1,0 +1,17 @@
+<h2>All Jobs for Category <strong><%= @category.title %></strong></h2>
+
+<% @jobs.each do |job| %>
+  <ul>
+    <li><%= link_to "#{job.title} at #{job.company.name}", company_job_path(job.company, job) %></li>
+  </ul>
+<% end %>
+<br>
+
+<%= link_to "Back to Categories", categories_patg, class:"btn-sm btn-primary"%>
+
+<br><br>
+
+<%= link_to "Edit #{@category.title}", edit_category_path(@category), class: "btn-sm btn-warning"%>
+
+<%= link_to "Delete #{@category.name}", category_path(@category), method: "delete", class: "btn-sm btn-danger",
+data: {confirm: "Are you sure? This action will delete all jobs associated with the category"}%>
