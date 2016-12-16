@@ -9,5 +9,6 @@ RSpec.feature "User deletes existing category" do
     click_link "Delete"
 
     expect(page).to have_content("Software Development was successfully deleted!")
+    expect(current_path).to eq(categories_path)
   end
 end
