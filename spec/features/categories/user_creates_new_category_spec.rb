@@ -7,9 +7,9 @@ describe "User can create a new category" do
 
       visit new_category_path
 
-      fill_in "Title" with: title
+      fill_in "Title", with: title
 
-      click_on "Create Category"
+      click_button "Create Category"
 
       expect(page).to have_content "Web Development"
       expect(current_path).to eql("/categories/#{Category.first.id}")
@@ -24,7 +24,7 @@ describe "User can create a new category" do
 
       visit new_category_path
 
-      fill_in "Title" with: title
+      fill_in "Title", with: title
       click_on "Create Category"
 
       expect(current_path).to eql(new_category_path)
