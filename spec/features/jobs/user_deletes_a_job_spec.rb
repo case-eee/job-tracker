@@ -1,13 +1,14 @@
 require 'rails_helper'
 
-describe "User delete existing job" do
+describe "User deletes an existing job" do
   it "a user can delete a job" do
     company = create(:company)
     company.jobs << create_list(:job, 4)
     visit(company_jobs_path(company))
-    expect(page).to have_content("Title_1 at Company 1")
+
     expect(company.jobs.count).to eq(4)
     click_on("Delete", match: :first)
+    
     expect(company.jobs.count).to eq(3)
   end
 
