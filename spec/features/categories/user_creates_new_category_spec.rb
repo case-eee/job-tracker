@@ -9,6 +9,6 @@ describe "User creates a new category" do
 
     expect(current_path).to eq("/categories/#{Category.last.id}")
     expect(page).to have_content("partying")
-    expect(Category.count).to eq(1)
+   expect(Category.count).to eq(1)
   end
 end
