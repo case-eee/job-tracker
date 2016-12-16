@@ -9,4 +9,8 @@ FactoryGirl.define do
     level_of_interest 10
     city "Denver"
   end
+
+  factory :category do
+    title "Software Development"
+  end
 end
