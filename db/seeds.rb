@@ -4,6 +4,7 @@ Job.destroy_all
 COMPANIES = ["ESPN", "Aetna", "United Airlines", "Denver Public Schools", "Shopify", "Starbucks", "Pivotal Labs", "Captain U"]
 JOBS = ["Engineering", "Development", "Dev Ops", "Quality Assurance", "Teacher", "Product Manager", "Consultant", "Community Manager"]
 CITIES = ["Seattle", "Denver", "Portland", "Indianapolis", "Madison", "Orlando", "San Diego", "Austin", "Las Vegas", "Little Rock", "Boise", "Eugene", "Oakland"]
+CATEGORIES = ["Technology", "Media", "Education", "Sports", "Acting"]
 
 COMPANIES.each do |name|
   company = Company.create!(name: name)
@@ -12,4 +13,9 @@ COMPANIES.each do |name|
     company.jobs.create!(title: JOBS.sample, description: "What a great position!", level_of_interest: num + rand(100), city: CITIES.sample)
     puts "  Created #{company.jobs[num].title}"
   end
+end
+
+CATEGORIES.each do |category|
+  Category.create!(name: category)
+  puts "Created #{category}"
 end
