@@ -3,6 +3,8 @@ class Job < ActiveRecord::Base
   belongs_to :company
 
   def validate!
-   errors.add(:title, :blank, message: "cannot be empty") if( title.nil?) || (title.empty?)
+   if ( title.nil?) || (title.empty?)
+     errors.add(:title, :blank, message: "cannot be empty")
+   end
  end
 end
