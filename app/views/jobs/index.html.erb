@@ -11,3 +11,8 @@
 
 <%= link_to "Back to Companies", companies_path, class:"btn-sm btn-primary"%>
 
+<br><br>
+
+<%= link_to "Edit #{@company.name}", edit_company_path(@company), class: "btn-sm btn-warning"%>
+
+<%= link_to "Delete #{@company.name}", company_path(@company), method: "delete", class: "btn-sm btn-danger", data: {confirm: "Are you sure?"}%>
