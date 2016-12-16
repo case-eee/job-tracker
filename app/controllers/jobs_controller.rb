@@ -33,14 +33,25 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.new
+    @company = Company.find(params[:company_id])
+    @job = Job.find(params[:id])
     @header = header(:edit)
     @form = form(:edit)
-    # implement on your own!
   end
 
   def update
-    # implement on your own!
+    @company = Company.find(params[:company_id])
+    @job = Job.find(params[:id])
+    @job.update(job_params)
+    if @job.save
+      flash[:success] = "#{@job.title} at #{@company.name} updated!"
+      redirect_to company_job_path(@company, @job)
+    else
+      @errors = @job.errors.full_messages
+      @header = header(:edit)
+      @form = form(:edit)
+      render :edit
+    end
   end
 
   def destroy
@@ -80,6 +91,8 @@ class JobsController < ApplicationController
     header = init_hash(false)
     header[:title] = "Edit Job Details"
     header[:show_index] = true
+    header[:show_job] = true
+    header[:show_name] = true
     return header
   end
 
