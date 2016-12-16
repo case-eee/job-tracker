@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -11,7 +12,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      flash[:success] = "You created #{@category.title} at #{@category.name}"
+      flash[:success] = "You officially created #{@category.title}"
       redirect_to category_path(@category)
     else
       render :new
@@ -40,7 +41,7 @@ class CategoriesController < ApplicationController
     title = @category.title
     @category.destroy
     flash[:deleted] = "The opportunity to be a #{title} has been destroyed forever in the fires of Mt. Doom." 
-    redirect_to category_path(@category)
+    redirect_to categories_path
   end
 
   private
