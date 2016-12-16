@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "User creates a new category" do
+RSpec.feature "User creates a new category" do
   scenario "a user can create a new category" do
 
     visit new_category_path
