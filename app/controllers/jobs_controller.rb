@@ -32,6 +32,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @company = @job.company
   end
+  
 
   def update
     @job = Job.find(params[:id])
