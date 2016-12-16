@@ -4,6 +4,7 @@ describe "User deletes job" do
   scenario "job deletes, company does not" do
     company = create(:company_with_jobs)
     job = company.jobs.first
+    create(:category).jobs << job
 
     initial_job_count = Job.count
     initial_company_count = Company.count

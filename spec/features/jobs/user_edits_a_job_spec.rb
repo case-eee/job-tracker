@@ -4,6 +4,7 @@ describe "User edits a job" do
   scenario "with valid data" do
     company = create(:company_with_jobs)
     job = company.jobs.first
+    create(:category).jobs << job
 
     visit company_job_path(company, job)
     click_on "Edit"
@@ -19,6 +20,7 @@ describe "User edits a job" do
   scenario "with invalid data" do
     company = create(:company_with_jobs)
     job = company.jobs.first
+    create(:category).jobs << job
 
     visit company_job_path(company, job)
     click_on "Edit"
