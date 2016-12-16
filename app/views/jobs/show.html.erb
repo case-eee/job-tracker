@@ -10,7 +10,7 @@
 <h4> City: <strong> <%= @job.city %> </strong> </h4>
 <br>
 
-<h4> Company: <strong/> <%= link_to @job.company.name, company_path(@job.company) %> </strong> </h4>
+<h4> Company: <strong/> <%= link_to @company.name, company_path(@company) %> </strong> </h4>
 <br>
 
 <h4> Category: <strong/> <%= link_to "#{@job.category.title}", category_path(@job.category)%></h4>
@@ -18,8 +18,8 @@
 
 <%= link_to "Back to All Companies", companies_path, class:"btn-sm btn-primary"%></strong></h4>
 
-<%= link_to "Delete", company_job_path(@job.company, @job), method: "delete",
+<%= link_to "Delete", company_job_path(@company, @job), method: "delete",
 class: "btn-sm btn-danger", data: {confirm: "Are you sure?"} %>
 
-<%= link_to "Edit", edit_company_job_path(@job.company, @job), class: "btn-sm btn-warning"%>
+<%= link_to "Edit", edit_company_job_path(@company, @job), class: "btn-sm btn-warning"%>
 

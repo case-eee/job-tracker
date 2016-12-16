@@ -1,18 +1,18 @@
 class JobsController < ApplicationController
+
+  before_action :set_company
+  before_action :set_categories, only: [:create, :new, :edit, :update]
+  before_action :set_job, only: [:update, :show, :destroy, :edit]
+
   def index
-    @company = Company.find(params[:company_id])
     @jobs = @company.jobs
   end
 
   def new
-    @categories = Category.all
-    @company = Company.find(params[:company_id])
     @job = Job.new()
   end
 
   def create
-    @categories = Category.all
-    @company = Company.find(params[:company_id])
     @job = @company.jobs.new(job_params)
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"
@@ -24,19 +24,12 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
   end
 
   def edit
-    @categories = Category.all
-    @company = Company.find(params[:company_id])
-    @job = Job.find(params[:id])
   end
 
   def update
-    @categories = Category.all
-    @company = Company.find(params[:company_id])
-    @job = Job.find(params[:id])
     if @job.update(job_params)
       flash[:success] = "Successfully updated!"
       redirect_to company_job_path(@company, @job)
@@ -47,8 +40,6 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:company_id])
-    @job = Job.find(params[:id])
     title = @job.title
     @job.delete
     flash[:success] = "You deleted #{title} at #{@company.name}"
@@ -59,5 +50,17 @@ class JobsController < ApplicationController
 
   def job_params
     params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
+  end
+
+  def set_job
+    @job = Job.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 end
