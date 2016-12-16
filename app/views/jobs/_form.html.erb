@@ -1,15 +1,35 @@
-<%= form_for [@company, @job] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<%= form_for [@company, @job], :html => {:class => "form-horizontal"} do |f| %>
+  <div class = "form-group">
+    <%= f.label :title, :class => "col-sm-2 control-label" %>
+    <div class = "col-sm-10">
+      <%= f.text_field :title, :class => "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <div class = "form-group">
+    <%= f.label :description, :class => "col-sm-2 control-label" %>
+    <div class = "col-sm-10">
+      <%= f.text_area :description, :class => "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :level_of_interest %>
-  <%= f.number_field :level_of_interest %>
+  <div class = "form-group">
+    <%= f.label :level_of_interest, :class => "col-sm-2 control-label" %>
+    <div class = "col-sm-10">
+      <%= f.number_field :level_of_interest, :class => "form-control" %>
+    </div>
+  </div>
 
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+  <div class = "form-group">
+      <%= f.label :city, :class => "col-sm-2 control-label text-right" %>
+    <div class = "col-sm-10">
+      <%= f.text_field :city, :class => "form-control" %>
+    </div>
+  </div>
 
-  <%= f.submit %>
+  <div class = "form-group">
+    <div class = "col-sm-offset-2 col-sm-10">
+      <%= f.submit @form[:submit], :class => "btn btn-default" %>
+    </div>
+  </div>
 <% end %>

@@ -3,10 +3,12 @@
 <table class = "table">
   <tr>
     <th>Title</th>
+    <th>Location(City)</th>
   </tr>
   <% @company_jobs.each do |company_job|%>
     <tr>
       <td><%= link_to company_job.title, company_job_path(@company, company_job) %></td>
+      <td><%= company_job.city %></td>
     </tr>
   <% end  %>
 </table>

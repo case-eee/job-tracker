@@ -1,20 +1,25 @@
 <h1><%= @header[:title] %>
-  <% if @header[:show_name]%>
+  <% if @header[:show_job]%>
+    <span class="label label-default">
+      <%= @job.title %>
+    </span> at 
+  <% end %>
+  <% if @header[:show_name]%>  
     <span class="label label-default">
       <%= @company.name %>
     </span>
   <% end %>
   <% if @header[:show_add]%>
-    <%= link_to "Add Company", new_company_path, class: "btn btn-default" %>
+    <%= link_to "Add a Job", new_company_job_path, class: "btn btn-default" %>
   <% end %>
   <% if @header[:show_edit]%>
-    <%= link_to "Edit Company Details", edit_company_path(@company), class: "btn btn-warning" %>
+    <%= link_to "Edit Job Details", edit_company_job_path(@company, @job), class: "btn btn-warning" %>
   <% end %>
   <% if @header[:show_delete]%>
-    <%= link_to "Delete Company", company_path(@company), method: :delete, class: "btn btn-danger" %>
+    <%= link_to "Delete Job", company_job_path(@company, @job), method: :delete, class: "btn btn-danger" %>
   <% end %>
 </h1>
 
 <% if @header[:show_index]%>
-  <p><%= link_to "Back to Company List", companies_path, class: "btn btn-primary btn-xs" %></p>
+  <p><%= link_to "Back to Job List", company_jobs_path, class: "btn btn-primary btn-xs" %></p>
 <% end %>

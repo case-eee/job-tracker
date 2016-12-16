@@ -8,6 +8,8 @@ class JobsController < ApplicationController
   def new
     @company = Company.find(params[:company_id])
     @job = Job.new()
+    @header = header(:new)
+    @form = form(:new)
   end
 
   def create
@@ -17,15 +19,23 @@ class JobsController < ApplicationController
       flash[:success] = "You created #{@job.title} at #{@company.name}"
       redirect_to company_job_path(@company, @job)
     else
+      @errors = @job.errors.full_messages
+      @header = header(:new)
+      @form = form(:new)
       render :new
     end
   end
 
   def show
     @job = Job.find(params[:id])
+    @company = Company.find(params[:company_id])
+    @header = header(:show)
   end
 
   def edit
+    @job = Job.new
+    @header = header(:edit)
+    @form = form(:edit)
     # implement on your own!
   end
 
@@ -51,8 +61,50 @@ class JobsController < ApplicationController
     return header
   end
 
+  def header_show
+    header = init_hash(true)
+    header[:title] = "Details for "
+    header[:show_add] = false
+    return header
+  end
+
+  def header_new
+    header = init_hash(false)
+    header[:title] = "Add a New Job at "
+    header[:show_index] = true
+    header[:show_name] = true
+    return header
+  end
+
+  def header_edit
+    header = init_hash(false)
+    header[:title] = "Edit Job Details"
+    header[:show_index] = true
+    return header
+  end
+
   def header(route)
     return header_index if route == :index
+    return header_show if route == :show
+    return header_new if route == :new
+    return header_edit if route == :edit
+  end
+
+  def form_new
+    form = init_hash("")
+    form[:submit] = "Save Job"
+    return form
+  end
+
+  def form_edit
+    form = init_hash("")
+    form[:submit] = "Update Job Details"
+    return form
+  end
+
+  def form(route)
+    return form_new if route == :new
+    return form_edit if route == :edit
   end
 
   def init_hash(value)
