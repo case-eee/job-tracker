@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <header>
+    <%= @job.title %> at <%= @job.company.name %>
+  </header>
+  <body class="job_comments">
+    <% @comments.each do |comment| %>
+    <%= comment.content %>
+    <% end %>
+  </body>
+</html>
