@@ -1,11 +1,14 @@
 <% if @location %>
     <h1>All Jobs in <strong><%= @location %></strong></h1>
+    <h5><%= link_to "Sort Jobs by Company", "/companies/#{@company.id}/jobs?location=#{@location}&sort=company" %></h5>
+      <h5><%= link_to "Sort Jobs by Interest Level", "/companies/#{@company.id}/jobs?location=#{@location}&sort=interest" %></h5>
 <% else %>
   <h1>All Jobs at <strong><%= @company.name %></strong></h1>
   <h5><%= link_to "Sort Jobs by Location", "/companies/#{@company.id}/jobs?sort=location" %></h5>
   <h5><%= link_to "Sort Jobs by Interest Level", "/companies/#{@company.id}/jobs?sort=interest" %></h5>
 <% end %>
 </br></br>
+
 <% @jobs.each do |job| %>
   <ul><%= link_to job.title, company_job_path(@company, job) %> at <%= link_to job.company.name, company_path(job.company) %></br>
   <%= link_to job.city, "/companies/9/jobs?location=#{job.city}" %></br>
@@ -13,5 +16,4 @@
     <li><%= link_to "Edit", edit_company_job_path(@company, job) %></li>
     <li><%= link_to "Delete", company_job_path(@company, job), method: "delete" %></li>
     </br></br>
-
 <% end %>

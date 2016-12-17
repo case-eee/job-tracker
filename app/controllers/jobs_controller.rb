@@ -5,11 +5,7 @@ class JobsController < ApplicationController
   def index
     attribute  = params[:sort]
     @location  = params[:location]
-    if @location
-      @jobs = filter_by(@location)
-    else
-      @jobs = sort_by(attribute)
-    end
+    @jobs      = sort_by attribute, list
   end
 
   def new
@@ -60,5 +56,13 @@ class JobsController < ApplicationController
 
   def job_params
     params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id, :sort, :location)
+  end
+
+  def list
+    if @location
+      Job.where(city: @location)
+    else
+      @company.jobs
+    end
   end
 end
