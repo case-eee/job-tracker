@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 
-  before_action :set_company
+  before_action :set_company, except: [:sorted]
   before_action :set_categories, only: [:create, :new, :edit, :update]
   before_action :set_job, only: [:update, :show, :destroy, :edit]
 
@@ -48,6 +48,11 @@ class JobsController < ApplicationController
     @job.destroy
     flash[:success] = "You deleted #{title} at #{@company.name}"
     redirect_to company_jobs_path(@company)
+  end
+
+  def sorted
+    @group_param, @grouped_jobs = Job.create_groups(params[:sort])
+    render :sorted
   end
 
   private

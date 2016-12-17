@@ -1,0 +1,18 @@
+<div class="container">
+  <h2>Jobs Sorted by <%= @group_param %></h2>
+</div>
+
+<div class="container">
+  <% @grouped_jobs.each do |group, jobs| %>
+    <h4><%= group %></h4>
+
+    <ul>
+    <% jobs.each do |job| %>
+      <li><%= link_to job.title, company_job_path(job.company, job) %> at
+      <%= link_to job.company.name, company_path(job.company) %></li>
+    <% end %>
+    </ul>
+
+  <% end %>
+
+</div>
