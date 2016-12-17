@@ -11,4 +11,16 @@ describe "User sees a specific job" do
     expect(page).to have_content("Developer")
     expect(page).to have_content("70")
   end
+
+  scenario "a user creates a comment for the job" do
+    company = Company.create!(name: "ESPN")
+    Category.create(id:3,title:"HR")
+    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category_id: 3)
+
+    visit company_job_path(company, job)
+
+    fill_in "comment[content]", with: "this is a comment"
+    expect(page).to have_content("this is a comment")
+    expect(Comment.count).to eq(1)
+  end
 end
