@@ -1,13 +1,14 @@
 <div class="page-header">
   <h2><%= @company.name %></h2>
 </div>
-
+<div class="container">
 All Jobs for <strong><%= @company.name %></strong>
-
-<% @company.jobs.each do |job| %>
-  <ul><%= link_to job.title, company_job_path(@company, job) %></ul>
-<% end %>
-
+  <div class="list-group">
+  <% @company.jobs.each do |job| %>
+      <a class="list-group-item"<%= link_to job.title, company_job_path(@company, job) %></a>
+  <% end %>
+  </div>
+</div>
 
 <%= render partial: "companies/contact" %>
 <%= render partial: "contacts/form" %>
