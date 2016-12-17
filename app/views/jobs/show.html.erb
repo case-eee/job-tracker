@@ -21,4 +21,7 @@
 <div class='container'>
   <%= link_to 'Edit', edit_company_job_path(@job.company, @job), class: 'btn btn-warning'%>
   <%= link_to 'Delete', company_job_path(@job.company, @job), method: :delete, data:{confirm: 'You seriously want to fire someone?'}, class: 'btn btn-danger'%>
+  <%= link_to 'Add Comment', new_company_job_comment_path(@job.company, @job), class:'btn btn-primary' %>
 </div>
+
+<%= render partial: 'comment'%>

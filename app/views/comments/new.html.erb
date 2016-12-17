@@ -1,0 +1,15 @@
+<% if @error %>
+  <em><strong><%= @error %></strong></em>
+<% end %>
+
+<div class='container'>
+ <%= form_for [@company, @job, @comment] do |f| %>
+   <%= f.label :author %>
+   <%= f.text_field :author %>
+
+   <%= f.label :content %>
+   <%= f.text_field :content %>
+
+   <%= f.submit %>
+ <% end %>
+</div>
