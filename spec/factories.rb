@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :comment do
+    job nil
+  end
   factory :job do
     sequence(:title) {|n| "Title_#{n}"}
     sequence(:description) {|n| "This is description #{n}."}
