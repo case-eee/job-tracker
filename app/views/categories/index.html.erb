@@ -1,0 +1,19 @@
+<div class='container'>
+<%= link_to "Add a New Category", new_category_path, class: "btn btn-success pull-right" %>
+</div>
+
+<div class='container'>
+<h3>All Categories</h3>
+</div>
+<hr>
+
+<div class="container", "categories">
+  <% @categories.each do |category| %>
+    <ul class="category_<%= category.id %> col-md-4">
+      <%= link_to category.name, category_path(category) %> <br>
+      <div class="btn-group">
+        <%= link_to "Edit", edit_category_path(category), class: "btn btn-success" %>
+        <%= link_to "Delete", category_path(category), method: "delete", class: "btn btn-danger" %>
+      </div>
+    </ul>
+  <% end %>

@@ -1,3 +1,4 @@
+<div class='container'>
 Title: <%= @job.title %>
 <br>
 
@@ -11,3 +12,6 @@ City: <%= @job.city %>
 <br>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
+
+<%= link_to "Delete", company_job_path(@job.company, @job), method: :delete, class:"btn btn-danger" %>
+</div>
