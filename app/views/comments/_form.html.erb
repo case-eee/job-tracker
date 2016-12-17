@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="col-md-6">
+    <div class="small">
+
+      <%= bootstrap_form_for [@company, @job, @comment] do |f| %>
+
+        <%= f.text_area :content %>
+
+        <%= f.submit nil, class: "btn-sm btn-success "%>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
