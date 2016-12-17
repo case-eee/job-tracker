@@ -4,7 +4,7 @@ class JobsController < ApplicationController
 
   def index
     sort = params[:sort]
-    @jobs = by_location?(sort)
+    @jobs = sorter(sort)
   end
 
   def new
