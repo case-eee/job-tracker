@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pry'
+gem 'bourbon'
+gem 'neat'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -42,6 +44,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem "factory_girl_rails"
   gem 'database_cleaner'
+  gem "refills", group: :development
 end
 
 group :development do
