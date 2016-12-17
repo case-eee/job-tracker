@@ -6,6 +6,7 @@ class JobsController < ApplicationController
   def index
     attribute  = params[:sort]
     @location  = params[:location]
+    @comment   = Comment.create()
     @jobs      = sort_by attribute, list
   end
 

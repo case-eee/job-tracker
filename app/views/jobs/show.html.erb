@@ -18,3 +18,10 @@ Company: <%= link_to @job.company.name, company_path(@job.company) %></br>
 
 <%= link_to "Edit", edit_company_job_path(@job.company, @job) %>
 <%= link_to "Delete", company_job_path(@job.company, @job), method: :delete, data: {confirm: "Are you sure?"} %>
+
+<%= form_for company_job_comments_path do |f| %>
+  <%= f.label "New Comment"%>
+  <%= f.text_area :content %>
+
+  <%= f.submit "Submit Comment"%>
+<% end %>
