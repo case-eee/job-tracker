@@ -1,31 +1,37 @@
 <div class="container">
-
   <h1><%= @company.name %></h1>
-
- <%= link_to "All Companies", companies_path, class:"btn-sm btn-primary"%>
-
+  <%= link_to "All Companies", companies_path, class:"btn-sm btn-primary"%>
   <%= link_to "Edit", edit_company_path(@company), class: "btn-sm btn-warning"%>
-
   <%= link_to "Delete", company_path(@company), method: "delete", class: "btn-sm btn-danger",
   data: {confirm: "Are you sure? This will delete all associated jobs and contacts."}%>
-
 </div>
+
+<br>
 
 <div class="container">
   <h2>Jobs</h2>
   <ul>
   <% @jobs.each do |job| %>
-      <li><%= link_to "#{job.title} at #{job.company.name}", company_job_path(@company, job) %></li>
+      <li><%= link_to "#{job.title}", company_job_path(@company, job) %></li>
   <% end %>
   </ul>
   <%= link_to "New Job", new_company_job_path(@company, @job), class: "btn-sm btn-success"%>
 </div>
 
-<div class="container" >
+<br>
+
+<div class="container">
   <h2>Contacts</h2>
   <ul>
   <% @contacts.each do |contact|%>
     <li><%= "#{contact.name}, #{contact.position}, #{contact.email}" %></li>
   <% end %>
   </ul>
+</div>
+
+<br>
+
+<div class="container">
+  <h4>Enter a New Contact</h4>
+  <%= render partial: "contact_form" %>
 </div>
