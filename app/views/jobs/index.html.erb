@@ -15,4 +15,5 @@
 
 <%= link_to "Edit #{@company.name}", edit_company_path(@company), class: "btn-sm btn-warning"%>
 
-<%= link_to "Delete #{@company.name}", company_path(@company), method: "delete", class: "btn-sm btn-danger", data: {confirm: "Are you sure?"}%>
+<%= link_to "Delete #{@company.name}", company_path(@company), method: "delete", class: "btn-sm btn-danger",
+data: {confirm: "Are you sure? This will delete all associated jobs and contacts."}%>
