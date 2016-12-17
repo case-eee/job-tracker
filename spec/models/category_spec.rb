@@ -14,6 +14,13 @@ describe Category do
         expect(category).to be_invalid
       end
     end
+
+    context "valid attributes" do
+      it "is valid with a title" do
+        category = Category.create(title: "Web Development")
+        expect(category).to be_valid
+      end
+    end
   end
 
   describe "relationships" do

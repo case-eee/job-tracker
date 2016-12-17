@@ -5,6 +5,7 @@ RSpec.feature "User sees all companies" do
     category = create(:category, title: "Finance")
 
     visit categories_path
+    
     within(".category_#{category.id}") do
       click_link "Delete"
     end
