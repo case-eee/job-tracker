@@ -1,0 +1,7 @@
+<div class='container'>
+  <% @contacts.reverse.each do |contact| %>
+    <h4>Contact: <%= contact.name %></h4>
+    <li><%= contact.position %></li>
+    <li><%= contact.email %></li>
+  <% end %>
+</div>
