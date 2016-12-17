@@ -16,6 +16,9 @@ class CommentsController < ApplicationController
       flash[:failure] = "A Comment must have an author and content."
       redirect_to new_company_job_comment_path(@comment.job.company, @comment.job)
     end
+    # @company = Company.find(params[:company_id])
+    # @job = Job.find(params[:job_id])
+    # @comment = @job.comments.new(comment_params)
   end
 
   private

@@ -3,7 +3,11 @@
 </div><br>
 
 <div class='container'>
-  Category: <%= link_to @job.category.name, category_path(@job.category) %>
+  Category: <% if @job.category == nil %>
+              <%= "Category Not Found" %>
+            <% else %>
+              <%= link_to @job.category.name, category_path(@job.category) %>
+            <% end %>
 </div><br>
 <div class='container'>
   Description: <%= @job.description %>
