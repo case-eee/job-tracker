@@ -1,6 +1,7 @@
-<%= form_for @category do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  
-  <%= f.submit %>
+<%= form_for @category, :html => {:class => "form-inline"} do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <%= f.submit class: 'btn btn-default' %>
 <% end %>
