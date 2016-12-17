@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "User sees all jobs" do
   scenario "for a specific company" do
-    company = create(:company_with_jobs)
+    company = create(:company_with_jobs_and_contacts)
     job_one = company.jobs.first
     job_two = company.jobs.last
 

@@ -5,7 +5,8 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:update, :show, :destroy, :edit]
 
   def index
-    @jobs = @company.jobs
+    @jobs     = @company.jobs
+    @contacts = @company.contacts
   end
 
   def new

@@ -3,13 +3,10 @@ FactoryGirl.define do
   factory :company do
     name { Faker::Company.name }
 
-    factory :company_with_jobs do
+    factory :company_with_jobs_and_contacts do
       jobs { create_list(:job, 5)}
+      contacts { create_list(:contact, 2) }
     end
-
-    # factor :company_with_contacts do
-    #   contacts { create_list(:contact, 2) }
-    # end
   end
 
   factory :job do

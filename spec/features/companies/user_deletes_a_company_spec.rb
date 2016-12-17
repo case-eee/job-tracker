@@ -13,7 +13,7 @@ describe "User deletes existing company" do
   end
 
   scenario "its jobs are deleted" do
-    company = create(:company_with_jobs)
+    company = create(:company_with_jobs_and_contacts)
 
     visit company_path(company)
 

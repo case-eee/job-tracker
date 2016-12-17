@@ -17,7 +17,7 @@ describe "User deletes a category" do
 
   scenario "and its jobs are deleted" do
     
-    company = create(:company_with_jobs)
+    company = create(:company_with_jobs_and_contacts)
     category = create(:category)
     category.jobs << company.jobs
 
