@@ -19,4 +19,9 @@ Company: <%= link_to @company.name, company_path(@company) %></br>
 <%= link_to "Edit", edit_company_job_path(@company, @job) %>
 <%= link_to "Delete", company_job_path(@company, @job), method: :delete, data: {confirm: "Are you sure?"} %>
 
-<%= render partial: "comments/form" %>
+  <h3>Make a note:</h3>
+    <%= form_for([@company, @job, @comment]) do |f| %>
+    <%= f.text_area :content %>
+
+    <%= f.submit "Post" %>
+<% end %>
