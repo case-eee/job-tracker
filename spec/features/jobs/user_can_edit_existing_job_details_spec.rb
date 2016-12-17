@@ -2,8 +2,13 @@ require 'rails_helper'
 
 describe "User can edit details of existing job" do
   scenario "when completes all fields" do
-    company = Company.create(name: "ESPN")
-    job = Job.create(title: "Job Title", description: "Job test description", level_of_interest: 10, city: "Phoenix", company: company)
+    company = create(:company)
+    category1, category2 = create_list(:category, 2)
+    job = create(:job)
+    job.category = Category.new
+    job.category = category1
+    job.save
+    company.jobs << job
     new_job_title = "Developer"
     new_job_description = "So fun!"
     new_job_level_of_interest = "80"
@@ -29,8 +34,13 @@ describe "User can edit details of existing job" do
     expect(page).to have_field("job_level_of_interest", with: "#{new_job_level_of_interest}", disabled: true)
   end
   scenario "except when required fields changed to empty" do
-    company = Company.create(name: "ESPN")
-    job = Job.create(title: "Job Title", description: "Job test description", level_of_interest: 10, city: "Phoenix", company: company)
+    company = create(:company)
+    category1, category2 = create_list(:category, 2)
+    job = create(:job)
+    job.category = Category.new
+    job.category = category1
+    job.save
+    company.jobs << job
     new_job_title = "Developer"
     new_job_description = "So fun!"
     new_job_level_of_interest = "80"
@@ -54,8 +64,13 @@ describe "User can edit details of existing job" do
     expect(page).to have_content("City can't be blank")
   end
   scenario "when completes all fields after error messages" do
-    company = Company.create(name: "ESPN")
-    job = Job.create(title: "Job Title", description: "Job test description", level_of_interest: 10, city: "Phoenix", company: company)
+    company = create(:company)
+    category1, category2 = create_list(:category, 2)
+    job = create(:job)
+    job.category = Category.new
+    job.category = category1
+    job.save
+    company.jobs << job
     new_job_title = "Developer"
     new_job_description = "So fun!"
     new_job_level_of_interest = "80"

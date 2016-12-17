@@ -1,33 +1,37 @@
 FactoryGirl.define do
 
-  sequence :name, ["ESPN", "Disney"].cycle do |n|
-    "#{n}"
-  end
-
-  sequence :title, ["Web Developer", "QA Analyst"].cycle do |n|
-    "#{n}"
-  end
-  
-  sequence :level_of_interest, [90, 70].cycle do |n|
-    "#{n}"
-  end
-  
-  sequence :city, ["Denver", "New York City"].cycle do |n|
-    "#{n}"
-  end
-  
   factory :job do
-    title
-    level_of_interest
-    city
+    sequence :title, ["Web Developer", "QA Analyst"].cycle do |n|
+      "#{n}"
+    end
+    sequence :level_of_interest, [90, 70].cycle do |n|
+      "#{n}"
+    end
+    sequence :city, ["Denver", "New York City"].cycle do |n|
+      "#{n}"
+    end
+    category {create(:category)}
   end
 
   factory :company do
-    name
+    sequence :name, ["ESPN", "Disney"].cycle do |n|
+      "#{n}"
+    end
   end
 
   factory :category do
-    title
+    title {rand(1..1000000)}
+    # sequence :title, ["Programming", "Quality"].cycle do |n|
+    #   "#{n}"
+    # end
+    # transient do
+    #   jobs_count 1
+    # end
+    # factory :category_with_jobs do
+    #   before(:create) do |category, evaluator|
+    #     create_list(:job, evaluator.jobs_count, category: category)
+    #   end
+    # end
   end
 
 end

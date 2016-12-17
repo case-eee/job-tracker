@@ -7,6 +7,7 @@ class JobsController < ApplicationController
 
   def new
     @company = Company.find(params[:company_id])
+    @categories = Category.all
     @job = Job.new()
     @header = header(:new)
     @form = form(:new)
@@ -20,6 +21,7 @@ class JobsController < ApplicationController
       redirect_to company_job_path(@company, @job)
     else
       @errors = @job.errors.full_messages
+      @categories = Category.all
       @header = header(:new)
       @form = form(:new)
       render :new
@@ -29,12 +31,14 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @company = Company.find(params[:company_id])
+    @job_category = @job.category
     @header = header(:show)
   end
 
   def edit
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
+    @categories = Category.all
     @header = header(:edit)
     @form = form(:edit)
   end
@@ -49,6 +53,7 @@ class JobsController < ApplicationController
     else
       @errors = @job.errors.full_messages
       @job = Job.find(params[:id])
+      @categories = Category.all
       @header = header(:edit)
       @form = form(:edit)
       render :edit
@@ -63,7 +68,7 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
   end
 
   def header_index
@@ -110,12 +115,14 @@ class JobsController < ApplicationController
   def form_new
     form = init_hash("")
     form[:submit] = "Save Job"
+    form[:show_categories] = true
     return form
   end
 
   def form_edit
     form = init_hash("")
     form[:submit] = "Update Job Details"
+    form[:show_categories] = true
     return form
   end
 

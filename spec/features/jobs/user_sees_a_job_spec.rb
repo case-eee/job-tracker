@@ -2,8 +2,13 @@ require 'rails_helper'
 
 describe "User sees a specific job" do
   scenario "a user sees a job for a specific company" do
-    company = Company.create!(name: "ESPN")
-    job = Job.create(title: "Job Title", description: "Job test description", level_of_interest: 10, city: "Phoenix", company: company)
+    company = create(:company)
+    category1 = create(:category)
+    job = create(:job)
+    job.category = Category.new
+    job.category = category1
+    job.save
+    company.jobs << job
 
     visit company_job_path(company, job)
 
