@@ -25,9 +25,6 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
-    # if @job.category = nil
-    #   @job.category.create(name: "Category Not Found")
-    # end
   end
 
   def edit
