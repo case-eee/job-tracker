@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if sort.eql? "location"
       @company.jobs.order(:city)
     elsif sort.eql? "interest"
-      @company.jobs.order(:level_of_interest).reverse
+      @company.jobs.order('level_of_interest DESC')
     else
       @company.jobs
     end
