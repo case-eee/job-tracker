@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter|Quicksand:400,700')
+
+$main-font: 'Bitter', serif
+$body-font: 'Quicksand', sans-serif
+
+a:hover
+  text-decoration: none
+
+body
+  background: $bgdark  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, $bgdark , $bglight)
+  background: linear-gradient(to left, $bgdark  , $bglight)
+
+.update-button
+  background-color: rgba(255,255,255,0)
+  padding: 7px 15px 7px 15px
+  border: solid 2px #fff
+  font-size: 16px
+  color: #fff
+  width: 100%
+  font-family: $body-font
+
+.delete-button
+  background-color: rgba(255,255,255,0)
+  padding: 7px 15px 7px 15px
+  border: solid 2px #fff
+  font-size: 16px
+  color: #fff
+  width: 100%
+  font-family: $body-font
+
+.delete-button:hover
+  background-color: white
+  color: red
+  text-decoration: none
+
+.update-button:hover
+  background-color: white
+  color: #43C6AC
+  text-decoration: none
+
+h1
+  font-family: $main-font
+  font-weight: 400
+  margin-right: auto
+  margin-left: auto
+  color: #fff
+  margin-bottom: 40px
+  margin-top: 40px
+  border-bottom: 2px solid #fff
+  padding-bottom: 20px
+
+input
+  font-family: $body-font
+  font-weight: 400
+  letter-spacing: 1px
+
+select
+  font-family: $body-font
+  font-weight: 400
+  letter-spacing: 1px
+  color: #333
+
+label
+  font-family: $body-font
+  font-weight: 400
+  letter-spacing: 1px
+  color: #333
+  margin-right: 10px
+
+form
+  margin-right: auto
+  margin-left: auto
+
+.form-control
+  background-color: white
+  border-radius: 0
+  border: none
+  box-shadow: none
+
+li
+  list-style: none
+  a
+    display: inline
+
+ul
+  width: 60%
+  margin-right: auto
+  margin-left: auto
+
+.company
+  background-color: rgba(255,255,255,0.3)
+  padding: 20px
+  margin-bottom: 10px
+
+.company-name
+  font-family: $body-font
+  font-size: 20px
+  color: #555
+
+#job_category_id
+  @extend input
+  color: $red
+  display: inline-block
