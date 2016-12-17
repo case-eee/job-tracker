@@ -5,10 +5,20 @@ FactoryGirl.define do
     sequence(:level_of_interest) {|n| "The level of interest is: #{n}"}
     sequence(:city) {|n| "City_#{n}"}
     category
+    company
   end
 
   factory :category do
     sequence(:title) {|n| "Category_title_#{n}"}
+
+    factory :category_jobs
+    transient do
+      jobs_count 5
+    end
+
+    after(:create) do |category,evaluator|
+      create_list(:job, evaluator.jobs_count, category: category)
+    end
   end
 
   factory :company do
