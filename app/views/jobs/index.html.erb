@@ -6,6 +6,7 @@
   <h1>All Jobs at <strong><%= @company.name %></strong></h1>
   <h5><%= link_to "Sort Jobs by Location", "/companies/#{@company.id}/jobs?sort=location" %></h5>
   <h5><%= link_to "Sort Jobs by Interest Level", "/companies/#{@company.id}/jobs?sort=interest" %></h5>
+  <h5><%= link_to "Create a New Job at #{@company.name}", new_company_job_path(@company) %></h5>
 <% end %>
 </br></br>
 
