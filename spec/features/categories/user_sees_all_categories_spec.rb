@@ -34,15 +34,15 @@ describe "the user can interact with the buttons" do
 
 
   scenario "should redirect them to the edit page" do
-    within("li", match: :first) do
-      click_on("Edit")
+    within(".categories") do
+      click_on("Edit", match: :first)
     end
     expect(page).to have_current_path(edit_category_path(Category.first.id))
   end
 
   scenario "should redirect them to the delete page" do
-    within("li", match: :first) do
-      click_on("Delete")
+    within(".categories") do
+      click_on("Delete", match: :first)
     end
     expect(page).to have_current_path(categories_path)
   end
