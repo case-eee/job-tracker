@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 
-  before_action :set_company, except: [:sorted]
+  before_action :set_company, except: [:root]
   before_action :set_categories, only: [:create, :new, :edit, :update]
   before_action :set_job, only: [:update, :show, :destroy, :edit]
 
@@ -50,9 +50,17 @@ class JobsController < ApplicationController
     redirect_to company_jobs_path(@company)
   end
 
-  def sorted
-    @group_param, @grouped_jobs = Job.create_groups(params[:sort])
-    render :sorted
+  def root
+    if params[:sort]
+      @group_param, @grouped_jobs = Job.groups(params[:sort])
+      render :sorted
+    elsif params[:location]
+      @location, @jobs = Job.location(params[:location])
+      render :location
+    else
+      @jobs = Job.all
+      render :locations_table
+    end
   end
 
   private

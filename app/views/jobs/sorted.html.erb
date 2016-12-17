@@ -4,7 +4,7 @@
 
 <div class="container">
   <% @grouped_jobs.each do |group, jobs| %>
-    <h4><%= group %></h4>
+    <h4><%= "#{@group_param}: #{group}" %></h4>
 
     <ul>
     <% jobs.each do |job| %>

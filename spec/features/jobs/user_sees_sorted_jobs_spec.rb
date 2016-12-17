@@ -7,7 +7,7 @@ describe "User visits jobs" do
 
     visit "/jobs?sort=location"
 
-    expect(page).to have_content "Jobs Sorted by City"
+    expect(page).to have_content "Jobs Sorted by Location"
 
     Job.all.each do |job|
       expect(page).to have_content job.city

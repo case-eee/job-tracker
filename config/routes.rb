@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  get 'jobs' => 'jobs#sorted'
+  get 'jobs' => 'jobs#root'
   get 'dashboard' => 'application#dashboard'
 
 
