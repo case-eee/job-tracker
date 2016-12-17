@@ -29,4 +29,11 @@ FactoryGirl.define do
     email "hiring@hire.com"
     company
   end
+
+  factory :comment do
+    sequence :content do |n|
+      "Comment #{n} here"
+    end
+    job
+  end
 end
