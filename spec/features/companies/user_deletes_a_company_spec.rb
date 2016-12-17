@@ -23,4 +23,16 @@ describe "User deletes existing company" do
 
     expect(Job.count).to eq 0
   end
+
+  scenario "its contacts are deleted" do
+    company = create(:company_with_jobs_and_contacts)
+
+    visit company_path(company)
+
+    expect(Contact.count).to eq company.contacts.count 
+
+    click_on "Delete"
+
+    expect(Contact.count).to eq 0
+  end
 end
