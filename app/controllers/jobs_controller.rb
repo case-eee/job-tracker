@@ -3,10 +3,10 @@ class JobsController < ApplicationController
   before_action :set_company, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def index
-    attribute = params[:sort]
-    location  = params[:location]
-    if location
-      @jobs = filter_by(location)
+    attribute  = params[:sort]
+    @location  = params[:location]
+    if @location
+      @jobs = filter_by(@location)
     else
       @jobs = sort_by(attribute)
     end
