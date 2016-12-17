@@ -1,5 +1,7 @@
-All Jobs for <strong><%= @company.name %></strong>
-
+<h1>All Jobs for <strong><%= @company.name %></strong></h1>
+<h5><%= link_to "Sort Jobs by Location", "/companies/#{@company.id}/jobs?sort=location" %></h5>
+<h5><%= link_to "Sort Jobs by Interest Level", "/companies/#{@company.id}/jobs?sort=interest" %></h5>
+</br></br>
 <% @jobs.each do |job| %>
   <ul><%= job.title %> at <%= job.company.name %></br>
   <%= job.city %></br>
