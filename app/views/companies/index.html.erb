@@ -1,9 +1,19 @@
-<h3>All Companies</h3>
+<div class="row">
+  <div class="text-center">
+    <h1>All Companies</h1> 
+  </div>
+</div>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+<ul>
+  <% @companies.each do |company| %>
+    <div class="company row">
+      <li class=company_<%= company.id %> >
+        <%= link_to company.name, company_path(company), class: "company-name" %>
+        <div class="pull-right">
+          <%= link_to "Edit", edit_company_path(company), class: "update-button" %>
+          <%= link_to "Delete", company_path(company), method: "delete", class: "delete-button" %>
+        </div>
+      </li>
+    </div>
+  <% end %>
+</ul>
