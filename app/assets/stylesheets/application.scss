@@ -1,4 +1,37 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "nav";
 
-// put style components in this file 
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,700i');
+
+// put style components in this file
+li {
+  list-style: none;
+}
+
+.company, .category {
+  background-color: #444;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.item {
+  font-size: 24px;
+  color: white;
+  font-family: 'Space Mono', monospace;
+}
+
+.item:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+.wrapper {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.clearfix {
+  text-align: center;
+}

@@ -1,9 +1,15 @@
-<%= link_to "Companies", companies_path %>
-<%= link_to "Create Category", new_category_path %><br />
-
-<h1>All Categories</h1>
-<%@categories.each do |category| %>
-  <%= category.title %><br />
-  <%= link_to "Edit", category_path(category) %><br />
-  <%= link_to "Delete", category_path(category), method: :delete %>
-<% end %>
+<h3 class="text-center">All Categories</h3>
+<div class="clearfix">
+  <%= link_to "Add a New Category", new_category_path, class: "btn btn-success" %>
+</div>
+<ul>
+  <% @categories.each do |category| %>
+  <li><div class="row category">
+    <%= link_to category.title, category_path(category), class: "item" %>
+  <div class="pull-right">
+    <%= link_to "Edit", category_path(category), class: "btn-primary btn" %>
+    <%= link_to "Delete", category_path(category), method: "delete", class: "btn-success btn" %>
+  </div>
+</div></li>
+  <% end %>
+</ul>
