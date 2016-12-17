@@ -8,3 +8,19 @@
     <input class = "form-control" type = "text" disabled name = "job_city" value = "<%= @category.title %>" />
   </div>
 </div>
+
+<h3>List of Jobs within this Category</h3>
+
+<table class = "table">
+  <tr>
+    <th>Title</th>
+    <th>Location(City)</th>
+    <th class = "text-center" colspan = "2">Action</th>
+  </tr>
+  <% @category_jobs.each do |category_job|%>
+    <tr>
+      <td><%= link_to category_job.title, company_job_path(category_job.company_id, category_job) %></td>
+      <td><%= category_job.city %></td>
+    </tr>
+  <% end  %>
+</table>
