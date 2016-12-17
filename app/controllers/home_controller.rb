@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    render "/layouts/application"
+    render :index
   end
 end
