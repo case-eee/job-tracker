@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
     
-  def sorter(sort)
-    if sort.eql? "location"
+  def sorter(order_by)
+    if order_by.eql? "location"
       @company.jobs.order(:city)
-    elsif sort.eql? "interest"
+    elsif order_by.eql? "interest"
       @company.jobs.order('level_of_interest DESC')
     else
       @company.jobs
