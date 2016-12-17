@@ -10,18 +10,13 @@ Level of Interest: <%= @job.level_of_interest %>
 City: <%= @job.city %>
 <br>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %></br>
+Company: <%= link_to @company.name, company_path(@company) %></br>
 
 <% if @job.category %>
   Category: <%= link_to @job.category.title, category_path(@job.category) %></br></br>
 <% end %>
 
-<%= link_to "Edit", edit_company_job_path(@job.company, @job) %>
-<%= link_to "Delete", company_job_path(@job.company, @job), method: :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to "Edit", edit_company_job_path(@company, @job) %>
+<%= link_to "Delete", company_job_path(@company, @job), method: :delete, data: {confirm: "Are you sure?"} %>
 
-<%= form_for company_job_comments_path do |f| %>
-  <%= f.label "New Comment"%>
-  <%= f.text_area :content %>
-
-  <%= f.submit "Submit Comment"%>
-<% end %>
+<%= render partial: "comments/form" %>

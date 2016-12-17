@@ -1,17 +1,18 @@
 class JobsController < ApplicationController
   include ControllerHelper
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :set_company
 
   def index
     attribute  = params[:sort]
     @location  = params[:location]
-    @comment   = Comment.create()
+    @comment   = Comment.new
     @jobs      = sort_by attribute, list
   end
 
   def new
     @job = Job.new()
+    @comment = Comment.new(job_id: params[:job_id])
   end
 
   def create
