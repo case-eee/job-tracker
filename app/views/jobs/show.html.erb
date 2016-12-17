@@ -33,7 +33,7 @@
 
 <div class="container">
 
-  <h4>Comments</h4>
+  <h3>Comments</h3>
 
   <ul class="media-list">
 
@@ -41,7 +41,7 @@
 
     <li class="media">
       <div class="media-body">
-        <h5 class="media-heading"><%= comment.created_at.inspect %></h5>
+        <h4 class="media-heading"><%= comment.created_at.inspect %></h4>
         <div class="media"><%= comment.content %></div>
       </div>
     </li>
@@ -55,6 +55,6 @@
 
   <h5>New Comment</h5>
 
-  <%= render partial: "comments/form" %>
+  <%= render partial: "comments/form"%>
 
 </div>
