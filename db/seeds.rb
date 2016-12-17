@@ -18,9 +18,7 @@ Job.destroy_all
 
 
 5.times do |num|
-  company = FactoryGirl.create(:company_with_jobs)
+  company = FactoryGirl.create(:company_with_jobs_and_contacts)
   category = FactoryGirl.create(:category)
   category.jobs << company.jobs
-  contacts = FactoryGirl.create_list(:contact, 2)
-  company.contacts << contacts
 end

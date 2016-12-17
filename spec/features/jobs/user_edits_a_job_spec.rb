@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "User edits a job" do
   scenario "with valid data" do
-    company = create(:company_with_jobs_and_contacts)
+    company = create(:company_with_jobs)
     job = company.jobs.first
     create(:category).jobs << job
 
@@ -18,7 +18,7 @@ describe "User edits a job" do
   end
 
   scenario "with invalid data" do
-    company = create(:company_with_jobs_and_contacts)
+    company = create(:company_with_jobs)
     job = company.jobs.first
     create(:category).jobs << job
 

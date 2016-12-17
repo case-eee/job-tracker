@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "User visits company" do
   scenario "sees company and jobs" do
-    company = create(:company_with_jobs_and_contacts)
+    company = create(:company_with_jobs)
 
     visit company_path(company)
 

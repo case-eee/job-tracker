@@ -1,6 +1,5 @@
 <h2>Title: <strong><%= @job.title %></strong></h2><br>
 
-
 <h4> Description: <strong> <%= @job.description %> </strong> </h4>
 <br>
 
@@ -19,7 +18,7 @@
 <%= link_to "Back to All Companies", companies_path, class:"btn-sm btn-primary"%></strong></h4>
 
 <%= link_to "Delete", company_job_path(@company, @job), method: "delete", class: "btn-sm btn-danger",
-data: {confirm: "Are you sure? This will also delete all jobs associated with the company."} %>
+data: {confirm: "Are you sure? This will also delete all comments associated with the company."} %>
 
 <%= link_to "Edit", edit_company_job_path(@company, @job), class: "btn-sm btn-warning"%>
 

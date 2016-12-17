@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root 'companies#index'
 
   resources :companies do
-    resources :jobs
     resources :contacts, only: [:create]
+    resources :jobs
   end
 
   resources :categories
