@@ -21,4 +21,6 @@ Job.destroy_all
   company = FactoryGirl.create(:company_with_jobs)
   category = FactoryGirl.create(:category)
   category.jobs << company.jobs
+  contacts = FactoryGirl.create_list(:contact, 2)
+  company.contacts << contacts
 end
