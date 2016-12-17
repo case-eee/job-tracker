@@ -17,21 +17,21 @@ describe "Users can see all categories" do
   end
 end
 
-describe "the user clicks on a button" do
+describe "the user can interact with the buttons" do
   before do
     FactoryGirl.create_list(:category,5)
     visit("/categories")
   end
 
-  context "buttons on page" do
-    it "the page should have a edit button for each category" do
-      expect(page).to have_button("Edit")
-    end
 
-    it "the page should have a delete button for each category" do
-      expect(page).to have_button("Delete")
-    end
+  it "the page should have a edit button for each category" do
+    expect(page).to have_button("Edit")
   end
+
+  it "the page should have a delete button for each category" do
+    expect(page).to have_button("Delete")
+  end
+
 
   scenario "should redirect them to the edit page" do
     within("li", match: :first) do
