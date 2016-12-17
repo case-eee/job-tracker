@@ -1,7 +1,7 @@
 <% if @category.title.eql? "No Category" %>
-  <h3>All Jobs Without a Category</h3>
+  <h1>All Jobs Without a Category</h1>
 <% else %>
-  <h3>All Jobs in the <strong><%= @category.title %></strong> Category</h3>
+  <h1>All Jobs in the <strong><%= @category.title %></strong> Category</h1>
 <% end %>
   <h5><%= link_to "Sort Jobs by Location", "/categories/#{@category.id}?sort=location" %></h5>
   <h5><%= link_to "Sort Jobs by Interest Level", "/categories/#{@category.id}?sort=interest" %></h5>
