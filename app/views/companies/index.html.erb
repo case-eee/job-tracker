@@ -1,9 +1,23 @@
-<h3>All Companies</h3>
+<div class='col-md-3'>
+</div>
+<div class='col-md-6'>
+  <h3 id='comps'><strong>-All Companies-</strong></h3>
+</div>
+<div class='col-md-3'>
+</div>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+<div class="container">
+  <%= link_to 'Create a new Company', new_company_path, class:"btn btn-success"%>
+</div>
+
+<div class='container'>
+  <div class='list-group'>
+    <% @companies.each do |company| %>
+      <ul class=company_<%= company.id %>>
+        <li class="list-group"><%= link_to company.name, company_path(company) %></li>
+        <%= link_to "Edit", edit_company_path(company), class:"btn btn-info" %>
+        <%= link_to "Delete", company_path(company), method: :delete, class:"btn btn-danger" %>
+      </ul>
+    <% end %>
+  </div>
+</div>

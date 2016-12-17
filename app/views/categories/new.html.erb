@@ -1,0 +1,12 @@
+<% if @error %>
+  <em><strong><%= @error %></strong></em>
+<% end %>
+
+<h3>Create a new Category!</h3>
+
+<%= form_for @category do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit %>
+<% end %>

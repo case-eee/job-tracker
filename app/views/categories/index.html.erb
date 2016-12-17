@@ -1,0 +1,19 @@
+
+<div class='container'>
+  <h1>Category</h1>
+</div>
+<div class='container'>
+  <%= link_to 'Create New Category', new_category_path, class:"btn btn-success" %>
+</div>
+
+<div class='container'>
+  <div class='list-group'>
+    <ul>
+      <% @categories.each do |category| %>
+        <li class='list-group'><%= link_to category.name, category_path(category) %></li>
+        <%= link_to 'Edit', edit_category_path(category), class:"btn btn-warning" %>
+        <%= link_to 'Delete', category_path(category), method: :delete, data:{confirm: "Are you sure?"}, class:'btn btn-danger'%><br>
+        <% end %>
+    </ul>
+  </div>
+</div>
