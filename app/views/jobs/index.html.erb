@@ -5,7 +5,7 @@
 <% @jobs.each do |job| %>
   <ul><%= job.title %> at <%= job.company.name %></br>
   <%= job.city %></br>
-  Level of interest: <%= job.level_of_interest %></ul></br>
+  Level of Interest: <%= job.level_of_interest %></ul></br>
     <li><%= link_to "Edit", edit_company_job_path(@company, job) %></li>
     <li><%= link_to "Delete", company_job_path(@company, job), method: "delete" %></li>
     </br></br>
