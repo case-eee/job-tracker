@@ -20,8 +20,9 @@ describe Job do
     end
 
     context "valid attributes" do
-      it "is valid with a title and level of interest" do
-        job = Job.new(title: "Developer", level_of_interest: 40, city: "Denver")
+      it "is valid with a title and level of interest and category" do
+        category = Category.create(name: 'Technology')
+        job = Job.new(title: "Developer", level_of_interest: 40, city: "Denver", category_id: category.id)
         expect(job).to be_valid
       end
     end

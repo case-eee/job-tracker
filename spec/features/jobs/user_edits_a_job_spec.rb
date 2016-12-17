@@ -2,15 +2,15 @@ require 'rails_helper'
 
 describe "User edits an existing job" do
   scenario "a user can edit an existing job" do
+    category        = Category.create(name: 'Sports')
     company         = Company.create(name: "ESPN")
-    job             = company.jobs.create(title: "Mime", level_of_interest: 10, city: "Denver")
+    job             = company.jobs.create(title: "Mime", level_of_interest: 10, city: "Denver", category_id: category.id)
     new_job_title   = "Comedian"
     job_description = "super kewl job"
     new_interest    = 5
     new_city        = 'Baltimore'
 
     visit company_job_path(company, job)
-    # save_and_open_page
     click_on "Edit"
     fill_in 'job_title', with: new_job_title
     fill_in 'job_description', with: job_description

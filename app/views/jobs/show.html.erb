@@ -1,16 +1,24 @@
-Title: <%= @job.title %>
-<br>
+<div class='container'>
+  Title: <%= @job.title %>
+</div><br>
 
-Description: <%= @job.description %>
-<br>
+<div class='container'>
+  Category: <%= link_to @job.category.name, category_path(@job.category) %>
+</div><br>
+<div class='container'>
+  Description: <%= @job.description %>
+</div><br>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
-
-City: <%= @job.city %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
-<b>
-<%= link_to 'Edit', edit_company_job_path(@job.company, @job) %>
-<%= link_to 'Delete', company_job_path(@job.company, @job), method: :delete, data:{confirm: 'You seriously want to fire someone?'}%>
+<div class='container'>
+  Level of Interest: <%= @job.level_of_interest %>
+</div><br>
+<div class='container'>
+  City: <%= @job.city %>
+</div><br>
+<div class='container'>
+  Company: <%= link_to @job.company.name, company_path(@job.company) %>
+</div><b>
+<div class='container'>
+  <%= link_to 'Edit', edit_company_job_path(@job.company, @job), class: 'btn btn-warning'%>
+  <%= link_to 'Delete', company_job_path(@job.company, @job), method: :delete, data:{confirm: 'You seriously want to fire someone?'}, class: 'btn btn-danger'%>
+</div>

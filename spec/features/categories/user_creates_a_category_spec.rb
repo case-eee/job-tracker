@@ -39,4 +39,15 @@ describe "User creates a new category" do
       expect(page).to have_content("That category already exists!")
     end
   end
+
+  context "user visits job create page" do
+    scenario "user wants to create a category first" do
+      company = Company.create(name: "ESPN")
+      visit new_company_job_path(company)
+
+      click_on 'Make one here!'
+
+      expect(current_path).to eq(new_category_path)
+    end
+  end
 end

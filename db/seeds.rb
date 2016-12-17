@@ -7,6 +7,7 @@ JOBS = ["Engineering", "Development", "Dev Ops", "Quality Assurance", "Teacher",
 CITIES = ["Seattle", "Denver", "Portland", "Indianapolis", "Madison", "Orlando", "San Diego", "Austin", "Las Vegas", "Little Rock", "Boise", "Eugene", "Oakland"]
 CATEGORIES = ["Technology", "Sports", "Education", "Acting", "Media"]
 
+CATEGORIES.each { |category| Category.create!(name: category)}
 
 COMPANIES.each do |name|
   company = Company.create!(name: name)
@@ -16,7 +17,10 @@ COMPANIES.each do |name|
     puts "  Created #{company.jobs[num].title}"
   end
 end
-CATEGORIES.each do |category|
-  Category.create!(name: category)
-  puts "Created #{category}"
+
+Job.all.each do |job|
+  categories = Category.all
+  j = job
+  j.category = categories.sample
+  j.save
 end
