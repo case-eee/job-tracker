@@ -32,7 +32,10 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @company = Company.find(params[:company_id])
     @job_category = @job.category
+    @job_comments = @job.comments.order("created_at DESC")
+    @comment = Comment.new
     @header = header(:show)
+    @form = form(:show)
   end
 
   def edit
@@ -126,9 +129,16 @@ class JobsController < ApplicationController
     return form
   end
 
+  def form_show
+    form = init_hash("")
+    form[:submit_comment] = "Save Comment"
+    return form
+  end
+
   def form(route)
     return form_new if route == :new
     return form_edit if route == :edit
+    return form_show if route == :show
   end
 
   def init_hash(value)

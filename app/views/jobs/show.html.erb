@@ -1,4 +1,4 @@
-<%= render partial: "header" %>
+<%= render partial: "jobs/header" %>
 
 <div class = "form-group row">
   <div class = "col-md-2 text-right">
@@ -30,5 +30,19 @@
   </div>
   <div class = "col-md-10">
     <%= link_to @job_category.title, category_path(@job_category), class: "btn btn-primary" %>
+  </div>
+</div>
+<hr>
+<div class = "col-md-offset-2 col-md-8">
+  <h3>Comments</h3>
+  <%= render partial: "jobs/comment_form" %>
+  <div class = "col-md-offset-2 col-md-8">
+    <% @job_comments.each do |comment| %>
+      <div class = "one-comment_not">
+        <p><h4><span class = "label label-default">From <%= comment.created_at %>:</span></h4></p>
+        <p><%= comment.content %></p>
+      </div>
+      <hr>
+    <% end %>
   </div>
 </div>

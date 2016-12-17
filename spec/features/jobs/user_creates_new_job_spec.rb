@@ -1,6 +1,22 @@
 require 'rails_helper'
 
 describe "User can create a new job" do
+  scenario "page shown correctly" do
+    company = Company.create(name: "ESPN")
+    category1, category2 = create_list(:category, 2)
+    new_job_title = "Developer"
+    new_job_description = "So fun!"
+    new_job_level_of_interest = "80"
+    new_job_city = "Denver, CO"
+
+    visit new_company_job_path(company)
+    
+    expect(page).to have_field("job[title]")
+    expect(page).to have_field("job[description]")
+    expect(page).to have_field("job[level_of_interest]")
+    expect(page).to have_field("job[city]")
+    expect(page).to have_link("Add")
+  end
   scenario "when completes all fields" do
     company = Company.create(name: "ESPN")
     category1, category2 = create_list(:category, 2)
