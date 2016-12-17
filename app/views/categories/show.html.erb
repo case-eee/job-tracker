@@ -1,0 +1,51 @@
+<h1><%= @category.title.upcase %></h1>
+<div> <%= link_to "Edit", edit_category_path(@category) %> </div>
+<div> <%= link_to "Delete", category_path(@category), method: :delete, data: {confirm: "Are you sure you want to delete this category?"} %> </div>
+<div> <%= link_to "Back to All Categories", categories_path %> </div>
+<div> <%= link_to "Companies", companies_path %> </div>
+<div class="dashboard-link"> <%= link_to "Job Dashboard", categories_path %> </div>
+
+
+<br />
+<br />
+
+<% @category.jobs.each do |job| %>
+<div class="job-block">
+
+    <div class="job-header">
+      <div>
+        <%= link_to job.title, company_job_path(job.company, job) %><br />
+        <%= link_to "Edit", edit_company_job_path(job.company, job) %>
+        <%= link_to "Delete", company_job_path(job.company, job), method: :delete, data: {confirm: "Are you sure you want to delete this job?"} %>
+      </div>
+      <div>
+        <%= job.city %>
+      </div>
+
+    </div>
+
+    <div class="job-body">
+      <div>
+        <%= job.description %>
+      </div>
+      <div>
+        <%= job.level_of_interest %>
+      </div>
+      <div>
+        <%= job.category.title %>
+      </div>
+      <div>
+        <%= link_to job.company.name, company_path(job.company) %>
+      </div>
+    </div>
+
+    <div class="job-comments">
+      <div>
+        Insert job comments as a list here.
+      </div>
+    </div>
+
+</div>
+<br />
+<br />
+<% end %>
