@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  include ControllerHelper
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :set_company, only: [:index, :new, :create, :edit, :update, :destroy]
 
@@ -56,13 +57,5 @@ class JobsController < ApplicationController
 
   def job_params
     params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id, :sort, :location)
-  end
-
-  def list
-    if @location
-      Job.where(city: @location)
-    else
-      @company.jobs
-    end
   end
 end
