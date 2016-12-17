@@ -1,0 +1,12 @@
+<%= form_for @category, :html => {:class => "form-horizontal center"} do |f| %>
+  <%= render partial: "shared/errors", locals: { target: @category } %>
+
+  <div class="form-group">
+    <%= f.label :title, class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+
+  <%= f.submit %>
+<% end %>

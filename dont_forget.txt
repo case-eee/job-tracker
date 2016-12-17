@@ -1,0 +1,10 @@
+all tests
+sad path tests
+DRY code for delete messages
+fix dependent destroy
+don't make company#show and job#index the same page?
+<%= render partial: "shared/errors", locals: { target: @artist } %>
+, :unique=>true on the database level
+Extract locations into a table
+Link to category
+Link to locations???
