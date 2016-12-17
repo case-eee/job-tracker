@@ -26,7 +26,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    @comments = @job.comments.sort_by {|comment| comment.created_at}
+    @comments = @job.comments.sort_by {|comment| comment.created_at}.reverse
     @comment = Comment.new
   end
 
