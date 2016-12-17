@@ -15,6 +15,8 @@ module ControllerHelper
   def list
     if @location
       Job.where(city: @location)
+    elsif @category
+      @category.jobs
     else
       @company.jobs
     end

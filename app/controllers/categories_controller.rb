@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  include ControllerHelper
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -20,6 +21,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    attribute  = params[:sort]
+    @jobs = sort_by attribute, list
   end
 
   def edit
@@ -51,6 +54,6 @@ class CategoriesController < ApplicationController
   end
 
   def category_params
-    params.require(:category).permit(:title)
+    params.require(:category).permit(:title, :sort)
   end
 end

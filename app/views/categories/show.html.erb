@@ -1,6 +1,16 @@
-<h3>All Jobs in the <strong><%= @category.title %> Category</strong></h3>
+<% if @category.title.eql? "No Category" %>
+  <h3>All Jobs Without a Category</h3>
+<% else %>
+  <h3>All Jobs in the <strong><%= @category.title %></strong> Category</h3>
+<% end %>
+  <h5><%= link_to "Sort Jobs by Location", "/categories/#{@category.id}?sort=location" %></h5>
+  <h5><%= link_to "Sort Jobs by Interest Level", "/categories/#{@category.id}?sort=interest" %></h5>
+  <h5><%= link_to "Sort Jobs by Company", "/categories/#{@category.id}?sort=company" %></h5>
 
-<% @category.jobs.each do |job| %>
-  <ul><p><%= job.title %></p></ul>
-
+<% @jobs.each do |job| %>
+  <ul><h4><%= link_to job.title, company_job_path(job.company, job) %></h4>
+  <h5><%= link_to job.company.name, company_path(job.company)%></h5>
+  <p><%= link_to job.city, "/companies/9/jobs?location=#{job.city}" %></p>
+  <p>Level of Interest: <%= job.level_of_interest %></p></br>
+  </br></ul>
 <% end %>
