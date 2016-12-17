@@ -1,5 +1,9 @@
 FactoryGirl.define do
 
+  factory :comment do
+    sequence :content  do |n| 
+      Faker::Company.name + n.to_s
+  
   factory :job do
     title       {Faker::Book.title}
     description {Faker::Name.name}
@@ -7,10 +11,12 @@ FactoryGirl.define do
     company
     city        {Faker::GameOfThrones.city}
     category
+
+      factory:job_with_comments
   end
 
   factory :company do
-    sequence :name  do |n| 
+   sequence :name  do |n| 
       Faker::Company.name + n.to_s
     end
 
