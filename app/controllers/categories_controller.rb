@@ -18,6 +18,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    @format   = @category.arrange
   end
 
   def edit
@@ -28,7 +29,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
      @category.update(category_params)
      if @category.save
-       flash[:success] = "#{@category.name} updated!"
+       flash[:success] = "#{@category.title} updated!"
        redirect_to category_path(@category)
      else
        render :edit

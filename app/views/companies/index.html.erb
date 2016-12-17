@@ -1,4 +1,5 @@
 <h3>All Companies</h3>
+<%= link_to "Add a New Company", new_company_path, class: "btn btn-success pull-right" %>
 
 <% @companies.each do |company| %>
   <ul class=company_<%= company.id %>>

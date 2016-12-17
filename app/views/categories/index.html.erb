@@ -1,7 +1,9 @@
 <%= link_to "Companies", companies_path %>
 <%= link_to "Create Category", new_category_path %><br />
+
+<h1>All Categories</h1>
 <%@categories.each do |category| %>
   <%= category.title %><br />
-  <%= link_to "Delete", category_path(category), method: :delete %>
   <%= link_to "Edit", category_path(category) %><br />
+  <%= link_to "Delete", category_path(category), method: :delete %>
 <% end %>
