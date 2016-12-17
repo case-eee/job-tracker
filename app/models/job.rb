@@ -19,4 +19,8 @@ class Job < ActiveRecord::Base
     jobs = all.find_all {|job| job.city.upcase == location.upcase}
     [location, jobs]
   end
+
+  def self.count_by_location
+    Job.group(:city).count("id")
+  end
 end

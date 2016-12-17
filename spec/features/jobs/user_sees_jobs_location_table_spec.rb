@@ -4,14 +4,15 @@ describe "User visits jobs" do
   scenario "sees table of jobs by location" do
 
     company = create(:company_with_jobs)
-    job = company.jobs.first
-    city = job.city
+    jobs = Job.all
 
     visit jobs_path
 
     expect(page).to have_content "Number of Jobs by Location"
-    expect(page).to have_content city
-    expect(page).to have_content job
-    expect(page).to have_css href="jobs?location=#{city}"
+
+    jobs.group_by {|job| job.city}.each do |city, jobs|
+      expect(page).to have_content city
+      expect(page).to have_content jobs.count
+    end
   end
 end

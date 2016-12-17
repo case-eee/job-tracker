@@ -58,7 +58,7 @@ class JobsController < ApplicationController
       @location, @jobs = Job.location(params[:location])
       render :location
     else
-      @jobs = Job.all
+      @job_count_by_location = Job.count_by_location
       render :locations_table
     end
   end
