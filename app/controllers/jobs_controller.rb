@@ -3,6 +3,7 @@ class JobsController < ApplicationController
   before_action :set_company, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def index
+    @sort = params[:sort]
     @jobs = @company.jobs
   end
 
@@ -53,6 +54,6 @@ class JobsController < ApplicationController
   end
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id, :sort)
   end
 end
