@@ -1,24 +1,52 @@
-<h2>Title: <strong><%= @job.title %></strong></h2><br>
+<div class="container">
 
-<h4> Description: <strong> <%= @job.description %> </strong> </h4>
-<br>
+  <h2>Title: <strong><%= @job.title %></strong></h2><br>
 
-<h4> Level of Interest: <strong> <%= @job.level_of_interest %> </strong> </h4>
-<br>
+  <h5> Description: <strong> <%= @job.description %> </strong> </h5>
+  <br>
 
-<h4> City: <strong> <%= @job.city %> </strong> </h4>
-<br>
+  <h5> Level of Interest: <strong> <%= @job.level_of_interest %> </strong> </h5>
+  <br>
 
-<h4> Company: <strong/> <%= link_to @company.name, company_path(@company) %> </strong> </h4>
-<br>
+  <h5> City: <strong> <%= @job.city %> </strong> </h5>
+  <br>
 
-<h4> Category: <strong/> <%= link_to "#{@job.category.title}", category_path(@job.category)%></h4>
-<br>
+  <h5> Company: <strong/> <%= link_to @company.name, company_path(@company) %> </strong> </h5>
+  <br>
 
-<%= link_to "Back to All Companies", companies_path, class:"btn-sm btn-primary"%></strong></h4>
+  <h5> Category: <strong/> <%= link_to "#{@job.category.title}", category_path(@job.category)%></h5>
+  <br>
 
-<%= link_to "Delete", company_job_path(@company, @job), method: "delete", class: "btn-sm btn-danger",
-data: {confirm: "Are you sure? This will also delete all comments associated with the company."} %>
+</div>
 
-<%= link_to "Edit", edit_company_job_path(@company, @job), class: "btn-sm btn-warning"%>
+<div class="container">
 
+  <%= link_to "Back to All Companies", companies_path, class:"btn-sm btn-primary"%>
+
+  <%= link_to "Delete", company_job_path(@company, @job), method: "delete", class: "btn-sm btn-danger",
+  data: {confirm: "Are you sure? This will also delete all comments associated with the company."} %>
+
+  <%= link_to "Edit", edit_company_job_path(@company, @job), class: "btn-sm btn-warning"%>
+
+
+</div><br>
+
+<div class="container">
+
+  <h4>Comments</h4>
+
+  <ul class="media-list">
+
+  <% @comments.each do |comment| %>
+
+    <li class="media">
+      <div class="media-body">
+        <h5 class="media-heading"><%= comment.created_at.inspect %></h5>
+        <div class="media"><%= comment.content %></div>
+      </div>
+    </li>
+
+  <% end %>
+
+  </ul>
+</div>
