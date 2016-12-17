@@ -1,5 +1,5 @@
 <div class="container">
-  <h3>Enter A New Contact</h3>
+  Enter a new contact for <strong><%= @company.name %></strong>
 <%= form_for [@company, @contact], :html => {:class => "form-inline"} do |f| %>
   <div class="form-group">
     <%= f.label :name %>
