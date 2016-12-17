@@ -20,4 +20,13 @@ FactoryGirl.define do
     city "Denver"
     category
   end
+
+  factory :contact do
+    sequence :name do |n|
+      "Contact #{n}"
+    end
+    position "Recruiter"
+    email "hiring@hire.com"
+    company
+  end
 end
