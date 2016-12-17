@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "User enters a comment" do
+RSpec.feature "User enters comments" do
   scenario "a user enters a single comment" do
     company = create(:company)
     job = create(:job, company: company)
@@ -14,7 +14,7 @@ RSpec.feature "User enters a comment" do
     expect(page).to have_content("Interview next week")
   end
 
-  scenario "a user enters multiple comments" do
+  scenario "a job has multiple comments" do
     company = create(:company)
     job = create(:job, company: company)
     comment_1 = create(:comment, job: job)
