@@ -13,6 +13,7 @@ class CompaniesController < ApplicationController
       flash[:success] = "#{@company.name} added!"
       redirect_to company_path(@company)
     else
+      @error = 'Company already exists.'
       render :new
     end
   end

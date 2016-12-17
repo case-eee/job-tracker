@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-xdescribe "User creates a new job" do
+describe "User creates a new job" do
   scenario "a user can create a new job" do
     company  = Company.create(name: "ESPN")
     category = Category.create(name: 'Sports')
@@ -11,7 +11,7 @@ xdescribe "User creates a new job" do
     fill_in "job[description]", with: "So fun!"
     fill_in "job[level_of_interest]", with: 80
     fill_in "job[city]", with: "Denver"
-    find('#job_category_id').find(:xpath, "option[1]").select_option
+    select "Sports", from: 'job[category_id]'
     click_button "Create"
 
     expect(current_path).to eq(company_job_path(company, Job.first))
