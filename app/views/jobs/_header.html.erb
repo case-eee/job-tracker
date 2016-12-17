@@ -1,11 +1,11 @@
 <h1><%= @header[:title] %>
   <% if @header[:show_job]%>
-    <span class="label label-default">
+    <span class="label label-default header-highlight">
       <%= @job.title %>
-    </span> at 
+    </span>at 
   <% end %>
   <% if @header[:show_name]%>  
-    <span class="label label-default">
+    <span class="label label-default header-highlight">
       <%= @company.name %>
     </span>
   <% end %>
@@ -24,5 +24,5 @@
   <p><%= link_to "Back to Job List", company_jobs_path, class: "btn btn-primary btn-xs" %></p>
 <% end %>
 <% if @header[:show_company_index]%>
-  <p><%= link_to "Back to Company List", companies_path, class: "btn btn-primary btn-xs" %></p>
+  <p><%= link_to "Back to Company Details", company_path(@company), class: "btn btn-primary btn-xs" %></p>
 <% end %>

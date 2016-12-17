@@ -1,0 +1,6 @@
+<%= render partial: "header" %>
+
+<h3>
+<%= link_to "Available Jobs", company_jobs_path(@company) %>
+<span class="badge"><%= @job_count %></span>
+</h3>

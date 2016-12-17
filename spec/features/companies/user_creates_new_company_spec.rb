@@ -7,8 +7,9 @@ describe "User creates a new company" do
     fill_in "company[name]", with: "ESPN"
     click_on "Save"
 
-    expect(current_path).to eq("/companies/#{Company.last.id}/jobs")
-    expect(page).to have_content("ESPN")
+    company = Company.last
+    expect(current_path).to eq(company_path(company))
+    expect(page).to have_content(company.name)
     expect(Company.count).to eq(1)
   end
   scenario "a user sees error message if tries to create company without name" do

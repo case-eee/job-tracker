@@ -1,0 +1,20 @@
+<h1><%= @header[:title] %>
+  <% if @header[:show_name]%>
+    <span class="label label-default header-highlight">
+      <%= @category.title %>
+    </span>
+  <% end %>
+  <% if @header[:show_add]%>
+    <%= link_to "Add Category", new_category_path, class: "btn btn-default" %>
+  <% end %>
+  <% if @header[:show_edit]%>
+    <%= link_to "Edit Category Details", edit_category_path(@category), class: "btn btn-warning" %>
+  <% end %>
+  <% if @header[:show_delete]%>
+    <%= link_to "Delete Category", category_path(@category), method: :delete, class: "btn btn-danger" %>
+  <% end %>
+</h1>
+
+<% if @header[:show_index]%>
+  <p><%= link_to "Back to Category List", categories_path, class: "btn btn-primary btn-xs" %></p>
+<% end %>
