@@ -12,18 +12,18 @@ describe "User creates contact" do
 
     click_on "Create Contact"
 
-    expect(current_path).to eq company_path(company)
-    expect(company.contacts.count).to eq 1
+    expect(current_path).to eq company_jobs_path(company)
     expect(page).to have_content "Luke Skywalker"
-    expect(page).to have_content "Savior of Galaxy"
+    expect(page).to have_content "Savior of galaxy"
     expect(page).to have_content "theforce@gmail.com"
+    expect(page).to have_content "#{company.contacts.last.name} successfully created"
+    expect(company.contacts.count).to eq 1
   end
 
   scenario "with invalid attributes" do
     company = create(:company)
 
     visit company_path(company)
-
     click_on "Create Contact"
 
     expect(page).to have_content "Name can't be blank"
