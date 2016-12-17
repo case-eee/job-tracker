@@ -1,0 +1,11 @@
+<div class='container'>
+  <%= form_for @category do |f| %>
+    <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">
+        <%= f.label :title %>
+      </span>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

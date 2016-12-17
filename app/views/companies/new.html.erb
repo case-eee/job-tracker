@@ -1,4 +1,12 @@
-<h2>Create a new company here!</h2>
+<div class='container form'>
+  <h1 class='page-header'>
+    Create a new company here!
+  </h1>
 
-<%= render partial: "form" %>
+  <% if @errors %>
+    <%= render partial: "shared/errors" %>
+  <% end %>
+  
+  <%= render partial: "form" %>
+</div>
 

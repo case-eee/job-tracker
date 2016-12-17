@@ -1,9 +1,28 @@
-<h3>All Companies</h3>
+<div class="container index">
+  <h1 class='page-header'>
+    All Companies
+  </h1>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+  <% @companies.each do |company| %>
+    <ul class='list-group company_<%= company.id %>'>
+      
+      <li class="list-group-item">
+        <%= link_to company.name,
+                    company_path(company) %><br>
+      </li>
+
+      <li class="btn btn-warning">
+        <%= link_to "Edit",
+                    edit_company_path(company) %>
+      </li>
+
+      <li class="btn btn-danger">
+        <%= link_to "Delete",
+                    company_path(company),
+                    method: "delete" %>
+      </li>
+
+    </ul>
+  <% end %>
+    <%= link_to "Add New Company", new_company_path, class: "btn btn-primary btn-lg" %>
+</div>
