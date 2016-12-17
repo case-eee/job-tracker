@@ -1,18 +1,26 @@
-Title: <%= @job.title %>
-<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Level of Interest</th>
+      <th>City</th>
+      <th>Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @job.title %></td>
+      <td><%= @job.description %></td>
+      <td><%= @job.level_of_interest %></td>
+      <td><%= @job.city %></td>
+      <td><%= link_to @job.company.name, company_path(@job.company) %></td>
+    </tr>
+  </tbody>
+</table>
 
-Description: <%= @job.description %>
-<br>
-
-Level of Interest: <%= @job.level_of_interest %>
-<br>
-
-City: <%= @job.city %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %><br/>
-<%= link_to "Edit", edit_company_job_path(@job.company, @job) %><br/>
-<%= link_to "Delete", company_job_path(@job.company, @job), method: "DELETE" %><br/>
+<button type="button" class= "btn btn-warning"><%= link_to "Edit", edit_company_job_path(@job.company, @job) %></button>
+<button type="button" class="btn btn-danger"><%= link_to "Delete", company_job_path(@job.company, @job), method: "DELETE" %></button>
 
 <h3>Comments (<%= @job.comments.size %>)</h3>
 <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
