@@ -15,6 +15,14 @@ RSpec.feature "User enters a comment" do
   end
 
   scenario "a user enters multiple comments" do
-    skip
+    company = create(:company)
+    job = create(:job, company: company)
+    comment_1 = create(:comment, job: job)
+    comment_2 = create(:comment, job: job)
+
+    visit company_job_path(company, job)
+
+    expect(page).to have_content(comment_1.content)
+    expect(page).to have_content(comment_2.content)
   end
 end
