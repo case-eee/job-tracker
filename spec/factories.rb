@@ -1,16 +1,23 @@
 FactoryGirl.define do
   factory :company do
-    name "Turing School"
-  end
-
-  factory :job do
-    title "Software Developer"
-    description "writes code"
-    level_of_interest 10
-    city "Denver"
+    sequence :name do |n|
+      "Company #{n}"
+    end
   end
 
   factory :category do
-    title "Software Development"
+    sequence :title do |n|
+      "Category #{n}"
+    end
+  end
+  factory :job do
+    sequence :title do |n|
+      "Title #{n}"
+    end
+    description "does some stuff"
+    level_of_interest 10
+    company
+    city "Denver"
+    category
   end
 end
