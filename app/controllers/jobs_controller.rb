@@ -3,8 +3,8 @@ class JobsController < ApplicationController
   before_action :set_company, only: [:index, :new, :create, :edit, :update, :destroy]
 
   def index
-    @sort = params[:sort]
-    @jobs = @company.jobs
+    sort = params[:sort]
+    @jobs = by_location?(sort)
   end
 
   def new
