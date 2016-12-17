@@ -6,7 +6,7 @@ RSpec.feature "User sees one category" do
 
     visit category_path(category)
 
-    expect(page).to have_content("Software Development")
+    expect(page).to have_content(category.title)
   end
 
   scenario "a user can see jobs in category" do

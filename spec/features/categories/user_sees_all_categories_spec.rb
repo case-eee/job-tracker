@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "User sees all companies" do
   scenario "a user can delete a category from index page" do
-
     category = create(:category, title: "Finance")
 
     visit categories_path
@@ -14,7 +13,6 @@ RSpec.feature "User sees all companies" do
   end
 
   scenario "a user can edit a category from index page" do
-
     category = create(:category)
 
     visit categories_path

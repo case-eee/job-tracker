@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "User edits an existing category" do
   scenario "a user can edit a category" do
-
     category = create(:category)
 
     visit edit_category_path(category)

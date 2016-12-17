@@ -14,15 +14,13 @@ RSpec.feature "User creates a new category" do
   end
 
   scenario "a user tries to create invalid category" do
-
     category = create(:category)
 
     visit new_category_path
 
-    fill_in "category[title]", with: "Software Development"
+    fill_in "category[title]", with: category.title
     click_button "Create"
 
     expect(page).to have_content("Create A New Category")
-
   end
 end
