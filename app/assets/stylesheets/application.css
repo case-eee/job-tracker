@@ -14,6 +14,21 @@
  *= require_self
  */
 
+body {
+  padding-top: 50px;
+  
+}
+
+.navbar-pushin {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.welcome-page {
+  height: 100%;
+  width: 100%;
+}
+
 .header-highlight {
   margin-right: 10px;
 }
