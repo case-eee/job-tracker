@@ -1,0 +1,7 @@
+<h1>Title:<%= @job.title%></h1>
+<div>
+    <%= @job.comments.each do |comment| %>
+    <%= link_to comment.id, company_job_path(@job.company, @job) %>
+    <%= comment.content %>
+    <% end %>
+</div>
