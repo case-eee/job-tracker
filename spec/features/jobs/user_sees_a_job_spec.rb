@@ -4,7 +4,7 @@ describe "User sees a specific job" do
   scenario "for a specific company" do
     company = create(:company)
     category = create(:category)
-    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver")
+    job = create(:job)
     category.jobs << job
 
     visit company_job_path(company, job)

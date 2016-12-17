@@ -7,11 +7,11 @@
 <% end %>
 <br>
 
-<%= link_to "Back to Categories", categories_patg, class:"btn-sm btn-primary"%>
+<%= link_to "Back to Categories", categories_path, class:"btn-sm btn-primary"%>
 
 <br><br>
 
 <%= link_to "Edit #{@category.title}", edit_category_path(@category), class: "btn-sm btn-warning"%>
 
-<%= link_to "Delete #{@category.name}", category_path(@category), method: "delete", class: "btn-sm btn-danger",
+<%= link_to "Delete #{@category.title}", category_path(@category), method: "delete", class: "btn-sm btn-danger",
 data: {confirm: "Are you sure? This action will delete all jobs associated with the category"}%>
