@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  def index
+    def index
     @job = Job.find(params[:job_id])
     @comments = @job.comments
     render :index
@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
   def show
     @job = Job.find(params[:job_id])
     @comment = @job.comments
-
     render :show
   end
 
