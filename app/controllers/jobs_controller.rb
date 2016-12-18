@@ -5,40 +5,67 @@ class JobsController < ApplicationController
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @job = Job.new()
+    @categories = Category.all
+    @company    = Company.find(params[:company_id])
+    @job        = Job.new()
   end
 
   def create
-    @company = Company.find(params[:company_id])
-    @job = @company.jobs.new(job_params)
+    @categories = Category.all
+    @company    = Company.find(params[:company_id])
+    @job        = @company.jobs.new(job_params)
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"
       redirect_to company_job_path(@company, @job)
     else
+      @error = "A job must have a Title, level of interest, city, and category!"
       render :new
     end
   end
 
   def show
-    @job = Job.find(params[:id])
+    @job      = Job.find(params[:id])
+    @company  = Company.find(params[:company_id])
+    @category = category
+    @comments = @job.comments.all
+    @comment  = @job.comments.new
+    @comment.job_id = @job.id
   end
 
   def edit
-    # implement on your own!
+    @company = Company.find(params[:company_id])
+    @job = @company.jobs.find(params[:id])
+    @categories = Category.all
   end
 
   def update
-    # implement on your own!
+    @company = Company.find(params[:company_id])
+    @job = @company.jobs.find(params[:id])
+    @job.update(job_params)
+    flash[:success] = "You updated #{@job.title} at #{@company.name}"
+
+    redirect_to company_job_path(@company, @job)
   end
 
   def destroy
-    # implement on your own!
+    @company = Company.find(params[:company_id])
+    @job = @company.jobs.find(params[:id])
+    @job.destroy
+
+    redirect_to company_jobs_path(@company)
   end
 
   private
 
+  def category
+     if @job.category == nil
+       "Category Not Found"
+    else
+      @job.category.name
+     end
+  end
+
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
   end
 end

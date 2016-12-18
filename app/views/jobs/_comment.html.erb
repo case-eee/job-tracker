@@ -1,0 +1,10 @@
+<div class='container'>
+  <% @job.comments.reverse.each do |comment|%>
+    <li>Author: <%= comment.author %></li>
+    <div>
+      <li id='comment-time'>Comment: <%= comment.content %></li>
+      <p>Created at: <%= comment.created_at %></p>
+    </div>
+    <br>
+  <% end %>
+</div>

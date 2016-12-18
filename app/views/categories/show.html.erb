@@ -1,0 +1,18 @@
+<div class='container'>
+  <h1><%= @category.name %></h1>
+</div><br>
+
+<div class='container'>
+  <div class='list-group'>
+    <h3 id='cat-job'>Available jobs in this category: </h3>
+    <% @category.jobs.each do |job| %>
+      <li class='list-group'><%= link_to job.title, company_job_path(job.company, job) %></li>
+    <% end %>
+  </div>
+</div>
+
+<div class='container'>
+  <%= link_to 'Edit', edit_category_path(@category), class:'btn btn-info'%>
+  <%= link_to 'Delete', category_path(@category), method: :delete, class:'btn btn-danger'%>
+  <%= link_to '<< Categories', categories_path, class:'btn btn-success' %>
+</div>
