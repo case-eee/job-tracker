@@ -1,0 +1,17 @@
+<%= link_to "Back to Comments for #{@job.title} job at #{@company.name}", company_job_path(@company,@job) %><br />
+
+<h1>Comment:</h1>
+<br>
+
+<p><%= @comment.content %></p>
+<br>
+
+<p><strong>Job Title: </strong><%= @job.title %></p>
+<br>
+
+<p><strong>Company: </strong><%= @company.name %></p>
+<br>
+<br>
+
+<%= link_to "Edit", edit_company_job_comment_path(@company, @job, @comment) %><br />
+<%= link_to "Delete", company_job_comment_path(@company, @job, @comment), method: :delete, data: {confirm: "Are you sure you want to delete this comment?"} %>

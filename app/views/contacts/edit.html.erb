@@ -1,0 +1,7 @@
+<h1>Edit Contact at <%= @company.name.upcase %> </h1>
+
+<%= render partial: "form" %>
+
+<br />
+<br />
+<div> <%= link_to "Add Contact", new_company_contact_path(@company) %> </div>

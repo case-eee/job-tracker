@@ -1,10 +1,11 @@
 <header>
   <h1>All Jobs for <%= @company.name.upcase %></h1>
   <div> <%= link_to "Edit", edit_company_path(@company) %> </div>
-  <div> <%= link_to "Delete", company_path(@company), method: :delete, data: {confirm: "Are you sure you want to delete this company and all jobs associated?"} %> </div>
+  <div> <%= link_to "Delete", company_path(@company), method: :delete, data: {confirm: "Are you sure you want to delete this company and all jobs and contacts associated?"} %> </div>
   <div> <%= link_to "Back to All Companies", companies_path %> </div>
   <div class="dashboard-link"> <%= link_to "Job Dashboard", companies_path %> </div>
   <div> <%= link_to "Add a Job", new_company_job_path(@company) %> </div>
+  <div> <%= link_to "Add a Contact", new_company_contact_path(@company) %> </div>
 </header>
 
 <br />
@@ -40,12 +41,31 @@
       </div>
     </div>
 
-    <div class="job-comments">
-      <div>
-        Insert job comments as a list here.
-      </div>
-    </div>
+</div>
+<br />
+<br />
+<% end %>
 
+
+<br />
+<p>
+  ___________________________________________________________________________
+</p>
+<br />
+
+<% @company.contacts.each do |contact| %>
+<div class="contact-block">
+  <div>
+    <%= link_to "#{contact.first_name} #{contact.last_name}", company_contact_path(@company, contact) %><br />
+    <%= link_to "Edit", edit_company_contact_path(@company, contact) %>
+    <%= link_to "Delete", company_contact_path(@company, contact), method: :delete, data: {confirm: "Are you sure you want to delete this contact?"} %>
+  </div>
+  <div>
+    Position: <%= contact.position %>
+  </div>
+  <div>
+    Email: <%= contact.email %>
+  </div>
 </div>
 <br />
 <br />
