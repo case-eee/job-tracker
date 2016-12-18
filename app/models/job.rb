@@ -22,4 +22,8 @@ class Job < ActiveRecord::Base
   def self.count_by_location
     group(:city).count("id")
   end
+
+  def self.count_by_level_of_interest
+    group(:level_of_interest).count("id")
+  end
 end

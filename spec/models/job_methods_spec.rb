@@ -51,4 +51,19 @@ describe "Job" do
       expect(Job.count_by_location).to eq expected
     end
   end
+
+  context "#count_by_level_of_interest" do
+    scenario "with jobs" do
+      job = create(:job)
+      expected = {job.level_of_interest => 1}
+
+      expect(Job.count_by_level_of_interest).to eq expected
+    end
+
+    scenario "with no jobs" do
+      expected = {}
+
+      expect(Job.count_by_level_of_interest).to eq expected
+    end
+  end
 end

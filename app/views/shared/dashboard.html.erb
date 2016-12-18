@@ -1,4 +1,27 @@
 <div class="container">
+  <h3>Number of Jobs by Level of Interest</h3>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Level of Interest</th>
+        <th>Job Count</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @job_count_by_interest.each do |level, count| %>
+      <tr>
+        <td><%= level %></td>
+        <td><%= count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+</div>
+
+<div class="container">
   <h3>Number of Jobs by Location</h3>
 
   <table class="table table-hover">
@@ -17,5 +40,6 @@
       </tr>
       <% end %>
     </tbody>
+  </table>
 
-  </div>
+</div>

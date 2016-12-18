@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
 
   def dashboard
     @job_count_by_location = Job.count_by_location
-
-    
+    @job_count_by_interest = Job.count_by_level_of_interest
 
     render "shared/dashboard"
   end
