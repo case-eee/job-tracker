@@ -1,0 +1,10 @@
+<h4>Post a Comment</h3>
+<%= form_for [ @job.company, @job, @comment ] do |f| %>
+  <p>
+    <%= f.label :comment %><br/>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>
