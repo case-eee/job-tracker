@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :companies do
     resources :jobs do
-      resources :comments, only: [:create]
+      resources :comments, only: [:create, :destroy]
     end
   end
 

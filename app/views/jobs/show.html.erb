@@ -19,6 +19,19 @@ Company: <%= link_to @company.name, company_path(@company) %></br>
 <%= link_to "Edit", edit_company_job_path(@company, @job) %>
 <%= link_to "Delete", company_job_path(@company, @job), method: :delete, data: {confirm: "Are you sure?"} %>
 
+<% if @comments.count > 0 %>
+<div class="comments">
+<h4>Notes:</h4>
+  <% @comments.each do |comment| %>
+    <ul>
+    <p><%= comment.created_at %></p>
+    <h5><%= comment.content %></br>
+    <%= link_to "Delete", company_job_comment_path(@company, @job, comment), method: :delete, data: {confirm: "Are you sure?"} %>
+  </ul>
+  <% end %>
+<% end %>
+</div>
+
   <h3>Make a note:</h3>
     <%= form_for([@company, @job, @comment]) do |f| %>
     <%= f.text_area :content %>
