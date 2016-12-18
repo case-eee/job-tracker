@@ -24,7 +24,7 @@ describe "User sees all jobs" do
     end
   end
   describe "when job category is not always assigned" do
-    scenario "jobs without category assined will show notification" do
+    scenario "jobs without category assigned will show notification" do
       company = create(:company)
       category1, category2 = create_list(:category, 2)
       job1, job2 = create_list(:job, 2)

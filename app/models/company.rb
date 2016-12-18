@@ -8,4 +8,6 @@ class Company < ActiveRecord::Base
     end
   end
   has_many :contacts, dependent: :destroy
+
+
 end

@@ -65,4 +65,33 @@ RSpec.describe "User can add comment to a job" do
     expect(page).to have_content(new_comment)
     expect(page).to have_content(comment.created_at)
   end
+  scenario "comments are shown in descending order (latest first)" do
+    company = create(:company)
+    category1 = create(:category)
+    job = create(:job)
+    job.category = Category.new
+    job.category = category1
+    job.save
+    company.jobs << job
+    oldest_comment = "First test comment"
+    newest_comment = "Most recent test comment"
+
+    visit company_job_path(company, job)
+
+    fill_in "comment[content]", with: oldest_comment
+
+    click_on "Save"
+
+    fill_in "comment[content]", with: newest_comment
+
+    click_on "Save"
+
+    comment_dates = Comment.all.order("created_at DESC").pluck(:created_at) 
+
+    expect(job.comments.count).to eq(2)
+    within (".one-comment:first") do
+      expect(page).to have_content(newest_comment)
+      expect(page).to have_content(comment_dates.first)
+    end
+  end
 end

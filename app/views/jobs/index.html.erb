@@ -4,6 +4,7 @@
   <tr>
     <th>Title</th>
     <th>Location(City)</th>
+    <th>Level Of Interest</th>
     <th>Category</th>
     <th class = "text-center" colspan = "2">Action</th>
   </tr>
@@ -11,6 +12,7 @@
     <tr>
       <td><%= link_to company_job.title, company_job_path(@company, company_job) %></td>
       <td><%= company_job.city %></td>
+      <td><%= company_job.level_of_interest %></td>
       <td>
         <% if company_job.category_id %>
           <%= link_to company_job.category.title, category_path(company_job.category_id) %>

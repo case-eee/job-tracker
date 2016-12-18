@@ -8,6 +8,9 @@ class AlljobsController < ApplicationController
     if VALID_SORT.include?(params[:sort])
       @jobs = Job.all.order("city ASC") if params[:sort] == "location"
       @jobs = Job.all.order("level_of_interest DESC") if params[:sort] == "interest"
+    elsif params[:location]
+      location = params[:location]
+      @jobs = Job.where(city: [location, location.upcase, location.downcase, location.capitalize])
     else
       @jobs = Job.all
     end

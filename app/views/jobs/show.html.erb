@@ -38,7 +38,7 @@
   <%= render partial: "jobs/comment_form" %>
   <div class = "col-md-offset-2 col-md-8">
     <% @job_comments.each do |comment| %>
-      <div class = "one-comment_not">
+      <div class = "one-comment">
         <p><h4><span class = "label label-default">From <%= comment.created_at %>:</span></h4></p>
         <p><%= comment.content %></p>
       </div>
