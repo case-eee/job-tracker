@@ -11,11 +11,27 @@ class TagsController < ApplicationController
     @tag = Tag.new
   end
 
+  def edit
+    @tag = Tag.find(params[:id])
+  end
+
+  def update
+    @tag = Tag.update(params[:id], tag_params)
+    redirect_to tag_path(@tag)
+  end
+
+  def destroy
+    @tag = Tag.find(params[:id])
+    @tag.delete
+    flash[:success] = "#{@tag.title} tag was successfully deleted!"
+    redirect_to tags_path
+  end
+
   def create
     @tag = Tag.new(tag_params)
     if @tag.save
-      redirect_to tag_path(@tag)
       flash[:success] = "You created a #{@tag.title} tag"
+      redirect_to tag_path(@tag)
     else
       render :new
     end

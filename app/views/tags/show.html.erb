@@ -1,5 +1,8 @@
 <h1> <%= @tag.title %> tag </h1>
 <br>
 <% @tag.jobs.each do |job| %>
-  <%= link_to job.title, company_job_path(job.company, job) %>
+  <%= link_to "#{job.company.name} - #{job.title}", company_job_path(job.company, job) %>
 <% end %>
+<br>
+<%= link_to "Edit", edit_tag_path(@tag) %>
+<%= link_to "Delete", tag_path(@tag), method: :delete %>
