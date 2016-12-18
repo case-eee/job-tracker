@@ -2,7 +2,12 @@
   <h1>Welcome, Job Hunter!</h1>
 </div>
 <div>
-  <h3>Count of jobs by level_of_interest</h3>
+  <h3>A count of jobs by level_of_interest: <%= Job.count_by_level_of_interest %></h3>
+
   <h3>Top 3 companies ranked by average level of interest(along with their respective levels of interest)</h3>
-  <h3>Count of jobs by location w/ link to visit a page with jobs only in that location</h3>
-</div>
+  <% @companies.each do |company| %>
+    <strong><%= company.name %></strong>: <%= company.jobs.average(:level_of_interest).to_i %>
+  <% end %>
+
+  <h3>Job Count by location</h3>
+  <%= Job.count_by_location %>
