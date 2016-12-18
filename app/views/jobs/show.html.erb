@@ -34,7 +34,7 @@
 </div>
 <hr>
 <div class = "col-md-offset-2 col-md-8">
-  <h3>Comments</h3>
+  <h3>Comments<span class="badge"><%= @comment_count %></span></h3>
   <%= render partial: "jobs/comment_form" %>
   <div class = "col-md-offset-2 col-md-8">
     <% @job_comments.each do |comment| %>

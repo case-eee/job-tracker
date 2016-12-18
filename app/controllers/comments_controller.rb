@@ -8,14 +8,12 @@ class CommentsController < ApplicationController
       redirect_to company_job_path(params[:company_id], params[:job_id])
     else
       @errors = @comment.errors.full_messages
-      # @job = Job.find(params[:id])
-      # @company = Company.find(params[:company_id])
       @job_category = @job.category
       @job_comments = @job.comments.order("created_at DESC")
+      @comment_count = @job_comments.count
       @comment = Comment.new
       @header = header(:jobs_show)
       @form = form(:jobs_show)
-      # redirect_to company_job_path(@company, @job)
       render "jobs/show"
     end
   end

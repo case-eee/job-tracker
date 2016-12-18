@@ -33,6 +33,7 @@ class JobsController < ApplicationController
     @company = Company.find(params[:company_id])
     @job_category = @job.category
     @job_comments = @job.comments.order("created_at DESC")
+    @comment_count = @job_comments.count
     @comment = Comment.new
     @header = header(:show)
     @form = form(:show)
