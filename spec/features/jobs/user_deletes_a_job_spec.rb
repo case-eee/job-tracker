@@ -9,7 +9,7 @@ RSpec.feature "User deletes existing job" do
 
     click_link "Delete"
 
-    expect(current_path).to eq(company_jobs_path(company))
+    expect(current_path).to eq(company_path(company))
     expect(page).to_not have_content(job.title)
     end
 end
