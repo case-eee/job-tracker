@@ -1,0 +1,32 @@
+<h3>Dashboard</h3>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    <table class="level_of_interest table">
+     <th>Jobs by Interest Level</th><th>Count</th>
+    <% @count_by_interest.each do |level, count| %>
+      <tr>
+        <td><%= level %></td><td><%= count %></td>
+      </tr>     
+    <% end %>
+    </table>
+  </div>
+
+  <div class="col-md-3 col-md-offset-1 text-center well">
+    <h3>Top Three Companies</h3>
+    <ul class="top_3 list-unstyled">
+      <% @top_3.each do |company| %>
+        <li><%= link_to company.name, company_path(company) %>: <%= company.average_level_of_interest %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-3 col-md-offset-1 text-center well">
+    <h3>Jobs in Each Location</h3>
+    <ul class="by_location list-unstyled">
+       <% @count_by_location.each do |city, count|  %>
+         <li><%= link_to city, "#{companies_path}/?location=#{city}" %>: <%= count %></li>
+       <% end %>
+    </ul>
+  </div>
+</div>

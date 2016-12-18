@@ -1,0 +1,252 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import url('https://fonts.googleapis.com/css?family=Taviraj:400,500');
+
+
+/*~~~~~~~ GENERAL STYLES ~~~~~~~*/
+.button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #fff;
+  border-radius: 0;
+  font-size: 12px;
+  color: whitesmoke;
+}
+
+.button:hover {
+  background-color: rgba(0,0,0,0.7);
+  border: 2px solid #67ffb9;
+}
+.btn-update:hover {
+  border: 2px solid #65FFA8;
+  color: #65FFA8;
+}
+
+.btn-delete:hover {
+  border: 2px solid #FF5357;
+  color: #FF5357;
+}
+
+.btn-form {
+  display: inline-block;
+  float: right;
+}
+
+.wrapper {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ~~~~~~~ LAYOUT ~~~~~~~*/
+body {
+  background: #67ffb9; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #B71652, #65FFA8);
+  background: -o-linear-gradient(right, #B71652, #65FFA8);
+  background: linear-gradient(to left, #B71652, #65FFA8); /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Taviraj', serif;
+      }
+
+/* ~~~~~~~ NAVIGATION ~~~~~~~*/
+.navbar {
+  background-color: #222;
+}
+.navbar li {
+  color: #eee;
+  display: inline-block;
+  padding: 10px;
+}
+
+.navbar ul li a{
+  color: whitesmoke;
+}
+
+.navbar ul {
+  display: inline-block;
+}
+
+img {
+  display: inline-block;
+  margin: 15px;
+}
+
+.nav-item {
+  color: #eee;
+}
+
+.dropdown-menu {
+  background-color: rgba(0,0,0,0.7);
+}
+
+a.dropdown-item {
+  color: whitesmoke;
+}
+a.dropdown-toggle {
+  color: #65FFA8
+
+}
+/*FOOTER*/
+.footer {
+  background-color: #222;
+}
+
+/*~~~~~~~ DASHBOARDS ~~~~~~~*/
+
+.dashboard-title {
+  font-size: 40px;
+  margin: 20px 0 20px 0;
+}
+
+.dashboard-stat {
+  font-size: 36px;
+  color: white;
+}
+
+/* ~~~~~~~ STATION ~~~~~~~*/
+/*station new*/
+form {}
+.new-station-prompt {}
+.new-city-prompt {}
+
+/*station index*/
+h1.station-index-page-title {}
+
+.station-info,
+.condition-info,
+.city-info {
+  background-color: rgba(255,255,255,0.3);
+  margin: 0 0 10px 0;
+  padding: 10px;
+}
+
+div.station-info:hover {
+  background-color: rgba(255,255,255,0.7);
+}
+div.city-info:hover {
+  background-color: rgba(255,255,255,0.7);
+}
+div.condition-info:hover {
+  background-color: rgba(255,255,255,0.7);
+}
+div.city-info:hover {
+  background-color: rgba(255,255,255,0.7);
+}
+
+
+.stations-dashboard-total,
+.stations-dashboard-average,
+.stations-dashboard-max,
+.stations-dashboard-min ,
+.stations-dashboard-oldest,
+.stations-dashboard-newest {
+  background-color: rgba(255,255,255,0.2);
+  border: 4px solid rgba(255,255,255,0.5);
+  border-radius: 2px;
+  padding: 20px;
+  min-height: 210px;
+}
+
+.stations-dashboard-oldest,
+.stations-dashboard-newest {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.stations-dashboard-area {
+  padding: 20px;
+}
+
+.stations-dashboard-most-bikes,
+.stations-dashboard-fewest-bikes {
+  background-color: rgba(255,255,255,0.2);
+  border: 4px solid rgba(255,255,255,0.5);
+  border-radius: 2px;
+  margin-top: 20px;
+}
+
+.stations-dashboard-station {
+}
+
+
+h2.station-name {}
+.station-id {}
+
+.station-name-list {
+  font-size: 12px;
+}
+
+.station-stats-area:hover {
+}
+
+h2.city-name {}
+.city-id {}
+
+p.station-city {}
+p.station-coordinates {}
+
+/*station show*/
+.show-station-name {}
+.show-station-dock-count {}
+.show-station-installation-date {}
+
+.show-station-city {}
+.show-station-coordinates {}
+
+/*station edit*/
+.edit-station-page-title {}
+
+  /* ~~~~~~~ TRIP ~~~~~~~*/
+  /*trip new*/
+  form {}
+  .new-trip-prompt {}
+
+  /*station index*/
+  h1.trip-index-page-title {}
+
+  .trip-info {
+    background-color: rgba(255,255,255,0.3);
+  }
+
+  div.trip-info:hover {
+    background-color: rgba(255,255,255,0.7);
+  }
+  h2.trip-name {}
+  .trip-id {}
+
+  p.trip-city {}
+  p.trip-coordinates {}
+
+  /*station show*/
+  .show-trip-id {}
+  .show-trip-dock-count {}
+  .show-station-installation-date {}
+
+  .show-station-city {}
+  .show-station-coordinates {}
+
+  /*station edit*/
+  .edit-station-page-title {}
+
+
+
+/*~~~~~~~~ MEDIA QUERIES ~~~~~~~~~*/
+
+  @media screen and (max-width: 993px) {
+    .wrapper {
+      width: 80%;
+    }
+  }

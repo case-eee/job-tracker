@@ -1,5 +1,17 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h1>All Jobs for <%= @company.name %></h1>
 
 <% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
+  <ul><%= link_to job.title, company_job_path(@company, job) %></ul>
+  <br/>
+  <%= link_to "Edit Job", edit_company_job_path(@company, job) %>
 <% end %>
+<br/>
+<br/>
+<%= link_to "Edit Company", edit_company_path(@company) %>
+<br/>
+<%= link_to "Delete Company", company_path(@company), method: "delete", data: {confirm: "Confirm deleting this company."} %>
+<br/>
+<%= render partial: '/contacts/form', locals: {contacts: {controller: "contacts", action: (:create)}} %>
+<br/>
+<%= link_to "All Companies", companies_path %>
+<br/>
