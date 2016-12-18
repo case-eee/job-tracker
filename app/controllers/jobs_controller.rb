@@ -26,12 +26,12 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @company = Company.find(params[:id])
+    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:id])
+    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @job.update(job_params)
     if @job.save
@@ -43,9 +43,9 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:id])
     @job = Job.find(params[:id])
-    @job.delete
+    @job.comments.destroy_all
+    @job.destroy
 
     flash[:success] = "#{@job.title} was successfully deleted!"
     redirect_to company_jobs_path
@@ -54,6 +54,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
   end
 end
