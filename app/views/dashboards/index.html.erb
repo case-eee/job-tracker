@@ -10,10 +10,43 @@
     </tr>
   </thead>
   <tbody>
-      <% @dashboard.top_three_companies_by_interest_level.each do |company| %>
-        <tr>
-          <td><%= company.name %></td>
-          <td><%= company.average_interest %></td>
-        </tr>
-      <% end %>
+    <% @dashboard.top_three_companies_by_interest_level.each do |company| %>
+      <tr>
+        <td><%= company.name %></td>
+        <td><%= company.average_interest %></td>
+      </tr>
+    <% end %>
   </tbody>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Interest Level</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dashboard.job_interest_levels.each do |interest_level| %>
+      <tr>
+        <td><%= interest_level %></td>
+        <td><%= @dashboard.job_count_by_interest_level(interest_level) %></td>
+      </tr>
+    <% end %>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dashboard.job_locations.each do |location| %>
+      <tr>
+        <td><%= location %></td>
+        <td><%= @dashboard.job_count_by_location(location) %></td>
+      </tr>
+    <% end %>
+</table>
