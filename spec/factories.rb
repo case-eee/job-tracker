@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :comment do
     sequence(:content) {|n| "This is comment #{n}!"}
+    sequence(:created_at) {Faker::Time.between(DateTime.now - 3, DateTime.now)}
     job
   end
 
