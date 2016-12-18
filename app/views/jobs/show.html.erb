@@ -10,4 +10,9 @@
 
 <strong>Company:</strong> <%= link_to @job.company.name, company_path(@job.company) %><br />
 <%= link_to "Delete", company_job_path(@job.company, @job), method: :delete, class:"btn btn-danger" %>
-<p><%= link_to "Edit", edit_company_job_path(@job.company, @job), class: "btn btn-success" %></p>
+<%= link_to "Edit", edit_company_job_path(@job.company, @job), class: "btn btn-success" %>
+<% @job_order.each do |comment| %>
+<p><%= comment.content %></p>
+<p><%= time_ago_in_words(comment.created_at) %> ago</p>
+<% end %>
+<%= render partial: "/comments/form" %>

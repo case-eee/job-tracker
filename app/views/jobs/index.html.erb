@@ -5,3 +5,11 @@ All Jobs for <strong><%= @company.name %></strong>
 <% end %>
 
 <p><%= link_to "Add new job", new_company_job_path %></p>
+
+<% @company.contacts.each do |contact| %>
+  Name:<%= contact.name %>
+  Postion:<%= contact.position %>
+  Email:<%= contact.email %><br>
+<% end %>
+
+<%= render partial: "/contacts/form" %>
