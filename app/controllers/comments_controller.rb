@@ -41,6 +41,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    job = Job.find(params[:job_id])
+    job.comments.find(params[:id]).destroy
+    redirect_to company_job_comments_path(job.company, job)
+  end
+
 
   private
   def comment_params
