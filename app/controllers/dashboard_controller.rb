@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  include ControllerHelper
+  include DashboardHelper
   before_action :format_interest
 
   def index

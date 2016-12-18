@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  include ControllerHelper
+  include JobHelper
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :set_company
   before_action :set_contacts, only: :index
