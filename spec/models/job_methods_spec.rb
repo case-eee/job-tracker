@@ -18,14 +18,17 @@ describe "Job" do
     end
 
     scenario "with no jobs" do
-      
+
       expect(Job.groups("location")).to eq ["Location", {}]
     end
   end
 
   context "#location" do
     scenario "with jobs" do
-    
+      job = create(:job)
+      expected = [job.city, [job]]
+
+      expect(Job.location(job.city)).to eq expected
     end
 
     scenario "with no jobs" do
@@ -36,12 +39,16 @@ describe "Job" do
 
   context "#count_by_location" do
     scenario "with jobs" do
+      job = create(:job)
+      expected = {job.city => 1}
 
+      expect(Job.count_by_location).to eq expected
     end
 
     scenario "with no jobs" do
-      # expect(Job.count_by_location).to eq {}
+      expected = {}
+
+      expect(Job.count_by_location).to eq expected
     end
   end
 end
-
