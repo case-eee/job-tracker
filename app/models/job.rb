@@ -5,11 +5,11 @@ class Job < ActiveRecord::Base
   has_many :comments
 
   def self.count_by_level_of_interest
-    where(level_of_interest: 75..100).count
+    group(:level_of_interest).count.sort_by{ |k,v| k }.reverse.to_h
   end
 
   def self.count_by_location
-    group(:city).count("id").sort_by{ |k,v| v }.reverse
+    group(:city).order('count_id desc').count(:id)
   end
 
 end

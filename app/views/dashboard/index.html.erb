@@ -1,13 +1,22 @@
 <div class="jumbotron">
   <h1>Welcome, Job Hunter!</h1>
 </div>
-<div>
-  <h3>A count of jobs by level_of_interest: <%= Job.count_by_level_of_interest %></h3>
-
-  <h3>Top 3 companies ranked by average level of interest(along with their respective levels of interest)</h3>
-  <% @companies.each do |company| %>
-    <strong><%= company.name %></strong>: <%= company.jobs.average(:level_of_interest).to_i %>
+<div class="analytics">
+  <h3>Count of jobs by level of interest</h3>
+  <% Job.count_by_level_of_interest.each_pair do |interest, count| %>
+  <strong><%= interest %></strong>: <%= count %>,
   <% end %>
 
+  <h3>Top 3 companies ranked by average level of interest</h3>
+  <% Company.company_average_level_of_interest_all.each_pair do |company, average| %>
+    <strong><%= company %></strong>: <%= average.to_i %>,
+    <% end %>
+
   <h3>Job Count by location</h3>
-  <%= Job.count_by_location %>
+  <% Job.count_by_location.each_pair do |location, count| %>
+    <strong><%= link_to location, jobs_path(:location => location) %></strong>: <%= count %>,
+    <% end %>
+</div>
+
+<%= link_to "all jobs sorted by city", jobs_path(:sort => "location") %>
+<%= link_to "all jobs sorted by level of interest", jobs_path(:sort => "interest") %>
