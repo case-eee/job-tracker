@@ -1,0 +1,21 @@
+<div class="container">
+  <h3>Number of Jobs by Location</h3>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Job Count</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @job_count_by_location.each do |location, count| %>
+      <tr>
+        <td><%= link_to location, jobs_path(:location => location) %></td>
+        <td><%= count %></td>
+      </tr>
+      <% end %>
+    </tbody>
+
+  </div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'jobs#root'
+  root 'application#dashboard'
 
   resources :companies do
     resources :contacts, only: [:create]

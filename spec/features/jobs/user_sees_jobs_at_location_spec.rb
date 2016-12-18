@@ -7,7 +7,7 @@ describe "User sees all jobs in a city" do
     job = company.jobs.first
     city = job.city
 
-    visit jobs_path
+    visit dashboard_path
     click_on city
 
     expect(page).to have_content "All Jobs in #{city}"

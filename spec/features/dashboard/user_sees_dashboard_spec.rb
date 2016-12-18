@@ -6,7 +6,7 @@ describe "User visits jobs" do
     company = create(:company_with_jobs)
     jobs = Job.all
 
-    visit jobs_path
+    visit dashboard_path
 
     expect(page).to have_content "Number of Jobs by Location"
 
