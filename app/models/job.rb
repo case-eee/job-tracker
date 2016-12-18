@@ -16,8 +16,7 @@ class Job < ActiveRecord::Base
   end
 
   def self.location(location)
-    jobs = all.find_all {|job| job.city.upcase == location.upcase}
-    [location, jobs]
+    where(city: location)
   end
 
   def self.count_by_location

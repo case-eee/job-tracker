@@ -26,14 +26,14 @@ describe "Job" do
   context "#location" do
     scenario "with jobs" do
       job = create(:job)
-      expected = [job.city, [job]]
 
-      expect(Job.location(job.city)).to eq expected
+      expect(Job.location(job.city)).to eq [job]
     end
 
     scenario "with no jobs" do
+      expected = []
 
-      expect(Job.location("Denver")).to eq ["Denver", []]
+      expect(Job.location("Denver")).to eq expected
     end
   end
 
