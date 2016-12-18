@@ -5,7 +5,7 @@ describe "User visits jobs" do
     
     company = create(:company_with_jobs)
 
-    visit "/jobs?sort=location"
+    visit jobs_path(:sort => :location)
 
     expect(page).to have_content "Jobs Sorted by Location"
 
@@ -17,17 +17,19 @@ describe "User visits jobs" do
 
   scenario "sorted by level of interest" do
 
-     company = create(:company_with_jobs)
+    company = create(:company_with_jobs)
 
-    visit "/jobs?sort=interest"
+    visit jobs_path(:sort => :interest)
 
     expect(page).to have_content "Jobs Sorted by Level of Interest"
 
     jobs = Job.all
+
     jobs.each_with_index do |job, index|
       expect(page).to have_content job.level_of_interest
+
       if job.level_of_interest > jobs[index - 1].level_of_interest
-        expect( page.body.index(job.title) < page.body.index(jobs[index - 1].title) ).to eq true
+        expect(page.body.index(job.title) < page.body.index(jobs[index - 1].title)).to eq true
       end
     end
   end

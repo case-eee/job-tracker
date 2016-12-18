@@ -16,7 +16,7 @@
     <tbody>
       <% @job_count_by_location.each do |location, count| %>
       <tr>
-        <td><%= link_to location, "/jobs?location=#{location}" %></td>
+        <td><%= link_to location, jobs_path(:location => location) %></td>
         <td><%= count %></td>
       </tr>
       <% end %>
