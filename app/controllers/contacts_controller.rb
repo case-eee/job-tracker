@@ -16,6 +16,11 @@ class ContactsController < ApplicationController
     end
   end
 
+  def show
+    @company = Company.find(params[:company_id])
+    @contact = @company.contacts.find(params[:id])
+  end
+
   private 
 
   def contact_params
