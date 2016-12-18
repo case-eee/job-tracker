@@ -1,7 +1,6 @@
 <% if @location %>
     <h1>All Jobs in <strong><%= @location %></strong></h1>
-    <h5><%= link_to "Sort Jobs by Company", "/companies/30/jobs?location=#{@location}&sort=company" %></h5>
-    <h5><%= link_to "Sort Jobs by Interest Level", "/companies/#{@company}/jobs?location=#{@location}&sort=interest" %></h5>
+    <h5><%= link_to "Sort Jobs by Interest Level", "/companies/#{@company.id}/jobs?location=#{@location}&sort=interest" %></h5>
       
       <%= render partial: "job" %>
 
