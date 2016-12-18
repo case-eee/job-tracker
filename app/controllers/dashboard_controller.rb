@@ -1,13 +1,12 @@
 class DashboardController < ApplicationController
   include ControllerHelper
+  before_action :format_interest
 
   def index
-    format_interest
-    @low_interest = @interest_levels[:low]
-    @medium_interest = @interest_levels[:medium]
-    @high_interest = @interest_levels[:high]
+    @low_interest      = @interest_levels[:low]
+    @medium_interest   = @interest_levels[:medium]
+    @high_interest     = @interest_levels[:high]
     @interest_averages = format_interest_averages
-    require 'pry'; binding.pry
   end
 
 end

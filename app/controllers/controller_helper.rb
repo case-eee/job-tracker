@@ -32,9 +32,9 @@ module ControllerHelper
 
   def count_parser(counts, low, medium, high)
     counts.each do |interest, count|
-      if (0..50).include? interest
+      if (0..40).include? interest
         low += count
-      elsif (51..79).include? interest
+      elsif (41..79).include? interest
         medium += count
       else
         high += count
