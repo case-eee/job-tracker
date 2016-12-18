@@ -21,4 +21,8 @@ describe "comments#new" do
     expect(@job.comments.count).to eq(2)
     expect(@job.comments.last.content).to eq("My second comment!")
   end
+
+  it "should redirect the user to back to companies_path_comment_path" do
+    expect(page).to have_current_path("/companies/18/jobs/18/comments")
+  end
 end
