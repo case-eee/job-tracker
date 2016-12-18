@@ -1,0 +1,11 @@
+<div class='container'>
+  <%= form_for [@job.company, @job, @comment] do |f| %>
+  <%= f.label :author %>
+  <%= f.text_field :author %>
+
+  <%= f.label :comment %>
+  <%= f.text_field :body %>
+
+  <%= f.submit %>
+<% end %>
+</div>
