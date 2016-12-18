@@ -1,7 +1,11 @@
 class JobsController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
-    @company_jobs = @company.jobs
+    if params[:sort]
+      @company_jobs = @company.jobs.bycity if params[:sort] == "location"
+    else
+      @company_jobs = @company.jobs
+    end
     @header = header(:index)
   end
 
@@ -67,6 +71,9 @@ class JobsController < ApplicationController
   def destroy
     Job.destroy(params[:id])
     redirect_to company_jobs_path(params[:company_id])
+  end
+
+  def sorted
   end
 
   private

@@ -10,12 +10,11 @@
   <%= render partial: "companies/contact_form" %>
   <div class = "col-md-offset-2 col-md-8">
     <% @company_contacts.each do |contact| %>
-      <div class = "one-comment_not">
+      <div class = "one-contact">
         <p><strong>Name: </strong><%= contact.name %></p>
         <p><strong>Position: </strong><%= contact.position %></p>
         <p><strong>Email: </strong><%= contact.email %></p>
       </div>
-      <hr>
     <% end %>
   </div>
 </div>

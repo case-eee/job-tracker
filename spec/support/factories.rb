@@ -7,7 +7,7 @@ FactoryGirl.define do
     sequence :level_of_interest, [90, 70].cycle do |n|
       "#{n}"
     end
-    sequence :city, ["Denver", "New York City"].cycle do |n|
+    sequence :city, ["New York City", "Denver"].cycle do |n|
       "#{n}"
     end
     category {create(:category)}
