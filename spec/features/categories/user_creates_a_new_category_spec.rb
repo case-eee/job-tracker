@@ -3,6 +3,7 @@ require "rails_helper"
 describe "User creates a new category" do
 
   before do
+    FactoryGirl.reload
     visit("/categories/new")
     fill_in("Title", with: "Web Development")
     click_button("Create")

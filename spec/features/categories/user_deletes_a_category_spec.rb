@@ -1,6 +1,8 @@
 require "rails_helper"
 
 describe "User deletes a category" do
+  before {FactoryGirl.reload}
+
   scenario "a user can delete a category" do
     create(:category, title: "Cobbler")
     visit(categories_path(Category.first))

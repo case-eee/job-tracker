@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe "User sees a specific job" do
+  
+  before {FactoryGirl.reload}
+
   scenario "a user sees a job for a specific company" do
     company = create(:company_jobs, name: "ESPN")
     job = company.jobs.find_by(title: "Title_1")

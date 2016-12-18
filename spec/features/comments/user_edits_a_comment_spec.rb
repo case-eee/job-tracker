@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe "comments#edit" do
   before do
+    FactoryGirl.reload
     comment = create_list(:comment, 5)
     job = Comment.first.job
     company = Comment.first.job.company
@@ -11,12 +12,10 @@ describe "comments#edit" do
   end
 
   scenario "the user updates a comment" do
-    expect(Comment.first.id).to eq(1)
     expect(Comment.first.content).to eq("This is comment 1!")
 
     click_on("Update")
 
-    expect(Comment.first.id).to eq(1)
     expect(Comment.first.content).to eq("This is the edited content!")
   end
 

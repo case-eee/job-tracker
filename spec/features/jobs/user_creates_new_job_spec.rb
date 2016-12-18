@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "User creates a new job" do
   before do
+    FactoryGirl.reload
     @company = create(:company, name: "ESPN")
     @category = create_list(:category, 5)
     visit new_company_job_path(@company)
