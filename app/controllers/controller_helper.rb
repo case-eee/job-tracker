@@ -43,6 +43,10 @@ module ControllerHelper
     end
   end
 
+  def organize_jobs_by_city
+    Job.all.group(:city).count.sort_by { |city, count| count }.reverse
+  end
+  
   def hash_maker(low, medium, high)
     @interest_levels = Hash.new(0)
     @interest_levels[:low] += low

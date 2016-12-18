@@ -17,5 +17,13 @@
     <% end %>
   </ul></br></br>
 
+  <h4>Where Should You Look?</h4>
+  <h5>Here's where all your jobs are based:</h5>
+    <ul>
+      <% @city_counts.each do |city, count| %>
+        <p><strong><%= count %></strong> jobs in <strong><%= link_to city, "/companies/12/jobs?location=#{city}" %></strong></p>
+      <% end %>
+    </ul>
+
 
 
