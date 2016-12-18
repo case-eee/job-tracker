@@ -21,6 +21,24 @@ class ContactsController < ApplicationController
     @contact = @company.contacts.find(params[:id])
   end
 
+  def destroy
+    @company = Company.find(params[:company_id])
+    @contact = @company.contacts.find(params[:id])
+    @contact.delete
+    redirect_to company_path(@company)
+  end
+
+  def edit
+    @company = Company.find(params[:company_id])
+    @contact = @company.contacts.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:company_id])
+    @contact = @company.contacts.update(params[:id], contact_params)
+    redirect_to company_contact_path(@company, @contact)
+  end
+
   private 
 
   def contact_params
