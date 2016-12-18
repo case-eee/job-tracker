@@ -1,0 +1,9 @@
+<h3>Post a comment</h3>
+
+<div class="form-group">
+  <%= form_for @comments do |f| %>
+      <%= f.text_field :content, class: "form-control", placeholder: "content" %>
+
+      <%= f.submit "Submit" %>
+  <% end %>
+</div>

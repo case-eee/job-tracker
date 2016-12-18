@@ -35,5 +35,10 @@ describe Job do
       job = create(:job)
       expect(job).to respond_to(:company)
     end
+
+    it "has many comments" do
+      job = create(:job)
+      expect(job).to respond_to(:comments)
+    end
   end
 end

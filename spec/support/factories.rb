@@ -5,14 +5,31 @@ FactoryGirl.define do
     city "Denver"
     association :category
     association :company
+    factory :job_with_comments do
+      transient do
+        comment_count 3
+      end
+      after(:create) do |job, evaluator|
+        create_list(:comment, evaluator.comment_count, job: job)
+      end
+    end
+  end
+
+  factory :comment do
+    content
+    association :job
   end
 
   sequence :title do |n|
-    "#{n} Artist"
+    "#{n} Consultant"
   end
 
   sequence :name do |n|
-    "#{n} Artist"
+    "#{n} Inc."
+  end
+
+  sequence :content do |n|
+    "#{n} is the loneliest number"
   end
 
   factory :company do

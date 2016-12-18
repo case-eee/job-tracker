@@ -7,12 +7,14 @@ class JobsController < ApplicationController
   def new
     @company = Company.find(params[:company_id])
     @categories = Category.all
+    @category = Category.new()
     @job = Job.new()
   end
 
   def create
     @company = Company.find(params[:company_id])
     @job = @company.jobs.new(job_params)
+    @category = Category.find_or_create_by(id: params[:category_id])
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"
       redirect_to company_job_path(@company, @job)
@@ -23,6 +25,8 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @comments = @job.comments
+    @comment = Comment.new
   end
 
   def edit
@@ -43,10 +47,11 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:company_id])
-    @job = Job.find(params[:id])
-    @job.destroy
-    redirect_to company_jobs_path(@company)
+    company = Company.find(params[:company_id])
+    job = Job.find(params[:id])
+    job.comments.destroy_all
+    job.destroy
+    redirect_to company_jobs_path(company)
   end
 
   private

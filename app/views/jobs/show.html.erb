@@ -14,3 +14,13 @@ Company: <%= link_to @job.company.name, company_path(@job.company) %>
 
 <%= link_to "Edit Job", company_job_path(@job.company, @job) %>
 <%= link_to "Delete Job", company_job_path(@job.company, @job), method: :delete %>
+
+<h3 class="comments"><%= @job.comments.count %> Comments</h3>
+
+<%= form_for [ @job.company, @job, @comment ] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit 'Submit' %>
+<% end %>
+
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
