@@ -1,0 +1,20 @@
+<h1> dashboard </h1>
+<% @jobs.each do |job| %>
+  <%= job.title %> @ <%= job.company.name %>
+  <br>
+<% end %>
+<h1> companies by interest </h1>
+<% @companies_by_interest.each do |k, v| %>
+  <%= "#{k} jobs have average interest level of #{v}" %>
+  <br>
+<% end %>
+<h1> jobs by interest </h1>
+<% @jobs_by_interest.each do |k, v| %>
+  <%= "#{v} jobs with #{k} interest level" %>
+  <br>
+<% end %>
+<h1> jobs by location </h1>
+<% @jobs_by_location.each do |k, v| %>
+  <%= "#{v} jobs in #{k}" %>
+  <br>
+<% end %>
