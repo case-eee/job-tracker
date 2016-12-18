@@ -1,14 +1,18 @@
-<h2>Categories</h2>
-
-<%= link_to "New Category", new_category_path, class: "btn-sm btn-success"%>
-<%= link_to "Back to Companies", companies_path, class: "btn-sm btn-info" %>
+<div class='page-header'>
+  <div class='btn-toolbar pull-right'>
+        
+    <%= link_to "New Category", new_category_path, class: "btn btn-default" %>
+  </div>
+  <h2>Categories</h2>
+</div>
 
 <% @categories.each do |category| %>
-  <ul class=category_<%= category.id %>>
+
+  <ul class="category_<%= category.id %>">
     <h3> <%= link_to category.title, category_path(category) %></h3> 
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-      <%= link_to "Edit", edit_category_path(category), class: "btn-sm btn-warning" %>
-      <%= link_to "Delete", category_path(category), method: "delete", class: "btn-sm btn-danger",
+      <%= link_to "Edit", edit_category_path(category), class: "btn-sm btn-default" %>
+      <%= link_to "Delete", category_path(category), method: "delete", class: "btn-sm btn-default",
       data: {confirm: "Are you sure? This will also delete all jobs associated with the category."} %>
       <br/><br/>
     </div>

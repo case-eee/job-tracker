@@ -1,60 +1,38 @@
-<div class="container">
+<div class='page-header'>
+  <div class='btn-toolbar pull-right'>
+        
+    <%= link_to "Edit", edit_company_job_path(@company, @job), class: "btn btn-default" %>
 
-  <h2>Title: <strong><%= @job.title %></strong></h2><br>
+    <%= link_to "Delete", company_job_path(@company, @job), method: "delete", class: "btn btn-default",
+    data: {confirm: "Are you sure? This will also delete all comments associated with the job."} %>
 
-  <h5> Description: <strong> <%= @job.description %> </strong> </h5>
-  <br>
+  </div>
+  <h2><%= @job.title %> at <%= @company.name %></h2>
+</div>
 
-  <h5> Level of Interest: <strong> <%= @job.level_of_interest %> </strong> </h5>
-  <br>
-
-  <h5> City: <strong> <%= @job.city %> </strong> </h5>
-  <br>
-
-  <h5> Company: <strong/> <%= link_to @company.name, company_path(@company) %> </strong> </h5>
-  <br>
-
-  <h5> Category: <strong/> <%= link_to "#{@job.category.title}", category_path(@job.category)%></h5>
-  <br>
-
+<div class="list-group">
+  <div class="col-md-6">
+    <li class="list-group-item"> Description: <strong> <%= @job.description %> </strong> </li>
+    <li class="list-group-item"> Level of Interest: <strong> <%= @job.level_of_interest %> </strong> </li>
+    <li class="list-group-item"> City: <strong> <%= @job.city %> </strong> </li>
+    <li class="list-group-item"> Category: <strong/> <%= link_to "#{@job.category.title}", category_path(@job.category)%></li>
+  </div>
 </div>
 
 <div class="container">
-
-  <%= link_to "Back to All Companies", companies_path, class:"btn-sm btn-primary"%>
-
-  <%= link_to "Delete", company_job_path(@company, @job), method: "delete", class: "btn-sm btn-danger",
-  data: {confirm: "Are you sure? This will also delete all comments associated with the company."} %>
-
-  <%= link_to "Edit", edit_company_job_path(@company, @job), class: "btn-sm btn-warning"%>
-
-
-</div><br>
-
-<div class="container">
-
-  <h3>Comments</h3>
-
-  <ul class="media-list">
-
-  <% @comments.each do |comment| %>
-
-    <li class="media">
-      <div class="media-body">
-        <h4 class="media-heading"><%= comment.created_at.inspect %></h4>
-        <div class="media"><%= comment.content %></div>
-      </div>
-    </li>
-
-  <% end %>
-
-  </ul>
-</div>
-
-<div class="container">
-
-  <h5>New Comment</h5>
-
-  <%= render partial: "comments/form"%>
-
+  <div class="col-md-8">
+    <h3>Comments</h3>
+    <ul class="media-list">
+    <% @comments.each do |comment| %>
+      <li class="media">
+        <div class="media-body">
+          <h4 class="media-heading"><%= comment.created_at.inspect %></h4>
+          <div class="media"><%= comment.content %></div>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+    <h5>New Comment</h5>
+    <%= render partial: "comments/form"%>
+  </div>
 </div>

@@ -10,11 +10,11 @@
 
     <%= f.collection_select :category_id, @categories.order(:title),:id, :title, include_blank: false %>
 
-    <%= link_to "New Category", new_category_path, class: "btn-sm btn-primary"%><br><br>
+    <%= link_to "New Category", new_category_path, class: "btn-sm btn-default"%><br><br>
 
     <%= f.text_field :city %>
 
-    <%= f.submit nil, class: "btn btn-success" %>
+    <%= f.submit nil, class: "btn btn-default" %>
     
     <% end %>
   </div>
