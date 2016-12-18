@@ -33,7 +33,7 @@ describe "User sees a specific job" do
     visit company_job_path(company, job)
     expect(page).to have_content("check plz!")
 
-    within(".company_#{company.id}") do
+    within(".comment_#{comment.id}") do
       click_link "Delete"
     end
   end
