@@ -9,6 +9,7 @@ FactoryGirl.define do
 
   factory :city do
     sequence(:name) {|n| "City_#{n}"}
+    sequence(:state) {|n| "State_#{n}"}
   end
 
   factory :comment do

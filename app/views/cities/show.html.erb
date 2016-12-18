@@ -1,0 +1,7 @@
+<h1>Name:<%= @city.name%></h1>
+<h1>State:<%= @city.state%></h1>
+<div>
+    <%= @city.jobs.each do |job| %>
+    <%= link_to job.title, company_job_path(job.company, job) %>
+    <% end %>
+</div>
