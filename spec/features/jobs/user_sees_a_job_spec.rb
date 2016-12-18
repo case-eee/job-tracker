@@ -37,4 +37,26 @@ describe "User sees a specific job" do
       click_link "Delete"
     end
   end
+
+  scenario "a user updates a comment for the job" do
+    company = Company.create!(name: "ESPN")
+    Category.create(id:3,title:"HR")
+    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver", category_id: 3)
+    comment = job.comments.create!(content:"check plz!")
+
+    visit company_job_path(company, job)
+    expect(page).to have_content("check plz!")
+    within(".comment_#{comment.id}") do
+      click_link "Edit"
+    end
+
+
+    within(:css, "form#edit_comment_#{comment.id}") do
+      fill_in "comment[content]", with: "dope"
+      click_on "Update Comment"
+    end
+    
+    expect(page).to have_content("dope")
+    expect(page).not_to have_content("check plz!")
+  end
 end

@@ -21,6 +21,7 @@ Category: <%= link_to @job.category.title, category_path(@job.category) %>
 
 Comments: <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
 
+
 <h3> Add a comment </h3>
 <%= form_for [@company, @job, @comment] do |f| %>
   <%= f.label :content %>

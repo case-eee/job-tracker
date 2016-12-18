@@ -21,6 +21,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @edit_comment = params[:edit_comment] unless params[:edit_comment].nil?
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @comment = Comment.new
