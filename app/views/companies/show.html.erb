@@ -5,6 +5,8 @@
     <ul>
       <li><%= link_to job.title, company_job_path(@company, job) %></li> <div class="button btn">
       <div class="button btn-update"><%= link_to "Edit Job", edit_company_job_path(@company, job) %></div>
+      <br/>
+      <div class="button btn-delete"><%= link_to "Delete Job", company_job_path(@company, job), method: "delete" %></div>
     </div>
     </ul>
   <% end %>

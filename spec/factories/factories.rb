@@ -6,12 +6,20 @@ FactoryGirl.define do
     end
   end
 
-  sequence :name, ["A", "B", "C", "D"].cycle do |n|
-    "Company #{n}"
+  factory :job do
+    title
+    description
+    level_of_interest
+    city "Rochester"
+    category_id {create(:category)}
   end
 
-  sequence :city do |n|
-    "City#{n}"
+  factory :category do
+    title {generate(:category_title)}
+  end
+
+  sequence :name, ["A", "B", "C", "D"].cycle do |n|
+    "Company #{n}"
   end
 
   sequence :title do |n|
@@ -26,20 +34,8 @@ FactoryGirl.define do
     "Description#{n}"
   end
 
-  sequence :level_of_interest, [1, 2, 3, 4].cycle do |n|
+  sequence :level_of_interest, [10,25,67,89,55,9].cycle do |n|
     n 
-  end
-  
-  factory :job do
-    title
-    description
-    level_of_interest
-    city
-    category_id {create(:category)}
-  end
-
-  factory :category do
-    title {generate(:category_title)}
   end
 
 end

@@ -27,20 +27,5 @@ describe "User visits the dashboard" do
       expect(page).to have_content(top_3.last.name)
     end
   end
-
-  scenario "user sees list of locations and count of companies at each" do
-    company1, company2, company3, company4 = create_list(:company_with_jobs, 4)
-
-    visit(dashboard_index_path)
-
-    within ".by_location" do
-      expect(page).to have_content (company1.city)
-      expect(page).to have_content (company2.city)
-      expect(page).to have_content (company3.city)
-      expect(page).to have_content (company4.city)
-      
-      click_link company1.city
-      expect(page).to have_current_path("#{companies_path}/?location=#{company1.city}")
-    end
-  end    
+  
 end

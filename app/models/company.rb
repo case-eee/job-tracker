@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
-
+  validates :city, presence: true
+  
   has_many :jobs, dependent: :destroy
   has_many :contacts
 

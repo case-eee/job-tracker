@@ -40,6 +40,7 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
+    @company.jobs.destroy_all
     @company.destroy
 
     flash[:success] = "#{@company.name} was successfully deleted!"
@@ -53,6 +54,6 @@ class CompaniesController < ApplicationController
       end
 
     def company_params
-      params.require(:company).permit(:name, :city)
+      params.require(:company).permit(:name)
     end
 end
