@@ -1,1 +1,15 @@
 <h2><%= @category.title%></h2>
+
+<%= link_to "Edit", edit_category_path(@category),
+    class: "update-button" %>
+<%= link_to "Delete", category_path(@category),
+    method: "delete", class: "delete-button" %>
+<ul>
+  <% @category.jobs.each do |job| %>
+    <div class="job row">
+      <li class="job_<%=job.id%>">
+        <%= link_to job.title, company_job_path(job.company, job), class: "job-#{job.id} job-name" %>
+      </li>
+    </div>
+  <% end %>
+</ul>
