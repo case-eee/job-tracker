@@ -17,11 +17,11 @@
     <h4>Contacts:</h4>
       <% @contacts.each do |contact| %>
       <h5><%= contact.full_name %></h5>
-      <p>Position: <%= contact.position %></p>
-      <p>Email: <%= contact.email %></p></br>
+      <p><%= contact.position %></p>
+      <p><%= contact.email %></p></br>
+  </div>
     <% end %>
   <% end %>
-  </div>
   
   <%= render partial: "job" %>
 
