@@ -1,8 +1,12 @@
+<div class="page-header">
+  <h1>All Jobs</h1>
+</div>
+
 <div class="container">
-  All Jobs for <strong><%= @company.name %></strong>
   <div class="list-group">
     <% @jobs.each do |job| %>
-      <a class="list-group-item"<%= link_to job.title, company_job_path(@company, job) %></a>
+      <a class="list-group-item"<%= link_to job.title, company_job_path(job.company, job) %></a>
+      
     <% end %>
   </div>
 </div>
