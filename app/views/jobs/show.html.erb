@@ -1,24 +1,33 @@
 <div class='container'>
-  Title: <%= @job.title %>
+  <strong>Title:</strong> <%= @job.title %>
 </div><br>
 
 <div class='container'>
-  Category: <%= link_to @job.category.name, category_path(@job.category) %>
+  <strong>Category:</strong> <%= @category %>
 </div><br>
 <div class='container'>
-  Description: <%= @job.description %>
+  <strong>Description:</strong> <%= @job.description %>
 </div><br>
 
 <div class='container'>
-  Level of Interest: <%= @job.level_of_interest %>
+  <strong>Level of Interest:</strong> <%= @job.level_of_interest %>
 </div><br>
 <div class='container'>
-  City: <%= @job.city %>
+  <strong>City:</strong> <%= @job.city %>
 </div><br>
 <div class='container'>
-  Company: <%= link_to @job.company.name, company_path(@job.company) %>
+  <strong>Company:</strong> <%= link_to @job.company.name, company_path(@job.company) %>
 </div><b>
 <div class='container'>
   <%= link_to 'Edit', edit_company_job_path(@job.company, @job), class: 'btn btn-warning'%>
   <%= link_to 'Delete', company_job_path(@job.company, @job), method: :delete, data:{confirm: 'You seriously want to fire someone?'}, class: 'btn btn-danger'%>
 </div>
+
+<div class='container' class='col-md-4'>
+  <h3><%= @job.title %> Comments (<%=@job.comments.size - 1%>)</h3>
+    <%= render partial: 'jobs/comment' %>
+  </div>
+<%= render partial: 'comments/form'%>
+<br>
+<br>
+<br>

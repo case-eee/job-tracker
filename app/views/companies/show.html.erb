@@ -4,11 +4,20 @@
 <div class='container'>
   <%= link_to 'New Job', new_company_job_path(@company), class:"btn btn-success" %>
 </div>
-<div class='container'>
+<div class='container' class='col-md-4'>
   <div class='list-group'>
     <% @company.jobs.each do |job| %>
       <li class='list-group'><%= link_to job.title, company_job_path(@company, job) %></li>
       <%= job.description %>
     <% end %>
   </div>
+</div>
+<div class='container' class='col-md-4'>
+  <h3><%= @company.name %> Contacts (<%=@company.contacts.size - 1%>)</h3>
+    <%= render partial: 'companies/contacts' %>
+  </div>
+<br>
+<br>
+<div class='col-md-4'>
+  <%= render partial: 'contacts/form' %>
 </div>

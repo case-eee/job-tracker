@@ -17,7 +17,6 @@ describe "User deletes a category" do
     category_2 = Category.create(name: "Sports")
 
     visit categories_path
-    # save_and_open_page
 
     within '#categories' do
       first(:link, "Delete").click
@@ -27,5 +26,18 @@ describe "User deletes a category" do
     end
     expect(page).to have_content("Sports")
     expect(page).to have_content("Technology was successfully destroyed")
+  end
+
+  scenario "User deletes a Category with jobs" do
+    company  = Company.create(name: 'Best Buy')
+    category = Category.create(name: 'Sports')
+    job      = company.jobs.create(title: "Developer", level_of_interest: 40, city: "Denver", category_id: category.id)
+
+    visit category_path(category)
+    click_on 'Delete'
+
+    visit company_job_path(company, job)
+
+    expect(page).to have_content("Category Not Found")
   end
 end

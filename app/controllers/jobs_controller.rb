@@ -24,7 +24,12 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
+    @job      = Job.find(params[:id])
+    @company  = Company.find(params[:company_id])
+    @category = category
+    @comments = @job.comments.all
+    @comment  = @job.comments.new
+    @comment.job_id = @job.id
   end
 
   def edit
@@ -51,6 +56,14 @@ class JobsController < ApplicationController
   end
 
   private
+
+  def category
+     if @job.category == nil
+       "Category Not Found"
+    else
+      @job.category.name
+     end
+  end
 
   def job_params
     params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
