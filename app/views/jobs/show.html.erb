@@ -1,13 +1,38 @@
-Title: <%= @job.title %>
-<br>
+<div class='page-header'>
+  <div class='btn-toolbar pull-right'>
+        
+    <%= link_to "Edit", edit_company_job_path(@company, @job), class: "btn btn-default" %>
 
-Description: <%= @job.description %>
-<br>
+    <%= link_to "Delete", company_job_path(@company, @job), method: "delete", class: "btn btn-default",
+    data: {confirm: "Are you sure? This will also delete all comments associated with the job."} %>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
+  </div>
+  <h2><%= @job.title %> at <%= @company.name %></h2>
+</div>
 
-City: <%= @job.city %>
-<br>
+<div class="list-group">
+  <div class="col-md-6">
+    <li class="list-group-item"> Description: <strong> <%= @job.description %> </strong> </li>
+    <li class="list-group-item"> Level of Interest: <strong> <%= @job.level_of_interest %> </strong> </li>
+    <li class="list-group-item"> City: <strong> <%= @job.city %> </strong> </li>
+    <li class="list-group-item"> Category: <strong/> <%= link_to "#{@job.category.title}", category_path(@job.category)%></li>
+  </div>
+</div>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<div class="container">
+  <div class="col-md-8">
+    <h3>Comments</h3>
+    <ul class="media-list">
+    <% @comments.each do |comment| %>
+      <li class="media">
+        <div class="media-body">
+          <h4 class="media-heading"><%= comment.created_at.inspect %></h4>
+          <div class="media"><%= comment.content %></div>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+    <h5>New Comment</h5>
+    <%= render partial: "comments/form"%>
+  </div>
+</div>

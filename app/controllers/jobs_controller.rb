@@ -1,44 +1,80 @@
 class JobsController < ApplicationController
+
+  before_action :set_company, except: [:root]
+  before_action :set_categories, only: [:create, :new, :edit, :update]
+  before_action :set_job, only: [:update, :show, :destroy, :edit]
+
   def index
-    @company = Company.find(params[:company_id])
-    @jobs = @company.jobs
+    @jobs     = @company.jobs
+    @contacts = @company.contacts
+    @contact  = Contact.new
   end
 
   def new
-    @company = Company.find(params[:company_id])
     @job = Job.new()
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @job = @company.jobs.new(job_params)
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"
       redirect_to company_job_path(@company, @job)
     else
+      @errors = @job.errors
       render :new
     end
   end
 
   def show
-    @job = Job.find(params[:id])
+    @comments = @job.comments.sort_by {|comment| comment.created_at}.reverse
+    @comment = Comment.new
   end
 
   def edit
-    # implement on your own!
   end
 
   def update
-    # implement on your own!
+    if @job.update(job_params)
+      flash[:success] = "Successfully updated!"
+      redirect_to company_job_path(@company, @job)
+    else
+      @errors = @job.errors
+      render :edit
+    end
   end
 
   def destroy
-    # implement on your own!
+    title = @job.title
+    @job.destroy
+    flash[:success] = "You deleted #{title} at #{@company.name}"
+    redirect_to company_jobs_path(@company)
+  end
+
+  def root
+    if params[:sort]
+      @group_param, @grouped_jobs = Job.groups(params[:sort])
+      render :sorted
+    elsif params[:location]
+      @jobs = Job.location(params[:location])
+      render :location
+    end
   end
 
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
+  end
+
+  def set_job
+    @job = Job.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 end

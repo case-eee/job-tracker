@@ -1,15 +1,21 @@
-<%= form_for [@company, @job] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<div class="container">
+  <div class="col-md-6">
+    <%= bootstrap_form_for [@company, @job] do |f| %>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+    <%= f.text_field :title %>
 
-  <%= f.label :level_of_interest %>
-  <%= f.number_field :level_of_interest %>
+    <%= f.text_field :description %>
 
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+    <%= f.number_field :level_of_interest %>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.collection_select :category_id, @categories.order(:title),:id, :title, include_blank: false %>
+
+    <%= link_to "New Category", new_category_path, class: "btn-sm btn-default"%><br><br>
+
+    <%= f.text_field :city %>
+
+    <%= f.submit nil, class: "btn btn-default" %>
+    
+    <% end %>
+  </div>
+</div>

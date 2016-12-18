@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Jobs Sorted by <%= @group_param %></h2>
+</div>
+
+<div class="container">
+  <div class="col-md-6">
+    <% @grouped_jobs.each do |group, jobs| %>
+      <h4><%= "#{@group_param}: #{group}" %></h4>
+      <ul class="list-group">
+      <% jobs.each do |job| %>
+        <li class="list-group-item"><%= link_to job.title, company_job_path(job.company, job)%>
+        at <%= link_to job.company.name, company_path(job.company) %></li>
+      <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

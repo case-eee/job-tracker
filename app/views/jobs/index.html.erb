@@ -1,5 +1,40 @@
-All Jobs for <strong><%= @company.name %></strong>
+<div class='page-header'>
+  <div class='btn-toolbar pull-right'>
+    <%= link_to "Edit", edit_company_path(@company), class: "btn btn-default" %>
+    <%= link_to "Delete", company_path(@company), method: "delete", class: "btn btn-default",
+    data: {confirm: "Are you sure? This will also delete all jobs associated with the company."} %>
+  </div>
+  <h2><%= @company.name %></h2>
+</div>
 
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<div class="container">
+<div class="col-md-6">
+  <h2>Jobs</h2>
+  <ul class="list-group">
+  <% @jobs.each do |job| %>
+      <li class="list-group-item"><%= link_to "#{job.title}", company_job_path(@company, job) %></li>
+  <% end %>
+  </ul>
+  <%= link_to "New Job", new_company_job_path(@company, @job), class: "btn btn-default"%>
+</div>
+</div>
+
+<div class="container">
+<div class="col-md-6">
+  <h2>Contacts</h2>
+  <ul class="list-group">
+  <% @contacts.each do |contact|%>
+    <h5 class="list-group-item-heading"><%= contact.name %></h5>
+      <p><%= contact.position %></p>
+      <p><%= contact.email %></p>
+      <br>
+  <% end %>
+  </ul>
+</div>
+</div>
+
+
+<div class="container">
+  <h4>Enter a New Contact</h4>
+  <%= render partial: "contacts/form" %>
+</div>
