@@ -1,6 +1,15 @@
 <h2>All Jobs for <%= @company.name %></h2>
 
-<% @jobs.each do |job| %>
-  <ul class='job-<%="#{job.id}"%>'><%= job.title %> at <%= job.company.name %></ul>
-  <%= link_to "Delete Job", company_job_path(@company, job), method: :delete %>
-<% end %>
+<ul>
+  <% @jobs.each do |job| %>
+    <div class="job row">
+      <li class="job_<%=job.id%>">
+        <%= link_to job.title, company_job_path(@company, job), class: "job-#{job.id} job-name" %>
+        <div class="pull-right">
+          <%= link_to "Delete", company_job_path(@company, job), method: :delete %>
+          <%= link_to "Edit", edit_company_job_path(@company, job) %>
+        </div>
+      </li>
+    </div>
+  <% end %>
+</ul>

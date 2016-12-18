@@ -20,6 +20,9 @@ body
   width: 100%
   font-family: $body-font
 
+.new-button
+  @extend .update-button
+
 .delete-button
   background-color: rgba(255,255,255,0)
   padding: 7px 15px 7px 15px
@@ -88,12 +91,12 @@ ul
   margin-right: auto
   margin-left: auto
 
-.company
+.company, .category, .job
   background-color: rgba(255,255,255,0.3)
   padding: 20px
   margin-bottom: 10px
 
-.company-name
+.company-name, .category-name, .job-name
   font-family: $body-font
   font-size: 20px
   color: #555
