@@ -9,7 +9,7 @@
 
 <table>
   <% @companies.each do |company| %>
-    <tr>
+    <tr class="company_<%= company.id %>">
       <td><%= link_to company.name.upcase, company_path(company) %></td>
       <td><%= link_to "EDIT", edit_company_path(company) %></td>
       <td><%= link_to "DELETE", company_path(company), method: :delete, data: {confirm: "Are you sure you want to delete this company and all of the jobs associated?"} %></td>

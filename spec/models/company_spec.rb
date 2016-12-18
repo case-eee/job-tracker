@@ -1,32 +1,26 @@
 require 'rails_helper'
 
-describe Company do
-  describe "validations" do
-    context "invalid attributes" do
-      it "is invalid without a name" do
-        company = Company.new()
-        expect(company).to be_invalid
-      end
+RSpec.describe Company, type: :model do
+  context "validations" do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_uniqueness_of(:name) }
 
-      it "has a unique name" do
-        Company.create(name: "Dropbox")
-        company = Company.new(name: "Dropbox")
-        expect(company).to be_invalid
-      end
-    end
-
-    context "valid attributes" do
-      it "is valid with a name" do
-        company = Company.new(name: "Dropbox")
-        expect(company).to be_valid
-      end
-    end
-  end
-
-  describe "relationships" do
-    it "has many jobs" do
+    it "is valid with a name" do
       company = Company.new(name: "Dropbox")
-      expect(company).to respond_to(:jobs)
+      expect(company).to be_valid
     end
   end
+
+  context "associations" do
+    it { should have_many(:jobs) }
+  end
+
+  it "destroys dependent jobs" do
+    company = create(:company_with_jobs)
+    expect(Job.count).to eql(3)
+
+    company.destroy
+    expect(Job.count).to eql(0)
+  end
+
 end
