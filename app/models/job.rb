@@ -6,12 +6,12 @@ class Job < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
-
   def self.groups(group_param)
     if group_param == "location"
       ["Location", all.group_by {|job| job.city}]
     elsif group_param == "interest"
-      ["Level of Interest", all.group_by {|job| job.level_of_interest}.sort.reverse]
+      ["Level of Interest",
+      all.group_by {|job| job.level_of_interest}.sort.reverse]
     end
   end
 
