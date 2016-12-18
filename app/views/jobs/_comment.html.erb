@@ -1,3 +1,6 @@
 <div> 
-  <p class="comment"><%= comment.content %></p>
+  <p class="comment_<%= comment.id %>">
+    <%= comment.content %>
+    <%= link_to "Delete", company_job_comment_path(@company, @job, comment), method: "delete"  %>
+  </p>
 </div>
