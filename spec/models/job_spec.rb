@@ -54,4 +54,22 @@ describe Job do
       expect {job.destroy}.to change {Comment.count}.by(-1)
     end
   end
+
+  describe "sorting" do
+    it "by city" do
+      job_1, job_2 = create_list(:job, 2, city: "Denver")
+      job_3 = create(:job, city: "Austin")
+      job_4 = create(:job, city: "New York")
+
+      expect(Job.by_location).to eq [job_3, job_1, job_2, job_4]
+    end
+
+    it "by interest" do
+      job_1, job_2 = create_list(:job, 2, level_of_interest: 45)
+      job_3 = create(:job, level_of_interest: 40)
+      job_4 = create(:job, level_of_interest: 50)
+
+      expect(Job.by_interest).to eq [job_4, job_1, job_2, job_3 ]
+    end
+  end
 end

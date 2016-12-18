@@ -3,4 +3,12 @@ class Job < ActiveRecord::Base
   belongs_to :company
   belongs_to :category
   has_many :comments, dependent: :destroy
+
+  def self.by_location
+    order(:city)
+  end
+
+  def self.by_interest
+    order(level_of_interest: :desc)
+  end
 end
