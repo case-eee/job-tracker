@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     resources :jobs do
       resources :comments, only: [:create, :destroy]
     end
+  resources :contacts, only: [:create, :destroy]
   end
 
-  resources :contacts, only: [:new, :create]
   resources :categories
 
   get '/' => 'dashboard#index'

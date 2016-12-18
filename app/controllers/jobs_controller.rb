@@ -1,13 +1,14 @@
 class JobsController < ApplicationController
   include ControllerHelper
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :set_company, except: [:index]
+  before_action :set_company
 
   def index
     attribute  = params[:sort]
     @location  = params[:location]
     @jobs      = sort_by attribute, list
-    @contact   = Contact.new
+    @contact   = @company.contacts.new()
+    @contacts  = @company.contacts
   end
 
   def new
