@@ -1,35 +1,38 @@
-<div class="container">
-  <h1><%= @company.name %></h1>
-  <%= link_to "All Companies", companies_path, class:"btn-sm btn-primary"%>
-  <%= link_to "Edit", edit_company_path(@company), class: "btn-sm btn-warning"%>
-  <%= link_to "Delete", company_path(@company), method: "delete", class: "btn-sm btn-danger",
-  data: {confirm: "Are you sure? This will delete all associated jobs and contacts."} %>
+<div class='page-header'>
+  <div class='btn-toolbar pull-right'>
+    <%= link_to "Edit", edit_company_path(@company), class: "btn btn-default" %>
+    <%= link_to "Delete", company_path(@company), method: "delete", class: "btn btn-default",
+    data: {confirm: "Are you sure? This will also delete all jobs associated with the company."} %>
+  </div>
+  <h2><%= @company.name %></h2>
 </div>
 
-<br>
-
 <div class="container">
+<div class="col-md-6">
   <h2>Jobs</h2>
-  <ul>
+  <ul class="list-group">
   <% @jobs.each do |job| %>
-      <li><%= link_to "#{job.title}", company_job_path(@company, job) %></li>
+      <li class="list-group-item"><%= link_to "#{job.title}", company_job_path(@company, job) %></li>
   <% end %>
   </ul>
-  <%= link_to "New Job", new_company_job_path(@company, @job), class: "btn-sm btn-success"%>
+  <%= link_to "New Job", new_company_job_path(@company, @job), class: "btn btn-default"%>
 </div>
-
-<br>
+</div>
 
 <div class="container">
+<div class="col-md-6">
   <h2>Contacts</h2>
-  <ul>
+  <ul class="list-group">
   <% @contacts.each do |contact|%>
-    <li><%= "#{contact.name}, #{contact.position}, #{contact.email}" %></li>
+    <h5 class="list-group-item-heading"><%= contact.name %></h5>
+      <p><%= contact.position %></p>
+      <p><%= contact.email %></p>
+      <br>
   <% end %>
   </ul>
 </div>
+</div>
 
-<br>
 
 <div class="container">
   <h4>Enter a New Contact</h4>
