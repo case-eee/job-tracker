@@ -28,5 +28,12 @@ describe Category do
       category = Category.new(title: "Web Development")
       expect(category).to respond_to(:jobs)
     end
+
+    it "associated jobs are destroyed" do
+      category = create(:category)
+      job = create(:job, category: category)
+
+      expect {category.destroy}.to change {Job.count}.by(-1)
+    end
   end
 end

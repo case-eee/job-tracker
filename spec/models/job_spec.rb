@@ -46,5 +46,12 @@ describe Job do
       job = create(:job)
       expect(job).to respond_to(:comments)
     end
+
+    it "associated comments are destroyed" do
+      job = create(:job)
+      comment = create(:comment, job: job)
+
+      expect {job.destroy}.to change {Comment.count}.by(-1)
+    end
   end
 end

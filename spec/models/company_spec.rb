@@ -28,9 +28,24 @@ describe Company do
       company = Company.new(name: "Dropbox")
       expect(company).to respond_to(:jobs)
     end
+
     it "has many contacts" do
       company = create(:company)
       expect(company).to respond_to(:contacts)
+    end
+
+    it "associated jobs are destroyed" do
+      company = create(:company)
+      job = create(:job, company: company)
+      
+      expect {company.destroy}.to change {Job.count}.by(-1)
+    end
+
+    it "associated contacts are destroye" do
+      company = create(:company)
+      contact = create(:contact, company: company)
+
+      expect {company.destroy}.to change {Contact.count}.by(-1)
     end
   end
 end
