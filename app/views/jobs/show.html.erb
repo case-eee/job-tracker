@@ -36,5 +36,29 @@
   </tr>
 </table>
 
+<h2>Comments</h2>
+<hr>
 
-<%= link_to "New Comment", company_job_comment_path %>
+<% @job.comments.order(created_at: :desc).each do |comment| %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= time_parse(comment.created_at) %></div>
+    <div class="panel-body">
+      <%= comment.content %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for [@job, @comment] do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :new_comment%>
+        <%= f.text_area :content, class: "form-control"  %>
+      </div>
+
+      <%= f.submit class: "btn btn-primary" %>
+
+    <% end %>
+  </div>
+</div>
