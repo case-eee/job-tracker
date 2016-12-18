@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "user updates an existing job" do
-  
+describe "job #edit" do
+
   before {FactoryGirl.reload}
 
   it "a user can update a job" do

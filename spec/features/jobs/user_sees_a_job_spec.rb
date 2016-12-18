@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "User sees a specific job" do
-  
+describe "job #show" do
+
   before {FactoryGirl.reload}
 
   scenario "a user sees a job for a specific company" do

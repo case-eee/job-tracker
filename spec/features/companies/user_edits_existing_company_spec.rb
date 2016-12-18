@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "User edits an existing company" do
-  
+describe "company #edit" do
+
   before {FactoryGirl.reload}
 
   scenario "a user can edit a company" do

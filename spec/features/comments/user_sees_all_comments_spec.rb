@@ -1,18 +1,16 @@
 require "rails_helper"
 
-describe "comments#index" do
+describe "comments #index" do
   before do
     FactoryGirl.reload
-    job = create(:job)
-    job.comments << create_list(:comment,5)
-    visit(company_job_comments_path(job.company, job))
+    @job = create(:job)
+    @job.comments << create_list(:comment,5)
+    visit(company_job_comments_path(@job.company, @job))
   end
   it "should display all comments related to job to the user" do
-    expect(page.body).to have_content("This is comment 1!")
-    expect(page.body).to have_content("This is comment 2!")
-    expect(page.body).to have_content("This is comment 3!")
-    expect(page.body).to have_content("This is comment 4!")
-    expect(page.body).to have_content("This is comment 5!")
+    @job.comments.each do |comment|
+      expect(page.body).to have_content(comment.content)
+    end
   end
 
   it "comments should be sorted newest to oldest" do

@@ -8,7 +8,7 @@ describe Comment do
   end
 
   describe "relationships" do
-    context "has many jobs" do
+    context "belongs to a job" do
       it {should belong_to(:job)}
     end
   end

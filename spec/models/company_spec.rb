@@ -15,5 +15,10 @@ describe Company do
     context "has many jobs" do
       it {should have_many(:jobs)}
     end
+
+    context "has many contacts" do
+      it {should have_many(:contacts)}
+    end
+
   end
 end

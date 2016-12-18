@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "User creates a new company" do
-  
+describe "company #new" do
+
   before {FactoryGirl.reload}
 
   scenario "a user can create a new company" do

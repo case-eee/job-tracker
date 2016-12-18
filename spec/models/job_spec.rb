@@ -20,5 +20,13 @@ describe Job do
     context "belongs to a category" do
       it {should belong_to(:category)}
     end
+
+    context "belongs to a city" do
+      it {should belong_to(:city)}
+    end
+
+    context "has many comments" do
+      it {should have_many(:comments)}
+    end
   end
 end

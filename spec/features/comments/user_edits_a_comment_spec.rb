@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "comments#edit" do
+describe "comments #edit" do
   before do
     FactoryGirl.reload
     comment = create_list(:comment, 5)

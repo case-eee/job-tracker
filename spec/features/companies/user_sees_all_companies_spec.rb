@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe "User sees all companies" do
+describe "company #index" do
 
   before {FactoryGirl.reload}
-  
+
   scenario "a user sees all the companies" do
     create_list(:company, 5)
     visit companies_path
