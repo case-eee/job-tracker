@@ -23,7 +23,7 @@ describe "User creates a comment" do
     click_on "Create Comment"
 
     expect(job.comments.count).to eq current_comment_count + 2
-    expect(page.body.index(first_content) > page.body.index(second_content)).to eq true
+    expect(second_content).to appear_before first_content
   end
 
   scenario "with invalid attributes" do

@@ -29,7 +29,7 @@ describe "User visits jobs" do
       expect(page).to have_content job.level_of_interest
 
       if job.level_of_interest > jobs[index - 1].level_of_interest
-        expect(page.body.index(job.title) < page.body.index(jobs[index - 1].title)).to eq true
+        expect(job.title).to appear_before jobs[index - 1].title
       end
     end
   end
