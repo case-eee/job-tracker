@@ -10,7 +10,8 @@ class Company < ActiveRecord::Base
   end
 
   def self.top_companies(amount)
-
+    all.sort_by do |company|
+      company.average_level_of_interest
+    end.reverse[0..amount - 1]
   end
-
 end

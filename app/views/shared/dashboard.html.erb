@@ -1,4 +1,29 @@
 <div class="container">
+  <h3>Top <%= @top_companies.count%> Companies by Level of Interest</h3>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Average Level of Interest</th>
+        <th>Company</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @top_companies.each_with_index do |company, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= company.average_level_of_interest %></td>
+        <td><%= link_to company.name, company_path(company)%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="container">
   <h3>Number of Jobs by Level of Interest</h3>
 
   <table class="table table-hover">
