@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <header>
+    Company: <%= @company.name %>
+  </header>
+  <body>
+    <ul>
+      <% @company.contacts.each do |contact| %>
+      <li><%= contact.name %></li>
+      <li><%= contact.position %></li>
+      <li><%= contact.email %></li>
+      <li><%= link_to "Edit", edit_company_contact_path(@company, contact) %></li>
+      <li><%= link_to "Delete", company_contact_path(@company, contact), method: :delete, data: {confirm: "Are you sure?"}%></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
