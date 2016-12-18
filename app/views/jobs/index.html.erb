@@ -1,5 +1,8 @@
-All Jobs for <strong><%= @company.name %></strong>
-
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<div class="container">
+  All Jobs for <strong><%= @company.name %></strong>
+  <div class="list-group">
+    <% @jobs.each do |job| %>
+      <a class="list-group-item"<%= link_to job.title, company_job_path(@company, job) %></a>
+    <% end %>
+  </div>
+</div>
