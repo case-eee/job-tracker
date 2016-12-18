@@ -55,6 +55,18 @@ class JobsController < ApplicationController
     redirect_to company_jobs_path(company)
   end
 
+  def sort
+    @payload = Job.payload
+    if Job.find_by(city: params[:sort])
+      render :sort_city
+    elsif params[:sort] == "level_of_interest"
+      render :sort_interest
+    else
+      redirect_to dashboard_path
+    end
+
+  end
+
   private
 
   def job_params

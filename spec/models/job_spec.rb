@@ -41,4 +41,18 @@ describe Job do
       expect(job).to respond_to(:comments)
     end
   end
+
+  describe "analytics" do
+    it "ranks jobs by level of interest" do
+      skip
+    end
+
+    it "delivers payload hash" do
+      skip
+    end
+
+    it "ranks three companies with highest level of interest" do
+      skip
+    end
+  end
 end

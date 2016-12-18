@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories
+
+  get '/dashboard', to: 'dashboard#index'
+  get '/jobs', to: 'jobs#sort'
 end
