@@ -1,0 +1,19 @@
+@import "bootstrap-sprockets";
+
+// add custom bootstrap stuff here before the importing of bootstrap
+
+
+@import "bootstrap";
+body{
+  background-color: silver;
+}
+
+
+#picture{
+  height: 50px;
+  width: 75px;
+  // border: 1px solid transparent;
+  // border-radius: 50%;
+  margin: auto;
+  align: left;
+}

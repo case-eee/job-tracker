@@ -7,9 +7,13 @@ FactoryGirl.define do
     company
   end
 
+  factory :category do
+    name      {Faker::Space.galaxy}
+  end
+
   factory :company do
     sequence :name  do |n| 
-      Faker::Company.name + n.to_s
+      Faker::Company.buzzword + n.to_s
     end
 
     factory :company_with_jobs do

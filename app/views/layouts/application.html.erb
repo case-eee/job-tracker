@@ -6,6 +6,18 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<header class="navbar  navbar-inverse">
+  <div class="navbar-class">
+    <p class="container">
+      <ul class="nav navbar-nav">
+        <li><img id='picture' src="https://cdn2.iconfinder.com/data/icons/employment-business/256/Job_Search-512.png"/></li>
+        <li id="left"><%= link_to 'Companies', companies_path %></li>
+        <li id="left"><%= link_to 'Categories', categories_path%></li>
+      </ul>
+    </p>
+  </div>
+</header>
+
 <body>
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>

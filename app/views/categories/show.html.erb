@@ -1,0 +1,6 @@
+Jobs in the <%= @category.name %> market!
+<br>
+<% @category.jobs.each do |job| %>
+  <li><%= link_to job.title, company_job_path(job.company, job) %> at <%= job.company.name %></li>
+
+<% end %>

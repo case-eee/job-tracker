@@ -5,6 +5,7 @@ class JobsController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @company = Company.find(params[:company_id])
     @job = Job.new()
   end
@@ -23,14 +24,17 @@ class JobsController < ApplicationController
   def show
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
+    @category = category
   end
 
   def edit
+    @categories = Category.all
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
   end
 
   def update
+    @categories = Category.all
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @job.update(job_params)
@@ -51,7 +55,16 @@ class JobsController < ApplicationController
 
   private
 
+  def category
+    if @job.category.nil?
+      "Not Categorized"
+    else
+      @job.category.name
+    end
+  end
+
+
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
   end
 end
