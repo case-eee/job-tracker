@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   include ControllerHelper
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  before_action :set_company
+  before_action :set_company, except: [:index]
 
   def index
     attribute  = params[:sort]

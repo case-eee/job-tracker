@@ -18,7 +18,7 @@ module ControllerHelper
     elsif @category
       @category.jobs
     else
-      @company.jobs
+      set_company.jobs
     end
   end
 
