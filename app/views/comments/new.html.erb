@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <b>Name:</b>
+    <%= @job.company.name %>
+</p>
+
+<p>
+    <b>Title:</b>
+    <%= @job.title %>
+</p>
+
+<p>
+    <b>Content:</b>
+    <%= @job.comments %>
+</p>
+
+<h2>Add a comment:</h2>
+
+<%= form_for([@job.company, @job, @job.comments.build]) do |f| %>
+<div class="field">
+    <%= f.label :content %><br/>
+    <%= f.text_area :content %>
+</div>
+<div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>
