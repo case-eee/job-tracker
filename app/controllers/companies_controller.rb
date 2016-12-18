@@ -40,7 +40,7 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    @company.delete
+    @company.destroy
 
     flash[:success] = "#{@company.name} was successfully deleted!"
     redirect_to companies_path
