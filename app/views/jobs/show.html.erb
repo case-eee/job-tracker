@@ -17,3 +17,14 @@ Category: <%= link_to @job.category.title, category_path(@job.category) %>
 <br>
 
 <%= link_to 'Delete', company_job_path(@company.id, @job.id), method: :delete %>
+<br>
+
+Comments: <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+
+<h3> Add a comment </h3>
+<%= form_for [@company, @job, @comment] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <%= f.submit %>
+<% end %>
