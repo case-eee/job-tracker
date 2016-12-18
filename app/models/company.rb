@@ -9,8 +9,8 @@ class Company < ActiveRecord::Base
     jobs.average(:level_of_interest).round(2) rescue 0
   end
 
-  def self.top_companies_by_interest
-    
+  def self.top_companies(amount)
+
   end
 
 end

@@ -33,6 +33,17 @@ describe "User visits jobs" do
 
   scenario "sees top three companies by average interest level" do
 
-  end
+    companies = create_list(:company_with_jobs, 4)
+      
+    top_companies = companies.sort_by do |company|
+      company.average_level_of_interest
+    end.reverse[0..2]
 
+    visit dashboard_path
+
+    top_companies.each do |company|
+      expect(page).to have_content company.name
+      expect(page).to have_content company.average_level_of_interest
+    end
+  end
 end

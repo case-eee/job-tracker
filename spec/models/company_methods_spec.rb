@@ -12,9 +12,36 @@ describe "Company" do
     end
 
     scenario "for zero jobs" do
+      
       company = create(:company)
 
       expect(company.average_level_of_interest).to eq 0
+    end
+  end
+
+  context "#top_companies(amount)" do
+    scenario "top one company" do
+      company = create(:company_with_jobs)
+      expected = [company]
+
+      expect(Company.top_companies(1)).to eq [company]
+    end
+
+    scenario "top three for many companies" do
+
+      companies = create_list(:company_with_jobs, 4)
+      
+      expected = companies.sort_by do |company|
+        company.average_level_of_interest
+      end.reverse[0..2]
+
+      expect(Company.top_companies(3)).to eq expected
+    end
+
+    scenario "for no companies" do
+      expected = []
+
+      expect(Company.top_companies(3)).to eq expected
     end
   end
 end
