@@ -42,9 +42,24 @@ FactoryGirl.define do
         create_list(:job, evaluator.jobs_count, company: company)
       end
     end
+    factory :company_with_contacts do
+      transient do
+        contacts_count 3
+      end
+      after(:create) do |company, evaluator|
+        create_list(:contact, evaluator.contacts_count, company: company)
+      end
+    end
   end
 
   factory :category do
     title
+  end
+
+  factory :contact do
+    name
+    position "HR"
+    email "example@example.com"
+    association :company
   end
 end

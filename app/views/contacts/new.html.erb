@@ -1,0 +1,26 @@
+<h2>add a new contact</h2>
+
+<%= form_for [@company, @contact ] do |f| %>
+  <div class="form-group">
+    <%= f.text_field :name,
+    class: "form-control",
+      placeholder: :name %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :position,
+    class: "form-control",
+      placeholder: :position %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :email,
+    class: "form-control",
+      placeholder: :email %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Submit', class: "update-button" %>
+  </div>
+
+<% end %>

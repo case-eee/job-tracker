@@ -10,9 +10,8 @@ describe "User can see comments" do
 
     visit company_job_path(company, job)
 
-    click_on("Submit")
-
     fill_in "comment[content]", with: "important content"
+    click_on("Submit")
 
     expect(page).to have_content("important content")
   end
