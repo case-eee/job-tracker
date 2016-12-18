@@ -16,6 +16,3 @@ describe "comments#new" do
     expect(@job.comments.first.content).to eq("Maybe not!")
   end
 end
-
-xdescribe "validations" do
-  end

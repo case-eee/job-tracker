@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "comments #index" do
+describe "comments#index" do
   it "should display all comments related to job to the user" do
     job = create(:job)
     job.comments << create_list(:comment,5)
