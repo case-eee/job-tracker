@@ -7,8 +7,8 @@
       <li class="job_<%=job.id%>">
         <%= link_to job.title, company_job_path(@company, job), class: "job-#{job.id} job-name" %>
         <div class="pull-right">
-          <%= link_to "Delete", company_job_path(@company, job), method: :delete %>
-          <%= link_to "Edit", edit_company_job_path(@company, job) %>
+          <%= link_to "Delete", company_job_path(@company, job), method: :delete, class: "delete-button" %>
+          <%= link_to "Edit", edit_company_job_path(@company, job), class: "update-button" %>
         </div>
       </li>
     </div>
@@ -18,16 +18,16 @@
 
 <h2>contacts</h2>
 
+<%= render partial: "contacts/form", locals: { contact: @contact, company: @company }%>
+
 <ul>
   <% @company.contacts.each do |contact| %>
     <div class="contact row">
       <li class="contact_<%= contact.id %>">
-        <%= link_to contact.name, company_contact_path(@company, contact), class: "contact-name" %>
+        <p class="contact-name"><%= contact.name %></p>
         <div class="pull-right">
-
-          <%= link_to "Delete", company_contact_path(@company, contact), method: :delete %>
-          <%= link_to "Edit", edit_company_contact_path(@company, contact) %>
-
+          <%= link_to "Delete", company_contact_path(@company, contact), method: :delete, class: "delete-button" %>
+          <%= link_to "Edit", edit_company_contact_path(@company, contact), class: "update-button" %>
         </div>
     </div>
   <% end %>

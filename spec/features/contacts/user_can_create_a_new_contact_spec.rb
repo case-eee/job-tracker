@@ -6,7 +6,7 @@ describe "User can add a new contact" do
     contact = create(:contact)
     company.contacts << contact
 
-    visit new_company_contact_path(company)
+    visit company_path(company)
 
     fill_in "contact[name]", with: contact.name
     fill_in "contact[position]", with: contact.position
