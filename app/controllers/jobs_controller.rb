@@ -5,6 +5,7 @@ class JobsController < ApplicationController
   end
 
   def new
+    @categories = Category.all
     @company = Company.find(params[:company_id])
     @job = Job.new()
   end
@@ -26,6 +27,7 @@ class JobsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
     @company = Company.find(params[:id])
     @job = Job.find(params[:id])
   end

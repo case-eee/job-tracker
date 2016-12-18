@@ -55,6 +55,9 @@
 </nav>
 <head>
   <title>JobTracker</title>
+  <% unless Rails.env.test? %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+  <% end %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>

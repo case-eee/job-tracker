@@ -11,5 +11,9 @@
   <%= f.label :city %>
   <%= f.text_field :city %>
 
+  <%= f.collection_select :category_id, @categories.order(:id),:id,:title, options = {:prompt => "Category"}%></p>
+  <p><%= link_to "Don't see your Cateogry?", new_category_path, class: "btn btn-create_new" %></p>
+
   <%= f.submit %>
+
 <% end %>
