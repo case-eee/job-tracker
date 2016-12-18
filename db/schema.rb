@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217210030) do
+ActiveRecord::Schema.define(version: 20161218203348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,6 +43,17 @@ ActiveRecord::Schema.define(version: 20161217210030) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "position"
+    t.string   "email"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contacts", ["company_id"], name: "index_contacts_on_company_id", using: :btree
+
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
@@ -44,14 +61,17 @@ ActiveRecord::Schema.define(version: 20161217210030) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "company_id"
-    t.string   "city"
     t.integer  "category_id"
+    t.integer  "city_id"
   end
 
   add_index "jobs", ["category_id"], name: "index_jobs_on_category_id", using: :btree
+  add_index "jobs", ["city_id"], name: "index_jobs_on_city_id", using: :btree
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
 
   add_foreign_key "comments", "jobs"
+  add_foreign_key "contacts", "companies"
   add_foreign_key "jobs", "categories"
+  add_foreign_key "jobs", "cities"
   add_foreign_key "jobs", "companies"
 end

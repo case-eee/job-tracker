@@ -1,4 +1,12 @@
 FactoryGirl.define do
+
+  factory :contact do
+    name "MyString"
+    position "MyString"
+    email "MyString"
+    company nil
+  end
+
   factory :comment do
     sequence(:content) {|n| "This is comment #{n}!"}
     sequence(:created_at) {Faker::Time.between(DateTime.now - 3, DateTime.now)}
@@ -9,7 +17,6 @@ FactoryGirl.define do
     sequence(:title) {|n| "Title_#{n}"}
     sequence(:description) {|n| "This is description #{n}."}
     sequence(:level_of_interest) {|n| "The level of interest is: #{n}"}
-    sequence(:city) {|n| "City_#{n}"}
     category
     company
   end
