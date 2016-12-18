@@ -6,7 +6,6 @@
   <ul class="list-group">
   <% @companies.each do |company| %>
     <li class="list-group-item clearfix">
-      <!-- wrapped the text and label in a span -->
       <span style="position:absolute; top:30%;"><%= link_to company.name, company_path(company) %></span>
       <span class="pull-right button-group">
         <button type="button" class= "btn btn-warning"><%= link_to "Edit", edit_company_path(company) %></button>
