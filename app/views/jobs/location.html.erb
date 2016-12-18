@@ -3,10 +3,12 @@
 </div>
 
 <div class="container">
-  <ul>
-  <% @jobs.each do |job| %>
-    <li><%= link_to job.title, company_job_path(job.company, job) %> at
-    <%= link_to job.company.name, company_path(job.company) %></li>
-  <% end %>
-  </ul>
+  <div class="col-md-6">
+    <ul class="list-group">
+    <% @jobs.each do |job| %>
+      <li class="list-group-item"><%= link_to job.title, company_job_path(job.company, job) %>
+      at <%= link_to job.company.name, company_path(job.company) %></li>
+    <% end %>
+    </ul>
+  </div>
 </div>
