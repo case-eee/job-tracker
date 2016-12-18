@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
     @high_interest     = @interest_levels[:high]
     @interest_averages = format_interest_averages
     @city_counts       = organize_jobs_by_city
+    @companies         = Company.all
   end
 
 end

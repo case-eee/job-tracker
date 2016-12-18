@@ -19,8 +19,9 @@
       <h5><%= contact.full_name %></h5>
       <p><%= contact.position %></p>
       <p><%= contact.email %></p></br>
-      <%= link_to "Delete", "/companies/#{@company.id}/contacts/#{contact.id}", method: :delete, data: {confirm: "Are you sure?"} %>      
-  </div></ul>
+      </ul>
+    </div>
+      <%= link_to "Delete", "/companies/#{@company.id}/contacts/#{contact.id}", method: :delete, data: {confirm: "Are you sure?"} %>
     <% end %>
   <% end %>
   
