@@ -4,8 +4,12 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index]
 
-  resources :companies, :categories do
+  resources :companies do
     resources :jobs
+  end
+
+  resources :categories, only: [:index, :new, :create, :show, :edit, :update] do
+    resources :jobs, only: [:show]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -8,18 +8,49 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def check_for_duplicates(category)
+    if Category.exists?(title: category.title)
+      flash[:error] = "#{category.title} already exists."
+    end
+  end
+
   def create
     @category = Category.new(category_params)
+    check_for_duplicates(@category)
     if @category.save
       flash[:success] = "#{@category.title} added!"
       redirect_to category_path(@category)
     else
-      render :new
+      redirect_to new_category_path
     end
   end
 
   def show
     @category = Category.find(params[:id])
+    @jobs = Job.where(category_id: @category.id)
+  end
+
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+    @category.update(category_params)
+    if @category.save
+      flash[:success] = "#{@category.title} updated!"
+      redirect_to category_path(@category)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    category = Category.find(params[:id])
+    category.delete
+
+    flash[:success] = "#{category.title} was successfully deleted!"
+    redirect_to categories_path
   end
 
   private
