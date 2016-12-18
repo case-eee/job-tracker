@@ -1,5 +1,4 @@
 <div class='container'>
-  <h3>Comments(<%= @job.comments.size%>)</h3>
   <% @job.comments.reverse.each do |comment|%>
     <li>Author: <%= comment.author %></li>
     <div>

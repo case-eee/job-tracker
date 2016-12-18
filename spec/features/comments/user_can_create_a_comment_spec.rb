@@ -8,13 +8,13 @@ describe "User creates a comment" do
 
     visit company_job_path(company, job)
 
-    click_on 'Add Comment'
     fill_in 'comment[author]', with: "Drew Palazzari"
     fill_in 'comment[content]', with: "Job Tracker is fun!"
     click_on 'Create Comment'
 
     expect(current_path).to eq(company_job_path(company, job))
     expect(page).to have_content("Drew Palazzari")
+    expect(page).to have_content("Job Tracker is fun!")
   end
 
   scenario "user creates an invalid comment" do
@@ -23,11 +23,10 @@ describe "User creates a comment" do
     job      = company.jobs.create(title: "Developer", level_of_interest: 40, city: "Denver", category_id: category.id)
 
     visit company_job_path(company, job)
-
-    click_on 'Add Comment'
+    fill_in 'comment[author]', with: "Noman"
     click_on 'Create Comment'
 
-    expect(current_path).to eq(new_company_job_comment_path(company, job))
-    expect(page).to have_content("A Comment must have an author and content.")
+    expect(current_path).to eq(company_job_path(company, job))
+    expect(page).to_not have_content("Noman")
   end
 end

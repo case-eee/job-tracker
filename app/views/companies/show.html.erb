@@ -13,7 +13,7 @@
   </div>
 </div>
 <div class='container' class='col-md-4'>
-  <h3>Contacts (<%=@company.contacts.size%> )</h3>
+  <h3><%= @company.name %> Contacts (<%=@company.contacts.size - 1%>)</h3>
     <%= render partial: 'companies/contacts' %>
   </div>
 <br>

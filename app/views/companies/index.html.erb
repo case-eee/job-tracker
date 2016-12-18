@@ -15,8 +15,8 @@
     <% @companies.each do |company| %>
       <ul class=company_<%= company.id %>>
         <li class="list-group"><%= link_to company.name, company_path(company) %></li>
-        <%= link_to "Edit", edit_company_path(company), class:"btn btn-info" %>
-        <%= link_to "Delete", company_path(company), method: :delete, class:"btn btn-danger" %>
+        <%= link_to "Edit", edit_company_path(company), class:"btn btn-info btn-xs" %>
+        <%= link_to "Delete", company_path(company), method: :delete, class:"btn btn-danger btn-xs" %>
       </ul>
     <% end %>
   </div>
