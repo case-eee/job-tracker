@@ -10,11 +10,9 @@ describe "Users can see all categories" do
 
   scenario "the user visit categories#index page" do
     expect(Category.count).to eq(5)
-    expect(page).to have_content("Category_title_1")
-    expect(page).to have_content("Category_title_2")
-    expect(page).to have_content("Category_title_3")
-    expect(page).to have_content("Category_title_4")
-    expect(page).to have_content("Category_title_5")
+    Category.all.each do |category|
+      expect(page).to have_content(category.title)
+    end
   end
 end
 
@@ -24,7 +22,6 @@ describe "the user can interact with the buttons" do
     visit("/categories")
   end
 
-
   it "the page should have a edit button for each category" do
     expect(page).to have_button("Edit")
   end
@@ -32,7 +29,6 @@ describe "the user can interact with the buttons" do
   it "the page should have a delete button for each category" do
     expect(page).to have_button("Delete")
   end
-
 
   scenario "should redirect them to the edit page" do
     within(".categories") do

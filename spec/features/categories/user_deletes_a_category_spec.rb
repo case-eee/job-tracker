@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "User deletes a category" do
+describe "category #destroy" do
   before {FactoryGirl.reload}
 
   scenario "a user can delete a category" do

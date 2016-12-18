@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "comments#new" do
+describe "comments #new" do
   before do
     FactoryGirl.reload
     @job = create(:job)

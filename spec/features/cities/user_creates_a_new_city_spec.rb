@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "User creates a new city" do
+describe "city #new" do
 
   before do
     FactoryGirl.reload

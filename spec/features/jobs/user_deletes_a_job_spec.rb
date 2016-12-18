@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "User deletes an existing job" do
+describe "job #destroy" do
   before do
     FactoryGirl.reload
     @company = create(:company_jobs)

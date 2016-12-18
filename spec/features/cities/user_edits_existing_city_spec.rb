@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "User edits an existing city" do
+describe "city #edit" do
 
   before {FactoryGirl.reload}
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "User creates a new job" do
+describe "job #new" do
   before do
     FactoryGirl.reload
     @company = create(:company, name: "ESPN")

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "User deletes existing company" do
+describe "company #destroy" do
 
   before {FactoryGirl.reload}
 

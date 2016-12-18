@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "User sees all jobs" do
+describe "job #index" do
 
   before do
     FactoryGirl.reload

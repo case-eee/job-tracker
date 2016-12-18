@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "User creates a new category" do
+describe "category #new" do
 
   before do
     FactoryGirl.reload
