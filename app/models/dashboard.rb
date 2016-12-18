@@ -3,8 +3,11 @@ class Dashboard
     Job.where(level_of_interest: interest_level).count
   end
 
-  def average_interest_for_company(company)
-    company.jobs.average(:level_of_interest)
+  def top_three_companies_by_interest_level
+    sorted = Company.all.sort_by do |company|
+      company.average_interest
+    end.reverse
+    sorted[0..2]
   end
 
   def job_count_by_location(location)

@@ -3,4 +3,8 @@ class Company < ActiveRecord::Base
   validates :name, uniqueness: true
   has_many :jobs, dependent: :destroy
   has_many :contacts, dependent: :destroy
+
+  def average_interest
+    jobs.average(:level_of_interest)
+  end
 end
