@@ -23,8 +23,12 @@ describe "User visits jobs" do
 
     expect(page).to have_content "Jobs Sorted by Level of Interest"
 
-    Job.all.each do |job|
+    jobs = Job.all
+    jobs.each_with_index do |job, index|
       expect(page).to have_content job.level_of_interest
+      if job.level_of_interest > jobs[index - 1].level_of_interest
+        expect( page.body.index(job.title) < page.body.index(jobs[index - 1].title) ).to eq true
+      end
     end
   end
 end

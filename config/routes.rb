@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'companies#index'
+  root 'jobs#root'
 
   resources :companies do
     resources :contacts, only: [:create]
@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   get 'jobs' => 'jobs#root'
   get 'dashboard' => 'application#dashboard'
-
 
 end
   # The priority is based upon order of creation: first created -> highest priority.
