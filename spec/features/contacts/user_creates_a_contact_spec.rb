@@ -11,7 +11,7 @@ describe "User creates a contact" do
     fill_in "contact[email]", with: "allknowing@gmail.com"
     click_button "Create Contact"
 
-    expect(current_path).to eq(company_jobs_path(company))
+    expect(current_path).to eq(company_path(company))
     expect(page).to have_content("John De Lancie")
     expect(page).to have_content("allknowing@gmail.com")
     expect(page).to have_content("Q")

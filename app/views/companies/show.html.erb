@@ -23,7 +23,7 @@
     <div class="button btn-delete"><%= link_to "Delete Company", company_path(@company), method: "delete", data: {confirm: "Confirm deleting this company."} %></div>
   </div>
   <br/>
-  <%= render partial: '/contacts/form', locals: {contacts: {controller: "contacts", action: (:create)}} %>
+  <%= render partial: '/contacts/form' %>
   <br/>
 </div>
 <%= link_to "All Companies", companies_path %>
