@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :contacts
 
   end
-
+  resources :tags
   resources :categories
   get '/dashboard' => "jobs#dashboard"
   # The priority is based upon order of creation: first created -> highest priority.

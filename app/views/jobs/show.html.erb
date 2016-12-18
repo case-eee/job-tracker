@@ -19,8 +19,13 @@ Category: <%= link_to @job.category.title, category_path(@job.category) %>
 <%= link_to 'Delete', company_job_path(@company.id, @job.id), method: :delete %>
 <br>
 
-Comments: <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+Tags: 
+<% @job.tags.each do |tag| %>
+  <%= link_to tag.title, tag_path(tag) %>
+<% end %>
+<br>
 
+Comments: <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
 
 <h3> Add a comment </h3>
 <%= form_for [@company, @job, @comment] do |f| %>
