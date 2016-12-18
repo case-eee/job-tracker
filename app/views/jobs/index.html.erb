@@ -8,18 +8,7 @@
   <h5><%= link_to "Sort Jobs by Interest Level", "/companies/#{@company.id}/jobs?sort=interest" %></h5>
   <h5><%= link_to "Create a New Job at #{@company.name}", new_company_job_path(@company) %></h5>
 
-  <h4><%= form_for @contact do |f| %></h4>
-    <%= f.label :full_name %>
-    <%= f.text_field :full_name %>
 
-    <%= f.label :position %>
-    <%= f.text_field :position %>
-
-    <%= f.label :email %>
-    <%= f.email :email %>
-
-    <%= f.submit %>
-<% end %>
 <% end %>
 </br></br>
 
