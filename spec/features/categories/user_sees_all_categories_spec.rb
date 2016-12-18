@@ -3,6 +3,7 @@ require "rails_helper"
 describe "Users can see all categories" do
 
   before do
+    FactoryGirl.reload
     create_list(:category,5)
     visit("/categories")
   end

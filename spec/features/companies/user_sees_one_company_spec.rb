@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe "User sees one company" do
+
+  before {FactoryGirl.reload}
+  
   scenario "a user sees a company" do
     company = create(:company_jobs)
 

@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe "User edits an existing company" do
+  
+  before {FactoryGirl.reload}
+
   scenario "a user can edit a company" do
     company = create(:company, name: "ESPN")
     visit edit_company_path(company)

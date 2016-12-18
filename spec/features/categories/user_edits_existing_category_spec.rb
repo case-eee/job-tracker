@@ -1,6 +1,9 @@
 require "rails_helper"
 
 describe "User edits an existing category" do
+
+  before {FactoryGirl.reload}
+  
   scenario "a user can edit a category" do
     category = create(:category)
     visit edit_category_path(category)

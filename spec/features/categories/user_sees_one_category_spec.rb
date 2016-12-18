@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "When user visits the category show page" do
   before do
+    FactoryGirl.reload
     category = create(:category_jobs)
     visit(category_path(category))
   end

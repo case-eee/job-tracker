@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 describe "User deletes an existing job" do
-  before {@company = create(:company_jobs)}
+  before do
+    FactoryGirl.reload
+    @company = create(:company_jobs)
+  end
   it "a user can delete a job" do
     visit(company_jobs_path(@company))
 

@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe "user updates an existing job" do
+  
+  before {FactoryGirl.reload}
+
   it "a user can update a job" do
     company = create(:company_jobs)
     job = company.jobs.first
