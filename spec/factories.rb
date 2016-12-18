@@ -14,6 +14,14 @@ FactoryGirl.define do
 
   factory :company do |n|
     name
+
+    factory :company_with_contact_and_job do 
+      after(:create) do |company, evaluator|
+        create(:contact, company: company)
+        create(:job, company: company)
+      end
+
+    end
   end
 
   factory :job do
@@ -40,6 +48,20 @@ FactoryGirl.define do
   factory :comment do
     sequence :content do |n|
       "#{n} comment"
+    end
+  end
+
+  factory :contact do
+    sequence :full_name do |n|
+      "#{n} name"
+    end
+
+    sequence :position do |n|
+      "#{n} position"
+    end
+
+    sequence :email do |n|
+      "#{n}@factory.com"
     end
   end
 end

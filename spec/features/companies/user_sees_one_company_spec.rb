@@ -12,4 +12,12 @@ describe "User sees one company" do
     expect(page).to have_content("ESPN")
     expect(page).to have_content("Developer")
   end
+
+  scenario "and all of their contacts" do
+    company = create(:company_with_contact_and_job)
+    visit company_jobs_path(company)
+
+    expect(page).to have_content(company.contacts.first.full_name)
+    expect(page).to have_content(company.contacts.last.full_name)
+  end
 end

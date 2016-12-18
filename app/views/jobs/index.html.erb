@@ -9,3 +9,42 @@
 <div class="new-item">
   <%= link_to "Add New Job for #{@company.name}", new_company_job_path(@company) %>
 </div>
+
+<h2>Contacts</h2>
+<hr>
+
+<% @company.contacts.each do |contact| %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= contact.full_name %></div>
+    <div class="panel-body">
+      <h4>Position:</h4><%= contact.position %>
+      <h4>Email:</h4><%= contact.email %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for [@company, @contact] do |f| %>
+      <%= render partial: 'shared/errors', locals: {target: @contact} %> 
+
+      <div class="form-group">
+        <%= f.label :full_name %>
+        <%= f.text_field :full_name, class: "form-control"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :position %>
+        <%= f.text_field :position, class: "form-control"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control"  %>
+      </div>
+
+      <%= f.submit class: "btn btn-primary" %>
+
+    <% end %>
+  </div>
+</div>
