@@ -8,8 +8,6 @@ describe "User sees all jobs" do
 
     visit jobs_path
 
-    save_and_open_page
-
     within("a:nth-of-type(1)") do
       job_1.title
     end
@@ -28,9 +26,6 @@ describe "User sees all jobs" do
 
     visit "/jobs?sort=location"
 
-    save_and_open_page
-
-
     within("a:nth-of-type(1)") do
       job_2.title
     end
@@ -48,8 +43,6 @@ describe "User sees all jobs" do
     job_3 = create(:job, city: "New York", level_of_interest: 50)
 
     visit "/jobs?sort=interest"
-
-    save_and_open_page
 
     within("a:nth-of-type(1)") do
       job_3.title

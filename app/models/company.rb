@@ -5,6 +5,6 @@ class Company < ActiveRecord::Base
   has_many :contacts, dependent: :destroy
 
   def average_interest
-    jobs.average(:level_of_interest)
+    jobs.average(:level_of_interest).round
   end
 end

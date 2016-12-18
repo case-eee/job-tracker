@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>Dashboard</h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Company Name</th>
+      <th>Average Interest Level</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @dashboard.top_three_companies_by_interest_level.each do |company| %>
+        <tr>
+          <td><%= company.name %></td>
+          <td><%= company.average_interest %></td>
+        </tr>
+      <% end %>
+  </tbody>
