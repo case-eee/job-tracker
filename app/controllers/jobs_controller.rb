@@ -7,6 +7,7 @@ class JobsController < ApplicationController
     attribute  = params[:sort]
     @location  = params[:location]
     @jobs      = sort_by attribute, list
+    @contact   = Contact.new
   end
 
   def new

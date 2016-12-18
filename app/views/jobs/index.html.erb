@@ -2,21 +2,28 @@
     <h1>All Jobs in <strong><%= @location %></strong></h1>
     <h5><%= link_to "Sort Jobs by Company", "/companies/30/jobs?location=#{@location}&sort=company" %></h5>
       <h5><%= link_to "Sort Jobs by Interest Level", "/companies/30/jobs?location=#{@location}&sort=interest" %></h5>
+      
+      <%= render partial: "job" %>
+
 <% else %>
+
   <h1>All Jobs at <strong><%= @company.name %></strong></h1>
   <h5><%= link_to "Sort Jobs by Location", "/companies/#{@company.id}/jobs?sort=location" %></h5>
   <h5><%= link_to "Sort Jobs by Interest Level", "/companies/#{@company.id}/jobs?sort=interest" %></h5>
   <h5><%= link_to "Create a New Job at #{@company.name}", new_company_job_path(@company) %></h5>
 
+  <%= render partial: "job" %>
 
-<% end %>
-</br></br>
+  <div class="contact-form"><h4>Create a New Contact:<%= form_for @contact do |f| %></h4>
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name %>
 
-<% @jobs.each do |job| %>
-  <ul><%= link_to job.title, company_job_path(job.company, job) %> at <%= link_to job.company.name, company_path(job.company) %></br>
-  <%= link_to job.city, "/companies/9/jobs?location=#{job.city}" %></br>
-  Level of Interest: <%= job.level_of_interest %></br>
-    <%= link_to "Edit", edit_company_job_path(job.company, job) %>
-    <%= link_to "Delete", company_job_path(job.company, job), method: "delete" %></ul>
-    </br></br>
+    <%= f.label :position %>
+    <%= f.text_field :position %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+
+    <%= f.submit %>
+<% end %></div>
 <% end %>
