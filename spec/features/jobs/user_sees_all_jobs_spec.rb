@@ -54,4 +54,16 @@ describe "User sees all jobs" do
       job_2.title
     end
   end
+
+  scenario "user wishes to filter by location" do
+    create_list(:job, 3, city: "Austin")
+    create_list(:job, 4, city: "Denver")
+    create_list(:job, 5, city: "New York")
+
+    visit "/jobs?location=Denver"
+
+    expect(page).not_to have_content("Austin")
+    expect(page).not_to have_content("New York")
+    expect(page).to have_content("Denver")
+  end
 end

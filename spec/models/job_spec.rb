@@ -72,4 +72,14 @@ describe Job do
       expect(Job.by_interest).to eq [job_4, job_1, job_2, job_3 ]
     end
   end
+
+  describe "filter" do
+    it "by location" do
+      create_list(:job, 3, city: "Austin")
+      create_list(:job, 4, city: "Denver")
+      expected = create_list(:job, 5, city: "New York")
+
+      expect(Job.in("New York")).to eq expected
+    end
+  end
 end

@@ -11,4 +11,8 @@ class Job < ActiveRecord::Base
   def self.by_interest
     order(level_of_interest: :desc)
   end
+
+  def self.in(location)
+    where(city: location)
+  end
 end

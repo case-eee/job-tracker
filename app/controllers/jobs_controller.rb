@@ -4,6 +4,8 @@ class JobsController < ApplicationController
       @jobs = Job.by_location
     elsif params["sort"] == "interest"
       @jobs = Job.by_interest
+    elsif params["location"]
+      @jobs = Job.in(params["location"])
     else
       @jobs = Job.all
     end
