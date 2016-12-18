@@ -73,9 +73,6 @@ class JobsController < ApplicationController
     redirect_to company_jobs_path(params[:company_id])
   end
 
-  def sorted
-  end
-
   private
 
   def job_params

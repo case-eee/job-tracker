@@ -1,0 +1,30 @@
+<%= render partial: "header" %>
+
+<table class = "table">
+  <tr>
+    <th>Title</th>
+    <th>Location(City)</th>
+    <th>Level Of Interest</th>
+    <th>Category</th>
+  </tr>
+  <% @jobs.each do |job|%>
+    <tr>
+      <td><%= link_to job.title, company_job_path(job.company, job) %></td>
+      <td><%= job.city %></td>
+      <td>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="<%= job.level_of_interest %>" aria-valuemin="0" aria-valuemax="<%= @max_level_of_interest %>" style="width: <%= @level_of_interest_bar[job.level_of_interest] %>;">
+            <%= job.level_of_interest %>
+          </div>
+        </div>
+      </td>
+      <td>
+        <% if job.category_id %>
+          <%= link_to job.category.title, category_path(job.category_id) %>
+        <% else %>
+          No category assigned
+        <% end %>
+      </td>
+    </tr>
+  <% end  %>
+</table>
