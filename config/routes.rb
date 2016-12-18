@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:index]
 
   resources :companies do
-    resources :jobs
+    resources :jobs do
+      resources :comments, only: [:create]
+    end
   end
 
   resources :categories, only: [:index, :new, :create, :show, :edit, :update] do
