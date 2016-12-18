@@ -20,6 +20,6 @@ class Job < ActiveRecord::Base
   end
 
   def self.count_by_location
-    Job.group(:city).count("id")
+    group(:city).count("id")
   end
 end
