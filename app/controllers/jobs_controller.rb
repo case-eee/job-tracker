@@ -25,7 +25,6 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @company = @job.company
     @category = @job.category
-
     render :show
   end
 
@@ -56,6 +55,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city_id, :category_id)
   end
 end

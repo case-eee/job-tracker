@@ -4,12 +4,13 @@ describe "User creates a new job" do
   before do
     FactoryGirl.reload
     @company = create(:company, name: "ESPN")
+    @city = create_list(:city,5)
     @category = create_list(:category, 5)
     visit new_company_job_path(@company)
     fill_in "job[title]", with: "Developer"
     fill_in "job[description]", with: "So fun!"
     fill_in "job[level_of_interest]", with: 80
-    fill_in "job[city]", with: "Denver"
+    find('#job_city_id').find(:xpath, 'option[2]').select_option
     select("Category_title_2")
   end
 
@@ -19,7 +20,7 @@ describe "User creates a new job" do
     expect(page).to have_content("ESPN")
     expect(page).to have_content("Developer")
     expect(page).to have_content("80")
-    expect(page).to have_content("Denver")
+    expect(page).to have_content("City_2")
     expect(page).to have_content("Category_title_2")
   end
 
@@ -31,6 +32,8 @@ end
 
 describe "validations" do
   before do
+    FactoryGirl.reload
+    @city = create_list(:city,5)
     @company = create(:company)
     visit new_company_job_path(@company)
   end
@@ -38,7 +41,7 @@ describe "validations" do
     fill_in("job[title]", with: nil)
     fill_in("job[description]", with: "So fun!")
     fill_in("job[level_of_interest]", with: 80)
-    fill_in("job[city]", with: "Denver")
+    find('#job_city_id').find(:xpath, 'option[2]').select_option
     click_button("Create Job")
         expect(Job.count).to eq(0)
   end
@@ -46,15 +49,7 @@ describe "validations" do
     fill_in("job[title]", with: "Janitor")
     fill_in("job[description]", with: "So fun!")
     fill_in("job[level_of_interest]", with: nil)
-    fill_in("job[city]", with: "Denver")
-    click_button("Create")
-        expect(Job.count).to eq(0)
-  end
-    it "must have a city" do
-    fill_in("job[title]", with: "Janitor")
-    fill_in("job[description]", with: "So fun!")
-    fill_in("job[level_of_interest]", with: 80)
-    fill_in("job[city]", with: nil)
+    find('#job_city_id').find(:xpath, 'option[2]').select_option
     click_button("Create")
         expect(Job.count).to eq(0)
   end

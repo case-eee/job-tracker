@@ -6,7 +6,6 @@ describe Job do
     context "is valid with a title and level of interest" do
       it {should validate_presence_of(:title)}
       it {should validate_presence_of(:level_of_interest)}
-      it {should validate_presence_of(:city)}
     end
   end
 

@@ -1,10 +1,14 @@
 FactoryGirl.define do
 
   factory :contact do
-    name "MyString"
-    position "MyString"
-    email "MyString"
-    company nil
+    sequence(:name) {|n| "Bob_#{n}"}
+    sequence(:position) {|n| "Janitor_#{n}"}
+    sequence(:email) {|n| "poop_scooper_#{n}@janitor.com"}
+    company
+  end
+
+  factory :city do
+    sequence(:name) {|n| "City_#{n}"}
   end
 
   factory :comment do
@@ -19,6 +23,7 @@ FactoryGirl.define do
     sequence(:level_of_interest) {|n| "The level of interest is: #{n}"}
     category
     company
+    city
   end
 
   factory :category do
