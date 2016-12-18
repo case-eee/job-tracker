@@ -7,7 +7,6 @@ describe "When a user visits a company page" do
     byebug
     visit company_path(company)
 
-    save_and_open_page
 
     expect(page).to have_content("Company A")
     expect(page).to have_content("Job 1")
