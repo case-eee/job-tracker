@@ -13,7 +13,7 @@
 <h5>These are the companies you're most interested in:</h5>
   <ul>
     <% @interest_averages.each do |company, interest| %>
-      <p><strong><%= company %></strong>, with an average interest rating of <strong><%= interest %></strong></p>
+      <p><strong><%= link_to company.name, company_path(company) %></strong>, with an average interest rating of <strong><%= interest %></strong></p>
     <% end %>
   </ul></br></br>
 

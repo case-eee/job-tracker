@@ -46,7 +46,7 @@ module ControllerHelper
   def organize_jobs_by_city
     Job.all.group(:city).count.sort_by { |city, count| count }.reverse
   end
-  
+
   def hash_maker(low, medium, high)
     @interest_levels = Hash.new(0)
     @interest_levels[:low] += low
@@ -62,7 +62,7 @@ module ControllerHelper
   def calculate_average_interest
     average_interest = {}
     Company.all.each do |company|
-      average_interest[company.name] = company.jobs.average(:level_of_interest).to_i
+      average_interest[company] = company.jobs.average(:level_of_interest).to_i
     end
     average_interest
   end
