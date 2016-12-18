@@ -9,6 +9,7 @@ describe "User deletes existing company" do
       click_link "Delete"
     end
 
+    expect(Company.count).to eq(0)
     expect(page).to have_content("ESPN was successfully deleted!")
   end
 end
