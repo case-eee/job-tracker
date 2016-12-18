@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "User can view details of one company" do
-  scenario "and all details are shown on the page" do
+  scenario "all details are shown on the page" do
     company = create(:company)
     job = create(:job)
     company.jobs << job
@@ -12,5 +12,6 @@ describe "User can view details of one company" do
     expect(page).to have_link("Available Jobs")
     expect(page).to have_link("Edit Company Details")
     expect(page).to have_link("Delete Company")
+    expect(page).to have_content("Contacts")
   end
 end

@@ -19,6 +19,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :contact do
+    name {rand(1..1000000)}
+    position {rand(1..1000000)}
+    email {rand(1..1000000)}
+  end
+
   factory :category do
     title {rand(1..1000000)}
     # sequence :title, ["Programming", "Quality"].cycle do |n|

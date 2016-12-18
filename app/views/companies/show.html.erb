@@ -1,6 +1,21 @@
-<%= render partial: "header" %>
+<%= render partial: "companies/header" %>
 
 <h3>
 <%= link_to "Available Jobs", company_jobs_path(@company) %>
 <span class="badge"><%= @job_count %></span>
 </h3>
+<hr>
+<div class = "col-md-offset-2 col-md-8">
+  <h3>Contacts <span class="badge"><%= @contact_count %></span></h3>
+  <%= render partial: "companies/contact_form" %>
+  <div class = "col-md-offset-2 col-md-8">
+    <% @company_contacts.each do |contact| %>
+      <div class = "one-comment_not">
+        <p><strong>Name: </strong><%= contact.name %></p>
+        <p><strong>Position: </strong><%= contact.position %></p>
+        <p><strong>Email: </strong><%= contact.email %></p>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>

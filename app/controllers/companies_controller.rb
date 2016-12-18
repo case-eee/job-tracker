@@ -26,7 +26,11 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @job_count = @company.jobs.count
+    @company_contacts = @company.contacts
+    @contact_count = @company_contacts.count
+    @contact = Contact.new
     @header = header(:show)
+    @form = form(:show)
   end
 
   def edit
@@ -110,9 +114,16 @@ class CompaniesController < ApplicationController
     return form
   end
 
+  def form_show
+    form = init_hash("")
+    form[:submit_contact] = "Save Contact"
+    return form
+  end
+
   def form(route)
     return form_new if route == :new
     return form_edit if route == :edit
+    return form_show if route == :show
   end
 
   def init_hash(value)
