@@ -50,4 +50,16 @@ module ControllerHelper
     @interest_levels[:high] += high
     @interest_levels
   end
+
+  def format_interest_averages
+    calculate_average_interest.sort_by { |name, interest| interest }.reverse[0..2]
+  end
+
+  def calculate_average_interest
+    average_interest = {}
+    Company.all.each do |company|
+      average_interest[company.name] = company.jobs.average(:level_of_interest).to_i
+    end
+    average_interest
+  end
 end
