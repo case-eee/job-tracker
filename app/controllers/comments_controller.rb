@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to company_job_path(@company, @comment.job)
     else
-      redirect :new
+      redirect_to new_company_job_comment_path
     end
   end
 

@@ -1,3 +1,8 @@
- <strong><h1> Job Categories </h1></strong>
 
-<%= @category.name %>
+
+<div class="container", "row">
+ <strong><h2> Category: <%= @category.name %> </h1></strong>
+   <% @category.jobs.each do |job| %>
+   <p class="col-md-3"><%= link_to job.title, company_job_path(job.company, job)%></p>
+<%end%>
+</div>
