@@ -15,11 +15,12 @@
   <% if @contacts.count > 0 %>
     <div class="contacts">
     <h4>Contacts:</h4>
-      <% @contacts.each do |contact| %>
+      <ul><% @contacts.each do |contact| %>
       <h5><%= contact.full_name %></h5>
       <p><%= contact.position %></p>
       <p><%= contact.email %></p></br>
-  </div>
+      <%= link_to "Delete", "/companies/#{@company.id}/contacts/#{contact.id}", method: :delete, data: {confirm: "Are you sure?"} %>      
+  </div></ul>
     <% end %>
   <% end %>
   
