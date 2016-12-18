@@ -6,6 +6,7 @@
       <th>Level of Interest</th>
       <th>City</th>
       <th>Company</th>
+      <th>Category</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,7 @@
       <td><%= @job.level_of_interest %></td>
       <td><%= @job.city %></td>
       <td><%= link_to @job.company.name, company_path(@job.company) %></td>
+      <td><%= link_to @job.category.title, category_path(@job.category) %></td>
     </tr>
   </tbody>
 </table>
