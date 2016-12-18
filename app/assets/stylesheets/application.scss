@@ -3,13 +3,14 @@
 @import "nav";
 
 @import url('https://fonts.googleapis.com/css?family=Space+Mono:400,700i');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
 // put style components in this file
 li {
   list-style: none;
 }
 
-.company, .category {
+.company, .category, .jobs {
   background-color: #444;
   padding: 10px;
   margin-bottom: 10px;
@@ -19,6 +20,11 @@ li {
   font-size: 24px;
   color: white;
   font-family: 'Space Mono', monospace;
+}
+
+p {
+  font-size: 18px;
+  font-family: 'Oswald', sans-serif;
 }
 
 .item:hover {
@@ -34,4 +40,10 @@ li {
 
 .clearfix {
   text-align: center;
+}
+
+.dashboard-data {
+  font-size: 14px;
+  color: white;
+  font-family: 'Space Mono', monospace;
 }

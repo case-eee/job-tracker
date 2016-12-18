@@ -1,0 +1,19 @@
+<h3 class="text-center"> Top Three Companies Average Level of interest </h3>
+<ol>
+<% @company.each do |company, number| %>
+<li class="text-center">
+  <%= "#{Company.find(company).name}'s jobs have a #{number} average level of Interest"%></li>
+</li>
+<% end %>
+</ol>
+
+
+
+<h3 class="text-center">Jobs by level of Interest</h3>
+  <% @job.each do |interest, number| %>
+    <li class="row jobs">
+      <div class="dashboard-data">
+        <%="#{number.to_s} Jobs with interest level:" %> <div class="pull-right"> <%= "#{interest}" %></div>
+      </div>
+   </li>
+ <% end %>

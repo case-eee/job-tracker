@@ -7,4 +7,8 @@ class Job < ActiveRecord::Base
   def order_by_time_created
     comments.order(created_at: :desc)
   end
+
+  def self.level_of_interest
+    Job.group(:level_of_interest).count
+  end
 end
