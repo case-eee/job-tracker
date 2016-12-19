@@ -1,0 +1,28 @@
+<%= form_for [@company, @contact], :html => {:class => "form-horizontal center"} do |f| %>
+  <%= render partial: "shared/errors", locals: { target: @contact } %>
+
+  <div class="form-group">
+    <%= f.label :first_name, class: "control-label" %>
+    <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name, class: "control-label" %>
+    <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :position, class: "control-label" %>
+    <%= f.text_field :position, class: "form-control", placeholder: "Job Position" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, class: "control-label" %>
+    <%= f.text_field :email, class: "form-control", placeholder: "example@email.com" %>
+  </div>
+
+  <div class="form-group submit-button">
+    <%= f.submit "Submit", class: "btn btn-success btn-block" %>
+  </div>
+
+<% end %>

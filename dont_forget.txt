@@ -1,0 +1,23 @@
+What's Left?
+-feature tests for comments
+-analytics
+-analytics tests
+-DRY code for delete messages
+-don't make company#show and job#index the same page?
+-Extract locations into a table if there is time
+-Dropdown for locations
+-Order comments: last submitted should be first on the list
+-refactor controllers
+-fix top three companies
+
+
+Styling:
+-format all views
+
+
+Questions for Sal and Casey:
+-how to make things unique in the scope of something at the database level
+-how to test if something is :unique=>true on the database level
+-where to put the dashboard view and how to access it
+-where to put controller logic: in ApplicationController or the Model?
+-how to configure/set up rspec, database cleaner, capybara, factory girl in a brand new project

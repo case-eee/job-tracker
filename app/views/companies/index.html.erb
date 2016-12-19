@@ -1,9 +1,18 @@
-<h3>All Companies</h3>
+<header>
+  <h1>Companies</h1>
+  <div> <%= link_to "Add Company", new_company_path %> </div>
+</header>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+<p>Click on a company below to see a list of jobs and contacts.</p>
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <% @companies.each do |company| %>
+      <tr class="company_<%= company.id %>">
+        <td><%= link_to company.name.upcase, company_path(company) %></td>
+        <td><%= link_to "EDIT", edit_company_path(company) %></td>
+        <td><%= link_to "DELETE", company_path(company), method: :delete, data: {confirm: "Are you sure you want to delete this company and all of the jobs associated?"} %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

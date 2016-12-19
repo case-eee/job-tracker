@@ -1,0 +1,16 @@
+<%= link_to "Back to #{@company.name}", company_path(@company) %><br />
+
+<h1>Name: <%= @contact.first_name %> <%= @contact.last_name %></h1>
+<br>
+
+Position: <%= @contact.position %>
+<br>
+
+Email: <%= @contact.email %>
+<br>
+
+Company: <%= link_to @contact.company.name, company_path(@contact.company) %>
+<br />
+
+<%= link_to "Edit", edit_company_contact_path(@company, @contact) %><br />
+<%= link_to "Delete", company_contact_path(@company, @contact), method: :delete, data: {confirm: "Are you sure you want to delete this contact?"} %>
