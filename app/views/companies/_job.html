@@ -1,0 +1,27 @@
+<div class="container">
+  All Jobs for <strong><%= @company.name %></strong>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Level of Interest</th>
+        <th>City</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @company.jobs.each do |job| %>
+        <tr>
+          <td><%= link_to job.title, company_job_path(job.company, job) %></td>
+          <td><%= job.description %></td>
+          <td><%= job.level_of_interest %></td>
+          <td><%= job.city %></td>
+          <td><%= job.category.title %></td>
+          <td><button type="button" class= "btn btn-warning"><%= link_to "Edit", edit_company_job_path(job.company, job) %></button></td>
+          <td><button type="button" class="btn btn-danger"><%= link_to "Delete", company_job_path(job.company, job), method: "DELETE" %></button></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
