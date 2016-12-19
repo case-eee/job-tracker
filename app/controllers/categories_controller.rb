@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.all_sorted
     @header = header(:index)
   end
 
@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @category_jobs = @category.jobs
+    @category_jobs = @category.jobs.sorted
     @header = header(:show)
   end
 
