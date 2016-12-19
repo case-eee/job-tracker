@@ -1,16 +1,24 @@
 class JobsController < ApplicationController
+  before_action :find_job, only: [:edit, :update, :show, :destroy]
+  before_action :find_company, only: [:new, :create, :show, :edit, :update, :destroy]
+  
   def index
-    @company = Company.find(params[:company_id])
-    @jobs = @company.jobs
+    if params["location"]
+      by_location
+    elsif params["sort"]
+      sorter
+    else
+      find_company
+      @contact = Contact.new
+      @jobs = @company.jobs
+    end
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @job = Job.new()
+    @job = Job.new
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @job = @company.jobs.new(job_params)
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"
@@ -21,24 +29,53 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
-    # implement on your own!
   end
 
   def update
-    # implement on your own!
+    if @job.update(job_params)
+      redirect_to company_job_path(@company, @job)
+    else
+      @job.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
-    # implement on your own!
+    @job.destroy
+    redirect_to company_jobs_path(@company)
+  end
+
+  def by_location
+    @jobs = Job.where(city: params[:location])
+    render :by_location
+  end
+
+  def sorter
+    if params["sort"] == "location"
+      @sorted = "Location"
+      @sort_by = Job.all.group(:city).count("id")
+    else
+      @sorted = "Level of Interest"
+      @sort_by = Job.all.group(:level_of_interest).count("id")
+    end
+    render :sorter
+  end
+
+  def find_job
+    @job = Job.find(params[:id])
+  end
+
+  def find_company
+    @company = Company.find(params[:company_id])
   end
 
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id, :company_id)
   end
 end

@@ -1,5 +1,52 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h1>All Jobs for <strong><%= @company.name %></strong></h1>
+<hr>
 
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
+<ul class="list-group">
+  <% @company.jobs.each do |job| %>
+    <li class="list-group-item"><%= link_to job.title, company_job_path(@company, job) %> at <%= job.company.name %></li>
+  <% end %>
+</ul>
+
+<div class="new-item">
+  <%= link_to "Add New Job for #{@company.name}", new_company_job_path(@company) %>
+</div>
+<br>
+
+<h2>Contacts</h2>
+<hr>
+
+<% @company.contacts.each do |contact| %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= contact.full_name %></div>
+    <div class="panel-body">
+      <p><strong>Position:</strong> <%= contact.position %></p>
+      <p><strong>Email:</strong> <%= contact.email %></p>
+    </div>
+  </div>
 <% end %>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for [@company, @contact] do |f| %>
+      <%= render partial: 'shared/errors', locals: {target: @contact} %> 
+
+      <div class="form-group">
+        <%= f.label :full_name %>
+        <%= f.text_field :full_name, class: "form-control"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :position %>
+        <%= f.text_field :position, class: "form-control"  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: "form-control"  %>
+      </div>
+
+      <%= f.submit class: "btn btn-primary" %>
+
+    <% end %>
+  </div>
+</div>

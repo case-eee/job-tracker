@@ -1,13 +1,64 @@
-Title: <%= @job.title %>
-<br>
+<table class="index-display">
+  <tr>
+    <th>Title</th>
+    <td><%= @job.title %></td>
+    <td>
+      <div class="edit-item">
+        <%= link_to "Edit", edit_company_job_path(@job.company, @job) %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td><%= @job.description %></td>
+    <td>
+      <div class="delete-item">
+        <%= link_to "Delete", company_job_path(@job.company, @job), method: :delete %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th>Level of Interest</th>
+    <td><%= @job.level_of_interest %></td>
+  </tr>
+  <tr>
+    <th>City</th>
+    <td><%= @job.city %></td>
+  </tr>
+  <tr>
+    <th>Company</th>
+    <td><%= link_to @job.company.name, company_path(@job.company) %></td>
+  </tr>
+</table>
 
-Description: <%= @job.description %>
-<br>
+<h2>Comments</h2>
+<hr>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
+<% @job.comments.order(created_at: :desc).each do |comment| %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= time_parse(comment.created_at) %></div>
+    <div class="panel-body">
+      <%= comment.content %>
+    </div>
+  </div>
+<% end %>
 
-City: <%= @job.city %>
-<br>
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for [@job, @comment] do |f| %>
+      <%= render partial: 'shared/errors', locals: {target: @comment} %> 
+      <div class="form-group">
+        <%= f.label :new_comment%>
+        <%= f.text_area :content, class: "form-control"  %>
+      </div>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+      <%= f.submit class: "btn btn-primary" %>
+
+    <% end %>
+  </div>
+</div>
+
+<div class="back-link">
+  <span>&#10094;</span>
+  <%= link_to "Back to #{@job.company.name}", company_path(@job.company) %>
+</div>
