@@ -1,8 +1,33 @@
-<div class="cities">
-<% @cities.each do |city| %>
-<li><%= city.name %></li>
-<li><%= city.state %></li>
-<li><%= button_to "Edit", edit_city_path(city), method: :get %></li>
-<li><%= button_to "Delete", city_path(city), method: :delete, data: {confirm: "Are you sure?"} %></li>
-<% end %>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <header>
+    <h3>Cities</h3>
+    <%= link_to "Add a new city" , new_city_path%>
+  </header>
+  <body>
+    <table class="table table-condensed">
+      <thead>
+      <tr>
+        <th>Location</th>
+        <th>Job Count</th>
+        <th>Edit City</th>
+        <th>Delete City</th>
+      </tr>
+    </thead>
+    <tbody class="cities">
+      <th scope="row" id="total entries"></th>
+      <% @cities.each do |city| %>
+      <tr>
+        <td><%= link_to city.name , city_path(city)%>, <%=city.state%></td>
+        <td><%= city.jobs.count %></td>
+        <td><%= button_to "Edit", edit_city_path(city), method: :get %></td>
+        <td><%= button_to "Delete", city_path(city), method: :delete, data: {confirm: "Are you sure?"} %></td>
+      <% end %>
+      </tr>
+    </tbody>
+    </table>
+  </body>
+</html>

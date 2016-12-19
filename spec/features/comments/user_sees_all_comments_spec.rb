@@ -15,10 +15,9 @@ describe "comments #index" do
 
   it "comments should be sorted newest to oldest" do
     ordered_comments = Comment.order(:created_at)
-    expect(page.find('.content:nth-child(1)')).to have_content(ordered_comments.first.content)
-    expect(page.find('.content:nth-child(2)')).to have_content(ordered_comments.second.content)
-    expect(page.find('.content:nth-child(3)')).to have_content(ordered_comments.third.content)
-    expect(page.find('.content:nth-child(4)')).to have_content(ordered_comments.fourth.content)
-    expect(page.find('.content:nth-child(5)')).to have_content(ordered_comments.fifth.content)
+    ordered_comments.each do |comment|
+      expect(page.body).to have_content(comment.content)
+    end
+    expect(ordered_comments.first.created_at).to be < (ordered_comments.second.created_at)
   end
 end

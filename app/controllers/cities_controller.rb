@@ -18,7 +18,7 @@ class CitiesController < ApplicationController
   end
 
   def search_cities
-    found = City.find_by(name: params[:id].capitalize)
+    found = City.find(params[:id])
     if found.nil?
       redirect_to cities_path
     else

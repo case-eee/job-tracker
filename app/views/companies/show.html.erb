@@ -1,5 +1,35 @@
-All Jobs for <strong><%= @company.name %></strong>
-
-<% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
-<% end %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Jobs</title>
+  </head>
+  <header>
+    All Jobs for <strong><%= @company.name %></strong>
+    <br><%= link_to "Add a job", new_company_job_path(@company) %>
+    <br><%= link_to "Add a contact", new_company_contact_path(@company) %>
+  </header>
+  <body>
+    <table class="table table-condensed">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Contacts</th>
+        <th>Edit Company</th>
+        <th>Delete Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      <th scope="row" id="total entries"></th>
+      <% @company.jobs.each do |job| %>
+      <tr>
+        <td><%= job.title %></td>
+        <td><%= @company.contacts %></td>
+        <td><%= link_to "Edit", edit_company_path(company) %></td>
+        <td><%= link_to "Delete", company_path(company), method: "delete" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+    </table>
+  </body>
+</html>

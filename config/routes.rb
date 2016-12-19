@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :cities
 
-  # match '/:jobs?sort=location', :controller => "cities", :action => "show"
   get '*alias', to: redirect { |params, req|
     sort_value = req.params[:sort]
     if sort_value.eql?("interest")
