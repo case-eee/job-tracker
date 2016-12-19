@@ -27,7 +27,7 @@ gem 'bootstrap-sass'
 gem 'rails_12factor', group: :production
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -40,7 +40,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'faker'
 end
 
 group :development do
