@@ -3,16 +3,16 @@
 </div>
 
 <div class='container'>
-  <div class='col-md-6'>
-  <h1>Job counts of top 10 Interests</h1><br>
-  <% @interested_jobs.sort.reverse.take(10).each do |interest, count| %>
-    <p> There are <%= count %> jobs with a level of interest of <%= interest %></p>
+  <h3><strong>Job counts of top 10 Interests</strong></h3><br>
+  <div class='col-md-6' id='interests'>
+  <% @interested_jobs.each do |interest, count| %>
+    <p><%= count %> job(s) with a level of interest of <strong><%= interest %></strong></p>
   <% end %>
   </div>
   <div class='col-md-6'>
   <h1>Job counts of top 10 Interests</h1><br>
-  <% @interested_jobs.sort.reverse.take(10).each do |interest, count| %>
-    <p> There are <%= count %> jobs with a level of interest of <%= interest %></p>
+  <% @company_interests.each do |interest, company| %>
+    <p> <%= link_to company, company_path(Company.find_by(name: company)) %> has an average level of interest of: <%= interest %></p>
   <% end %>
   </div>
 </div>
