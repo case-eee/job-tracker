@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     sort_value = req.params[:sort]
     if sort_value.eql?("interest")
       "dashboard/#{sort_value}"
-    else
+    else  
       "cities/#{sort_value}"
     end
     }

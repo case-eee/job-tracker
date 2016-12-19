@@ -3,7 +3,7 @@ class Job < ActiveRecord::Base
   belongs_to :company
   belongs_to :city
   belongs_to :category
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   def self.group_by_interest
     jobs = group(:level_of_interest).count

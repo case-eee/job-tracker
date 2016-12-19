@@ -5,28 +5,91 @@
     <%= stylesheet_link_tag 'home/index', media: 'all', 'data-turbolinks-track' => true %>
     <title>JobTracker</title>
   </head>
-  <body>
-    <ul>
-    <% @jobs.each_pair do |(key,value)| %>
-    <li>Level of interest: <%= key %> </li>
-    <li>Number of jobs: <%= value %></li>
-    <% end %>
-    <li><%= link_to "Jobs by interest level", "/jobs?sort=interest" %></li>
-  </ul>
-  <ol>
-    <h1>Top 3 companies</h1>
-    <% @companies.each do |company| %>
-    <li>Name: <%= company.name %></li>
-    <li>Average level of interest: <%= company.average_interest %></li>
-    <% end %>
-    </ol>
-  <ul>
-    <h1>Cities</h1>
-    <% @cities.each do |city| %>
-    <li>Name: <%= city.name %>, <%= city.state %></li>
-    <li>Jobs per city: <%= city.jobs_count %></li>
-    <li><%= link_to "Check out the jobs", "/jobs?sort=#{city.name}" %></li>
-    <% end %>
-  </ul>
-  </body>
+  <body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+    <div class="container">
+      <div class="row">
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#station_dashboard">Open Job Dashboard</button>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#trip_dashboard">Open Companies Dashboard</button>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#weather_dashboard">Open City Dashboard</button>
+
+        <!-- Modal -->
+        <div id="station_dashboard" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Job Data</h4>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <% @jobs.each_pair do |(key,value)| %>
+                  <li>Level of interest: <%= key %> </li>
+                  <li>Number of jobs: <%= value %></li>
+                  <% end %>
+                  <li><%= link_to "Jobs by interest level", "/jobs?sort=interest" %></li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="trip_dashboard" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Company Data</h4>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <h1>Top 3 companies</h1>
+                  <% @companies.each do |company| %>
+                  <li>Name: <%= company.name %></li>
+                  <li>Average level of interest: <%= company.average_interest %></li>
+                  <% end %>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="weather_dashboard" class="modal fade" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">City Data</h4>
+              </div>
+              <div class="modal-body">
+                <ul>
+                  <h1>Cities</h1>
+                  <% @cities.each do |city| %>
+                  <li>Name: <%= city.name %>, <%= city.state %></li>
+                  <li>Jobs per city: <%= city.jobs_count %></li>
+                  <li><%= link_to "Check out the jobs", "/jobs?sort=#{city.id}" %></li>
+                  <% end %>
+                </ul>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+        </body>
 </html>
