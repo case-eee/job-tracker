@@ -1,14 +1,23 @@
 require 'rails_helper'
 
-describe "User sees a specific job" do
-  scenario "a user sees a job for a specific company" do
-    company = Company.create!(name: "ESPN")
-    job = company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver")
+describe "When a user visits a job page" do
+  before do
+    category1 = Category.create(title: "Business")
+    @company = Company.create(name: "RockTenn")
+    @job = @company.jobs.create(title: "CEO",
+                                description: "The boss.",
+                                level_of_interest: 2,
+                                city: "Denver",
+                                category_id: "#{category1.id}")
+    @comment1 = @job.comments.create(content: "This is a cool job!")
+    @comment2 = @job.comments.create(content: "I will contact them soon.")
+    visit company_job_path(@company, @job)
+  end
 
-    visit company_job_path(company, job)
-
-    expect(page).to have_content("ESPN")
-    expect(page).to have_content("Developer")
-    expect(page).to have_content("70")
+  it "they see the job and its comments" do
+    expect(page).to have_content("CEO")
+    expect(page).to have_content("The boss.")
+    expect(page).to have_content("This is a cool job!")
+    expect(page).to have_content("I will contact them soon.")
   end
 end
