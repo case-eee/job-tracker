@@ -10,6 +10,16 @@
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
   <% end %>
+<div class="header">
+  <div class="navbar">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/companies">Companies</a></li>
+      <li><a href="/jobs">Jobs</a></li>
+      <li><a href="/categories">Categories</a></li>
+    </ul>
+  </div>
+</div>
 <%= yield %>
 
 </body>

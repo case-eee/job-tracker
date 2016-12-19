@@ -1,0 +1,4 @@
+<h1 class="title">Jobs Sorted by <%= @sort %></h1>
+<% @jobs.each do |job| %>
+  <ul><%= job.title %> located in <%= job.city %> with a <%= job.level_of_interest %> level of interest.</ul>
+<% end %>

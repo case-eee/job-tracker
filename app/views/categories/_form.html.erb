@@ -1,0 +1,11 @@
+<%= form_for @category do |f| %>
+  <%= f.label  :title %>
+  <%= f.text_field  :title %>
+    <% @jobs.each do |job| %>
+      <div>
+        <%= check_box_tag :job_ids, job.id, false, :name => 'category[job_ids][]', id: "job-#{job.id}" %>
+        <%= job.title %>
+      </div>
+    <% end %>
+  <%= f.submit %>
+<% end %>
