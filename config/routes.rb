@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :contacts
 
   end
+  root 'jobs#dashboard'
   resources :taggings, only: [:new, :create]
   resources :tags
   resources :categories
