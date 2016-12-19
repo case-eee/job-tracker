@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
   def new
     @companies = Comapny.all
-    @job     = Job.all
-    @comment = Comment.new
+    @job       = Job.all
+    @comment   = Comment.new
   end
 
   def create

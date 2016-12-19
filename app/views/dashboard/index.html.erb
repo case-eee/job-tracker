@@ -1,12 +1,13 @@
 <h3 class="text-center"> Top Three Companies Average Level of interest </h3>
-<ol>
+<div class="text-center">  
+  <%= link_to "Jobs Sorted by Interest", ("#{jobs_path}""?sort=interest"), class: "btn btn-primary" %>
+  <%= link_to "Jobs Sorted by Location", ("#{jobs_path}""?sort=location"), class: "btn btn-success" %>
+</div>
 <% @company.each do |company, number| %>
 <li class="text-center">
   <%= "#{Company.find(company).name}'s jobs have a #{number} average level of Interest"%></li>
 </li>
 <% end %>
-</ol>
-
 
 
 <h3 class="text-center">Jobs by level of Interest</h3>

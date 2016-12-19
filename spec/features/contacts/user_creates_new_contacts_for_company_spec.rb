@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe "User creates a new contact" do
   scenario "adds contact to company" do
-    company = Company.create(name: "Pivotal Labs")
+    company  = Company.create(name: "Pivotal Labs")
     category = Category.create(title: "sample")
-    job = Job.create(title: "Web Developer", company_id: company.id, description:"Rails", level_of_interest: 10, city: "Denver", category_id: category.id )
+    job      = Job.create(title: "Web Developer", company_id: company.id, description:"Rails", level_of_interest: 10, city: "Denver", category_id: category.id )
 
     visit company_jobs_path(company)
     fill_in "Name", with: "George Apple"

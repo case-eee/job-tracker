@@ -1,0 +1,8 @@
+<h3 class="text-center">Jobs By Level of Interest</h3>
+<% @all_jobs.each do |job| %>
+  <li class="row jobs">
+    <div class="dashboard-data">
+      <%= job.title %> level of interest: <div class="pull-right"><%= job.level_of_interest %></div><br />
+    </div>
+  </li>
+<% end %>

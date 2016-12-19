@@ -1,14 +1,24 @@
 class JobsController < ApplicationController
   def index
-    @contact = Contact.new
-    @company = Company.find(params[:company_id])
-    @jobs = @company.jobs
+    @job_by_city  = Job.where(city: params[:location])
+    if params[:sort] == "interest"
+      @all_jobs = Job.order(level_of_interest: :desc)
+      render :interest
+    elsif params[:sort] == "location"
+      @jobs_by_city = Job.order(:city)
+      render :location
+    else
+      @contact = Contact.new
+      @company = Company.find(params[:company_id])
+      @jobs    = @company.jobs
+      render :index
+    end
   end
 
   def new
     @categories = Category.all
-    @company = Company.find(params[:company_id])
-    @job = Job.new()
+    @company    = Company.find(params[:company_id])
+    @job        = Job.new()
   end
 
   def create
@@ -31,8 +41,8 @@ class JobsController < ApplicationController
 
   def edit
     @categories = Category.all
-    @company = Company.find(params[:company_id])
-    @job = Job.find(params[:id])
+    @company    = Company.find(params[:company_id])
+    @job        = Job.find(params[:id])
   end
 
   def update
@@ -47,8 +57,8 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:id])
-    @job = Job.find(params[:id])
+    @company        = Company.find(params[:id])
+    @job            = Job.find(params[:id])
     @job.delete
     flash[:success] = "#{@job.title} was successfully deleted!"
     redirect_to company_jobs_path
