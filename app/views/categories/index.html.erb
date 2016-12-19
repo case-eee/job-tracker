@@ -3,8 +3,8 @@
 <% @categories.each do |category| %>
   <ul class=category_<%= category.id %>
     <%= link_to category.title, category_path(category) %><br>
-    <%= link_to "Edit", edit_category_path(category), class: "btn btn-edit" %>
-    <%= link_to "Delete", category_path(category), method: "delete", class: 'btn btn-delete' %>
+    <%= link_to "Edit", edit_category_path(category), class: "button btn-edit" %>
+    <%= link_to "Delete", category_path(category), method: "delete", class: 'button btn-delete' %>
   </ul>
 <% end %>
 
