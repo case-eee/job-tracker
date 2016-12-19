@@ -1,40 +1,60 @@
 class JobsController < ApplicationController
   def index
+    @contacts  = Contact.new
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
+
   end
 
   def new
+    @categories = Category.all
     @company = Company.find(params[:company_id])
     @job = Job.new()
   end
 
   def create
+    @categories = Category.all
     @company = Company.find(params[:company_id])
     @job = @company.jobs.new(job_params)
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"
       redirect_to company_job_path(@company, @job)
     else
+      @errors = @job.errors.full_messages
       render :new
     end
   end
 
   def show
+    @comment = Comment.new
     @job = Job.find(params[:id])
   end
 
   def edit
-    # implement on your own!
+    @categories = Category.all
+    @company = Company.find(params[:company_id])
+    @job = Job.find(params[:id])
   end
 
   def update
-    # implement on your own!
+    @job = Job.find(params[:id])
+    @job.update(job_params)
+    if @job.save
+      flash[:success] = "#{@job.title} updated!"
+      redirect_to company_path(@job)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    # implement on your own!
+    job = Job.find(params[:id])
+    job.delete
+
+    flash[:success] = "#{job.title} was successfully deleted!"
+    redirect_to company_jobs_path
   end
+
 
   private
 

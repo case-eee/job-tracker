@@ -1,15 +1,37 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+
+/*~~~~~~~ GENERAL STYLES ~~~~~~~*/
+.button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #fff;
+  border-radius: 0;
+  font-size:20px;
+  color: black;
+}
+
+.button:hover {
+  background-color: rgba(0,0,0,0.7);
+  border: 2px solid #fff;
+}
+.btn-edit:hover {
+  border: 2px solid Teal;
+  color: Teal;
+}
+
+.btn-delete:hover {
+  border: 2px solid #FF5357;
+  color: #FF5357;
+}
+.btn-create_new:hover {
+  border: 2px solid orange;
+  color: orange;
+}
+
+.btn-form {
+  display: inline-block;
+  float: right;
+}
+/* ~~~~~~~ LAYOUT ~~~~~~~*/
+body {
+  background: Gainsboro ;
+
+      }
