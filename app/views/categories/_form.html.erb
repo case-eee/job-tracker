@@ -2,11 +2,11 @@
   <%= render partial: "shared/errors", locals: { target: @category } %>
 
   <div class="form-group">
-    <%= f.label :title, class: "col-md-4 control-label" %>
-    <div class="col-md-8">
-      <%= f.text_field :title, class: "form-control" %>
-    </div>
+    <%= f.label :title, class: "control-label" %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <%= f.submit "Submit", class: "btn btn-success" %>
+  <div class="form-group submit-button">
+    <%= f.submit "Submit", class: "btn btn-success btn-block" %>
+  </div>
 <% end %>

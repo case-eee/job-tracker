@@ -1,6 +1,19 @@
 class JobsController < ApplicationController
-  # refactor: @company = Company.find(params[:company_id])
-  # refactor: @job = Job.find(params[:id])
+  def sort
+    if params[:sort]=="location"
+      @jobs_by_city = build_jobs_by_city
+      render :location
+    elsif params[:sort]=="interest"
+      @jobs_by_level_of_interest = build_jobs_by_level_of_interest
+      render :interest
+    end
+  end
+
+  def dashboard
+    @count_of_jobs_by_level_of_interest = Job.all.count_by_level_of_interest
+    top_x_companies = 3
+    @top_companies = build_top_companies(top_x_companies)
+  end
 
   def index
     @company = Company.find(params[:company_id])
@@ -17,7 +30,7 @@ class JobsController < ApplicationController
     @company = Company.find(params[:company_id])
     @job = @company.jobs.create(job_params)
     if @job.save
-      flash[:success] = "You created #{@job.title} at #{@company.name}"
+      flash[:success] = "You added the #{@job.title} job at #{@company.name}"
       redirect_to company_job_path(@company, @job)
     else
       render :new
@@ -54,6 +67,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id, :sort)
   end
 end

@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'rails_12factor', group: :production
+gem 'pry'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -42,7 +43,6 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem "factory_girl_rails"
-  gem 'database_cleaner'
 end
 
 group :development do
@@ -51,4 +51,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :test do
+  gem 'nyan-cat-formatter'
+  gem 'database_cleaner'
 end

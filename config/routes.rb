@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root to: "companies#index"
+  root to: "jobs#dashboard"
+
+  get '/dashboard', to: 'jobs#dashboard'
+
+  get '/jobs', to: 'jobs#sort'
 
   resources :companies do
     resources :jobs do
