@@ -5,7 +5,6 @@ describe "User creates a new company" do
     visit new_company_path
 
     fill_in "company[name]", with: "ESPN"
-    save_and_open_page
     click_button "Create Company"
 
     expect(current_path).to eq("/companies")
