@@ -1,20 +1,20 @@
 FactoryGirl.define do
 
   factory :job do
-    sequence :title, ["Web Developer", "QA Analyst"].cycle do |n|
+    sequence :title, ["Web Developer", "QA Analyst", "Tester", "Big Boss"].cycle do |n|
       "#{n}"
     end
-    sequence :level_of_interest, [90, 70].cycle do |n|
-      "#{n}"
+    sequence :level_of_interest, [1, 1, 1, 1].cycle do |n|
+      "#{n + rand(1..99)}"
     end
-    sequence :city, ["New York City", "Denver"].cycle do |n|
+    sequence :city, ["New York City", "Denver", "FarFarAway", "Not Here"].cycle do |n|
       "#{n}"
     end
     category {create(:category)}
   end
 
   factory :company do
-    sequence :name, ["ESPN", "Disney"].cycle do |n|
+    sequence :name, ["ESPN", "Disney", "Another Company", "Best Company"].cycle do |n|
       "#{n}"
     end
   end
