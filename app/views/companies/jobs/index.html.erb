@@ -1,7 +1,7 @@
 <div class='container'>
-  <h1>All Jobs for <strong><%= @company.name %></strong></h1>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-10">
+      <h1>All Jobs for <strong><%= @company.name %></strong></h1>
       <table class="table">
         <tbody>
           <% @company.jobs.each do |job| %>
@@ -15,19 +15,24 @@
       </table>
     </div>
 
-    <div class="col-md-4">
-      <h3><%= "#{@company.name} Contacts" %></h3>
-      <%= render partial: 'companies/contact', collection: @company.contacts %>
+    <div class="col-md-2">
+      <%= link_to new_company_job_path(@company) do %>
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      <% end %>
     </div>
   </div>
 
-  <div class='row'>
-    <div class="col-md-8">
-      <h3>Add a new contact</h3>
-        <%= render partial: 'companies/contacts/form' %>
-    </div>
-    <div class='col-md-4'>
-      <h2><%= link_to "Add a new job", new_company_job_path(@company) %></h2>
+    <div class='contacts'>
+      <div class="row">
+        <div class="col-md-4">
+          <h3><%= "#{@company.name} Contacts" %></h3>
+          <%= render partial: 'companies/contact', collection: @company.contacts %>
+        </div>
+
+        <div class="col-md-8">
+          <h3>Add a new contact</h3>
+            <%= render partial: 'companies/contacts/form' %>
+        </div>
     </div>
   </div>
 </div>

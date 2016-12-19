@@ -1,6 +1,16 @@
-<div>
-  <p class="contact"><strong>Name:</strong> <%= contact.full_name %>
-  Email: <%= contact.email %>
-  Position: <%= contact.position %>
-</p>
-</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= "Name" %></th>
+      <th><%= "E-mail" %></th>
+      <th><%= "Position" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= contact.full_name %></td>
+      <td><%= contact.email %></td>
+      <td><%= contact.position %></td>
+    </tr>
+  <tbody>
+</table>

@@ -1,19 +1,26 @@
-Title: <%= @job.title %>
-<br>
+<div class='container'>
+  <div class="row">
+    <div class="col-md-8">
+      <h1>Job Details</h1>
+      <table class="table-condensed">
+        <tbody>
+          <tr><td><strong>Title</strong>: <%= @job.title %></tr>
+          <tr><td><strong>Level of Interest</strong>: <%= @job.level_of_interest %></tr>
+          <tr><td><strong>Location</strong>: <%= @job.city %></tr>
+          <tr><td><strong>Company</strong>: <%= link_to @job.company.name, company_jobs_path(@company) %></tr>
+        </tbody>
+      </table>
+    </div>
 
-Description: <%= @job.description %>
-<br>
+    <div class="col-md-4">
+      <%= render partial: 'comments/form' %>
+    </div>
+  </div>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
+  <hr>
 
-City: <%= @job.city %>
-<br>
-
-Company: <%= link_to @job.company.name, company_jobs_path(@company) %>
-<br>
-
-<h3>Comments</h3>
-
-<%= render partial: 'comments/form' %>
-<%= render partial: 'companies/jobs/comment', collection: @job.comments.order('created_at DESC') %>
+  <div class="row">
+    <h3>Comments</h3>
+    <%= render partial: 'companies/jobs/comment', collection: @job.comments.order('created_at DESC') %>
+  </div>
+</div>
