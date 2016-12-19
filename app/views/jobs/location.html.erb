@@ -5,6 +5,7 @@
   <ul class='list-group'>
     <% @city_jobs.each do |city| %>
       <li><strong><%= link_to city[0], jobs_path(:location => city[0]) %></strong></li>>> <%= city[1].join(', ') %></li>
+      <li>(<%= city[1].count %>) jobs</li>
       <% end %>
     </ul>
 </div>

@@ -7,8 +7,9 @@
 <div class='container'>
   <div  class='col-md-4'>
     <% @company.jobs.each do |job| %>
-      <li class='list-group'><%= link_to job.title, company_job_path(@company, job) %></li>
-      <%= job.description %>
+      <li><%= link_to job.title, company_job_path(@company, job) %></li>
+      <li>Description: <%= job.description %></li>
+      <li>Interest: <%= job.level_of_interest %></li><br>
     <% end %>
   </div>
 
