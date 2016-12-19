@@ -1,0 +1,19 @@
+<h1>Jobs Sorted by <%= @sorted %></h1>
+<hr>
+
+<div class="row">
+  <% @sort_by.keys.each do |item| %>
+    <div class="col-md-4">
+    <h3><%= item %></h3>
+    <br>
+    <ul class="list-group">
+      <% sort_parse(item).each do |job| %>
+        <li class="list-group-item">
+          <span class="badge"><%= job.level_of_interest %></span>
+          <%= link_to job.title, company_job_path(job.company, job) %>
+        </li>
+      <% end %>
+    </ul>
+    </div>
+  <% end %>
+</div>

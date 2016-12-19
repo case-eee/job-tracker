@@ -4,8 +4,9 @@ class JobsController < ApplicationController
   
   def index
     if params["location"]
-      @jobs = Job.where(city: params[:location])
-      render :by_location
+      by_location
+    elsif params["sort"]
+      sorter
     else
       find_company
       @contact = Contact.new
@@ -46,6 +47,22 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     redirect_to company_jobs_path(@company)
+  end
+
+  def by_location
+    @jobs = Job.where(city: params[:location])
+    render :by_location
+  end
+
+  def sorter
+    if params["sort"] == "location"
+      @sorted = "Location"
+      @sort_by = Job.all.group(:city).count("id")
+    else
+      @sorted = "Level of Interest"
+      @sort_by = Job.all.group(:level_of_interest).count("id")
+    end
+    render :sorter
   end
 
   def find_job
