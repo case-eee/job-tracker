@@ -10,6 +10,7 @@
 <div class="new-item">
   <%= link_to "Add New Job for #{@company.name}", new_company_job_path(@company) %>
 </div>
+<br>
 
 <h2>Contacts</h2>
 <hr>
@@ -18,8 +19,8 @@
   <div class="panel panel-default">
     <div class="panel-heading"><%= contact.full_name %></div>
     <div class="panel-body">
-      <h4>Position:</h4><%= contact.position %>
-      <h4>Email:</h4><%= contact.email %>
+      <p><strong>Position:</strong> <%= contact.position %></p>
+      <p><strong>Email:</strong> <%= contact.email %></p>
     </div>
   </div>
 <% end %>
