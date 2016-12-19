@@ -1,4 +1,8 @@
+require 'tools'
+
 class PageSetup
+
+  include Tools
 
   class << self; attr_accessor :header end
 
@@ -29,10 +33,6 @@ class PageSetup
 
   def form(route)
     return init_hash(false)
-  end
-
-  def init_hash(value)
-    Hash.new(value)
   end
 
 end

@@ -60,5 +60,14 @@ describe Job do
       expect(Job.count_per_cities[1][:name]).to eq(cities[1])
       expect(Job.count_per_cities[2][:name]).to eq(cities[2])
     end
+    it "returns list of jobs sorted based on level of interest in descending order" do
+      test_expression = "level_of_interest DESC"
+      job1, job2 = create_list(:job, 2)
+      lois = [job1.level_of_interest, job2.level_of_interest].sort.reverse
+      test_result = Job.sort_all(test_expression) 
+
+      expect(test_result.count).to eq(2)
+      expect(test_result.first.level_of_interest >= test_result.last.level_of_interest).to be(true)
+    end
   end
 end

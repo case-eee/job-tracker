@@ -13,7 +13,7 @@
       <td><%= job.city %></td>
       <td>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="<%= job.level_of_interest %>" aria-valuemin="0" aria-valuemax="<%= @max_level_of_interest %>" style="width: <%= @level_of_interest_bar[job.level_of_interest] %>;">
+          <div class="progress-bar" role="progressbar" aria-valuenow="<%= job.level_of_interest %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @level_of_interest_bar[job.level_of_interest] %>;">
             <%= job.level_of_interest %>
           </div>
         </div>

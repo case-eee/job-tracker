@@ -20,4 +20,8 @@ class Job < ActiveRecord::Base
         job_count: results[city]}
     end
   end
+
+  def self.sort_all(order_detail)
+    self.all.order(order_detail)
+  end
 end
