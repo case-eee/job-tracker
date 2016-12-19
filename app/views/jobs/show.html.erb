@@ -18,8 +18,10 @@ Category: <%= link_to @job.category.name, category_path(@job.category) %>
 <h4>Comments</h4>
 <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
 
-<div class="btn-group">
-<%= link_to "Add a New Comment", new_company_job_comment_path(@job.company, @job), class: "btn btn-success" %>
-<%= link_to "Delete this Job", company_job_path(@job.company, @job), method: :delete, class:"btn btn-danger" %>
+<div class="container">
+<%= link_to "Delete this Job", company_job_path(@job.company, @job), method: :delete, class:"btn btn-danger" %><br><br>
+<h4>Add a Comment</h4>
+<p> Comments must have both an author and text </p>
+<%= render partial: '/comments/comment_form' %>
 </div>
 </div>

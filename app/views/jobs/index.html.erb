@@ -14,5 +14,18 @@
       </ul>
     <% end %>
   </div>
+  <br>
+  <br>
+
+  <h4> Add a Contact </h4>
+    <p> All contacts must have a full name, position, and email address </p>
+    <%= render partial: '/contacts/contact_form' %>
+  </div>
+
+  <div class="container", "row", "col-md-3">
+  <% @company.contacts.each do |contact| %>
+    <h3><%= contact.full_name %>, <%= contact.position %></h3>
+    <p>Email: <%= contact.email %></p>
+  <% end %>
 </div>
 </div>

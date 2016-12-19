@@ -8,15 +8,14 @@ describe "User creates a new comment" do
 
     visit(company_job_path(company, job))
 
-    click_button "Add a New Comment"
     fill_in "comment_author", with: "author_1"
-    fill_in "comment_body", with: "1"
+    fill_in "comment_body", with: "comment_1"
     click_button "Create Comment"
-    click_button "Add a New Comment"
     fill_in "comment_author", with: "author_2"
-    fill_in "comment_body", with: "2"
+    fill_in "comment_body", with: "comment_2"
+    click_button "Create Comment"
 
     expect("author_2").to appear_before("author_1")
-    expect("2").to appear_before("1")
+    expect("comment_2").to appear_before("comment_1")
   end
 end
