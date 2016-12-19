@@ -1,18 +1,18 @@
 <header>
-  <h1>All Companies</h1>
-  <div class="dashboard-link"> <%= link_to "Job Dashboard", companies_path %> </div>
-  <div> <%= link_to "Categories", categories_path %> </div>
+  <h1>Companies</h1>
   <div> <%= link_to "Add Company", new_company_path %> </div>
 </header>
 
 <p>Click on a company below to see a list of jobs and contacts.</p>
 
-<table>
-  <% @companies.each do |company| %>
-    <tr class="company_<%= company.id %>">
-      <td><%= link_to company.name.upcase, company_path(company) %></td>
-      <td><%= link_to "EDIT", edit_company_path(company) %></td>
-      <td><%= link_to "DELETE", company_path(company), method: :delete, data: {confirm: "Are you sure you want to delete this company and all of the jobs associated?"} %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <% @companies.each do |company| %>
+      <tr class="company_<%= company.id %>">
+        <td><%= link_to company.name.upcase, company_path(company) %></td>
+        <td><%= link_to "EDIT", edit_company_path(company) %></td>
+        <td><%= link_to "DELETE", company_path(company), method: :delete, data: {confirm: "Are you sure you want to delete this company and all of the jobs associated?"} %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
