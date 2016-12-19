@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @dashboard.top_three_companies_by_interest_level.each do |company| %>
+      <% @dashboard.top_three_companies_by_interest.each do |company| %>
         <tr>
           <td><%= company.name %></td>
           <td><%= company.average_interest %></td>
@@ -32,7 +32,7 @@
       <% @dashboard.job_interest_levels.each do |interest_level| %>
         <tr>
           <td><%= interest_level %></td>
-          <td><%= @dashboard.job_count_by_interest_level(interest_level) %></td>
+          <td><%= @dashboard.job_count_by_interest(interest_level) %></td>
         </tr>
       <% end %>
   </table>

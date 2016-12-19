@@ -69,7 +69,7 @@ describe Job do
       job_3 = create(:job, level_of_interest: 40)
       job_4 = create(:job, level_of_interest: 50)
 
-      expect(Job.by_interest).to eq [job_4, job_1, job_2, job_3 ]
+      expect(Job.by_interest).to eq [job_3, job_1, job_2, job_4 ]
     end
   end
 

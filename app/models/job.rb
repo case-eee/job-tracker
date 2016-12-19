@@ -9,10 +9,18 @@ class Job < ActiveRecord::Base
   end
 
   def self.by_interest
-    order(level_of_interest: :desc)
+    order(:level_of_interest)
   end
 
   def self.in(location)
     where(city: location)
+  end
+
+  def self.locations
+    distinct.pluck(:city).sort
+  end
+
+  def self.interest_levels
+    distinct.pluck(:level_of_interest).sort
   end
 end
