@@ -1,12 +1,27 @@
 class JobsController < ApplicationController
   def index
-    @company = Company.find(params[:company_id])
-    @jobs = @company.jobs
+    @jobs_by_city = Job.all.pluck(:city)
+    if params[:sort] == "interest"
+      @all_jobs = Job.order(level_of_interest: :desc)
+      render :interest
+    elsif params[:sort] == "location"
+      @jobs_by_city = Job.order(:city)
+      render :location
+    elsif @jobs_by_city.include?(params[:sort])
+      @jobs = Job.where(city: params[:sort])
+      render :city
+    else
+      @contact = Contact.new
+      @company = Company.find(params[:company_id])
+      @jobs    = @company.jobs
+      render :index
+    end
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @job = Job.new()
+    @categories = Category.all
+    @company    = Company.find(params[:company_id])
+    @job        = Job.new()
   end
 
   def create
@@ -21,24 +36,40 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
+    @companies = Company.find(params[:company_id])
+    @job       = Job.find(params[:id])
+    @job_order = Job.find(params[:id]).order_by_time_created
+    @comment   = Comment.new
   end
 
   def edit
-    # implement on your own!
+    @categories = Category.all
+    @company    = Company.find(params[:company_id])
+    @job        = Job.find(params[:id])
   end
 
   def update
-    # implement on your own!
+    @job = Job.find(params[:id])
+    @job.update(job_params)
+    if @job.save
+      flash[:success] = "#{@job.title} updated!"
+      redirect_to company_job_path(@job.company, @job)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    # implement on your own!
+    @company        = Company.find(params[:id])
+    @job            = Job.find(params[:id])
+    @job.delete
+    flash[:success] = "#{@job.title} was successfully deleted!"
+    redirect_to company_jobs_path
   end
 
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
   end
 end

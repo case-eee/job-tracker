@@ -1,0 +1,8 @@
+<h1 class="text-center">All Jobs for <%= @jobs.first.city %></h1>
+<% @jobs.each do |job| %>
+  <li class="row jobs">
+    <div class="dashboard-data">
+      <%= job.title %>
+    </div>
+  </li>
+<% end %>

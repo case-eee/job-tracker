@@ -1,0 +1,6 @@
+<h3 class="text-center">Jobs Sorted by Location</h3>
+<% @jobs_by_city.each do |job| %>
+  <li div class="row jobs dashboard-data">
+    <%= job.title %>: <div class="pull-right"><%= link_to job.city, "/jobs?sort=#{job.city}", class: "item" %></div>
+  </li>
+<% end %>

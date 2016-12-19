@@ -1,0 +1,13 @@
+<%= form_for @contact do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :position %>
+<%= f.text_field :position %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<%= hidden_field_tag :company_id, @company.id %>
+<%= f.submit %>
+<% end %>
