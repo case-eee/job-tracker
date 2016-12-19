@@ -23,8 +23,15 @@ h1 {
 }
 
 h3 {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
   font-family: "Titillium Web";
   text-align: center;
+}
+
+.blurb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
 }
 
 .nav-item {
@@ -39,9 +46,14 @@ h3 {
   border-radius: 5px;
 }
 
+p {
+  text-align: center;
+  font-family: "Bitter";
+}
+
 a {
   font-family: "Titillium Web";
-  font-weight: 550;
+  font-weight: 650;
   font-size: 110%;
   color: black;
 }
@@ -49,4 +61,10 @@ a {
 a:hover {
   color: rgba(0, 0, 0, 0.65);
   text-decoration: none;
+}
+
+h4 {
+  text-align: center;
+  font-family: "Titillium Web";
+  font-weight: 650;
 }
