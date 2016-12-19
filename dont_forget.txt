@@ -1,21 +1,18 @@
-links to jobs by location and interest
-feature tests for comments
-analytics
-analytics tests
-DRY code for delete messages
-don't make company#show and job#index the same page?
-Extract locations into a table if there is time
-Dropdown for locations
-Order comments: last submitted should be first on the list
-refactor controllers
-fix top three companies
+What's Left?
+-feature tests for comments
+-analytics
+-analytics tests
+-DRY code for delete messages
+-don't make company#show and job#index the same page?
+-Extract locations into a table if there is time
+-Dropdown for locations
+-Order comments: last submitted should be first on the list
+-refactor controllers
+-fix top three companies
 
 
 Styling:
--add placeholders for all forms
 -format all views
-
-
 
 
 Questions for Sal and Casey:

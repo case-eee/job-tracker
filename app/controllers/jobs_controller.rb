@@ -1,4 +1,6 @@
 class JobsController < ApplicationController
+  before_action :set_company, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+
   def sort
     if params[:sort]=="location"
       @jobs_by_city = build_jobs_by_city
@@ -16,18 +18,15 @@ class JobsController < ApplicationController
   end
 
   def index
-    @company = Company.find(params[:company_id])
     @jobs = @company.jobs
     render('companies/show')
   end
 
   def new
-    @company = Company.find(params[:company_id])
     @job = @company.jobs.new
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @job = @company.jobs.create(job_params)
     if @job.save
       flash[:success] = "You added the #{@job.title} job at #{@company.name}"
@@ -38,17 +37,14 @@ class JobsController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
   end
 
   def edit
-    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     if @job.update(job_params)
       redirect_to company_job_path(@company, @job)
@@ -58,10 +54,13 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:company_id])
-    @job = Job.find( params[:id] )
+    @job = Job.find(params[:id])
     @job.destroy
     redirect_to company_path(@company)
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
   end
 
   private
