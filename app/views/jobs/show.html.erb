@@ -1,33 +1,31 @@
 <div class='container'>
-  <strong>Title:</strong> <%= @job.title %>
-</div><br>
+  <div class='col-md-4'>
+    <div class='container'>
+    <li><strong>Title:</strong> <%= @job.title %></li>
+  <br>
+    <li><strong>Category:</strong> <%= @category %></li>
+  <br>
 
-<div class='container'>
-  <strong>Category:</strong> <%= @category %>
-</div><br>
-<div class='container'>
-  <strong>Description:</strong> <%= @job.description %>
-</div><br>
+    <li><strong>Description:</strong> <%= @job.description %></li>
+  <br>
 
-<div class='container'>
-  <strong>Level of Interest:</strong> <%= @job.level_of_interest %>
-</div><br>
-<div class='container'>
-  <strong>City:</strong> <%= @job.city %>
-</div><br>
-<div class='container'>
-  <strong>Company:</strong> <%= link_to @job.company.name, company_path(@job.company) %>
-</div><b>
-<div class='container'>
-  <%= link_to 'Edit', edit_company_job_path(@job.company, @job), class: 'btn btn-warning'%>
-  <%= link_to 'Delete', company_job_path(@job.company, @job), method: :delete, data:{confirm: 'You seriously want to fire someone?'}, class: 'btn btn-danger'%>
-</div>
-
-<div class='container' class='col-md-4'>
-  <h3><%= @job.title %> Comments (<%=@job.comments.size - 1%>)</h3>
-    <%= render partial: 'jobs/comment' %>
+    <li><strong>Level of Interest:</strong> <%= @job.level_of_interest %></li>
+  <br>
+    <li><strong>City:</strong> <%= @job.city %></li>
+  <br>
+    <li><strong>Company:</strong> <%= link_to @job.company.name, company_path(@job.company) %></li>
+  <b>
+    <br>
+    <%= link_to 'Edit', edit_company_job_path(@job.company, @job), class: 'btn btn-warning'%>
+    <%= link_to 'Delete', company_job_path(@job.company, @job), method: :delete, data:{confirm: 'You seriously want to fire someone?'}, class: 'btn btn-danger'%>
   </div>
-<%= render partial: 'comments/form'%>
+</div>
+    <div class='col-md-8'>
+      <h3><%= @job.title %> Comments (<%=@job.comments.size - 1%>)</h3>
+      <%= render partial: 'jobs/comment' %>
+      <%= render partial: 'comments/form'%>
+    </div>
+  </div>
 <br>
 <br>
 <br>

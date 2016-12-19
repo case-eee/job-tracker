@@ -28,8 +28,13 @@ a:hover{
  width: 75px;
 }
 #comment-time{
-  background-color: grey;
   width: 200 px;
   height: 400 px;
-  border: 1px dotted black;
+}
+#interests{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5%;
+  border-width: thin;
+  width: 425px;
 }

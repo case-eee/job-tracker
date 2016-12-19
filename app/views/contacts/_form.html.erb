@@ -3,15 +3,15 @@
 <div class='container'>
   <%= form_for [@company, @contact] do |f| %>
   <div class='container'>
-    <%= f.label :name %>
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div><br>
   <div class='container'>
-    <%= f.label :position %>
-    <%= f.text_field :position %>
+    <%= f.label :position %><br>
+    <%= f.text_field :position, size: "30x15" %>
   </div><br>
   <div class='container'>
-    <%= f.label :email %>
+    <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div><br>
     <%= f.submit %>
