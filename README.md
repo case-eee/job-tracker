@@ -1,3 +1,12 @@
+# Questions for Sal and Casey
+  - how do we make things unique in the scope of something at the database level in the migration?
+  - how to test if something is :unique=>true on the database level?
+  - where to put the dashboard view and how to access it? It seems like the dashboard should not live in a specific controller, so how do we route to it?
+  - where to put controller logic: in ApplicationController or the Model?
+  - how to configure/set up rspec, database cleaner, capybara, factory girl in a brand new project
+  - best way to extract cities as a table and update the data
+
+
 # Job Tracker
 
 ## Learning Goals
