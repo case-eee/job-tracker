@@ -26,7 +26,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    @comment =  Comment.new
+    @comment  =  Comment.new
     @comments = @job.comments.order("created_at DESC")
   end
 
