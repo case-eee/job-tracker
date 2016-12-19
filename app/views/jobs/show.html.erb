@@ -9,6 +9,10 @@ Level of Interest: <%= @job.level_of_interest %>
 
 City: <%= @job.city %>
 <br>
+
+
+Category: <%= @job.category %>
+<br>
 </div>
 <h3><%= link_to "Delete", company_job_path(@company,@job), method: :delete, data: {confirm: "Arse you sure you want to delete this job?" } %></h3>
 <h3>Comments</h3>
