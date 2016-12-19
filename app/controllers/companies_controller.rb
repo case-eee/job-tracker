@@ -20,6 +20,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    @job = Job.new
     @contact = Contact.new
   end
 
