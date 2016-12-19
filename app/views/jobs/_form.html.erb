@@ -1,4 +1,4 @@
-<%= form_for [@company, @job] do |f| %>
+<div class="new-job" id="form"><%= form_for [@company, @job] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
 
@@ -14,6 +14,6 @@
   <%= f.text_field :city %>
 
   <%= f.submit %>
-<% end %>
+<% end %></form></div></br>
 
-<%= link_to "Create a New Category", new_category_path %>
+<div id="new-link" class="blurb"><%= link_to "Create a New Category", new_category_path %></div>
