@@ -3,12 +3,11 @@ require 'rails_helper'
 describe "User deletes existing company" do
   scenario "a user can delete a company" do
     company = Company.create(name: "ESPN")
-    visit companies_path
+    visit company_path(company)
 
-    within(".company_#{company.id}") do
-      click_link "Delete"
-    end
+    click_link "Delete"
 
     expect(page).to have_content("ESPN was successfully deleted!")
+    expect(Company.all.count).to eq(0)
   end
 end

@@ -1,12 +1,22 @@
-<strong><%= @company.name %></strong>
-All Jobs 
+<h1><strong><%= @company.name %></strong></h1>
+<br>
+<%= link_to "Edit ", edit_company_path(@company) %> | <%= link_to "Delete", company_path(@company), method: "delete" %>
+<br>
+<br>
+<h2> Active Jobs </h1>
 
 <% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
+  <ul><%= link_to job.title, company_job_path(@company, job), {:class=>"light_link"}  %></ul>
 <% end %>
+<br>
+<%= link_to "Create a #{@company.name} job", new_company_job_path(@company)%>
 
-All Contacts 
-<%= link_to "Create a contact", new_company_contact_path(@company) %>
+
+
+
+<h2> Contacts at <strong><%= @company.name %></strong></h2>
 <% @company.contacts.each do |contact| %>
- <ul><%= link_to contact.name, company_contact_path(@company, contact) %></ul>
+ <ul><%= link_to "#{contact.name} - #{contact.position}", company_contact_path(@company, contact) %></ul>
 <% end %>
+<br>
+<%= link_to "Create a #{@company.name} contact", new_company_contact_path(@company) %>

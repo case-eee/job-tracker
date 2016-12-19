@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "User edits an existing category" do
   scenario "a user can edit a category" do
     category = Category.create!(title: "HR")
-    visit categories_path
+    visit category_path(category)
     
     expect(page).to have_content("HR")
     click_on "Edit"

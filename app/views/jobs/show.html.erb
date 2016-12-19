@@ -1,36 +1,44 @@
-Title: <%= @job.title %>
+<h1><%= @job.title %> @ <%= link_to @job.company.name, company_path(@job.company) %></h1>
 <br>
-
-Description: <%= @job.description %>
-<br>
-
-Level of Interest: <%= @job.level_of_interest %>
-<br>
-
-City: <%= @job.city %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
-<br>
-
-Category: <%= link_to @job.category.title, category_path(@job.category) %>
-<br>
-
+<%= link_to 'Edit', edit_company_job_path(@company.id, @job.id) %> | 
 <%= link_to 'Delete', company_job_path(@company.id, @job.id), method: :delete %>
 <br>
-
-Tags: 
-<% @job.tags.each do |tag| %>
-  <%= link_to tag.title, tag_path(tag) %>
-<% end %>
+<h2>Description</h2> <%= @job.description %>
 <br>
 
-Comments: <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+<h2>Level of Interest</h2> <%= @job.level_of_interest %>
+<br>
+
+<h2>City</h2> <%= @job.city %>
+<br>
+
+<h2>Category</h2> <%= link_to @job.category.title, category_path(@job.category) %>
+<br>
+
+<br>
+
+<h2>Tags</h2>
+<% @job.tags.each do |tag| %>
+  <%= link_to tag.title, tag_path(tag) %>
+  <br>
+<% end %>
+<br>
+<p> click tag to add </p>
+<% @tags.each do |tag| %>
+  <%= link_to tag.title, new_tagging_path(:extra => { :tag_id => tag.id, :job_id => @job.id, :company_id => @company.id }) %>
+<% end %>
+<br>
+<%= link_to "create a tag", new_tag_path %>
+
+<h2>Comments</h2>
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
 
 <h3> Add a comment </h3>
 <%= form_for [@company, @job, @comment] do |f| %>
-  <%= f.label :content %>
+  <% f.label :content %>
   <%= f.text_field :content %>
-
+  <br>
   <%= f.submit %>
+  <br>
 <% end %>
+<br>

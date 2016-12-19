@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController  
-
+  
   def create
     company = Company.find(params[:company_id])
     job = company.jobs.find(params[:job_id])

@@ -1,5 +1,6 @@
-<h1> tags </h1>
+<h2> All tags </h2>
 <% @tags.each do |tag| %>
-  <%= link_to tag.title, tag_path(tag) %>
-  <br>
+  <ul><%= link_to "#{tag.title} (#{tag.jobs.count})", tag_path(tag), {:class=>"light_link"}   %></ul>
 <% end %>
+<br>
+<%= link_to "Create a Tag", new_tag_path %>

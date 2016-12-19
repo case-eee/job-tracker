@@ -16,7 +16,7 @@ describe "User sees one company" do
     company = Company.create!(name: "ESPN")
     visit company_path(company)
 
-    click_on "Create a contact"
+    click_on "Create a #{company.name} contact"
     expect(current_path).to eq("/companies/#{company.id}/contacts/new")
 
     fill_in "contact[name]", with: "mary"
