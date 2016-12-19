@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "When a user visits a company page and clicks on 'Edit' for the first job" do
-  it "they can edit the company" do
+  it "they can edit the job" do
     company = Company.create(name: "ESPN")
     category1 = Category.create(title: "Business")
     category2 = Category.create(title: "HR")
@@ -42,7 +42,7 @@ describe "When a user visits a company page and clicks on 'Edit' for the first j
 end
 
 describe "When a user visits a job page and clicks on 'Edit'" do
-  it "they can edit the company" do
+  it "they can edit the job" do
     company = Company.create(name: "ESPN")
     category1 = Category.create(title: "Business")
     category2 = Category.create(title: "HR")

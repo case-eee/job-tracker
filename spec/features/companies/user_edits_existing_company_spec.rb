@@ -18,3 +18,20 @@ describe "When a user visits '/companies' and clicks on 'Edit' for the first com
     expect(page).to_not have_content("ESPN")
   end
 end
+
+describe "When a user visits a company page and clicks on 'Edit'" do
+  it "they can edit the company" do
+    company = Company.create(name: "ESPN")
+    visit company_path(company)
+    click_link "Edit"
+
+    fill_in "company[name]", with: "EA Sports"
+    click_button "Submit"
+
+    expect(page).to have_content("EA Sports updated!")
+    expect(Company.count).to eql(1)
+    expect(current_path).to eq(company_path(Company.last))
+    expect(page).to have_content("EA Sports")
+    expect(page).to_not have_content("ESPN")
+  end
+end

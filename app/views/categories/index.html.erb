@@ -5,13 +5,14 @@
   <div> <%= link_to "Add Category", new_category_path %> </div>
 </header>
 
-<br />
-<br />
+<p>Click on a category below to see a list of jobs.</p>
 
-<% @categories.each do |category| %>
-  <%= link_to category.title.upcase, category_path(category) %>
-  <%= link_to "EDIT", edit_category_path(category) %>
-  <%= link_to "DELETE", category_path(category), method: :delete, data: {confirm: "Are you sure you want to delete this category?"} %>
-  <br />
-  <br />
-<% end %>
+<table>
+  <% @categories.each do |category| %>
+    <tr class="category_<%= category.id %>">
+      <td><%= link_to category.title.upcase, category_path(category) %></td>
+      <td><%= link_to "EDIT", edit_category_path(category) %></td>
+      <td><%= link_to "DELETE", category_path(category), method: :delete, data: {confirm: "Are you sure you want to delete this category?"} %></td>
+    </tr>
+  <% end %>
+</table>

@@ -55,7 +55,7 @@
 
 <% @company.contacts.each do |contact| %>
 <div class="contact-block">
-  <div>
+  <div class="contact_<%= contact.id %>">
     <%= link_to "#{contact.first_name} #{contact.last_name}", company_contact_path(@company, contact) %><br />
     <%= link_to "Edit", edit_company_contact_path(@company, contact) %>
     <%= link_to "Delete", company_contact_path(@company, contact), method: :delete, data: {confirm: "Are you sure you want to delete this contact?"} %>
