@@ -20,19 +20,16 @@ class PageSetup
   end
 
   def header_dashboard_index(header)
-    # header = init_hash(false)
     header[:title] = "Job Tracker Dashboard"
     return header
   end
 
   def header_alljobs_index(header)
-    # header = init_hash(false)
     header[:title] = "List of All Jobs"
     return header
   end
 
   def header_jobs_index(header)
-    # header = init_hash(false)
     header[:title] = "List of Available Jobs at "
     header[:show_add] = true
     header[:show_name] = true
@@ -41,7 +38,6 @@ class PageSetup
   end
 
   def header_jobs_new(header)
-    # header = init_hash(false)
     header[:title] = "Add a New Job at "
     header[:show_index] = true
     header[:show_name] = true
@@ -49,7 +45,6 @@ class PageSetup
   end
 
   def header_jobs_show(header)
-    # header = init_hash(true)
     header[:title] = "Details for "
     header[:show_add] = false
     header[:show_company_index] = false
@@ -57,7 +52,6 @@ class PageSetup
   end
 
   def header_jobs_edit(header)
-    # header = init_hash(false)
     header[:title] = "Edit Job Details"
     header[:show_index] = true
     header[:show_job] = true
@@ -75,20 +69,17 @@ class PageSetup
   end
 
   def form_jobs_new(form)
-    # form = init_hash("")
     form[:submit] = "Save Job"
     form[:show_categories] = true
     return form
   end
 
   def form_jobs_show(form)
-    # form = init_hash("")
     form[:submit_comment] = "Save Comment"
     return form
   end
 
   def form_jobs_edit(form)
-    # form = init_hash("")
     form[:submit] = "Update Job Details"
     form[:show_categories] = true
     return form

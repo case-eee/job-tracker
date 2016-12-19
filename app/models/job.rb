@@ -3,7 +3,11 @@ class Job < ActiveRecord::Base
 
   belongs_to :company
   belongs_to :category
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy do
+    def newest_first
+      order("created_at DESC")
+    end
+  end
 
   def self.count_per_level_of_interest
     results = self.all.order("level_of_interest DESC").group(:level_of_interest).count

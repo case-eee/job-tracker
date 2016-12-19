@@ -16,8 +16,6 @@ class JobsController < ApplicationController
     @categories = Category.all
     @job = Job.new()
     @page_setup = PageSetup.new(:jobs_new)
-    # @header = header(:new)
-    # @form = form(:new)
   end
 
   def create
@@ -30,8 +28,6 @@ class JobsController < ApplicationController
       @errors = @job.errors.full_messages
       @categories = Category.all
       @page_setup = PageSetup.new(:jobs_new)
-      # @header = header(:new)
-      # @form = form(:new)
       render :new
     end
   end
@@ -40,12 +36,10 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @company = Company.find(params[:company_id])
     @job_category = @job.category
-    @job_comments = @job.comments.order("created_at DESC")
+    @job_comments = @job.comments.newest_first
     @comment_count = @job_comments.count
     @comment = Comment.new
     @page_setup = PageSetup.new(:jobs_show)
-    # @header = header(:show)
-    # @form = form(:show)
   end
 
   def edit
@@ -53,8 +47,6 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @categories = Category.all
     @page_setup = PageSetup.new(:jobs_edit)
-    # @header = header(:edit)
-    # @form = form(:edit)
   end
 
   def update
@@ -69,8 +61,6 @@ class JobsController < ApplicationController
       @job = Job.find(params[:id])
       @categories = Category.all
       @page_setup = PageSetup.new(:jobs_edit)
-      # @header = header(:edit)
-      # @form = form(:edit)
       render :edit
     end
   end
@@ -85,76 +75,5 @@ class JobsController < ApplicationController
   def job_params
     params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
   end
-
-  # def header_index
-  #   header = init_hash(false)
-  #   header[:title] = "List of Available Jobs at "
-  #   header[:show_add] = true
-  #   header[:show_name] = true
-  #   header[:show_company_index] = true
-  #   return header
-  # end
-
-  # def header_show
-  #   header = init_hash(true)
-  #   header[:title] = "Details for "
-  #   header[:show_add] = false
-  #   header[:show_company_index] = false
-  #   return header
-  # end
-
-  # def header_new
-  #   header = init_hash(false)
-  #   header[:title] = "Add a New Job at "
-  #   header[:show_index] = true
-  #   header[:show_name] = true
-  #   return header
-  # end
-
-  # def header_edit
-  #   header = init_hash(false)
-  #   header[:title] = "Edit Job Details"
-  #   header[:show_index] = true
-  #   header[:show_job] = true
-  #   header[:show_name] = true
-  #   return header
-  # end
-
-  # def header(route)
-  #   return header_index if route == :index
-  #   return header_show if route == :show
-  #   return header_new if route == :new
-  #   return header_edit if route == :edit
-  # end
-
-  # def form_new
-  #   form = init_hash("")
-  #   form[:submit] = "Save Job"
-  #   form[:show_categories] = true
-  #   return form
-  # end
-
-  # def form_edit
-  #   form = init_hash("")
-  #   form[:submit] = "Update Job Details"
-  #   form[:show_categories] = true
-  #   return form
-  # end
-
-  # def form_show
-  #   form = init_hash("")
-  #   form[:submit_comment] = "Save Comment"
-  #   return form
-  # end
-
-  def form(route)
-    return form_new if route == :new
-    return form_edit if route == :edit
-    return form_show if route == :show
-  end
-
-  # def init_hash(value)
-  #   Hash.new(value)
-  # end
 
 end
