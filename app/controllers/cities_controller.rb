@@ -9,7 +9,6 @@ class CitiesController < ApplicationController
   end
 
   def show
-    binding.pry
     if params[:id].nil?
       @city = City.find(params[:id])
       render :show
@@ -19,7 +18,6 @@ class CitiesController < ApplicationController
   end
 
   def search_cities
-    binding.pry
     found = City.find_by(name: params[:id].capitalize)
     if found.nil?
       redirect_to cities_path
