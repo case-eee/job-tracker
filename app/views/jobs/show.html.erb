@@ -25,7 +25,13 @@
 <% @job.tags.each do |tag| %>
   <%= link_to tag.title, tag_path(tag) %>
   <br>
+  <span style="font-size:10px;">
+  <%= link_to "remove tag", tagging_path(:extra => { :tag_id => tag.id, :job_id => @job.id, :company_id => @company.id }), method: :delete %> 
+  </span>
+  <br>
 <% end %>
+<br>
+<br>
 <br>
 <p> click tag to add </p>
 <% @tags.each do |tag| %>

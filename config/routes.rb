@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   end
   root 'jobs#dashboard'
-  resources :taggings, only: [:new, :create]
+  resources :taggings, only: [:new, :create, :destroy]
   resources :tags
   resources :categories
   get '/dashboard' => "jobs#dashboard"
