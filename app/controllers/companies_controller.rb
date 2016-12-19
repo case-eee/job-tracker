@@ -13,13 +13,16 @@ class CompaniesController < ApplicationController
       flash[:success] = "#{@company.name} added!"
       redirect_to company_path(@company)
     else
+      @error = 'Company already exists.'
       render :new
     end
   end
 
   def show
-    company = Company.find(params[:id])
-    redirect_to company_jobs_path(company)
+    @company  = Company.find(params[:id])
+    @contacts = @company.contacts.all
+    @contact  = @company.contacts.new
+    @contact.company_id = @company.id
   end
 
   def edit
@@ -39,7 +42,7 @@ class CompaniesController < ApplicationController
 
   def destroy
     company = Company.find(params[:id])
-    company.delete
+    company.destroy
 
     flash[:success] = "#{company.name} was successfully deleted!"
     redirect_to companies_path

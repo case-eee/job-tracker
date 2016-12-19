@@ -1,0 +1,14 @@
+<% if @error %>
+  <em><strong><%= @error %></strong></em>
+<% end %>
+
+<h1>Edit <%= @category.name %></h1>
+
+<div class='container'>
+  <%= form_for @category do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name%>
+
+    <%= f.submit %>
+  <% end %>
+</div>

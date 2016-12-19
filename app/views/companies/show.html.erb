@@ -1,5 +1,25 @@
-All Jobs for <strong><%= @company.name %></strong>
+<div class='container'>
+  <h1>All Jobs for <strong><%= @company.name %></strong></h1><br>
+</div>
+<div class='container'>
+  <%= link_to 'New Job', new_company_job_path(@company), class:"btn btn-success" %>
+</div>
+<div class='container'>
+  <div  class='col-md-4'>
+    <% @company.jobs.each do |job| %>
+      <li><%= link_to job.title, company_job_path(@company, job) %></li>
+      <li>Description: <%= job.description %></li>
+      <li>Interest: <%= job.level_of_interest %></li><br>
+    <% end %>
+  </div>
 
-<% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
-<% end %>
+ <div class='col-md-4'>
+  <h3><%= @company.name %> Contacts (<%=@company.contacts.size - 1%>)</h3>
+    <%= render partial: 'companies/contacts' %>
+  </div>
+<br>
+<br>
+<div class='col-md-4'>
+  <%= render partial: 'contacts/form' %>
+</div>
+</div>

@@ -1,0 +1,40 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+body{
+  background-color: silver;
+  font-family: courier;
+}
+a{
+  font-weight: bolder;
+  color: black;
+  font-size: 22px;
+  text-decoration: none;
+}
+a:hover{
+  color: purple;
+  text-decoration: none;
+}
+#cat-job{
+  color: green;
+  font-family: fantasy;
+}
+#comps{
+  font-size: 46px;
+  font-weight: 400;
+}
+
+#picture{
+ height: 50px;
+ width: 75px;
+}
+#comment-time{
+  width: 200 px;
+  height: 400 px;
+}
+#interests{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5%;
+  border-width: thin;
+  width: 425px;
+}

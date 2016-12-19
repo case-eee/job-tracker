@@ -1,13 +1,31 @@
-Title: <%= @job.title %>
-<br>
+<div class='container'>
+  <div class='col-md-4'>
+    <div class='container'>
+    <li><strong>Title:</strong> <%= @job.title %></li>
+  <br>
+    <li><strong>Category:</strong> <%= @category %></li>
+  <br>
 
-Description: <%= @job.description %>
-<br>
+    <li><strong>Description:</strong> <%= @job.description %></li>
+  <br>
 
-Level of Interest: <%= @job.level_of_interest %>
+    <li><strong>Level of Interest:</strong> <%= @job.level_of_interest %></li>
+  <br>
+    <li><strong>City:</strong> <%= @job.city %></li>
+  <br>
+    <li><strong>Company:</strong> <%= link_to @job.company.name, company_path(@job.company) %></li>
+  <b>
+    <br>
+    <%= link_to 'Edit', edit_company_job_path(@job.company, @job), class: 'btn btn-warning'%>
+    <%= link_to 'Delete', company_job_path(@job.company, @job), method: :delete, data:{confirm: 'You seriously want to fire someone?'}, class: 'btn btn-danger'%>
+  </div>
+</div>
+    <div class='col-md-8'>
+      <h3><%= @job.title %> Comments (<%=@job.comments.size - 1%>)</h3>
+      <%= render partial: 'jobs/comment' %>
+      <%= render partial: 'comments/form'%>
+    </div>
+  </div>
 <br>
-
-City: <%= @job.city %>
 <br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<br>
