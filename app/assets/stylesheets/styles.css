@@ -1,5 +1,17 @@
 
+body {
+  background-color: #efefef;
+  color: #444444;
+}
+
 .navbar {
-  /*background-color: #092a49;*/
-  background-color: #77b4c6;
+  background-color: #ffffff;
+}
+
+a {
+  color: #ff3b3f;
+}
+
+.jumbotron {
+  background: #caebf2;
 }

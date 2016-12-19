@@ -4,6 +4,9 @@ class Job < ActiveRecord::Base
   belongs_to :category
   has_many :comments, dependent: :destroy
 
+  scope :location, -> (location) {where city: location}
+  scope :interest, -> (interest) {where(level_of_interest: nil).order('level_of_interest desc')}
+
   def self.count_by_level_of_interest
     group(:level_of_interest).count.sort_by{ |k,v| k }.reverse.to_h
   end

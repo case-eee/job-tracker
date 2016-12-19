@@ -1,11 +1,24 @@
-<h3>All Companies</h3>
+<div class='container'>
+  <h1>All Companies</h1>
+  <div class="row">
+    <div class="col-md-10">
+      <table class="table">
+        <tbody>
+          <% @companies.each do |company| %>
+            <tr>
+              <td class=company_<%= company.id %>>
+              <%= link_to company.name, company_jobs_path(company) %><br>
+              <%= link_to "Edit", edit_company_path(company) %>
+              <%= link_to "Delete", company_path(company), method: "delete" %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_jobs_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+    <div class="col-md-2">
+      <h2><%= link_to "Add a new company", new_company_path %></h2>
+    </div>
 
-<%= link_to "Add a new company", new_company_path %>
+    </div>
+  </div>

@@ -1,22 +1,65 @@
-<div class="jumbotron">
-  <h1>Welcome, Job Hunter!</h1>
+<div class="container-fluid">
+  <div class="jumbotron">
+    <h1>Welcome, Job Hunter!</h1>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Count of jobs by level of interest</h3>
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th><%= "Level of Interest" %></th>
+            <th><%= "Number of Jobs" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Job.count_by_level_of_interest.each_pair do |interest, count| %>
+          <tr>
+            <td><strong><%= interest %></strong></td>
+            <td><%= count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+    <div class="col-md-4">
+      <h3>Top 3 companies ranked by average level of interest</h3>
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th><%= "Company" %></th>
+            <th><%= "Average Level of Interest" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Company.company_average_level_of_interest_all.each_pair do |company, average| %>
+          <tr>
+            <td><strong><%= company %></strong></td>
+            <td><%= average %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+    <div class="col-md-4">
+      <h3>Job Count by location</h3>
+      <table class="table table-condensed table-striped">
+        <thead>
+          <tr>
+            <th><%= "Location (City)" %></th>
+            <th><%= "Number of Jobs" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Job.count_by_location.each_pair do |location, count| %>
+          <tr>
+            <td><strong><%= link_to location, jobs_path(:location => location) %></strong></td>
+            <td><%= count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
 </div>
-<div class="analytics">
-  <h3>Count of jobs by level of interest</h3>
-  <% Job.count_by_level_of_interest.each_pair do |interest, count| %>
-  <strong><%= interest %></strong>: <%= count %>,
-  <% end %>
-
-  <h3>Top 3 companies ranked by average level of interest</h3>
-  <% Company.company_average_level_of_interest_all.each_pair do |company, average| %>
-    <strong><%= company %></strong>: <%= average.to_i %>,
-    <% end %>
-
-  <h3>Job Count by location</h3>
-  <% Job.count_by_location.each_pair do |location, count| %>
-    <strong><%= link_to location, jobs_path(:location => location) %></strong>: <%= count %>,
-    <% end %>
-</div>
-
-<%= link_to "all jobs sorted by city", jobs_path(:sort => "location") %>
-<%= link_to "all jobs sorted by level of interest", jobs_path(:sort => "interest") %>

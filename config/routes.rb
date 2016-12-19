@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :categories, only: [:index, :new, :create, :show, :edit, :update] do
+  resources :categories, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :jobs, only: [:show]
   end
 

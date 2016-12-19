@@ -1,15 +1,33 @@
-<h3>All Jobs for <strong><%= @company.name %></strong></h3>
+<div class='container'>
+  <h1>All Jobs for <strong><%= @company.name %></strong></h1>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table">
+        <tbody>
+          <% @company.jobs.each do |job| %>
+            <tr>
+            <td class=job_<%= job.id %>><%= link_to job.title, company_job_path(@company, job) %><br>
+            <%= link_to "Edit", edit_company_job_path(@company, job) %>
+            <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-<% @company.jobs.each do |job| %>
-  <ul class=job_<%= job.id %>><%= link_to job.title, company_job_path(@company, job) %><br>
-  <%= link_to "Edit", edit_company_job_path(@company, job) %>
-  <%= link_to "Delete", company_job_path(@company, job), method: "delete" %>
-</ul>
-<% end %>
+    <div class="col-md-4">
+      <h3><%= "#{@company.name} Contacts" %></h3>
+      <%= render partial: 'companies/contact', collection: @company.contacts %>
+    </div>
+  </div>
 
-<h2><%= link_to "Add a new job", new_company_job_path(@company) %></h2>
-
-<h3>Add a New Contact</h3>
-
-<%= render partial: 'companies/contacts/form' %>
-<%= render partial: 'companies/contact', collection: @company.contacts %>
+  <div class='row'>
+    <div class="col-md-8">
+      <h3>Add a new contact</h3>
+        <%= render partial: 'companies/contacts/form' %>
+    </div>
+    <div class='col-md-4'>
+      <h2><%= link_to "Add a new job", new_company_job_path(@company) %></h2>
+    </div>
+  </div>
+</div>
