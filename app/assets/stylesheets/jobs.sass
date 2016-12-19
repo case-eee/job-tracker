@@ -1,0 +1,132 @@
+
+$main-font: 'Bitter', serif
+$body-font: 'Quicksand', sans-serif
+
+a:hover
+  text-decoration: none
+
+body
+  background: $bgdark  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, $bgdark , $bglight)
+  background: linear-gradient(to left, $bgdark  , $bglight)
+  height: 100%
+
+.update-button
+  background-color: rgba(255,255,255,0)
+  padding: 7px 15px 7px 15px
+  border: solid 2px #fff
+  font-size: 16px
+  color: #fff
+  width: 100%
+  font-family: $body-font
+
+.new-button
+  @extend .update-button
+
+.delete-button
+  background-color: rgba(255,255,255,0)
+  padding: 7px 15px 7px 15px
+  border: solid 2px #fff
+  font-size: 16px
+  color: #fff
+  width: 100%
+  font-family: $body-font
+
+.delete-button:hover
+  background-color: white
+  color: red
+  text-decoration: none
+
+.update-button:hover
+  background-color: white
+  color: #43C6AC
+  text-decoration: none
+
+p
+  font-family: $main-font
+  color: #555
+
+h1
+  font-family: $main-font
+  font-weight: 400
+  color: #fff
+  margin-bottom: 40px
+  margin-top: 40px
+  border-bottom: 2px solid #fff
+  padding-bottom: 20px
+
+h2
+  font-family: $main-font
+  font-weight: 400
+  color: #fff
+  margin-bottom: 40px
+  margin-top: 40px
+  font-size: 32px
+
+input
+  font-family: $body-font
+  font-weight: 400
+  letter-spacing: 1px
+
+select
+  font-family: $body-font
+  font-weight: 400
+  letter-spacing: 1px
+  color: #333
+
+label
+  font-family: $body-font
+  font-weight: 400
+  letter-spacing: 1px
+  color: #333
+  margin-right: 10px
+
+form
+  margin-right: auto
+  margin-left: auto
+
+.form-control
+  background-color: white
+  border-radius: 0
+  border: none
+  box-shadow: none
+
+li
+  list-style: none
+  a
+    display: inline
+
+ul
+  width: 60%
+  margin-right: auto
+  margin-left: auto
+
+.company, .category, .job, .contact, .city, .comment
+  background-color: rgba(255,255,255,0.3)
+  padding: 20px
+  margin-bottom: 10px
+  :hover
+    background-color: rgba(255,255,255,0.5)
+
+.company-name, .category-name, .job-name, .contact-name, .city-name
+  font-family: $body-font
+  font-size: 20px
+  color: #555
+  display: inline-block
+
+#job_category_id
+  @extend input
+  color: #555
+  display: inline-block
+
+.dashboard
+  padding: 10px
+
+.center
+  margin-right: auto
+  margin-left: auto
+  display: block
+
+.error
+  color: $red
+  font-family: $body-font

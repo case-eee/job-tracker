@@ -1,0 +1,10 @@
+
+<%= form_for @category do |f| %>
+  <div class="form-group">
+    <%= f.text_field :title, placeholder: "title", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Submit', class: "new-button" %>
+  </div>
+<% end %>

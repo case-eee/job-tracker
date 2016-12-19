@@ -1,13 +1,40 @@
-Title: <%= @job.title %>
-<br>
+<h2 class="text-center">Title: <%= @job.title %></h2>
+<ul>
+  <li>
+    <p>Description: <%= @job.description %></p>
+  </li>
 
-Description: <%= @job.description %>
-<br>
+  <li>
+    <p>Level of Interest: <%= @job.level_of_interest %></p>
+  </li>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
+  <li>
+    <p>City: <%= link_to @job.city, "/jobs?location=#{@job.city}" %></p>
+  </li>
 
-City: <%= @job.city %>
-<br>
+  <li>
+    <p>Company: <%= link_to @job.company.name, company_path(@job.company) %></p>
+  </li>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+  <li>
+    <%= link_to "Edit Job", edit_company_job_path(@job.company, @job), class: "update-button" %>
+    <%= link_to "Delete Job", company_job_path(@job.company, @job), method: :delete, class: "delete-button" %>
+  </li>
+
+  <li>
+    <h2 class="comments text-center"><%= @job.comments.count %> Comments</h2>
+  </li>
+
+  <li>
+    <%= form_for [ @job.company, @job, @comment ] do |f| %>
+      <div class="form-group">
+        <%= f.text_field :content, placeholder: "content", class: "form-control" %>
+      </div>
+      <%= f.submit 'Submit', class: "update-button" %>
+    <% end %>
+  </li>
+
+  <li>
+    <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+  </li>
+</ul>

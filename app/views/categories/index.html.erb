@@ -1,0 +1,18 @@
+<h1 class="text-center">All Categories</h1>
+<%= link_to "New Category", new_category_path, class: "new-button text-center" %>
+
+<ul>
+  <% @categories.each do |category| %>
+    <div class="category row">
+      <li class="category_<%= category.id %>">
+        <%= link_to "#{category.title}, #{category.jobs.count} jobs", category_path(category), class: "category-name" %>
+        <div class="pull-right">
+          <%= link_to "Edit", edit_category_path(category),
+              class: "update-button" %>
+          <%= link_to "Delete", category_path(category),
+              method: "delete", class: "delete-button" %>
+        </div>
+      </li>
+    </div>
+  <% end %>
+</ul>

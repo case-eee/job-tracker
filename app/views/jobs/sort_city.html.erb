@@ -1,0 +1,5 @@
+<h1><%= @jobs.count %> Jobs in <%= @city %></h1>
+
+<% @jobs.each do |job| %>
+<p><%= job.title %> at <%= job.company.name %></p>
+<% end %>

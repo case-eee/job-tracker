@@ -20,6 +20,7 @@ class CompaniesController < ApplicationController
   def show
     company = Company.find(params[:id])
     redirect_to company_jobs_path(company)
+    @contact = Contact.new()
   end
 
   def edit
@@ -39,12 +40,12 @@ class CompaniesController < ApplicationController
 
   def destroy
     company = Company.find(params[:id])
+    company.jobs.delete_all
     company.delete
 
     flash[:success] = "#{company.name} was successfully deleted!"
     redirect_to companies_path
   end
-
 
   private
 

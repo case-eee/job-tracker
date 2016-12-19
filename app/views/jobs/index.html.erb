@@ -1,5 +1,36 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h1 class="text-center"><%= @company.name %></h1>
+<h2 class="text-center">jobs</h2>
 
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<%= link_to "New Job", new_company_job_path(@company, @job), class: "new-button text-center" %>
+
+<ul>
+  <% @jobs.each do |job| %>
+    <div class="job row">
+      <li class="job_<%=job.id%>">
+        <%= link_to job.title, company_job_path(@company, job), class: "job-#{job.id} job-name" %>
+        <div class="pull-right">
+          <%= link_to "Delete", company_job_path(@company, job), method: :delete, class: "delete-button" %>
+          <%= link_to "Edit", edit_company_job_path(@company, job), class: "update-button" %>
+        </div>
+      </li>
+    </div>
+  <% end %>
+</ul>
+
+
+<h2 class="text-center">contacts</h2>
+
+<%= render partial: "contacts/form", locals: { contact: @contact, company: @company }%>
+
+<ul>
+  <% @company.contacts.each do |contact| %>
+    <div class="contact row">
+      <li class="contact_<%= contact.id %>">
+        <p class="contact-name"><%= contact.name %></p>
+        <div class="pull-right">
+          <%= link_to "Delete", company_contact_path(@company, contact), method: :delete, class: "delete-button" %>
+          <%= link_to "Edit", edit_company_contact_path(@company, contact), class: "update-button" %>
+        </div>
+    </div>
+  <% end %>
+</ul>

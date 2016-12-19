@@ -1,15 +1,27 @@
 <%= form_for [@company, @job] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <div class="form-group">
+  <%= f.text_field :title, class: "form-control", placeholder: :title %>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+  <div class="form-group">
+  <%= f.text_field :description, class: "form-control", placeholder: :description %>
+  </div>
 
-  <%= f.label :level_of_interest %>
-  <%= f.number_field :level_of_interest %>
+  <div class="form-group">
+  <%= f.number_field :level_of_interest, class: "form-control", placeholder: :level_of_interest %>
+  </div>
 
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+  <div class="form-group">
+  <%= f.text_field :city, class: "form-control", placeholder: :city %>
+  </div>
 
-  <%= f.submit %>
+  <div class="form-group">
+  <%= f.label :category %>
+  <%= f.collection_select(:category_id, Category.all, :id, :title, prompt: true, class: "form-control") %>
+  <%= link_to "New Category", new_category_path, class: "new-button" %>
+  </div>
+
+  <div class="form-group">
+  <%= f.submit class: "update-button" %>
+  </div>
 <% end %>
