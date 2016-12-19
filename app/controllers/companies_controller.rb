@@ -14,6 +14,7 @@ class CompaniesController < ApplicationController
       redirect_to company_path(@company)
     else
       render :new
+      @errors = @company.errors.full_messages
     end
   end
 
