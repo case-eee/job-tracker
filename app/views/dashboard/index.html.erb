@@ -5,8 +5,8 @@
 </div>
 <% @company.each do |company, number| %>
 <li class="text-center">
-  <%= "#{Company.find(company).name}'s jobs have a #{number} average level of Interest"%></li>
-</li>
+  <strong><%= "#{Company.find(company).name}'s jobs have a #{number} average level of Interest"%></strong>
+  </li>
 <% end %>
 
 
