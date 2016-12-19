@@ -9,6 +9,7 @@ body
   background: $bgdark  /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, $bgdark , $bglight)
   background: linear-gradient(to left, $bgdark  , $bglight)
+  height: 100%
 
 .update-button
   background-color: rgba(255,255,255,0)
@@ -41,16 +42,26 @@ body
   color: #43C6AC
   text-decoration: none
 
+p
+  font-family: $main-font
+  color: #555
+
 h1
   font-family: $main-font
   font-weight: 400
-  margin-right: auto
-  margin-left: auto
   color: #fff
   margin-bottom: 40px
   margin-top: 40px
   border-bottom: 2px solid #fff
   padding-bottom: 20px
+
+h2
+  font-family: $main-font
+  font-weight: 400
+  color: #fff
+  margin-bottom: 40px
+  margin-top: 40px
+  font-size: 32px
 
 input
   font-family: $body-font
@@ -90,12 +101,14 @@ ul
   margin-right: auto
   margin-left: auto
 
-.company, .category, .job, .contact
+.company, .category, .job, .contact, .city, .comment
   background-color: rgba(255,255,255,0.3)
   padding: 20px
   margin-bottom: 10px
+  :hover
+    background-color: rgba(255,255,255,0.5)
 
-.company-name, .category-name, .job-name, .contact-name
+.company-name, .category-name, .job-name, .contact-name, .city-name
   font-family: $body-font
   font-size: 20px
   color: #555
@@ -103,5 +116,17 @@ ul
 
 #job_category_id
   @extend input
-  color: $red
+  color: #555
   display: inline-block
+
+.dashboard
+  padding: 10px
+
+.center
+  margin-right: auto
+  margin-left: auto
+  display: block
+
+.error
+  color: $red
+  font-family: $body-font

@@ -1,14 +1,19 @@
-<h2><%= @category.title%></h2>
+<h2 class="text-center"><%= @category.title%></h2>
 
-<%= link_to "Edit", edit_category_path(@category),
-    class: "update-button" %>
-<%= link_to "Delete", category_path(@category),
-    method: "delete", class: "delete-button" %>
+<div class="form-group">
+  <%= link_to "Edit", edit_category_path(@category),
+      class: "update-button" %>
+</div>
+<div class="form-group">
+  <%= link_to "Delete", category_path(@category),
+      method: "delete", class: "delete-button" %>
+</div>
+
 <ul>
   <% @category.jobs.each do |job| %>
     <div class="job row">
       <li class="job_<%=job.id%>">
-        <%= link_to job.title, company_job_path(job.company, job), class: "job-#{job.id} job-name" %>
+        <%= link_to "#{job.title} at #{job.company.name}", company_job_path(job.company, job), class: "job-#{job.id} job-name" %>
       </li>
     </div>
   <% end %>

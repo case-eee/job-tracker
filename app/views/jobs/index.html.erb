@@ -1,5 +1,7 @@
-<h1><%= @company.name %></h1>
-<h2>jobs</h2>
+<h1 class="text-center"><%= @company.name %></h1>
+<h2 class="text-center">jobs</h2>
+
+<%= link_to "New Job", new_company_job_path(@company, @job), class: "new-button text-center" %>
 
 <ul>
   <% @jobs.each do |job| %>
@@ -16,7 +18,7 @@
 </ul>
 
 
-<h2>contacts</h2>
+<h2 class="text-center">contacts</h2>
 
 <%= render partial: "contacts/form", locals: { contact: @contact, company: @company }%>
 
