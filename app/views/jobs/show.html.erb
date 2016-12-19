@@ -1,7 +1,6 @@
 <h1 class="index-title"><%= @job.title %></h1>
 <div id="show" class="subtitle"><%= link_to "Edit |", edit_company_job_path(@company, @job) %>
 <%= link_to "| Delete", company_job_path(@company, @job), method: :delete, data: {confirm: "Are you sure?"} %></div>
-<div id="show"><%= link_to "See all jobs at #{@company.name}", company_jobs_path(@company)%></div>
 
 <div id="jobs-index" class="row">
   <div class="col-md-6">
