@@ -13,6 +13,7 @@ RSpec.describe Company, type: :model do
 
   context "associations" do
     it { should have_many(:jobs) }
+    it { should have_many(:contacts) }
   end
 
   it "destroys dependent jobs" do
@@ -35,6 +36,24 @@ RSpec.describe Company, type: :model do
 
     company.destroy
     expect(Job.count).to eql(0)
+  end
+
+  it "destroys dependent contacts" do
+    company = Company.create(name: "ESPN")
+    @contact1 = company.contacts.create(first_name: "Jane",
+                                          last_name: "Doe",
+                                          position: "CEO",
+                                          email: "jane@company.com")
+    @contact2 = company.contacts.create(first_name: "John",
+                                          last_name: "Smith",
+                                          position: "HR Manager",
+                                          email: "john@company.com")
+
+
+    expect(Contact.count).to eql(2)
+
+    company.destroy
+    expect(Contact.count).to eql(0)
   end
 
 end

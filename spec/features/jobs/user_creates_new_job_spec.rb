@@ -27,7 +27,7 @@ describe "When a user visits a company page and clicks on 'Add a job'" do
     expect(page).to have_content("Denver")
   end
 
-  it "they see an error message if they submit invalid data" do
+  it "they see an error message if they don't input all required fields" do
     click_button "Submit"
 
     expect(page).to have_content("Title can't be blank")

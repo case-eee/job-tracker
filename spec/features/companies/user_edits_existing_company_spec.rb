@@ -13,7 +13,7 @@ describe "When a user visits '/companies' and clicks on 'Edit' for the first com
 
     expect(page).to have_content("EA Sports updated!")
     expect(Company.count).to eql(1)
-    expect(current_path).to eq("/companies/#{Company.last.id}")
+    expect(current_path).to eq(company_path(Company.last))
     expect(page).to have_content("EA Sports")
     expect(page).to_not have_content("ESPN")
   end

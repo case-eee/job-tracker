@@ -40,11 +40,13 @@ describe Job do
   end
 
   describe "relationships" do
-    it "belongs to a company" do
+    it "belongs to a company and a category" do
       company = Company.create(name: "ESPN")
       category = Category.create(title: "Web Development")
       job = company.jobs.new(title: "Software", level_of_interest: 70, description: "Wahooo", category_id: "#{category.id}")
       expect(job).to respond_to(:company)
+      expect(job).to respond_to(:category)
+
     end
   end
 end
