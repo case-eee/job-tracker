@@ -55,7 +55,7 @@ a {
   font-family: "Titillium Web";
   font-weight: 650;
   font-size: 110%;
-  color: black;
+  color: #860200;
 }
 
 a:hover {
@@ -67,4 +67,32 @@ h4 {
   text-align: center;
   font-family: "Titillium Web";
   font-weight: 650;
+}
+
+.index-title {
+  text-align: right;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  margin-right: 35px;  
+  width: 95%;
+}
+
+#links {
+  margin-left: 5px;
+  margin-top: -10px;
+}
+
+#link {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+#jobs {
+  margin: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+}
+
+#jobs-index {
+  margin: 0 auto;
+  // width: 100px; 
 }
