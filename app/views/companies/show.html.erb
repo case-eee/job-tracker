@@ -3,3 +3,11 @@ All Jobs for <strong><%= @company.name %></strong>
 <% @company.jobs.each do |job| %>
   <ul><%= job.title %></ul>
 <% end %>
+<br>
+
+<%= link_to 'Edit', edit_company_path(@company) %>
+<%= link_to 'Delete', company_path(@company), method: :delete %>
+<br>
+<%= render partial: 'contacts/form' %>
+<h3>Contacts (<%= @company.contacts.size %>)</h3><br>
+<%= render partial: 'companies/contact', collection: @company.contacts.reverse %>

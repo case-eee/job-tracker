@@ -11,6 +11,12 @@ FactoryGirl.define do
     name      {Faker::Space.galaxy}
   end
 
+  factory :contact do 
+    name      {Faker::Name.name}
+    position  {Faker::Company.buzzword}
+    email     {Faker::Internet.email}
+  end
+
   factory :company do
     sequence :name  do |n| 
       Faker::Company.buzzword + n.to_s

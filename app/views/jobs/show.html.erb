@@ -15,8 +15,9 @@ City: <%= @job.city %>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
 <br>
-
-
+<div class='pull-right pull-top'>
+<%= link_to 'Add New Job', new_company_job_path(@company, @job), class: 'btn btn-success' %><br>
+</div>
 <%= link_to 'Edit', edit_company_job_path(@company, @job) %>
 <%= link_to 'Delete', company_job_path(@company, @job), method: :delete %>
 <br>
