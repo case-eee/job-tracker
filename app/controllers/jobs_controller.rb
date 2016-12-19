@@ -2,6 +2,7 @@ class JobsController < ApplicationController
   def index
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
+
   end
 
   def new
@@ -52,6 +53,7 @@ class JobsController < ApplicationController
     flash[:success] = "#{job.title} was successfully deleted!"
     redirect_to company_jobs_path
   end
+
 
   private
 
