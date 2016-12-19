@@ -8,7 +8,7 @@
       <% @top_three_companies.each do |company_hash| %>
         <li class="list-group-item">
           <span class="badge"><%= company_hash.values.first %></span>
-          <%= company_hash.keys.first.name %>
+          <%= link_to company_hash.keys.first.name, company_jobs_path(company_hash.keys.first) %>
         </li>
       <% end %>
     </ul>

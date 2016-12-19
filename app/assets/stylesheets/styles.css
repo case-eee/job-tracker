@@ -24,6 +24,15 @@ nav h1 {
   padding: 20px 0 15px 20px;
 }
 
+.header {
+  color: #f7f7f7;
+}
+
+.header:hover {
+  color: #92FE9D;
+  text-decoration: none;
+}
+
 .nav-links {
   float: right;
 }
