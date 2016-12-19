@@ -14,20 +14,18 @@
   <p><%= contact.full_name %>, <%= contact.position %>, <%= contact.email %></p>
 <% end %><br>
 
-<h3>Create a New Contact %></h3>
+<h3>Create a New Contact </h3>
 <br/>
 
-<%= form_for @company.contacts do |f| %>
+<%= form_for @contacts do |f| %>
   <%= f.label :full_name %>
-  <%= f.text_field :full_name %>
-
+  <%= f.text_field :full_name %><br>
+  <br/>
   <%= f.label :position %>
-  <%= f.text_field :position %>
+  <%= f.text_field :position %><br>
   <br/>
   <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= f.text_field :email %><br>
   <br/>
   <%= f.submit %>
 <% end %>
-
-<%= link_to "Add a Contact for this company", new_contact_path(@company), class: "button btn-create_new" %>
