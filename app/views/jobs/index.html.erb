@@ -23,22 +23,27 @@
   </br></br>
 
   <% if @contacts.count > 0 %>
-  <div class="contacts" >
-  <h4>Contacts:</h4>
+  <div id="contacts">
+  <div class="col-md-4" >
+  <h4 id="contacts-header">Contacts:</h4></br>
     <% @contacts.each do |contact| %>
-      <h5><%= contact.full_name %></h5>
+      <h5><strong><%= contact.full_name %></strong></h5>
       <p><%= contact.position %></p>
       <p><%= contact.email %></p>
       <%= link_to "Delete", company_contact_path(@company, contact), method: :delete, data: {confirm: "Are you sure?"} %></br></br>
     <% end %>
+    </br></br>
   <% end %>
-  </div>
+  </div></div>
 
   
   <%= render partial: "job" %>
 
-  <div class="contact-form"><h4>Create a New Contact:
-  <%= form_for([@company, @contact]) do |f| %></h4>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+  <div class="navbar-form navbar-left">
+  <div id="form" class="form-group-row">
+  <%= form_for([@company, @contact]) do |f| %>
     <%= f.label :full_name %>
     <%= f.text_field :full_name %>
 
@@ -49,5 +54,5 @@
     <%= f.email_field :email %>
 
     <%= f.submit %>
-<% end %></div>
+<% end %></div></div></div>
 <% end %>
