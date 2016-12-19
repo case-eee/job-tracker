@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_company, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   def sort
     if params[:sort]=="location"
@@ -37,15 +38,12 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find(params[:id])
   end
 
   def edit
-    @job = Job.find(params[:id])
   end
 
   def update
-    @job = Job.find(params[:id])
     if @job.update(job_params)
       redirect_to company_job_path(@company, @job)
     else
@@ -54,13 +52,16 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find(params[:id])
     @job.destroy
     redirect_to company_path(@company)
   end
 
   def set_company
     @company = Company.find(params[:company_id])
+  end
+
+  def set_job
+    @job = Job.find(params[:id])
   end
 
   private
