@@ -1,4 +1,9 @@
 <h1>All Categories</h1>
+<hr>
+<%= link_to "View Jobs Sorted by Location", "/jobs?sort=location", class: "display-item" %>
+<%= link_to "View Jobs Sorted by Level of Interest", "/jobs?sort=interest", class: "display-item" %>
+<br>
+<br>
 <div class="new-item">
   <%= link_to "New Category", new_category_path %>
 </div>
@@ -12,3 +17,4 @@
     <tr>
   <% end %>
 </table>
+
