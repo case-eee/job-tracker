@@ -8,6 +8,8 @@ describe "User sees all jobs" do
 
     visit jobs_path
 
+    save_and_open_page
+
     within("a:nth-of-type(1)") do
       job_1.title
     end

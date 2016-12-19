@@ -14,7 +14,7 @@ All Jobs for <strong><%= @company.name %></strong>
   <tbody>
     <% @company.jobs.each do |job| %>
       <tr>
-        <td><%= job.title %></td>
+        <td><%= link_to job.title, company_job_path(job.company, job) %></td>
         <td><%= job.description %></td>
         <td><%= job.level_of_interest %></td>
         <td><%= job.city %></td>
