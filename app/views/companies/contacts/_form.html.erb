@@ -8,8 +8,7 @@
   <%= f.label :email %>
   <%= f.text_field :email %>
 
-  <%= f.label :company %>
-  <%= f.text_field :company %>
+  <%= f.hidden_field :company, :value => @company.name %>
 
   <%= f.submit %>
 <% end %>

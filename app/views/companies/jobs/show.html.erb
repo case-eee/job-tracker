@@ -10,10 +10,10 @@ Level of Interest: <%= @job.level_of_interest %>
 City: <%= @job.city %>
 <br>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+Company: <%= link_to @job.company.name, company_jobs_path(@company) %>
 <br>
 
 <h3>Comments</h3>
 
 <%= render partial: 'comments/form' %>
-<%= render partial: 'jobs/comment', collection: @job.comments.order('created_at DESC') %>
+<%= render partial: 'companies/jobs/comment', collection: @job.comments.order('created_at DESC') %>
