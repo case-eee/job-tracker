@@ -3,7 +3,7 @@
 <table class = "table">
   <tr>
     <th>Title</th>
-    <th>Location(City)</th>
+    <th><%= link_to "Location(City)", "#{company_jobs_path(@company)}?sort=location" %></th>
     <th>Level Of Interest</th>
     <th>Category</th>
     <th class = "text-center" colspan = "2">Action</th>

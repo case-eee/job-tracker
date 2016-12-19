@@ -1,3 +1,5 @@
+require 'page_setup'
+
 class CommentsController < ApplicationController
   def create
     @company = Company.find(params[:company_id])
@@ -12,8 +14,9 @@ class CommentsController < ApplicationController
       @job_comments = @job.comments.order("created_at DESC")
       @comment_count = @job_comments.count
       @comment = Comment.new
-      @header = header(:jobs_show)
-      @form = form(:jobs_show)
+      @page_setup = PageSetup.new(:jobs_show)
+      # @header = header(:jobs_show)
+      # @form = form(:jobs_show)
       render "jobs/show"
     end
   end
@@ -24,29 +27,29 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content)
   end
 
-  def header_jobs_show
-    header = init_hash(true)
-    header[:title] = "Details for "
-    header[:show_add] = false
-    header[:show_company_index] = false
-    return header
-  end
+  # def header_jobs_show
+  #   header = init_hash(true)
+  #   header[:title] = "Details for "
+  #   header[:show_add] = false
+  #   header[:show_company_index] = false
+  #   return header
+  # end
 
-  def header(route)
-    return header_jobs_show if route == :jobs_show
-  end
+  # def header(route)
+  #   return header_jobs_show if route == :jobs_show
+  # end
 
-  def form_jobs_show
-    form = init_hash("")
-    form[:submit_comment] = "Save Comment"
-    return form
-  end
+  # def form_jobs_show
+  #   form = init_hash("")
+  #   form[:submit_comment] = "Save Comment"
+  #   return form
+  # end
 
-  def form(route)
-    return form_jobs_show if route == :jobs_show
-  end
+  # def form(route)
+  #   return form_jobs_show if route == :jobs_show
+  # end
 
-  def init_hash(value)
-    Hash.new(value)
-  end
+  # def init_hash(value)
+  #   Hash.new(value)
+  # end
 end
