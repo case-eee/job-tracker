@@ -8,10 +8,10 @@
         <th class = "text-center">Level Of Interest</th>
         <th class = "text-center">Number of Jobs</th>
       </tr>
-      <% @level_of_interest_counts.keys.each do |level_of_interest| %>
+      <% @level_of_interest_counts.each do |loi| %>
         <tr>
-          <td><%= level_of_interest %></td>
-          <td><%= @level_of_interest_counts[level_of_interest] %></td>
+          <td><%= loi[:level_of_interest] %></td>
+          <td><%= loi[:job_count] %></td>
         </tr>
       <% end %>
     </table>
@@ -24,10 +24,10 @@
         <th class = "text-center">Company</th>
         <th class = "text-center">Average Level Of Interest</th>
       </tr>
-      <% @companies_by_avg_loi.keys.each do |company| %>
+      <% @top_companies_by_avg_loi.each do |company| %>
         <tr>
-          <td><%= company %></td>
-          <td><%= @companies_by_avg_loi[company].to_f.round(2) %></td>
+          <td><%= link_to company[:name], company_path(company[:id]) %></td>
+          <td><%= company[:average_level_of_interest] %></td>
         </tr>
       <% end %>
     </table>
@@ -40,10 +40,10 @@
         <th class = "text-center">Location(City)</th>
         <th class = "text-center">Number of Jobs</th>
       </tr>
-      <% @city_counts.keys.each do |city| %>
+      <% @cities.each do |city| %>
         <tr>
-          <td><%= link_to city, "/jobs?location=#{city}" %></td>
-          <td><%= @city_counts[city] %></td>
+          <td><%= link_to city[:name], "/jobs?location=#{city[:name]}" %></td>
+          <td><%= city[:job_count] %></td>
         </tr>
       <% end %>
     </table>

@@ -20,4 +20,12 @@ RSpec.describe Category do
       expect(Category.count).to eq(1)
     end
   end
+
+  describe "relationships" do
+    it "has many jobs" do
+      category = Category.new(title: "Programming")
+      expect(category).to respond_to(:jobs)
+    end
+  end
+
 end

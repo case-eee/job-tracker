@@ -19,4 +19,11 @@ RSpec.describe Comment do
       expect(Comment.count).to eq(1)
     end
   end
+
+  describe "relationships" do
+    it "belongs to a job" do
+      comment = Comment.new(content: "Wahooo")
+      expect(comment).to respond_to(:job)
+    end
+  end
 end

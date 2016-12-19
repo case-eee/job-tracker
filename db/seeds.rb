@@ -18,17 +18,15 @@ COMPANIES.each do |name|
   company = Company.create!(name: name)
   puts "Created #{company.name}"
   5.times do |num|
-    company.jobs.create!(title: JOBS.sample, description: "What a great position!", level_of_interest: num + rand(100), city: CITIES.sample)
-    puts "  Created #{company.jobs[num].title}"
+    category = Category.find_by(title: CATEGORIES.sample)
+    job = Job.new
+    job.title = JOBS.sample
+    job.description = "What a great position! Random number: #{rand(100000)}"
+    job.level_of_interest = num + rand(95)
+    job.city = CITIES.sample
+    job.category = Category.new
+    job.category = category
+    job.save
+    company.jobs << job
   end
-end
-
-puts "Matching jobs with categories"
-all_jobs = Job.all
-all_jobs.each do |job|
-  category = Category.find_by(title: CATEGORIES.sample)
-  job.category = Category.new
-  job.category = category
-  job.save
-  puts "Linked job #{job.title} with category #{category.title}"
 end
