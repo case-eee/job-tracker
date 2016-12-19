@@ -1,6 +1,10 @@
-<%= form_for @company do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div style="padding-bottom: 50px">
+  <%= form_for @company do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %></p>
 
-  <%= f.submit %>
-<% end %>
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      Submit
+    <% end %>
+  <% end %>
+</div>

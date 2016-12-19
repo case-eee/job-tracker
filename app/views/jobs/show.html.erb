@@ -1,13 +1,39 @@
-Title: <%= @job.title %>
-<br>
+<div class="col-md-6">
+  <h2 class="light"><%= @job.title %></h2>
+    <h3 class="light"><strong>Description:</strong> <%= @job.description %><br>
+    <strong>Level of Interest:</strong> <%= @job.level_of_interest %><br>
+    <strong>Company:</strong> <%= link_to @job.company.name, company_path(@job.company) %><br>
+    <strong>Category:</strong> <%= link_to @job.category.title, category_path(@job.category) if @job.category %></h3>
+</div><hr>
 
-Description: <%= @job.description %>
-<br>
+<div class="col-md-6">
+  <div class="panel panel-default" style="padding-bottom: 10px">
+    <div class="panel-heading">
+      <h4>Add a comment:</h4>
+    </div>
+    <div class="panel-body">
+      <%= form_for @comment do |f| %>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
+        <%= f.text_area :content %></p>
+        <%= hidden_field(:job, :id) %>
 
-City: <%= @job.city %>
-<br>
+        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+          Create Comment
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Comments:</h4>
+    </div>
+    <% @job.comments.order_comments.each do |comment| %>
+      <div class="panel-body">
+        <h4><small><%= comment.created_at.to_date %>:</small><p><%= comment.content %></h4>
+        <%= link_to "Delete", comment_path(comment), method: :delete, class: "btn btn-danger" %><hr>
+      </div>
+    <% end %>
+  </div>
+</div>
+<img src="http://img08.deviantart.net/ddbe/i/2012/178/a/3/why_not_zoidberg__by_nogard00-d5523p1.jpg">

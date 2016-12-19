@@ -1,16 +1,18 @@
 class JobsController < ApplicationController
+  before_action :set_company, except: [:show]
+  before_action :set_job, only: [:edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :create, :edit]
+
   def index
-    @company = Company.find(params[:company_id])
-    @jobs = @company.jobs
+    @jobs = @company.jobs.all.order(interest_params)
+    @contact = Contact.new
   end
 
   def new
-    @company = Company.find(params[:company_id])
     @job = Job.new()
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @job = @company.jobs.new(job_params)
     if @job.save
       flash[:success] = "You created #{@job.title} at #{@company.name}"
@@ -22,23 +24,45 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
-    # implement on your own!
   end
 
   def update
-    # implement on your own!
+    if @job.update(job_params)
+      redirect_to company_job_path(@company, @job)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    # implement on your own!
+    @job.destroy
+    flash[:success] = "#{@job.title} was successfully deleted!"
+    redirect_to company_jobs_path
   end
 
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
+  end
+
+  def interest_params
+    return "level_of_interest" if params[:sort] == "interest"
+  end
+
+  def set_job
+    @job = @company.jobs.find(params[:id])
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 end

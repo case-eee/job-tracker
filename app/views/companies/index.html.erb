@@ -1,9 +1,17 @@
-<h3>All Companies</h3>
+<h1>All Companies</h1>
+<p><%= link_to "New Company", new_company_path %></p>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+<ul class="list-group">
+  <% @companies.each do |company| %>
+    <li class="list-group-item">
+      <div class=company_<%= company.id %>>
+        <h4 class="light">
+          <%= link_to company.name, company_path(company) %> <small class="light">(<%= company.name %>)</small>
+          <%= link_to "Edit", edit_company_path(company), :class => "btn btn-default" %>
+          <%= link_to "Delete", company_path(company), method: "delete", :class => "btn btn-danger" %>
+        </h4>
+      </div>
+    </li>
+  <% end %>
+</ul>
+<img src="http://img08.deviantart.net/ddbe/i/2012/178/a/3/why_not_zoidberg__by_nogard00-d5523p1.jpg">

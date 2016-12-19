@@ -6,11 +6,36 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="padding-top: 60px" class="text-center">
   <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: name %>
-  <% end %>
+    <%= content_tag :div, msg, class: name %>
+  <% end %>
 <%= yield %>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
 
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Job Tracker</a>
+    </div>
+
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="/categories">Categories</a></li>
+        <li><a href="/companies">Companies</a></li>
+        <li><a href="/dashboard">Analysis</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
 </body>
 </html>
+<img src="http://img08.deviantart.net/ddbe/i/2012/178/a/3/why_not_zoidberg__by_nogard00-d5523p1.jpg">

@@ -1,0 +1,57 @@
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-header">
+      <h2>Top Three Company jobs by Level of Candidate Interest: </h2>
+    </div>
+    <div class="panel-body" style="background-color: #ecffe0; text-align: left">
+      <div class="col-md-6">
+        <h4>Company</h4>
+      </div>
+      <div class="col-md-6">
+        <h4>Average Level of Interest</h4>
+      </div>
+        <% Company.top_three_by_interest.each do |company, avg_level_of_interest| %>
+          <div class="col-md-6">
+            <%= company %>
+          </div>
+          <div class="col-md-6">
+            <%= avg_level_of_interest.round(1) %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
+<img src="http://img08.deviantart.net/ddbe/i/2012/178/a/3/why_not_zoidberg__by_nogard00-d5523p1.jpg">
+
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <h2>Jobs by Location</h2>
+    <div class="panel-body" style="background-color: #e0fffb; text-align: left">
+      <% Job.jobs_by_location.each do |city, count| %>
+        <h4><%= link_to city, "/companies?location=#{city}" %>: <%= count %> jobs</h4>
+      <% end %><hr>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="panel panel-default">
+    <div class="panel-header">
+    </div>
+    <div class="panel-body"  style="background-color: #ffe0e0; text-align: left">
+      <div class="col-md-6">
+      </div>
+      <div class="col-md-6">
+      </div>
+
+      <% Job.jobs_by_level_of_interest.each do |level_of_interest, count| %>
+        <div class="col-md-6">
+          <%= level_of_interest  %>
+        </div>
+        <div class="col-md-6">
+          <%= count %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

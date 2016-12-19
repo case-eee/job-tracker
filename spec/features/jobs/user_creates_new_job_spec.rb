@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe "User creates a new job" do
   scenario "a user can create a new job" do
+    skip
     company = Company.create!(name: "ESPN")
     visit new_company_job_path(company)
 

@@ -1,0 +1,7 @@
+<h1><%= @category.title %> Jobs</h1>
+<div class="row well">
+  <% @category.jobs.each do |job| %>
+    <p><%= link_to "#{job.title} at #{job.company.name}", company_job_path(job.company, job)%></p>
+  <% end %>
+</div>
+<p><%= link_to "Back to all Categories", categories_path %></p>
