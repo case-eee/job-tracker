@@ -1,9 +1,13 @@
 Company.destroy_all
 Job.destroy_all
+Category.destroy_all
 
 COMPANIES = ["ESPN", "Aetna", "United Airlines", "Denver Public Schools", "Shopify", "Starbucks", "Pivotal Labs", "Captain U"]
 JOBS = ["Engineering", "Development", "Dev Ops", "Quality Assurance", "Teacher", "Product Manager", "Consultant", "Community Manager"]
 CITIES = ["Seattle", "Denver", "Portland", "Indianapolis", "Madison", "Orlando", "San Diego", "Austin", "Las Vegas", "Little Rock", "Boise", "Eugene", "Oakland"]
+CATEGORIES = ["Technology", "Media", "Education", "Sports", "Acting"]
+
+CATEGORIES.each { |category| Category.create!(name: category)}
 
 COMPANIES.each do |name|
   company = Company.create!(name: name)
@@ -13,3 +17,12 @@ COMPANIES.each do |name|
     puts "  Created #{company.jobs[num].title}"
   end
 end
+
+Job.all.each do |job|
+  categories = Category.all
+  j = job
+  j.category = categories.sample
+  j.save
+end
+
+

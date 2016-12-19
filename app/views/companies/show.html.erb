@@ -1,5 +1,22 @@
-All Jobs for <strong><%= @company.name %></strong>
-
-<% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
+<div class='container'>
+  <h1>
+      All Jobs for: <br> <strong><%= @company.name %></strong>
+  </h1>
+    <%= link_to 'Edit', edit_company_path(@company), class: 'btn btn-warning btn-xs' %>
+    <%= link_to 'Delete', company_path(@company), method: :delete, class: 'btn btn-danger btn-xs' %>
+</div>
+<br>
+<br>
+<div class='container well'>
+  <% @company.jobs.each do |job| %>
+    <li><%= link_to job.title, company_job_path(job.company, job) %></li>
 <% end %>
+</div>
+<br>
+
+<br>
+<div class='container well'>
+  <%= render partial: 'contacts/form' %>
+  <h3>Contacts (<%= @company.contacts.size %>)</h3><br>
+  <%= render partial: 'companies/contact', collection: @company.contacts.reverse %>
+</div>

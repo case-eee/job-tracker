@@ -1,0 +1,36 @@
+@import "bootstrap-sprockets";
+
+// add custom bootstrap stuff here before the importing of bootstrap
+
+
+@import "bootstrap";
+
+
+body{
+  background-color: lightslategrey;
+  font-family: Courier New, Courier, monospace;
+}
+
+a{
+  font-weight: bolder;
+  color: black;
+  font-size: 22px;
+  text-decoration: none;
+}
+a:hover{
+  color: purple;
+  text-decoration: none;
+}
+
+.well{
+  background: steelblue;
+}
+
+#picture{
+  height: 50px;
+  width: 75px;
+  // border: 1px solid transparent;
+  // border-radius: 50%;
+  margin: auto;
+  align: left;
+}

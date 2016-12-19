@@ -1,0 +1,16 @@
+<div class='container'>
+  <h1>List of the jobs sorted by city</h1>
+</div>
+<div class='container'>
+    
+  <ul class='list-group'>
+    <% @city_jobs.each do |city| %>
+      <li class='well'><strong><%= link_to city[0], jobs_path(:location => city[0]) %></strong><br>
+      > <%= city[1].join(', ') %>
+      </li>
+      <% end %>
+  </ul>
+</div>
+
+<br>
+<br>

@@ -1,0 +1,9 @@
+<div class='container'>
+  <h2>List of the jobs sorted by Interest</h2>
+</div>
+    <% @job_interest.sort.reverse.each do |key, value| %>
+      <div class='container well'>
+        <h3>Interest level: <%= key %></h3>
+        <li><%= link_to value[0], company_job_path(Job.link(value[0]).company, Job.link(value[0])) %></li>
+      </div>
+    <% end %>
