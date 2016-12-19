@@ -1,20 +1,4 @@
 FactoryGirl.define do
-  factory :company do
-    sequence :name do |n|
-      "Company #{n}"
-    end
-
-    factory :company_with_jobs do
-      transient do
-        jobs_count 3
-      end
-
-      after(:create) do |company, evaluator|
-        create_list(:job, evaluator.jobs_count, company: company)
-      end
-    end
-  end
-
   factory :job do
     company
 
@@ -33,6 +17,22 @@ FactoryGirl.define do
     end
 
     category
+  end
+
+  factory :company do
+    sequence :name do |n|
+      "Company #{n}"
+    end
+
+    # factory :company_with_jobs do
+    #   transient do
+    #     jobs_count 3
+    #   end
+    #
+    #   after(:create) do |company, evaluator|
+    #     create_list(:job, evaluator.jobs_count, company: company)
+    #   end
+    # end
   end
 
   factory :category do

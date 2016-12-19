@@ -9,8 +9,8 @@ describe "When a user visits '/companies' and clicks on 'Edit' for the first com
     end
 
     fill_in "company[name]", with: "EA Sports"
-    click_button "Update"
-    
+    click_button "Submit"
+
     expect(page).to have_content("EA Sports updated!")
     expect(Company.count).to eql(1)
     expect(current_path).to eq("/companies/#{Company.last.id}")
