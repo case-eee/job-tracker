@@ -1,3 +1,9 @@
-<h1>Sort</h1>
+<h1>jobs by level of interest</h1>
 
-<%= @payload %>
+<ul>
+<% @jobs.each do |job| %>
+<li>
+  <%= link_to "#{job.title}, #{job.level_of_interest}", company_job_path(job.company, job) %>
+</li>
+<% end %>
+</ul>

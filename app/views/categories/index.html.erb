@@ -5,7 +5,7 @@
   <% @categories.each do |category| %>
     <div class="category row">
       <li class="category_<%= category.id %>">
-        <%= link_to category.title, category_path(category), class: "category-name" %>
+        <%= link_to "#{category.title}, #{category.jobs.count} jobs", category_path(category), class: "category-name" %>
         <div class="pull-right">
           <%= link_to "Edit", edit_category_path(category),
               class: "update-button" %>

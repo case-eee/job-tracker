@@ -1,0 +1,9 @@
+<h1>sort by location</h1>
+
+<ul>
+  <% @cities.each do |key, value| %>
+    <li>
+      <%= link_to "#{key}, #{value}", "/jobs?location=#{key}" %>
+    </li>
+  <% end %>
+</ul>

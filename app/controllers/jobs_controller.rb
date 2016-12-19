@@ -57,10 +57,16 @@ class JobsController < ApplicationController
 
   def sort
     @payload = Job.payload
-    if Job.find_by(city: params[:sort])
+    if Job.find_by(city: params[:location])
+      @city = params[:location]
+      @jobs = Job.where(city: params[:location])
       render :sort_city
     elsif params[:sort] == "level_of_interest"
+      @jobs = @payload[:sort_by_level_of_interest]
       render :sort_interest
+    elsif params[:sort] == "location"
+      @cities = @payload[:sort_by_city]
+      render :sort_location
     else
       redirect_to dashboard_path
     end

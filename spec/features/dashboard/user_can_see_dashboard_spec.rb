@@ -12,7 +12,12 @@ describe "User can see dashboard page" do
   end
 
   scenario "user can see dashboard sorted by interest" do
-    skip
+    job1 = create(:job, city: "San Francisco" )
+    job2 = create(:job, city: "Atlanta" )
+    job3 = create(:job)
+
+    interest_levels = Job.interest_levels
+    byebug
   end
 
   scenario "user can see three top companies" do
@@ -24,6 +29,11 @@ describe "User can see dashboard page" do
   end
 
   scenario "user can see a count of jobs by location" do
-    skip
+    job3 = create(:job)
+
+    visit jobs_path("sort=location")
+
+    expect(page).to have_content("Denver")
+    expect(page).to have_content(1)
   end
 end

@@ -1,3 +1,25 @@
-<h1>Hello World</h1>
+<h1>jobs dashboard</h1>
 
-<p><%= @payload %></p>
+<h2>Top Companies by level of interest</h2>
+
+<% @payload[:top_companies].each do |key, value| %>
+<p><%= key.name %></p>
+<p>Average Level of Interest: <%= value.to_i %></p>
+<% end %>
+
+<h2>jobs by interest level</h2>
+
+<% @payload[:interest_levels].each do |key, value| %>
+  <p><%= key %></p>
+  <p><%= value %> jobs</p>
+<% end %>
+
+<h2>jobs by location</h2>
+
+<ul>
+  <% @cities.each do |key, value| %>
+    <li>
+      <%= link_to "#{key}, #{value}", "/jobs?location=#{key}" %>
+    </li>
+  <% end %>
+</ul>
