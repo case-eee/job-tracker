@@ -16,8 +16,15 @@ class PageSetup
     return header
   end
 
+  def header_alljobs_index
+    header = init_hash(false)
+    header[:title] = "List of All Jobs"
+    return header
+  end
+
   def set_header(route)
     return header_dashboard_index if route == :dashboard_index
+    return header_alljobs_index if route == :alljobs_index
   end
 
   def form(route)

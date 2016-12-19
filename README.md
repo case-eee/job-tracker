@@ -1,5 +1,11 @@
 # Job Tracker
 
+## Implementation updates
+
+* [Github repository][https://github.com/Laszlo-JFLMTCO/job-tracker]  
+* Heroku deployment: https://floating-journey-48927.herokuapp.com/
+
+
 ## Learning Goals
 
 * Use migrations to create tables with different data types including indexed foreign keys
