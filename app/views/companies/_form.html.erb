@@ -1,6 +1,6 @@
-<%= form_for @company do |f| %>
-  <%= f.label :name %>
+<div class="new-job" id="form"><%= form_for @company do |f| %>
+  <%= f.label "Name:" %>
   <%= f.text_field :name %>
 
   <%= f.submit %>
-<% end %>
+<% end %></div>
