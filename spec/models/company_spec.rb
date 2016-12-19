@@ -16,8 +16,22 @@ RSpec.describe Company, type: :model do
   end
 
   it "destroys dependent jobs" do
-    company = create(:company_with_jobs)
-    expect(Job.count).to eql(3)
+    company = Company.create(name: "ESPN")
+    category1 = Category.create(title: "Business")
+    category2 = Category.create(title: "Finance")
+    job1 = company.jobs.create(title: "CEO",
+                                description: "The boss.",
+                                level_of_interest: 2,
+                                city: "Denver",
+                                category_id: "#{category1.id}")
+    job2 = company.jobs.create(title: "Accountant",
+                                description: "Manage taxes",
+                                level_of_interest: 2,
+                                city: "Denver",
+                                category_id: "#{category2.id}")
+
+
+    expect(Job.count).to eql(2)
 
     company.destroy
     expect(Job.count).to eql(0)
