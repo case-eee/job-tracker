@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
+  root 'companies#dashboard'
+
+  get 'dashboard' => 'companies#dashboard'
+
   resources :companies do
     resources :jobs
     resources :contacts, only: [:create]
   end
 
-  resources :jobs, only: [] do
+  resources :jobs, only: [:index] do
     resources :comments, only: [:create]
   end
 

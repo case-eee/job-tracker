@@ -1,0 +1,44 @@
+<h1>Job Tracker Dashboard</h1>
+<hr>
+<div class="row">
+  <div class="col-md-4 top-three">
+    <h2>Top Three Companies by Average Level of Interest</h2>
+    <br>
+    <ul class="list-group">
+      <% @top_three_companies.each do |company_hash| %>
+        <li class="list-group-item">
+          <span class="badge"><%= company_hash.values.first %></span>
+          <%= company_hash.keys.first.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-4 level_of_interest">
+    <h2>Number of Jobs at Level of Interest</h2>
+    <br>
+    <ul class="list-group">
+      <% @jobs_by_level_of_interest.keys.each do |level| %>
+        <li class="list-group-item">
+          <span class="badge"><%= @jobs_by_level_of_interest[level] %></span>
+          <%= level %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="col-md-4 location">
+    <h2>Number of Jobs at Location</h2>
+    <br>
+    <ul class="list-group">
+      <% @jobs_by_location.keys.each do |city| %>
+        <li class="list-group-item">
+          <span class="badge"><%= @jobs_by_location[city] %></span>
+          <%= link_to city, "/jobs?location=#{city}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+</div>
