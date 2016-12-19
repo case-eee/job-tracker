@@ -2,15 +2,21 @@
 
 <div class='container'>
   <%= form_for [@company, @contact] do |f| %>
+  <div class='container'>
     <%= f.label :name %>
     <%= f.text_field :name %>
-
+  </div><br>
+  <div class='container'>
     <%= f.label :position %>
     <%= f.text_field :position %>
-
+  </div><br>
+  <div class='container'>
     <%= f.label :email %>
     <%= f.text_field :email %>
-
+  </div><br>
     <%= f.submit %>
   <% end %>
 </div>
+<br>
+<br>
+<br>

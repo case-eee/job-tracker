@@ -55,6 +55,16 @@ class JobsController < ApplicationController
     redirect_to company_jobs_path(@company)
   end
 
+  def root
+    if params[:sort] == 'location'
+      @city_jobs = Job.location
+      render :location
+    elsif params[:sort] == 'interest'
+      @job_interest = Job.job_by_level_of_interest
+      render :interest
+    end
+  end
+
   private
 
   def category
