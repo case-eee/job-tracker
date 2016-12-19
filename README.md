@@ -2,7 +2,7 @@
 
 ## Implementation updates
 
-* [Github repository][https://github.com/Laszlo-JFLMTCO/job-tracker]  
+* Github repository: https://github.com/Laszlo-JFLMTCO/job-tracker  
 * Heroku deployment: https://floating-journey-48927.herokuapp.com/
 
 
