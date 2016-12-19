@@ -1,0 +1,8 @@
+<div class="cities">
+<% @cities.each do |city| %>
+<li><%= city.name %></li>
+<li><%= city.state %></li>
+<li><%= button_to "Edit", edit_city_path(city), method: :get %></li>
+<li><%= button_to "Delete", city_path(city), method: :delete, data: {confirm: "Are you sure?"} %></li>
+<% end %>
+</div>

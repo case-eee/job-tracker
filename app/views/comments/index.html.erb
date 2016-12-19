@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <header>
+    <%= @job.title %> at <%= @job.company.name %>
+  </header>
+  <body class="job_comments">
+    <ol>
+      <% @comments.each do |comment| %>
+      <li class="content"> Content: <%= comment.content %>
+      <br class="time"> Created at: <%= comment.created_at %>
+      <br><%= link_to "Edit", edit_company_job_comment_path(@job.company, @job, comment) %>
+      <br><%= link_to "Delete", company_job_comment_path(@job.company, @job, comment), method: :delete, data: {confirm: "Are you sure?"}%></li>
+      <% end %>
+    </ol>
+  </body>
+</html>

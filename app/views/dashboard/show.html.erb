@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+  </head>
+  <header>
+    <h1>All Jobs by level of interest.</h1>
+  </header>
+  <body>
+    <ol>
+      <% @found_jobs.each do |job| %>
+      <li>Title: <%= job.title %></li>
+      <li>City: <%= job.city.name %>, <%= job.city.state %></li>
+      <li>Level of interest: <%= job.level_of_interest %></li>
+      <li><%= link_to "Check out the company", company_job_path(job.company_id, job) %></li>
+      <% end %>
+    </ol>
+  </body>
+</html>

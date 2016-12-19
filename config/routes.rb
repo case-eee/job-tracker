@@ -1,8 +1,24 @@
 Rails.application.routes.draw do
-
+  root to: "home#index"
+  resources :dashboard, only: [:index, :show]
   resources :companies do
-    resources :jobs
+    resources :contacts
+    resources :jobs do
+      resources :comments
+    end
   end
+  resources :categories
+  resources :cities
+
+  # match '/:jobs?sort=location', :controller => "cities", :action => "show"
+  get '*alias', to: redirect { |params, req|
+    sort_value = req.params[:sort]
+    if sort_value.eql?("interest")
+      "dashboard/#{sort_value}"
+    else
+      "cities/#{sort_value}"
+    end
+    }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,8 +1,11 @@
 require 'rails_helper'
 
-describe "User deletes existing company" do
+describe "company #destroy" do
+
+  before {FactoryGirl.reload}
+
   scenario "a user can delete a company" do
-    company = Company.create(name: "ESPN")
+    company = create(:company, name: "ESPN")
     visit companies_path
 
     within(".company_#{company.id}") do

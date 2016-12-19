@@ -2,4 +2,7 @@ All Jobs for <strong><%= @company.name %></strong>
 
 <% @jobs.each do |job| %>
   <ul><%= job.title %> at <%= job.company.name %></ul>
+  <ul>
+    <%= link_to "Delete", company_job_path(job.company_id, job), method: :delete, data: {confirm: "Are you sure?"}%>
+  </ul>
 <% end %>
