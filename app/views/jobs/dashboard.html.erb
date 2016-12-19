@@ -1,0 +1,40 @@
+<h1 class="title">Dashboard</h1>
+
+<div class="test">
+  <table class="table">
+    <tr><th>Level of Interest</th><th>Number of Jobs</th></tr>
+    <%= @jobs_by_interest.each do |k, v| %>
+      <tr>
+        <td> <%= k %> </td> <td> <%= v%> </td> </td> 
+      </tr
+    <% end %>
+  </table>
+
+
+  <h2>Top Companies by Interest</h2>
+  <% (@companies_by_interest.length).times do |count| %>
+    <h3><%= count+1 %>. <%= @companies_by_interest[count][0].name %> : <%= @companies_by_interest[count][1].to_f %></h3>
+  <% end %>
+<br>
+<br>
+<h2 class="new"><%= link_to "Jobs by location", "/jobs?sort=location"%></h2>
+<h2 class="new"><%= link_to "Jobs by interest", "/jobs?sort=interest"%></h2>
+<br>
+<br>
+
+
+<br>
+<h2>Number of Jobs by Interest</h2>
+
+  <table class="table">
+  <h2>Count of jobs by Location</h2>
+    <tr><th>Location</th><th>Number of Jobs</th></tr>
+    <% @jobs_by_location.each do |k, v| %>
+      <tr>
+        <td> <%= link_to k, "/jobs?location=#{k}"%> </td> <td> <%= v%> </td> </td> 
+      </tr>
+    <% end %>
+  </table>
+</div>
+  
+

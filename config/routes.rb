@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-
+  root "statics#home"
+  get "/jobs", to: "jobs#dashboard"
+  
   resources :companies do
     resources :jobs do
-      resources :comments
+      resources :comments, only: [:new, :create]
     end
+    resources :contacts, only: [:new, :create]
   end
   resources :categories
   # The priority is based upon order of creation: first created -> highest priority.

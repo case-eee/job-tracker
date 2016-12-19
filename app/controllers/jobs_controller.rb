@@ -1,7 +1,30 @@
 class JobsController < ApplicationController
+
+  def dashboard
+    if params[:sort]
+      @sort = params[:sort]
+      @jobs = Job.sort_by(@sort)
+      render :sorted_jobs
+    end
+    if params[:location]
+      @location = params[:location]
+      @jobs = Job.where(city: @location)
+      render :location
+    end
+    @jobs_by_interest = Job.count_by_interest
+    @companies_by_interest = Job.companies_by_interest
+    @jobs_by_location = Job.count_by_location
+  end
+
+  def location
+    @location = params[:location]
+  end
+
   def index
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
+    @contacts = @company.contacts.reverse
+    @contact = Contact.new
   end
 
   def new
@@ -23,6 +46,9 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @company = @job.company
+    @comments = @job.comments.reverse
+    @comment = Comment.new
+    @comment.job_id = @job.id
   end
 
   def edit
@@ -45,7 +71,7 @@ class JobsController < ApplicationController
   def destroy
     @job = Job.find(params[:id])
     @company = @job.company
-    @job.delete
+    @job.destroy
     
     flash[:success] = "#{@job.title} was successfully deleted!"
     redirect_to company_jobs_path(@company)

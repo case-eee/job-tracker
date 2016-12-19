@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+ @font-face{
+  font-family: "varsity_playbook";
+  src:url("varsity_playbook.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+ }
+
+a {
+  text-decoration: none;
+  color: black;
+}

@@ -1,0 +1,4 @@
+<h1 class="title">Jobs in <%= @location %></h1>
+<% @jobs.each do |job| %>
+  <ul><%= job.title %> at <%= job.company.name %></ul>
+<% end %>

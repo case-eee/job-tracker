@@ -27,14 +27,15 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
-    @jobs = @category.jobs
+    @jobs = Job.all
   end
 
   def update
     @category = Category.find(params[:id])
     @category.update(category_params)
-    if category.save(@category)
+    if @category.save(@category)
       flash[:success] = "#{@category.title} updated!"
+      redirect_to category_path(@category)
     else
       render :edit
     end
@@ -42,7 +43,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     category = Category.find(params[:id])
-    category.delete
+    category.destroy
 
     flash[:success] = "#{category.title} was successfully deleted!"
     redirect_to categories_path

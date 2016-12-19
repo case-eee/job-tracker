@@ -1,0 +1,42 @@
+.index_body {
+  color: black;
+  text-align: center;
+  width: 65%;
+  font-family: Verdana;
+  font-size: 20px;
+  text-decoration: none;
+list-style-type: none;
+column-count: 3;
+}
+
+.all{
+  text-align: center; 
+}
+.contact{
+  color: black;
+  text-align: center;
+  float: left;
+  margin: 20px
+}
+
+form{
+  color: black;
+}
+.new, .all {
+  font-family: Verdana;
+  font-size: 20px;
+  margin-left: 20;
+}
+
+.test{
+  float: left;
+  column-count: 3;
+}
+
+
+
+
+th, td, h2, h3 {
+  color: black;
+}
+

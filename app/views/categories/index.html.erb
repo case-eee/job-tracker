@@ -1,8 +1,11 @@
-<h1>All Categories</h1>
-<% @categories.each do |category| %>
-  <ul class=category_<%= category.id %>>
-  <%= link_to category.title, category_path(category) %>
-  <%= link_to "Edit", edit_category_path(category) %>
-  <%= link_to "Delete", category_path(category), method: "delete" %>
-  </ul>
-<% end %>
+<h1 class="title">Categories</h1>
+<h2 class="new"><%= link_to "New Category", new_category_path %></h2>
+<div class="index_body">
+  <% @categories.each do |category| %>
+    <ul class="category_object col-mid-4" >
+    <%= link_to category.title, category_path(category) %>
+    <%= link_to "Edit", edit_category_path(category) %>
+    <%= link_to "Delete", category_path(category), method: "delete" %>
+    </ul>
+  <% end %>
+</div>
