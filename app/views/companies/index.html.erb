@@ -3,7 +3,7 @@
 <% @companies.each do |company| %>
   <ul class=company_<%= company.id %>>
     <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company), class: "btn btn-edit" %>
-    <%= link_to "Delete", company_path(company), method: "delete", class: 'btn btn-delete' %>
+    <%= link_to "Edit", edit_company_path(company), class: "button btn-edit" %>
+    <%= link_to "Delete", company_path(company), method: "delete", class: 'button btn-delete' %>
   </ul>
 <% end %>

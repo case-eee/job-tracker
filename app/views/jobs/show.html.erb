@@ -1,16 +1,26 @@
-Title: <%= @job.title %>
+<h4>Title:</h4> <%= @job.title %>
 <br>
 
-Description: <%= @job.description %>
+<h4>Description:</h4> <%= @job.description %>
 <br>
 
-Level of Interest: <%= @job.level_of_interest %>
+<h4>Level of Interest:</h4> <%= @job.level_of_interest %>
 <br>
 
-City: <%= @job.city %>
+<h4>City:</h4> <%= @job.city %>
 <br>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<h4>Company:</h4> <%= link_to @job.company.name, company_path(@job.company) %><br>
 
-<%= link_to "Edit", edit_company_job_path %>
-<%= link_to "Delete", company_job_path, method: "delete" %>
+<%= render partial: 'jobs/comment', collection: @job.comments.order_comments %>
+
+<h4> Add a Comment </h4>
+<%= form_for @comment do |f| %>
+              <%= f.label :comment %>
+              <%= f.text_field :content %>
+              <%= hidden_field(:job, :id) %>
+              <%= f.submit %>
+            <% end %>
+
+<%= link_to "Edit", edit_company_job_path, class: "button btn-edit" %>
+<%= link_to "Delete", company_job_path, method: "delete", class: 'button btn-delete' %>

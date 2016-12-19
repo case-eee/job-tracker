@@ -1,0 +1,7 @@
+<h4>Add a Comment</h4>
+<%= form_for [@job.comments] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <%= f.submit %>
+<% end %>
