@@ -7,8 +7,9 @@
     <div class="card">
       <h3 class="card-header"><%= @job.title %></h3>
       <div class="card-block">
-        <h4 class="card-title"> Level of Interest: <%= @job.level_of_interest %></h4>
+        <h4 class="card-title">Company: <%=@job.company.name %></h4>
         <ul>
+          <li>Level of Interest: <%= @job.level_of_interest %></li>
           <li>City: <%= @job.city.name %></li>
           <li>Category: <%= @job.category.title %></li>
           <p class="card-text">Description: <%= @job.description %></p>

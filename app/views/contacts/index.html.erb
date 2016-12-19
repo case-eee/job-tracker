@@ -6,6 +6,7 @@
   </head>
   <header>
     <h3>Company: <%= @company.name %></h3>
+    <li><%= link_to "Add a contact", new_company_contact_path(@company) %>
   </header>
   <body>
     <table class="table table-condensed">

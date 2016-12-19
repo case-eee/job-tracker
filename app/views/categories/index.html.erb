@@ -7,7 +7,7 @@
     <h3>All Categories</h3>
     <td><%= link_to "Add a new category", new_category_path%></td>
   </header>
-  <body class="categories">
+  <body >
     <table class="table table-condensed">
       <thead>
       <tr>
@@ -17,7 +17,7 @@
         <th>Delete Company</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="categories">
       <th scope="row" id="total entries"></th>
       <% @categories.each do |category| %>
       <tr>

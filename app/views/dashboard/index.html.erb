@@ -80,7 +80,7 @@
                   <% @cities.each do |city| %>
                   <li>Name: <%= city.name %>, <%= city.state %></li>
                   <li>Jobs per city: <%= city.jobs_count %></li>
-                  <li><%= link_to "Check out the jobs", "/jobs?sort=#{city.id}" %></li>
+                  <li><%= link_to "Check out the jobs", city_path(city) %></li>
                   <% end %>
                 </ul>
                 <div class="modal-footer">

@@ -6,58 +6,28 @@
     <header>
     </header>
   </head>
-  <body id="job_create">
-    <%= form_for [@company, @job] do |f| %>
-    <% if @job.errors.any? %>
+  <body>
+    <div id="job_create">
+      <%= form_for [@company, @job] do |f| %>
+      <% if @job.errors.any? %>
     <h2><%= pluralize(@job.errors.count, "error") %> prohibited this record from being saved:</h2>
     <ul><% @job.errors.full_messages.each do |message| %>
         <li><%= message %></li>
         <% end %>
-    <% end %>
-    <form class="form-horizontal">
-      <div class="form-group">
-        <%= f.label :title %>
-        <div >
-          <%= f.text_field :title %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :description %>
-        <div >
-          <%= f.text_field :description %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :level_of_interest %>
-        <div class=>
-          <%= f.number_field :level_of_interest %>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <div class="select">
-            <label>
-              <%= f.collection_select :city_id, City.all, :id, :name %>
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <div class="select">
-            <label>
-              <%= f.collection_select :category_id, Category.all, :id, :title %>
-            </label>
-            <%= link_to "Create a new category", new_category_path %>
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </div>
       <% end %>
-    </form>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+      <%= f.label :level_of_interest %>
+      <%= f.number_field :level_of_interest %>
+      <%= f.label :city %>
+      <%= f.collection_select :city_id, City.all, :id, :name %>
+      <%= f.label :categories %>
+      <%= f.collection_select :category_id, Category.all, :id, :title %>
+      <%= f.submit %>
+      <%= link_to "Create a new category", new_category_path %>
+  <% end %>
+  </div>
   </body>
 </html>

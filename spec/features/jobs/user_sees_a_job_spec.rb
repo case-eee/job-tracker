@@ -11,6 +11,6 @@ describe "job #show" do
 
     expect(page).to have_content("ESPN")
     expect(page).to have_content("Title_1")
-    expect(page).to have_content("0")
+    expect(page).to have_content("City")
   end
 end

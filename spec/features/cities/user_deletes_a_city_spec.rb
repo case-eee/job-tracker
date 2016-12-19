@@ -8,8 +8,6 @@ describe "city #destroy" do
     visit(cities_path(City.first))
 
     click_on("Delete")
-
-    expect(page).to have_content("Denver, Colorado was successfully deleted!")
     expect(City.count).to eq(0)
   end
 end

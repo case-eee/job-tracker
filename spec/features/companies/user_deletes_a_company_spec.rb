@@ -7,11 +7,11 @@ describe "company #destroy" do
   scenario "a user can delete a company" do
     company = create(:company, name: "ESPN")
     visit companies_path
-
-    within(".company_#{company.id}") do
-      click_link "Delete"
+    expect(Company.count).to eq(1)
+    within("tbody") do
+      click_on("Delete", :match => :first)
     end
 
-    expect(page).to have_content("ESPN was successfully deleted!")
+    expect(Company.count).to eq(0)
   end
 end

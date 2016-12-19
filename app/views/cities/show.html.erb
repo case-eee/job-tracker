@@ -8,7 +8,7 @@
       <h3 class="card-header">Location: <%= @city.name %>,<%= @city.state %></h3>
       <div class="card-block">
         <h4 class="card-title"></h4>
-        <ol>
+        <ol class="city">
           <% @city.jobs.each do |job| %>
           <li><b>Job title:</b> <%= job.title%></li>
           <li><b>Company:</b> <%= link_to job.company.name, company_job_path(job.company, job) %></li>

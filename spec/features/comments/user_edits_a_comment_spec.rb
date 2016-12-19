@@ -13,9 +13,7 @@ describe "comments #edit" do
 
   scenario "the user updates a comment" do
     expect(Comment.first.content).to eq("This is comment 1!")
-
     click_on("Update")
-
     expect(Comment.first.content).to eq("This is the edited content!")
   end
 

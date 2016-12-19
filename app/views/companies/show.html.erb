@@ -6,7 +6,8 @@
   </head>
   <header>
     All Jobs for <strong><%= @company.name %></strong>
-    <%= link_to "Add a job", new_company_job_path(@company) %>
+    <br><%= link_to "Add a job", new_company_job_path(@company) %>
+    <br><%= link_to "Add a contact", new_company_contact_path(@company) %>
   </header>
   <body>
     <table class="table table-condensed">

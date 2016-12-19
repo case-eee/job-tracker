@@ -7,7 +7,7 @@
     <h3>Cities</h3>
     <%= link_to "Add a new city" , new_city_path%>
   </header>
-  <body  class="cities">
+  <body>
     <table class="table table-condensed">
       <thead>
       <tr>
@@ -17,7 +17,7 @@
         <th>Delete City</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="cities">
       <th scope="row" id="total entries"></th>
       <% @cities.each do |city| %>
       <tr>
