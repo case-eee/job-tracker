@@ -9,8 +9,22 @@ class CitiesController < ApplicationController
   end
 
   def show
-    @city = City.find(params[:id])
-    render :show
+    if params[:id].nil?
+      @city = City.find(params[:id])
+      render :show
+    else
+      search_cities
+    end
+  end
+
+  def search_cities
+    found = City.find_by(name: params[:id].capitalize)
+    if found.nil?
+      redirect_to cities_path
+    else
+      @city = found
+      render :show
+    end
   end
 
   def edit
