@@ -12,7 +12,11 @@
 <h2>City</h2> <%= @job.city %>
 <br>
 
-<h2>Category</h2> <%= link_to @job.category.title, category_path(@job.category) %>
+<h2>Category</h2> 
+<% if @job.category %>
+  <%= link_to @job.category.title, category_path(@job.category) %>
+<% else %>
+<% end %>
 <br>
 
 <br>

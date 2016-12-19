@@ -4,21 +4,23 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   attr_reader :jobs, 
+              :quotes,
               :jobs_by_location,
-              :quotes
+              :jobs_by_interest
 
   def dashboard
-    generate_params
-    generate_quotes
     @tags = Tag.all
     @locations = Job.pluck(:city).uniq
     @jobs_not_by_location = Job.group(:city).count
+    @jobs_by_interest = Job.group(:level_of_interest).count
     @company_interest = {}
     Company.all.each do |company|
       @company_interest[company.name] = company.jobs.average(:level_of_interest)
     end
-    @jobs_by_interest = Job.group(:level_of_interest).count
     @companies_by_max_interest = @company_interest.max_by(3) {|k,v|v}
+    generate_params
+    generate_quotes
+    @jobs_reference = Job.group(:level_of_interest).count
   end
 
   private
@@ -31,6 +33,9 @@ class ApplicationController < ActionController::Base
       @jobs = Job.find(@selected_jobs)
     elsif params[:extra][:location]
       @jobs_by_location = Job.where(city: params[:extra][:location])
+      @jobs = Job.all
+    elsif params[:extra][:interest]
+      @jobs_by_interest = Job.where(level_of_interest: params[:extra][:interest])
       @jobs = Job.all
     end
   end
