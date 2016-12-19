@@ -1,9 +1,11 @@
-all tests
-sad path tests
+links to jobs by location and interest
+feature tests for comments
+analytics
+analytics tests
 DRY code for delete messages
 don't make company#show and job#index the same page?
 Extract locations into a table if there is time
-Link to locations???
+Dropdown for locations
 Order comments: last submitted should be first on the list
 refactor controllers
 fix top three companies

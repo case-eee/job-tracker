@@ -1,5 +1,6 @@
+<h1>Jobs by Level of Interest</h1>
 <% @jobs_by_level_of_interest.each_pair do |interest_level, jobs| %>
-  <h1><%= interest_level %></h1>
+  <h2><%= interest_level %></h2>
   <% jobs.each do |job| %>
     <div class="job-block">
 
