@@ -1,21 +1,17 @@
 class CommentsController < ApplicationController
-  # refactor
+  before_action :set_company, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :set_job, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def index
-    @job = Job.find(params[:job_id])
-    @company = @job.company
     render('jobs/show')
   end
 
   def new
-    @job = Job.find(params[:job_id])
-    @company = @job.company
     @comment = @job.comments.new
   end
 
   def create
-    @job = Job.find(params[:job_id])
-    @company = @job.company
     @comment = @job.comments.create(comment_params)
     if @comment.save
       flash[:success] = "You created a comment for the #{@job.title} job at #{@company.name}."
@@ -26,15 +22,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @job = Job.find(params[:job_id])
-    @company = @job.company
-    @comment = Comment.find(params[:id])
   end
 
   def update
-    @job = Job.find(params[:job_id])
-    @company = @job.company
-    @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
       redirect_to company_job_comment_path(@company, @job, @comment)
     else
@@ -43,11 +33,20 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find(params[:job_id])
-    @company = @job.company
-    @comment = Comment.find(params[:id])
     @comment.delete
     redirect_to company_job_path(@company, @job)
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  def set_job
+    @job = Job.find(params[:job_id])
+  end
+
+  def set_company
+    @company = @job.company
   end
 
   private

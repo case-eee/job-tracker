@@ -1,17 +1,17 @@
 class ContactsController < ApplicationController
+  before_action :set_company
+  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+
   def index
-    @company = Company.find(params[:company_id])
     @contacts = @company.contacts
     render('companies/show')
   end
 
   def new
-    @company = Company.find(params[:company_id])
     @contact = @company.contacts.new
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @contact = @company.contacts.create(contact_params)
     if @contact.save
       flash[:success] = "You created a contact for #{@contact.first_name} #{@contact.last_name} at #{@company.name}"
@@ -22,18 +22,12 @@ class ContactsController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:company_id])
-    @contact = Contact.find(params[:id])
   end
 
   def edit
-    @company = Company.find(params[:company_id])
-    @contact = Contact.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:company_id])
-    @contact = Contact.find(params[:id])
     if @contact.update(contact_params)
       redirect_to company_contact_path(@company, @contact)
     else
@@ -42,10 +36,16 @@ class ContactsController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:company_id])
-    @contact = Contact.find( params[:id] )
     @contact.delete
     redirect_to company_path(@company)
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
+  end
+
+  def set_contact
+    @contact = Contact.find(params[:id])
   end
 
   private
