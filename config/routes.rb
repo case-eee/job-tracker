@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   resources :companies do
     resources :jobs
-    resources :contacts, only: [:create]
   end
 
+  resources :contacts, only: [:create]
   resources :jobs, only: [:show]
   resources :categories
   resources :comments, only: [:create]
