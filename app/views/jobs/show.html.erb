@@ -1,26 +1,36 @@
-Title: <%= @job.title %>
-<br>
+<div class='container'>
+  <div class='well'>
+  <h3>
+  <strong>Title: </strong><%= @job.title %>
+  <br>
 
-Category: <%= @category %>
-<br>
+  <strong>Category: </strong><%= @category %>
+  <br>
 
-Description: <%= @job.description %>
-<br>
+  <strong>Description: </strong><%= @job.description %>
+  <br>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
+  <strong>Level of Interest: </strong><%= @job.level_of_interest %>
+  <br>
 
-City: <%= @job.city %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
-<br>
-<div class='pull-right pull-top'>
-<%= link_to 'Add New Job', new_company_job_path(@company, @job), class: 'btn btn-success' %><br>
+  <strong>City: </strong><%= @job.city %>
+  <br>
+  </div>
+</h3>
+  <div>
+    <%= link_to 'Add New Job', new_company_job_path(@company, @job), class: 'btn btn-success btn-xs' %>
+    <%= link_to 'Edit', edit_company_job_path(@company, @job), class: "btn btn-warning btn-xs" %>
+    <%= link_to 'Delete', company_job_path(@company, @job), method: :delete, class: "btn btn-danger btn-xs" %>
+  </div>
 </div>
-<%= link_to 'Edit', edit_company_job_path(@company, @job) %>
-<%= link_to 'Delete', company_job_path(@company, @job), method: :delete %>
 <br>
+<div class='container well'>
+Company: <%= link_to @job.company.name, company_path(@job.company) %>
+</div>
+<br>
+<br>
+<div class='container well'>
 <%= render partial: 'comments/form' %>
 <h3>Comments (<%= @job.comments.size %>)</h3><br>
 <%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+</div>

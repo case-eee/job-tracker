@@ -7,8 +7,8 @@
 
 
 body{
-  background-color: darkslategrey;
-  font-family: courier;
+  background-color: lightslategrey;
+  font-family: Courier New, Courier, monospace;
 }
 
 a{
@@ -22,6 +22,9 @@ a:hover{
   text-decoration: none;
 }
 
+.well{
+  background: steelblue;
+}
 
 #picture{
   height: 50px;

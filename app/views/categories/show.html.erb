@@ -1,6 +1,9 @@
+<h1>
 Jobs in the <%= @category.name %> market!
+</h1>
 <br>
-<% @category.jobs.each do |job| %>
-  <li><%= link_to job.title, company_job_path(job.company, job) %> at <%= job.company.name %></li>
-
-<% end %>
+<div class='container well'>
+  <% @category.jobs.each do |job| %>
+    <li><%= link_to job.title, company_job_path(job.company, job) %> at <%= job.company.name %></li>
+  <% end %>
+</div>

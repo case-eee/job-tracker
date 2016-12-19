@@ -1,14 +1,18 @@
 <div class='container'>
-  <div class='col-md-6'>
-  <h1>Job counts of top 10 Interests</h1><br>
-  <% @interested_jobs.each do |interest, count| %>
-    <p> There are <%= count %> jobs with a level of interest of <%= interest %></p>
-  <% end %>
-  </div>
-  <div class='col-md-6'>
+  <div class='col-md-6 well'>
   <h1>Favorite 3 Companies</h1><br>
   <% @company_interests.each do |interest, company| %>
-    <p> <%= link_to company, company_path(Company.find_by(name: company)) %> has an average level of interest of:<%= interest %></p>
+    <h4>
+      <p> <%= link_to company, company_path(Company.find_by(name: company)) %> has an average level of interest of:<%= interest %></p>
+    </h4>
+  <% end %>
+  </div>
+  <div class='col-md-6 well'>
+  <h1>Jobs with highest Interest</h1><br>
+  <% @interested_jobs.each do |interest, count| %>
+    <h4>
+      <p> There are <strong><%= count %></strong> job(s) with a level of interest of <strong><%= interest %></strong></p>
+    </h4>
   <% end %>
   </div>
 </div>

@@ -3,7 +3,7 @@
   <h1>Jobs for the city of <%= @city.first.city %></h1>
 </div>
 
-<div class='container'>
+<div class='container well'>
   <% @city.each do |job| %>
     <li><%= link_to job.title, company_job_path(job.company, job) %></li>
   <% end %>
