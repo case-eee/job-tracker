@@ -11,6 +11,7 @@ class JobsController < ApplicationController
   end
 
   def create
+    @categories = Category.all
     @company = Company.find(params[:company_id])
     @job = @company.jobs.new(job_params)
     if @job.save
@@ -23,12 +24,13 @@ class JobsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @job = Job.find(params[:id])
   end
 
   def edit
     @categories = Category.all
-    @company = Company.find(params[:id])
+    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
   end
 
