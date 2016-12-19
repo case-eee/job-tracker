@@ -1,5 +1,10 @@
 All Jobs for <strong><%= @company.name %></strong>
 
 <% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
+  <ul>
+      <%= link_to "#{job.title}", company_job_path(@company, job) %>
+      <button type="button" class="btn btn-danger">
+      <%= link_to "Delete", company_job_path(job.company, job), method: "delete" %>
+      </button>
+  </ul>
 <% end %>

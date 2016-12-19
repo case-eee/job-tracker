@@ -1,12 +1,21 @@
 class JobsController < ApplicationController
+
   def index
+    if params["sort"]
+      sort
+    else
+
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
+    @contacts = Contact.all
+    @contact = Contact.new
+  end
   end
 
   def new
     @company = Company.find(params[:company_id])
-    @job = Job.new()
+    @job = Job.new
+    @categories = Category.all
   end
 
   def create
@@ -22,18 +31,39 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
-    # implement on your own!
+    @company = Company.find(params[:company_id])
+    @job = Job.find(params[:id]) # @company.jobs.where(id: params[:id])
   end
 
   def update
-    # implement on your own!
+    @job = Job.find(params[:id])
+    @company = Company.find(@job.company_id)
+    @job.update(job_params)
+    if @job.save
+      flash[:success] = "#{@job.title} updated!"
+      redirect_to company_job_path(@company, @job)
+    else
+      @error = @job.errors
+      render :edit
+    end
   end
 
   def destroy
-    # implement on your own!
+    company = Company.find(params[:company_id])
+    job = Job.find(params[:id])
+    job.delete
+
+    flash[:success] = "The #{company.name} #{job.title} position was successfully deleted!"
+    redirect_to company_jobs_path(company)
+  end
+
+  def sort
+    @sorted = Job.group(:city).count("id")
+    render :sorted
   end
 
   private

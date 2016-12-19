@@ -1,0 +1,15 @@
+<h3>Companies Dashboard</h3>
+
+<h4>Top 3 Companies by Interest:</h4>
+    <ol>
+      <% @sorted_companies.each do |company| %>
+      <li><%= company.first.name %> Averrage Interest Level: <%= company.last.to_i %></li>
+      <% end %>
+    </ol>
+
+<h4>Number of Jobs per Location</h4>
+  <ul>
+    <% @jobs_count.each do |location|%>
+    <li><%= location.first %> : <%= location.last %></li>
+    <% end %>
+  </ul>

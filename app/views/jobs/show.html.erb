@@ -1,13 +1,33 @@
-Title: <%= @job.title %>
-<br>
 
-Description: <%= @job.description %>
-<br>
+<h3>Title: <%= @job.title %></h3>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
+<h3>Description: <%= @job.description %></h3>
 
-City: <%= @job.city %>
-<br>
+<h3>Level of Interest: <%= @job.level_of_interest %></h3>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<h3>City: <%= @job.city %></h3>
+
+<h3>Company: <%= link_to @job.company.name, company_path(@job.company) %></h3>
+
+<%= form_for [@job, @comment] do |f| %>
+  <%= f.label :new_comment %>
+  <%= f.text_area :text, class: "form-control" %>
+
+  <%= f.submit %>
+<% end %>
+
+<br/>
+<h4>Comments:</h4>
+  <ul>
+    <% @job.comments.reverse.each do |comment| %>
+    <li><%= "#{comment.text}" %></li>
+    <% end%>
+  </ul>
+
+<br/>
+
+<%= link_to "Back", :back %>
+<button type="button" class="btn btn-danger">
+<%= link_to "Delete", company_job_path(@job.company, @job), method: "delete" %>
+</button>
+<%= link_to "All Companies", companies_path %>

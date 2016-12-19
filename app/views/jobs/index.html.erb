@@ -1,5 +1,42 @@
+<div class="col-md-3"></div>
+<div class="col-md-6">
 All Jobs for <strong><%= @company.name %></strong>
 
 <% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
+  <ul>
+    <li>
+      <%= link_to "#{job.title}", company_job_path(@company, job), class: "btn btn-secondary btn-md" %> at <%= job.company.name %>
+      <%= link_to "Edit", edit_company_job_path(@company, job), class: "btn btn-info btn-sm" %>
+      <%= link_to "Delete", company_job_path(@company, job), method: "delete", class: "btn btn-danger btn-sm" %>
+  </li>
+  </ul>
 <% end %>
+<br>
+<% if @contacts.count > 0 %>
+  <h3>Contacts:</h3>
+  <ul>
+    <% @contacts.each do |contact| %>
+      <li><strong>Name:</strong> <%= contact.name %>, <strong>Position:</strong> <%= contact.position %>, <strong>Email: </strong><%= contact.email %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h3>New Contact:</h3>
+<%= form_for [@company, @contact] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control"%>
+
+  <%= f.label :position %>
+  <%= f.text_field :position, class: "form-control" %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: "form-control" %>
+
+  <%= f.submit %>
+<% end %>
+
+<br>
+  <%= link_to 'Back', :back, class: "btn btn-secondary" %>
+  <%= link_to "All Companies", companies_path, class: "btn btn-primary" %>
+</div>
+<div class="col-md-3"></div>

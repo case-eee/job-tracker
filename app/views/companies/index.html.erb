@@ -1,9 +1,21 @@
-<h3>All Companies</h3>
+<div class="col-md-3">
+
+</div>
+<div class="col-md-6">
+<h2>All Companies</h2>
 
 <% @companies.each do |company| %>
   <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %><br>
+    <h3><%= link_to company.name, company_path(company) %></h3>
+    <button type="button" class="btn btn-info btn-sm">
     <%= link_to "Edit", edit_company_path(company) %>
+  </button>
+    <button type="button" class="btn btn-danger btn-sm">
     <%= link_to "Delete", company_path(company), method: "delete" %>
+  </button>
   </ul>
 <% end %>
+
+</div>
+<div class="col-md-3">
+</div>
