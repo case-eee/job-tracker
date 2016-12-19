@@ -5,10 +5,7 @@ RSpec.feature "User sees all categories" do
     category = create(:category, title: "Finance")
 
     visit categories_path
-
-    within("button:nth-of-type(2)") do
-      click_link "Delete"
-    end
+    click_link "Delete"
 
     expect(page).to have_content("Finance was successfully deleted!")
   end
@@ -17,9 +14,7 @@ RSpec.feature "User sees all categories" do
     category = create(:category)
 
     visit categories_path
-    within("button:nth-of-type(1)") do
-      click_link "Edit"
-    end
+    click_link "Edit"
 
     fill_in "category[title]", with: "Finance"
     click_button "Update"

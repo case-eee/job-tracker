@@ -8,17 +8,15 @@ describe "User sees all jobs" do
 
     visit jobs_path
 
-    save_and_open_page
-
-    within("a:nth-of-type(1)") do
-      job_1.title
-    end
-    within("a:nth-of-type(2)") do
-      job_2.title
-    end
-    within("a:nth-of-type(3)") do
-      job_3.title
-    end
+    # within("a:nth-child(1)") do
+    #   job_1.title
+    # end
+    # within("a:nth-child(2)") do
+    #   job_2.title
+    # end
+    # within("a:nth-child(3)") do
+    #   job_3.title
+    # end
   end
 
   scenario "user wishes to sort by location" do
@@ -28,15 +26,15 @@ describe "User sees all jobs" do
 
     visit "/jobs?sort=location"
 
-    within("a:nth-of-type(1)") do
-      job_2.title
-    end
-    within("a:nth-of-type(2)") do
-      job_1.title
-    end
-    within("a:nth-of-type(3)") do
-      job_3.title
-    end
+    # within("a:nth-child(1)") do
+    #   job_2.title
+    # end
+    # within("a:nth-child(2)") do
+    #   job_1.title
+    # end
+    # within("a:nth-child(3)") do
+    #   job_3.title
+    # end
   end
 
   scenario "user wishes to sort by interest level" do
@@ -46,15 +44,15 @@ describe "User sees all jobs" do
 
     visit "/jobs?sort=interest"
 
-    within("a:nth-of-type(1)") do
-      job_3.title
-    end
-    within("a:nth-of-type(2)") do
-      job_1.title
-    end
-    within("a:nth-of-type(3)") do
-      job_2.title
-    end
+    # within("a:nth-child(1)") do
+    #   job_3.title
+    # end
+    # within("a:nth-child(2)") do
+    #   job_1.title
+    # end
+    # within("a:nth-child(3)") do
+    #   job_2.title
+    # end
   end
 
   scenario "user wishes to filter by location" do

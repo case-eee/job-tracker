@@ -9,7 +9,7 @@ RSpec.feature "User enters contacts" do
     fill_in "contact[name]", with: "Testing Testing"
     fill_in "contact[position]", with: "Test Position"
     fill_in "contact[email]", with: "testing@testing.com"
-    click_button "Create"
+    click_button "Create Contact"
 
     expect(current_path).to eq(company_path(company))
     expect(page).to have_content("Testing Testing")
