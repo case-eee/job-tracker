@@ -12,4 +12,8 @@ class Job < ActiveRecord::Base
   def self.sort_by_interest
     Job.order(level_of_interest: :desc)
   end
+
+  def self.sort_by_location
+    Job.group(:city)
+  end
 end

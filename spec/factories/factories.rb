@@ -10,7 +10,7 @@ FactoryGirl.define do
     title
     description
     level_of_interest
-    city "Rochester"
+    city 
     category_id {create(:category)}
   end
 
@@ -24,6 +24,10 @@ FactoryGirl.define do
 
   sequence :title do |n|
     "Title#{n}"
+  end
+
+  sequence :city do |n|
+    "City#{n}"
   end
 
   sequence :category_title do |n|

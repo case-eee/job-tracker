@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :job_finder, only: [:show, :edit, :update, :destroy]
+  
   def index
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs
@@ -48,6 +49,17 @@ class JobsController < ApplicationController
     @job.destroy
     flash[:success] = "The #{@job.title} job located in #{@job.city} was successfully deleted!"
     redirect_to companies_path
+  end
+
+  def sort
+    @jobs = Job.all
+    if Job.sort_by_interest
+      render :sort_interest
+    elsif Job.sort_by_location
+      render :sort_location
+    else 
+      redirect_to dashboard_path
+    end
   end
 
   private

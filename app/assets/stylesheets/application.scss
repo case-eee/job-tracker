@@ -52,13 +52,27 @@
   text-align: center;
 }
 
+.well {
+  background: inherit;
+  border: 2px solid whitesmoke;
+}
+
+a {
+  color: whitesmoke
+}
+
+li.dropdown {
+  background: inherit;
+}
+
 /* ~~~~~~~ LAYOUT ~~~~~~~*/
 body {
   background: #67ffb9; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #B71652, #65FFA8);
-  background: -o-linear-gradient(right, #B71652, #65FFA8);
-  background: linear-gradient(to left, #B71652, #65FFA8); /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(right, #00cc99, #47afdb);
+  background: -o-linear-gradient(right, #00cc99, #47afdb);
+  background: linear-gradient(to left, #00cc99, #47afdb); /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: 'Taviraj', serif;
+  font-size: 18px;
       }
 
 /* ~~~~~~~ NAVIGATION ~~~~~~~*/
@@ -66,13 +80,15 @@ body {
   background-color: #222;
 }
 .navbar li {
-  color: #eee;
+  background: inherit;
+  color: whitesmoke;
   display: inline-block;
-  padding: 10px;
+  padding: 15px;
 }
 
 .navbar ul li a{
-  color: whitesmoke;
+  background: inherit;
+  color: inherit;
 }
 
 .navbar ul {
@@ -85,7 +101,7 @@ img {
 }
 
 .nav-item {
-  color: #eee;
+  color: inherit;
 }
 
 .dropdown-menu {
@@ -93,12 +109,9 @@ img {
 }
 
 a.dropdown-item {
-  color: whitesmoke;
+  color: inherit;
 }
-a.dropdown-toggle {
-  color: #65FFA8
 
-}
 /*FOOTER*/
 .footer {
   background-color: #222;
