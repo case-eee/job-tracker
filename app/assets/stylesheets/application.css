@@ -13,132 +13,25 @@
   border: 2px solid #fff;
 }
 .btn-edit:hover {
-  border: 2px solid #65FFA8;
-  color: #65FFA8;
+  border: 2px solid Teal;
+  color: Teal;
 }
 
 .btn-delete:hover {
   border: 2px solid #FF5357;
   color: #FF5357;
 }
+.btn-create_new:hover {
+  border: 2px solid orange;
+  color: orange;
+}
 
 .btn-form {
   display: inline-block;
   float: right;
 }
-
-.wrapper {
-  width: 50%;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.pagination {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.pagination .disabled {
-  color: #555;
-  padding: 3px 6px;
-}
-
-.pagination a {
-  color: #222;
-  padding: 3px 6px;
-  border: 1px solid rgba(255,255,255,0.2);
-  background-color: rgba(255,255,255,0.1);
-  border-radius: 2px;
-}
-
-.pagination .current {
-  color: #222;
-  padding: 3px 6px;
-  border: 1px solid rgba(255,255,255,0.5);
-  background-color: rgba(255,255,255,0.3);
-  border-radius: 2px;
-}
-
-.pagination a:hover {
-  border: 1px solid rgba(255,255,255,0.5);
-  background-color: rgba(255,255,255,0.3);
-  text-decoration: none;
-}
-
 /* ~~~~~~~ LAYOUT ~~~~~~~*/
 body {
   background: Gainsboro ;
 
       }
-
-/* ~~~~~~~ NAVIGATION ~~~~~~~*/
-.navbar {
-  background-color: #222;
-
-}
-.navbar li {
-  color: #eee;
-  display: inline-block;
-  padding: 10px;
-}
-
-.navbar ul li a:hover {
-  text-decoration: none;
-  color: #FF5357;
-}
-
-.navbar ul li a{
-  color: whitesmoke;
-}
-
-.navbar ul {
-  display: inline-block;
-}
-
-img {
-  display: inline-block;
-  margin: 15px;
-}
-
-.nav-item {
-  color: #eee;
-}
-
-.dropdown-menu {
-  background-color: rgba(0,0,0,0.7);
-}
-
-a.dropdown-item {
-  color: whitesmoke;
-}
-
-/*FOOTER*/
-.footer {
-  background-color: #222;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-
-/*~~~~~~~ DASHBOARDS ~~~~~~~*/
-
-.dashboard-title {
-  font-size: 36px;
-  margin: 20px 0 20px 0;
-}
-
-.dashboard-stat {
-  font-size: 25px;
-  color: white;
-}
-
-
-
-
-/*~~~~~~~~ MEDIA QUERIES ~~~~~~~~~*/
-
-  @media screen and (max-width: 993px) {
-    .wrapper {
-      width: 80%;
-    }
-  }

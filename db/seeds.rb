@@ -7,7 +7,7 @@ CITIES     = ["Seattle", "Denver", "Portland", "Indianapolis", "Madison", "Orlan
 CATEGORIES = ["Web Developer", "Analytics", "Management", "Marketing", "Civic Tech", "Public Service"]
 
 CATEGORIES.each do |title|
-  Category.create!(title: title)
+  Category.create(title: CATEGORIES.sample)
 end
 
 COMPANIES.each do |name|

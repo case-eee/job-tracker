@@ -1,0 +1,14 @@
+<h3>Create a New Contact at <%=  %></h3>
+<br/>
+<%= form_for @contact do |f| %>
+  <%= f.label :full_name %>
+  <%= f.text_field :full_name %>
+
+  <%= f.label :position %>
+  <%= f.text_field :position %>
+  <br/>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <br/>
+  <%= f.submit %>
+<% end %>
