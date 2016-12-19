@@ -20,8 +20,8 @@ describe Job do
     end
 
     context "valid attributes" do
-      it "is valid with a title and level of interest" do
-        job = Job.new(title: "Developer", level_of_interest: 40, city: "Denver")
+      it "is valid with a title, level of interest, city and category_id" do
+        job = Job.new(title: "Developer", level_of_interest: 40, city: "Denver", category_id: 100)
         expect(job).to be_valid
       end
     end
@@ -31,6 +31,43 @@ describe Job do
     it "belongs to a company" do
       job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo")
       expect(job).to respond_to(:company)
+    end
+    it "belongs to a category" do
+      job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo")
+      expect(job).to respond_to(:category)
+    end
+    it "has many comments" do
+      job = Job.new(title: "Software", level_of_interest: 70, description: "Wahooo")
+      expect(job).to respond_to(:comments)
+    end
+  end
+
+  describe "methods" do
+    it "counts number of jobs per level of interest" do
+      job1, job2 = create_list(:job, 2)
+      lois = [job1.level_of_interest, job2.level_of_interest].sort.reverse
+      
+      expect(Job.count_per_level_of_interest.count).to eq(2)
+      expect(Job.count_per_level_of_interest.first[:level_of_interest]).to eq(lois.first)
+      expect(Job.count_per_level_of_interest.last[:level_of_interest]).to eq(lois.last)
+    end
+    it "counts number of jobs per city" do
+      job1, job2, job3 = create_list(:job, 3)
+      cities = [job1.city, job2.city, job3.city].sort
+      
+      expect(Job.count_per_cities.count).to eq(3)
+      expect(Job.count_per_cities[0][:name]).to eq(cities[0])
+      expect(Job.count_per_cities[1][:name]).to eq(cities[1])
+      expect(Job.count_per_cities[2][:name]).to eq(cities[2])
+    end
+    it "returns list of jobs sorted based on level of interest in descending order" do
+      test_expression = "level_of_interest DESC"
+      job1, job2 = create_list(:job, 2)
+      lois = [job1.level_of_interest, job2.level_of_interest].sort.reverse
+      test_result = Job.sort_all(test_expression) 
+
+      expect(test_result.count).to eq(2)
+      expect(test_result.first.level_of_interest >= test_result.last.level_of_interest).to be(true)
     end
   end
 end

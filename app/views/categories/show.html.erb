@@ -1,0 +1,19 @@
+<%= render partial: "header" %>
+
+<h3>List of Jobs within this Category</h3>
+
+<table class = "table">
+  <tr>
+    <th>Title</th>
+    <th>Location(City)</th>
+    <th class = "text-center" colspan = "2">Action</th>
+  </tr>
+  <% @category_jobs.each do |category_job|%>
+    <tr>
+      <td><%= link_to category_job.title, company_job_path(category_job.company_id, category_job) %></td>
+      <td><%= category_job.city %></td>
+      <td class = "text-center"><%= link_to "Edit", edit_company_job_path(category_job.company_id, category_job), class: "btn btn-warning" %></td>
+      <td class = "text-center"><%= link_to "Delete", company_job_path(category_job.company_id, category_job), method: :delete, class: "btn btn-danger" %></td>
+    </tr>
+  <% end  %>
+</table>

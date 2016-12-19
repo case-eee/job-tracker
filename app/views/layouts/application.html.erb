@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JobTracker</title>
+  <title>Laszlo's Job Tracker</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: name %>
-  <% end %>
-<%= yield %>
+  <%= render partial: "/layouts/navbar" %>
+  <%= render partial: "/layouts/error", locals: { target: @errors} %>
+  <div class = "container">
+    <%= yield %>
+  </div>
 
+  <!-- Latest compiled and minified JavaScript 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+  <footer class = "footer-row">
+    <%= render partial: "/layouts/footer" %>
+  </footer>
 </body>
 </html>

@@ -1,5 +1,27 @@
-All Jobs for <strong><%= @company.name %></strong>
+<%= render partial: "header" %>
 
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<table class = "table">
+  <tr>
+    <th>Title</th>
+    <th><%= link_to "Location(City)", "#{company_jobs_path(@company)}?sort=location" %></th>
+    <th>Level Of Interest</th>
+    <th>Category</th>
+    <th class = "text-center" colspan = "2">Action</th>
+  </tr>
+  <% @company_jobs.each do |company_job|%>
+    <tr>
+      <td><%= link_to company_job.title, company_job_path(@company, company_job) %></td>
+      <td><%= company_job.city %></td>
+      <td><%= company_job.level_of_interest %></td>
+      <td>
+        <% if company_job.category_id %>
+          <%= link_to company_job.category.title, category_path(company_job.category_id) %>
+        <% else %>
+          No category assigned
+        <% end %>
+      </td>
+      <td class = "text-center"><%= link_to "Edit", edit_company_job_path(@company, company_job), class: "btn btn-warning" %></td>
+      <td class = "text-center"><%= link_to "Delete", company_job_path(@company, company_job), method: :delete, class: "btn btn-danger" %></td>
+    </tr>
+  <% end  %>
+</table>

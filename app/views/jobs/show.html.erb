@@ -1,13 +1,48 @@
-Title: <%= @job.title %>
-<br>
+<%= render partial: "jobs/header" %>
 
-Description: <%= @job.description %>
-<br>
-
-Level of Interest: <%= @job.level_of_interest %>
-<br>
-
-City: <%= @job.city %>
-<br>
-
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<div class = "form-group row">
+  <div class = "col-md-2 text-right">
+    <label class = "form-label">Description:</label>
+  </div>
+  <div class = "col-md-10">
+    <textarea class = "form-control" disabled ><%= @job.description %></textarea>
+  </div>
+</div>
+<div class = "form-group row">
+  <div class = "col-md-2 text-right">
+    <label>City:</label>
+  </div>
+  <div class = "col-md-10">
+    <input class = "form-control" type = "text" disabled name = "job_city" value = "<%= @job.city %>" />
+  </div>
+</div>
+<div class = "form-group row">
+  <div class = "col-md-2 text-right">
+    <label>Interest level:</label>
+  </div>
+  <div class = "col-md-10">
+    <input class = "form-control" type = "text" disabled name = "job_level_of_interest" value = "<%= @job.level_of_interest %>" />
+  </div>
+</div>
+<div class = "form-group row">
+  <div class = "col-md-2 text-right">
+    <label>Category:</label>
+  </div>
+  <div class = "col-md-10">
+    <%= link_to @job_category.title, category_path(@job_category), class: "btn btn-primary" %>
+  </div>
+</div>
+<hr>
+<div class = "col-md-offset-2 col-md-8">
+  <h3>Comments <span class="badge"><%= @comment_count %></span></h3>
+  <%= render partial: "jobs/comment_form" %>
+  <div class = "col-md-offset-2 col-md-8">
+    <% @job_comments.each do |comment| %>
+      <div class = "one-comment">
+        <p><h4><span class = "label label-default">From <%= comment.created_at %>:</span></h4></p>
+        <p><%= comment.content %></p>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>

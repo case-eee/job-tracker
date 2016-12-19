@@ -1,0 +1,51 @@
+<%= render partial: "header" %>
+
+<div id = "dashboard" class = "col-md-12 text-center">
+  <div class = "dashboard-column">
+    <h2><span class = "label label-default">Job Count by LOI</span></h2>
+    <table class = "table">
+      <tr>
+        <th class = "text-center">Level Of Interest</th>
+        <th class = "text-center">Number of Jobs</th>
+      </tr>
+      <% @level_of_interest_counts.each do |loi| %>
+        <tr>
+          <td><%= loi[:level_of_interest] %></td>
+          <td><%= loi[:job_count] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div class = "dashboard-column">
+    <h2><span class = "label label-default">Top Companies by LOI</span></h2>
+    <table class = "table">
+      <tr>
+        <th class = "text-center">Company</th>
+        <th class = "text-center">Average Level Of Interest</th>
+      </tr>
+      <% @top_companies_by_avg_loi.each do |company| %>
+        <tr>
+          <td><%= link_to company[:name], company_path(company[:id]) %></td>
+          <td><%= company[:average_level_of_interest] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  
+  <div class = "dashboard-column">
+    <h2><span class = "label label-default">Jobs by Location</span></h2>
+    <table class = "table">
+      <tr>
+        <th class = "text-center">Location(City)</th>
+        <th class = "text-center">Number of Jobs</th>
+      </tr>
+      <% @cities.each do |city| %>
+        <tr>
+          <td><%= link_to city[:name], "/jobs?location=#{city[:name]}" %></td>
+          <td><%= city[:job_count] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<%= render partial: "header" %>
+
+<table class = "table">
+  <tr>
+    <th>Title</th>
+    <th class = "text-center" colspan = "2">Action</th>
+  </tr>
+  <% @categories.each do |category|%>
+    <tr>
+      <td><%= link_to category.title, category_path(category) %></td>
+      <td class = "text-center"><%= link_to "Edit", edit_category_path(category), class: "btn btn-warning" %></td>
+      <td class = "text-center"><%= link_to "Delete", category_path(category), method: :delete, class: "btn btn-danger" %></td>
+    </tr>
+  <% end  %>
+</table>

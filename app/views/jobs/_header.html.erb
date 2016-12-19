@@ -1,0 +1,28 @@
+<h1><%= @page_setup.header[:title] %>
+  <% if @page_setup.header[:show_job]%>
+    <span class="label label-default header-highlight">
+      <%= @job.title %>
+    </span>at 
+  <% end %>
+  <% if @page_setup.header[:show_name]%>  
+    <span class="label label-default header-highlight">
+      <%= @company.name %>
+    </span>
+  <% end %>
+  <% if @page_setup.header[:show_add]%>
+    <%= link_to "Add a Job", new_company_job_path, class: "btn btn-default" %>
+  <% end %>
+  <% if @page_setup.header[:show_edit]%>
+    <%= link_to "Edit Job Details", edit_company_job_path(@company, @job), class: "btn btn-warning" %>
+  <% end %>
+  <% if @page_setup.header[:show_delete]%>
+    <%= link_to "Delete Job", company_job_path(@company, @job), method: :delete, class: "btn btn-danger" %>
+  <% end %>
+</h1>
+
+<% if @page_setup.header[:show_index]%>
+  <p><%= link_to "Back to Job List", company_jobs_path, class: "btn btn-primary btn-xs" %></p>
+<% end %>
+<% if @page_setup.header[:show_company_index]%>
+  <p><%= link_to "Back to Company Details", company_path(@company), class: "btn btn-primary btn-xs" %></p>
+<% end %>
