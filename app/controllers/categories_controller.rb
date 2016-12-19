@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
   def destroy
     title = @category.title
     @category.destroy
-    flash[:deleted] = "The opportunity to be a #{title} has been destroyed forever in the fires of Mt. Doom." 
+    flash[:deleted] = "That category has been destroyed forever in the fires of Mt. Doom." 
     redirect_to categories_path
   end
 
