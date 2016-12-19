@@ -1,5 +1,17 @@
 <h1>jobs dashboard</h1>
 
+<div class="row">
+  <div class="col-md-4 dashboard">
+    <%= link_to "jobs by location", "/jobs?sort=location" %>
+  </div>
+  <div class="col-md-4 dashboard">
+    <%= link_to "jobs by interest level", "/jobs?sort=interest" %>
+  </div>
+  <div class="col-md-4 dashboard">
+    <%= link_to "jobs in Denver", "/jobs?location=Denver" %>
+  </div>
+</div>
+
 <h2>Top Companies by level of interest</h2>
 
 <% @payload[:top_companies].each do |key, value| %>

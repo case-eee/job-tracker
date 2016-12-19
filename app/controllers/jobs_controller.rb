@@ -61,7 +61,7 @@ class JobsController < ApplicationController
       @city = params[:location]
       @jobs = Job.where(city: params[:location])
       render :sort_city
-    elsif params[:sort] == "level_of_interest"
+    elsif params[:sort] == "interest"
       @jobs = @payload[:sort_by_level_of_interest]
       render :sort_interest
     elsif params[:sort] == "location"
