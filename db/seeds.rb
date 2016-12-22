@@ -1,3 +1,4 @@
+require 'faker'
 Company.destroy_all
 Job.destroy_all
 Category.destroy_all
