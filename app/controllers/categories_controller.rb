@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  
+
 before_action :require_logged_in
 
   def index
@@ -22,16 +22,26 @@ before_action :require_logged_in
   end
 
   def edit
-    @category = Category.find(params[:id])
+    user = User.find(session[:user_id])
+    if user.admin.eql?(1)
+      @category = Category.find(params[:id])
+    else
+      flash[:error] = "You are not authorized to view this page"
+      render file: 'public/404.html.erb'
+    end
   end
 
   def update
     @category = Category.find(params[:id])
-    if @category.update(category_params)
+    user = User.find(session[:user_id])
+    if @category.update(category_params) && user.admin.eql?(1)
       flash[:success] = "You updated #{@category.title}"
       redirect_to category_path(@category)
-    else
+    elsif user.admin.eql?(1)
       render :edit
+    else
+      flash[:error] = "You are not authorized to view this page"
+      render file: 'public/404.html.erb'
     end
   end
 
@@ -46,10 +56,16 @@ before_action :require_logged_in
   end
 
   def destroy
-    category = Category.find(params[:id])
-    category = category.destroy
-    flash[:success] = "#{category.title} was successfully deleted!"
-    redirect_to categories_path
+    user = User.find(session[:user_id])
+    if user.admin.eql?(1)
+      category = Category.find(params[:id])
+      category = category.destroy
+      flash[:success] = "#{category.title} was successfully deleted!"
+      redirect_to categories_path
+    else
+      flash[:error] = "You are not authorized to view this page"
+      render file: 'public/404.html.erb'
+    end
   end
 
   private

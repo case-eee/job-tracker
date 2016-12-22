@@ -13,8 +13,8 @@ RSpec.configure do |config|
   end
 
   config.before :each do
-    FactoryGirl.reload
     DatabaseCleaner.start
+    FactoryGirl.reload
   end
 
   config.after :each do
