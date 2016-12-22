@@ -1,3 +1,5 @@
+ <div class="form-group">
+
  <% if @category.errors.any? %>
     <h2><%= pluralize(@category.errors.count, "error") %> prohibited this record from being saved:</h2>
     <ul>
@@ -13,3 +15,4 @@
 
   <%= f.submit %>
 <% end %>
+</div>
