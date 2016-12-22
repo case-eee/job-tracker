@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-  </head>
-  <header>
-    <% if @company.errors.any? %>
-    <h2><%= pluralize(@company.errors.count, "error") %> prohibited this record from being saved:</h2>
-    <ul><% @company.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
+<h2>
+  <% if @company.errors.any? %>
+  <h2><%= pluralize(@company.errors.count, "error") %> prohibited this record from being saved:</h2>
+  <ul><% @company.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
-  </header>
-  <body>
-    <%= form_for @company do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <% end %>
+  </h2>
+<div>
+  <%= form_for @company do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
 
-    <%= f.submit %>
-    <% end %>
-  </body>
-</html>
+  <%= f.submit %>
+  <% end %>
+</div>

@@ -1,36 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Companies</title>
-  </head>
-  <header>
-    <h3>All Companies</h3>
-    <td><%= link_to "Add a new company", new_company_path%></td>
-  </header>
-  <body>
-    <table class="table table-condensed">
-      <thead>
-      <tr>
-        <th>Company Name</th>
-        <th>Job Count</th>
-        <th>Contacts</th>
-        <th>Edit Company</th>
-        <th>Delete Company</th>
-      </tr>
-    </thead>
-    <tbody>
-      <th scope="row" id="total entries"></th>
-      <% @companies.each do |company| %>
-      <tr>
-        <td><%= link_to company.name, company_path(company) %></td>
-        <td><%= company.jobs.count %></td>
-        <td><%= link_to "Contacts", company_contacts_path(company) %></td>
-        <td><%= link_to "Edit", edit_company_path(company) %></td>
-        <td><%= link_to "Delete", company_path(company), method: "delete" %></td>
-      </tr>
-      <% end %>
-    </tbody>
+<h2>
+  <h3>All Companies</h3>
+  <td><%= link_to "Add a new company", new_company_path%></td>
+</h2>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Company Name</th>
+      <th>Job Count</th>
+      <th>Contacts</th>
+      <th>Edit Company</th>
+      <th>Delete Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    <th scope="row" id="total entries"></th>
+    <% @companies.each do |company| %>
+    <tr>
+      <td><%= link_to company.name, company_path(company) %></td>
+      <td><%= company.jobs.count %></td>
+      <td><%= link_to "Contacts", company_contacts_path(company) %></td>
+      <td><%= link_to "Edit", edit_company_path(company) %></td>
+      <td><%= link_to "Delete", company_path(company), method: "delete" %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
-  </body>
-</html>

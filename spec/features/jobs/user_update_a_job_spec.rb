@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe "job #edit" do
 
-  before {FactoryGirl.reload}
+  before do
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
+  end
 
   it "a user can update a job" do
     company = create(:company_jobs)

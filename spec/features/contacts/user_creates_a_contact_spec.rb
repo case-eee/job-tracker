@@ -2,7 +2,8 @@ require "rails_helper"
 
 describe "contacts #index" do
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     create(:company, name: "Yeti")
     visit(new_company_contact_path(Company.first))
   end

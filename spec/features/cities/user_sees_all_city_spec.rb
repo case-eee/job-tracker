@@ -3,7 +3,8 @@ require "rails_helper"
 describe "city #index" do
 
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     create_list(:city,5)
     visit("/cities")
   end
@@ -25,7 +26,9 @@ end
 
 describe "the user can interact with the buttons" do
   before do
-    FactoryGirl.create_list(:city,5)
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
+    create_list(:city,5)
     visit("/cities")
   end
 

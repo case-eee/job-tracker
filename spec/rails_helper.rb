@@ -10,6 +10,7 @@ require 'shoulda/matchers'
 require 'capybara/rails'
 require 'pry'
 require 'support/factory_girl'
+require 'rack_session_access/capybara'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

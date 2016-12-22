@@ -2,7 +2,8 @@ require "rails_helper"
 
 describe "comments #new" do
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     @job = create(:job)
     visit(new_company_job_comment_path(@job.company, @job))
     fill_in "comment[content]", with: "Maybe not!"

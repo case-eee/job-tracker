@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-
+before_action :require_logged_in
   def index
     @company = Company.find(params[:company_id])
     @jobs = @company.jobs

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe "When user visits the category show page" do
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     @category = create(:category_jobs)
     visit(category_path(@category))
   end
@@ -18,7 +19,7 @@ describe "When user visits the category show page" do
     @category.jobs.each do |job|
       expect(page).to have_link(job.title)
     end
-    expect(@category.jobs.count).to eq(5) 
+    expect(@category.jobs.count).to eq(5)
   end
 
 end

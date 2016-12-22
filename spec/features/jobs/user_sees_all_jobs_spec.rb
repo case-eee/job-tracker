@@ -3,7 +3,8 @@ require 'rails_helper'
 describe "job #index" do
 
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     @company = create(:company_jobs)
     visit company_path(@company)
   end
