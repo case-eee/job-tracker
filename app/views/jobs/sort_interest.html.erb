@@ -1,0 +1,14 @@
+<hr>
+<div class="row">
+  <div class="col-md-3 col-md-offset-1 text-center well">
+    <table class="level_of_interest table">
+     <th>Job Titles</th><th>Interest Level</th>
+      <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.title %></td>
+        <td><%= job.level_of_interest %></td>
+      </tr>     
+      <% end %>
+    </table>
+  </div>
+

@@ -1,0 +1,10 @@
+ <div class="col-md-3 col-md-offset-1 text-center well">
+    <h3>Jobs in Each Location</h3>
+    <% if self.count_by_location %>
+      <ul class="by_location list-unstyled">
+         <li><%= <% Job.order(:city) %></li>
+       <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

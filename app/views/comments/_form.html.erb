@@ -1,0 +1,10 @@
+<div class="form-group">
+<h3>Post a Comment for this Job</h3>
+<%= form_for [@comment] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= hidden_field_tag :job_id, @job.id %>
+  
+  <%= f.submit %>
+<% end %>
+</div>

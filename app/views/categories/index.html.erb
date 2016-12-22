@@ -1,0 +1,19 @@
+<div class="col-md-6 col-md-offset-1 text-center well">
+
+<h3>All Categories</h3>
+
+<% @categories.each do |category| %>
+  <div class=category_<%= category.id %>>
+    <h4><%= link_to category.title, category_path(category) %></h4>
+    <br/>
+    <div class="button btn">
+      <div class="button btn btn-update"><%= link_to "Edit", edit_category_path(category) %></div>
+      <br/>
+      <div class="button btn btn-delete"><%= link_to "Delete", category_path(category), method: "delete" %></div>
+    </div>
+  </div>
+<% end %>
+</div>
+<div class="col-md-3 col-md-offset-1 text-center well">
+<h4><%= link_to "Add a New Category", new_category_path %></h4>
+</div>

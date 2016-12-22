@@ -1,4 +1,5 @@
-Title: <%= @job.title %>
+<div class="form-group">
+<h3>Title: <%= @job.title %></h3>
 <br>
 
 Description: <%= @job.description %>
@@ -11,3 +12,17 @@ City: <%= @job.city %>
 <br>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
+
+<br/>
+<div class="button btn btn-update"><%= link_to "Edit", edit_company_job_path(@job.company_id, @job) %></div>
+<br/>
+<div class="button btn btn-Delete"><%= link_to "Delete", company_job_path(@job.company_id, @job), method: "delete", data: {confirm: "Confirm Deleting This Job" }%></div>
+
+<br/>
+<%= render partial: 'comments/form' %>
+<br/>
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse_chronological %>
+<br/>
+</br>
+</div>
+<%= link_to "Back to All Companies", companies_path %>

@@ -1,5 +1,7 @@
-All Jobs for <strong><%= @company.name %></strong>
+<div class="col-md-6 col-md-offset-1 text-center well">
 
+All Jobs for <strong><%= @company.name %></strong>
 <% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
+  <h4><%= job.title %> at <%= job.company.name %></h4>
 <% end %>
+</div>

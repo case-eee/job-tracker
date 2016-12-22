@@ -1,5 +1,32 @@
-All Jobs for <strong><%= @company.name %></strong>
+<div class="form-group">
+  <h1>All Jobs for <%= @company.name %></h1>
 
-<% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
-<% end %>
+  <% @company.jobs.each do |job| %>
+    <ul>
+      <li><%= link_to job.title, company_job_path(@company, job) %></li> <div class="button btn">
+      <div class="button btn-update"><%= link_to "Edit Job", edit_company_job_path(@company, job) %></div>
+      <br/>
+      <div class="button btn-delete"><%= link_to "Delete Job", company_job_path(@company, job), method: "delete" %></div>
+    </div>
+    </ul>
+  <% end %>
+  <% @company.contacts.each do |contact| %>
+    <li><%= contact.full_name %>    <%= contact.position %>    <%= contact.email %></li>
+  <% end %>
+  <br/>
+  <div class="button btn">
+    <div class="button btn-update"><%= link_to "Add Job for this Company", new_company_job_path(@company) %></div>
+  </div>
+  <br/>
+  <div class="button btn">
+    <div class="button btn-update"><%= link_to "Edit Company", edit_company_path(@company) %></div>
+  </div>
+  <br/>
+  <div class="button btn">
+    <div class="button btn-delete"><%= link_to "Delete Company", company_path(@company), method: "delete", data: {confirm: "Confirm deleting this company."} %></div>
+  </div>
+  <br/>
+  <%= render partial: '/contacts/form' %>
+  <br/>
+</div>
+<%= link_to "All Companies", companies_path %>
