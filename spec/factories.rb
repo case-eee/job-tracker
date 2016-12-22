@@ -30,6 +30,7 @@ FactoryGirl.define do
     category
     company
     city
+    user
   end
 
   factory :category do

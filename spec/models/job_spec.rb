@@ -28,5 +28,9 @@ describe Job do
     context "has many comments" do
       it {should have_many(:comments)}
     end
+
+    context "has many users" do
+      it {should belong_to(:user)}
+    end
   end
 end
