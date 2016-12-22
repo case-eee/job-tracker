@@ -9,7 +9,7 @@ describe "user logins into an account" do
   scenario "after logging in  the user should be redirected to their page" do
     fill_in("User Name", with: "Mr. Beans")
     fill_in("Password", with: "franklin")
-    within(".login_form") do
+    within("#login_form") do
       click_on("Login")
     end
 

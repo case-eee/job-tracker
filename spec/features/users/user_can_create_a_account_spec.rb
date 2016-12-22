@@ -23,6 +23,6 @@ describe "user creates an account" do
 
     expect(page).to have_current_path(user_path(user))
     expect(page).to have_content("Welcome #{user.user_name}!")
-    expect(page).to have_content("You've successfully created an account!")
+    expect(page).to have_content("Welcome to Job Tracker Welcome Mr. Beans!")
   end
 end

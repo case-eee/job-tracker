@@ -10,7 +10,7 @@ describe "user logs out of their account" do
   scenario "after logging out the user should be redirected to the root" do
     click_on("Logout")
 
-    expect(page).to have_content("You have successfully logged out!")
+    expect(page).to have_content("Welcome to Job Tracker")
     expect(page).to have_current_path(root_path)
   end
 end
