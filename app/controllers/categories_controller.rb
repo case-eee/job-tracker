@@ -1,11 +1,19 @@
 class CategoriesController < ApplicationController
+  
 before_action :require_logged_in
+
   def index
     @categories = Category.all
   end
 
   def new
-    @category = Category.new
+    user = User.find(session[:user_id])
+    if user.admin.eql?(1)
+      @category = Category.new
+    else
+      flash[:error] = "You are not authorized to view this page"
+      render file: 'public/404.html.erb'
+    end
   end
 
   def show
