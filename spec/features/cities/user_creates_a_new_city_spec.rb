@@ -3,12 +3,8 @@ require "rails_helper"
 describe "city #new" do
 
   before do
-    user = create(:user)
-    page.set_rack_session(user_id: user.id)
-    visit("/cities/new")
-    fill_in("Name", with: "Denver")
-    fill_in("State", with: "Colorado")
-    click_button("Create")
+    logged_as_user
+    visit_new_city_path_and_create_new_city
   end
 
   scenario "the user can create a new city" do

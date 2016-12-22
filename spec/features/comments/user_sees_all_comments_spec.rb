@@ -1,13 +1,13 @@
 require "rails_helper"
 
 describe "comments #index" do
+  
   before do
-    user = create(:user)
-    page.set_rack_session(user_id: user.id)
-    @job = create(:job)
-    @job.comments << create_list(:comment,5)
+    logged_as_user
+    @job = create_jobs_with_comments
     visit(company_job_comments_path(@job.company, @job))
   end
+
   it "should display all comments related to job to the user" do
     @job.comments.each do |comment|
       expect(page.body).to have_content(comment.content)

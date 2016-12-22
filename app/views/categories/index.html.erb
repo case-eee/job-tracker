@@ -16,7 +16,7 @@
     <% @categories.each do |category| %>
     <tr>
       <td><%= category.title %></td>
-      <td><%= category.jobs.count %></td>
+      <td><%= link_to category.jobs.count, category_path(category) %></td>
       <td><%= button_to "Edit", edit_category_path(category), method: :get %></td>
       <td><%= button_to "Delete", category_path(category), method: :delete, data: {confirm: "Are you sure?"} %></td>
     </tr>

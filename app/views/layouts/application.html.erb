@@ -18,12 +18,12 @@
     <div class="container">
       <% if session[:user_id].nil? %>
       <ul class="nav navbar-nav">
-        <h3><li><a href="/">Welcome to Job Tracker</a></li></h3>
+        <li><a href="/">Job Tracker</a></li>
       </ul>
       <li id="log_button"><a><%= button_to "Login", login_path, method: :get,  class: "btn btn-default navbar-btn navbar-right"%></a></li>
       <% else %>
       <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
+        <li><a href="/">Job Tracker</a></li>
         <li><a href="/companies">Companies</a></li>
         <li><a href="/cities">Cities</a></li>
         <li><a href="/categories">Categories</a></li>

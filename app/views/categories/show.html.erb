@@ -1,6 +1,8 @@
-<h1>Title:<%= @category.title%></h1>
+<h1>Category: <%= @category.title%></h1>
 <div>
-  <%= @category.jobs.each do |job| %>
-  <%= link_to job.title, company_job_path(job.company, job) %>
+  <% @category.jobs.each do |job| %>
+  <%= job.title %>
+  <li>Location: <%= job.city.name %>, <%= job.city.name %></li>
+  <li><%= link_to "Visit Job", company_job_path(job.company, job) %></li>
   <% end %>
 </div>
