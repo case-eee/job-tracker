@@ -1,8 +1,10 @@
 require "rails_helper"
 
 describe "city #destroy" do
-  before {FactoryGirl.reload}
-
+  before do
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
+  end
   scenario "a user can delete a city" do
     create(:city, name: "Denver", state: "Colorado")
     visit(cities_path(City.first))

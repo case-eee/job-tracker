@@ -11,7 +11,7 @@ describe Job do
 
 
   describe "relationships" do
-    before {FactoryGirl.build(:job)}
+    before {FactoryGirl.build_stubbed(:job)}
 
     context "belongs to a company" do
       it {should belong_to(:company)}

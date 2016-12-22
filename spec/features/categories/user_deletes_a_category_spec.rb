@@ -1,8 +1,10 @@
 require "rails_helper"
 
 describe "category #destroy" do
-  before {FactoryGirl.reload}
-
+  before do
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
+  end
   scenario "a user can delete a category" do
     create(:category, title: "Cobbler")
     visit(categories_path(Category.first))

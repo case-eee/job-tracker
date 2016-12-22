@@ -2,7 +2,8 @@ require "rails_helper"
 
 describe "contact #destroy" do
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     create(:company, name: "Yeti")
     Company.first.contacts << create(:contact)
     visit(company_contacts_path(Company.first))

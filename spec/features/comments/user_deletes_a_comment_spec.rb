@@ -1,9 +1,10 @@
 require "rails_helper"
 
 describe "comments #destroy" do
-  
-  before {FactoryGirl.reload}
-
+  before do
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
+  end
   scenario "the user wants to delete a commment" do
     job = create(:job)
     job.comments << create_list(:comment, 5)

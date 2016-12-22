@@ -1,9 +1,11 @@
 require "rails_helper"
-
+include UserHelper
 describe "category #new" do
 
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
+
     visit("/categories/new")
     fill_in("Title", with: "Web Development")
     click_button("Create")

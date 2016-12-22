@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :require_logged_in
     def index
     @job = Job.find(params[:job_id])
     @comments = @job.comments.order(:created_at)

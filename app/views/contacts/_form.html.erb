@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <header>
-    </header>
-  </head>
-  <body >
-    <div id="contact_form">
-    <%= form_for [@company, @contact] do |f| %>
-    <% if @contact.errors.any? %>
-    <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this record from being saved:</h2>
-    <ul><% @contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
+<div id="contact_form">
+  <%= form_for [@company, @contact] do |f| %>
+  <% if @contact.errors.any? %>
+  <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this record from being saved:</h2>
+  <ul><% @contact.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-      <%= f.label :position %>
-      <%= f.text_field :position %>
-      <%= f.label :email %>
-      <%= f.email_field :email %>
-      <%= f.submit %>
     <% end %>
-    </div>
-  </body>
-</html>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :position %>
+    <%= f.text_field :position %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.submit %>
+    <% end %>
+  </div>

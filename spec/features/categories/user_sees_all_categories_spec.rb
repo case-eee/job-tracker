@@ -3,7 +3,8 @@ require "rails_helper"
 describe "Users can see all categories" do
 
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     create_list(:category,5)
     visit("/categories")
   end
@@ -18,7 +19,9 @@ end
 
 describe "the user can interact with the buttons" do
   before do
-    FactoryGirl.create_list(:category,5)
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
+    create_list(:category,5)
     visit("/categories")
   end
 

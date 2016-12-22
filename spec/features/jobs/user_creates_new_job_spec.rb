@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe "job #new" do
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     @company = create(:company, name: "ESPN")
     @city = create_list(:city,5)
     @category = create_list(:category, 5)
@@ -25,7 +26,7 @@ describe "job #new" do
   end
 
   it "the page should also have a new category link" do
-    expect(page).to have_link("Create a new category")
+    expect(page).to have_button("Create a new category")
   end
 
 end
@@ -33,6 +34,8 @@ end
 describe "validations" do
   before do
     FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     @city = create_list(:city,5)
     @company = create(:company)
     visit new_company_job_path(@company)
@@ -50,7 +53,8 @@ describe "validations" do
     fill_in("job[description]", with: "So fun!")
     fill_in("job[level_of_interest]", with: nil)
     find('#job_city_id').find(:xpath, 'option[2]').select_option
-    click_button("Create")
-        expect(Job.count).to eq(0)
+    click_button("Create Job")
+
+    expect(Job.count).to eq(0)
   end
 end

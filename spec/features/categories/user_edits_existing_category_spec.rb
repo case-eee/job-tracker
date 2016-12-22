@@ -1,9 +1,10 @@
 require "rails_helper"
 
 describe "category #edit" do
-
-  before {FactoryGirl.reload}
-
+  before do
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
+  end
   scenario "a user can edit a category" do
     category = create(:category)
     visit edit_category_path(category)

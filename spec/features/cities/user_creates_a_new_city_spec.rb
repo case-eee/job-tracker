@@ -3,7 +3,8 @@ require "rails_helper"
 describe "city #new" do
 
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     visit("/cities/new")
     fill_in("Name", with: "Denver")
     fill_in("State", with: "Colorado")

@@ -1,9 +1,9 @@
 All Jobs by level of interest.</strong>
 
 <% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-  <ul><%= job.level_of_interest %></ul>
-  <ul>
-    <%= link_to "Delete", company_job_path(job.company_id, job), method: :delete, data: {confirm: "Are you sure?"}%>
-  </ul>
+<ul><%= job.title %> at <%= job.company.name %></ul>
+<ul><%= job.level_of_interest %></ul>
+<ul>
+  <%= link_to "Delete", company_job_path(job.company_id, job), method: :delete, data: {confirm: "Are you sure?"}%>
+</ul>
 <% end %>

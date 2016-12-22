@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe "city #show" do
   before do
-    FactoryGirl.reload
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
     @city = create(:city)
     @city.jobs << create_list(:job,5)
     visit(city_path(@city))

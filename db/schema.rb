@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218225413) do
+ActiveRecord::Schema.define(version: 20161221193936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,12 @@ ActiveRecord::Schema.define(version: 20161218225413) do
   add_index "jobs", ["category_id"], name: "index_jobs_on_category_id", using: :btree
   add_index "jobs", ["city_id"], name: "index_jobs_on_city_id", using: :btree
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string  "user_name"
+    t.string  "password_digest"
+    t.integer "admin"
+  end
 
   add_foreign_key "comments", "jobs"
   add_foreign_key "contacts", "companies"

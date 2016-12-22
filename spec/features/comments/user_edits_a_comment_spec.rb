@@ -2,10 +2,11 @@ require "rails_helper"
 
 describe "comments #edit" do
   before do
-    FactoryGirl.reload
-    comment = create_list(:comment, 5)
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
+    create_list(:comment, 5)
     job = Comment.first.job
-    company = Comment.first.job.company
+    company = job.company
     visit(company_job_comments_path(company,job))
     click_on("Edit")
     fill_in("comment[content]", with: "This is the edited content!")
