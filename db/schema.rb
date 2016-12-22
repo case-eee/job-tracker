@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221193936) do
+ActiveRecord::Schema.define(version: 20161222175802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,11 +64,13 @@ ActiveRecord::Schema.define(version: 20161221193936) do
     t.integer  "company_id"
     t.integer  "category_id"
     t.integer  "city_id"
+    t.integer  "user_id"
   end
 
   add_index "jobs", ["category_id"], name: "index_jobs_on_category_id", using: :btree
   add_index "jobs", ["city_id"], name: "index_jobs_on_city_id", using: :btree
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string  "user_name"
@@ -81,4 +83,5 @@ ActiveRecord::Schema.define(version: 20161221193936) do
   add_foreign_key "jobs", "categories"
   add_foreign_key "jobs", "cities"
   add_foreign_key "jobs", "companies"
+  add_foreign_key "jobs", "users"
 end
