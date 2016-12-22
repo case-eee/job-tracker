@@ -1,9 +1,19 @@
-<h3>All Companies</h3>
+<div class="page-header">
+  <h1>All Companies</h1>
+</div>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
+<div class="container">
+  <ul class="list-group">
+  <% @companies.each do |company| %>
+    <li class="list-group-item clearfix">
+      <span style="position:absolute; top:30%;"><%= link_to company.name, company_path(company) %></span>
+      <span class="pull-right button-group">
+        <button type="button" class= "btn btn-warning"><%= link_to "Edit", edit_company_path(company) %></button>
+        <button type="button" class="btn btn-danger"><%= link_to "Delete", company_path(company), method: "delete" %></button>
+      </span>
+    </li>
+  <% end %>
   </ul>
-<% end %>
+
+  <button type="button" class= "btn btn-default"><%= link_to "Create a new company", new_company_path %></button>
+</div>

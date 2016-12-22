@@ -1,5 +1,10 @@
-All Jobs for <strong><%= @company.name %></strong>
+<div class="page-header">
+  <h2><%= @company.name %></h2>
+</div>
+<div class="container">
+<%= render partial: "companies/job" %>
 
-<% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
-<% end %>
+<button type="button" class= "btn btn-default"><%= link_to "Create a New Job", new_company_job_path(@company) %></button>
+<%= render partial: "companies/contact" %>
+<%= render partial: "contacts/form" %>
+</div>

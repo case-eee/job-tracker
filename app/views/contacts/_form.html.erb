@@ -1,0 +1,18 @@
+<div class="container">
+  Enter a new contact for <strong><%= @company.name %></strong>
+<%= form_for [@company, @contact], :html => {:class => "form-inline"} do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :position %>
+    <%= f.text_field :position, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
+  <%= f.submit class: 'btn btn-default' %>
+<% end %>
+</div>

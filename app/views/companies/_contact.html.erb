@@ -1,0 +1,22 @@
+
+<div class="container">
+All Contacts for <strong><%= @company.name %></strong>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @company.contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></p></td>
+        <td><%= contact.position %></p></td>
+        <td><%= contact.email %></p></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

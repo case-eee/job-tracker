@@ -1,0 +1,18 @@
+<div class="page-header">
+<h1>All Categories</h1>
+</div>
+<div class="container">
+  <ul class="list-group">
+    <% @categories.each do |category| %>
+      <li class="list-group-item clearfix">
+        <span style="position:absolute; top:30%;"><%= link_to category.title, category_path(category) %><br></span>
+        <span class="pull-right button-group">
+          <button type="button" class= "btn btn-warning"><%= link_to "Edit", edit_category_path(category) %></button>
+          <button type="button" class="btn btn-danger">
+          <%= link_to "Delete", category_path(category), method: "delete" %></button>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+  <button type="button" class= "btn btn-default"><%= link_to "Create a new category", new_category_path %></button>
+</div>

@@ -1,5 +1,28 @@
-All Jobs for <strong><%= @company.name %></strong>
-
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<div class="page-header">
+  <h1>All Jobs</h1>
+</div>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Level of Interest</th>
+        <th>City</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= link_to job.title, company_job_path(job.company, job) %></td>
+          <td><%= job.description %></td>
+          <td><%= job.level_of_interest %></td>
+          <td><%= job.city %></td>
+          <td><%= job.category.title %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>

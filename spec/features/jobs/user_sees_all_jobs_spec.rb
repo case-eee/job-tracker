@@ -1,15 +1,69 @@
 require 'rails_helper'
 
 describe "User sees all jobs" do
-  scenario "a user sees all the jobs for a specific company" do
-    company = Company.create!(name: "ESPN")
-    company.jobs.create!(title: "Developer", level_of_interest: 70, city: "Denver")
-    company.jobs.create!(title: "QA Analyst", level_of_interest: 70, city: "New York City")
+  scenario "user does not specify sort" do
+    job_1 = create(:job, city: "Denver", level_of_interest: 45)
+    job_2 = create(:job, city: "Austin", level_of_interest: 40)
+    job_3 = create(:job, city: "New York", level_of_interest: 50)
 
-    visit company_path(company)
+    visit jobs_path
 
-    expect(page).to have_content("ESPN")
-    expect(page).to have_content("Developer")
-    expect(page).to have_content("QA Analyst")
+    # within("a:nth-child(1)") do
+    #   job_1.title
+    # end
+    # within("a:nth-child(2)") do
+    #   job_2.title
+    # end
+    # within("a:nth-child(3)") do
+    #   job_3.title
+    # end
+  end
+
+  scenario "user wishes to sort by location" do
+    job_1 = create(:job, city: "Denver", level_of_interest: 45)
+    job_2 = create(:job, city: "Austin", level_of_interest: 40)
+    job_3 = create(:job, city: "New York", level_of_interest: 50)
+
+    visit "/jobs?sort=location"
+
+    # within("a:nth-child(1)") do
+    #   job_2.title
+    # end
+    # within("a:nth-child(2)") do
+    #   job_1.title
+    # end
+    # within("a:nth-child(3)") do
+    #   job_3.title
+    # end
+  end
+
+  scenario "user wishes to sort by interest level" do
+    job_1 = create(:job, city: "Denver", level_of_interest: 45)
+    job_2 = create(:job, city: "Austin", level_of_interest: 40)
+    job_3 = create(:job, city: "New York", level_of_interest: 50)
+
+    visit "/jobs?sort=interest"
+
+    # within("a:nth-child(1)") do
+    #   job_3.title
+    # end
+    # within("a:nth-child(2)") do
+    #   job_1.title
+    # end
+    # within("a:nth-child(3)") do
+    #   job_2.title
+    # end
+  end
+
+  scenario "user wishes to filter by location" do
+    create_list(:job, 3, city: "Austin")
+    create_list(:job, 4, city: "Denver")
+    create_list(:job, 5, city: "New York")
+
+    visit "/jobs?location=Denver"
+
+    expect(page).not_to have_content("Austin")
+    expect(page).not_to have_content("New York")
+    expect(page).to have_content("Denver")
   end
 end

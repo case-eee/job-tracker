@@ -1,0 +1,54 @@
+<div class="page-header">
+  <h1>Dashboard</h1>
+</div>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Company Name</th>
+        <th>Average Interest Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dashboard.top_three_companies_by_interest.each do |company| %>
+        <tr>
+          <td><%= company.name %></td>
+          <td><%= company.average_interest %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Interest Level</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dashboard.job_interest_levels.each do |interest_level| %>
+        <tr>
+          <td><%= interest_level %></td>
+          <td><%= @dashboard.job_count_by_interest(interest_level) %></td>
+        </tr>
+      <% end %>
+  </table>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @dashboard.job_locations.each do |location| %>
+        <tr>
+          <!-- <td><%= location %></td> -->
+          <td><%= link_to location, "/jobs?location=#{location}" %></td>
+          <td><%= @dashboard.job_count_by_location(location) %></td>
+        </tr>
+      <% end %>
+  </table>
+</div>

@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h2><%= @category.title %></h2>
+</div>
+<div class="container">
+  All Jobs in <strong><%= @category.title %></strong>
+  <div class="list-group">
+  <% @category.jobs.each do |job| %>
+    <a class="list-group-item"<%= link_to job.title, company_job_path(job.company, job) %></a>
+  <% end %>
+  </div>
+</div>
+<div class="col-md-12 text-center">
+  <button type="button" class= "btn btn-warning"><%= link_to "Edit", edit_category_path(@category) %></button>
+  <button type="button" class="btn btn-danger">
+<%= link_to "Delete", category_path(@category), method: "DELETE" %></button></div>
