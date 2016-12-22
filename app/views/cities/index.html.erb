@@ -13,8 +13,8 @@
     <th scope="row" id="total entries"></th>
     <% @cities.each do |city| %>
     <tr>
-      <td><%= link_to city.name , city_path(city)%>,
-        <%=city.state%></td>
+      <td><%= city.name %>, <%=city.state%>: <%= link_to "Visit the city" , city_path(city)%>
+        </td>
         <td><%= city.jobs.count %></td>
         <td><%= button_to "Edit", edit_city_path(city), method: :get %></td>
         <td><%= button_to "Delete", city_path(city), method: :delete, data: {confirm: "Are you sure?"} %></td>

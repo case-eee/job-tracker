@@ -3,33 +3,23 @@ require "rails_helper"
 describe "city #index" do
 
   before do
-    user = create(:user)
-    page.set_rack_session(user_id: user.id)
-    create_list(:city,5)
-    visit("/cities")
+    logged_as_user
+    create_cities_and_visit_cities
   end
 
-  scenario "the user visit cities#index page" do
+  scenario "the user visits cities#index page and should view all cities" do
+    City.all.each do |city|
+      expect(page).to have_content(city.name)
+      expect(page).to have_content(city.state)
+    end
     expect(City.count).to eq(5)
-    expect(page).to have_content("City_1")
-    expect(page).to have_content("State_1")
-    expect(page).to have_content("City_2")
-    expect(page).to have_content("State_2")
-    expect(page).to have_content("City_3")
-    expect(page).to have_content("State_3")
-    expect(page).to have_content("City_4")
-    expect(page).to have_content("State_4")
-    expect(page).to have_content("City_5")
-    expect(page).to have_content("State_5")
   end
 end
 
 describe "the user can interact with the buttons" do
   before do
-    user = create(:user)
-    page.set_rack_session(user_id: user.id)
-    create_list(:city,5)
-    visit("/cities")
+    logged_as_user
+    create_cities_and_visit_cities
   end
 
 
