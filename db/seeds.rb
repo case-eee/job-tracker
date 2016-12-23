@@ -12,7 +12,7 @@ User.destroy_all
 end
 
 10.times do
-  City.create!(name:Faker::Address.city, state:Faker::Address.unique.state)
+  City.create!(name:Faker::Address.city, state:Faker::Address.state)
 end
 
 CATEGORIES = ["Web Development", "Software Engineering", "Education", "Community Affairs", "Finance"]
