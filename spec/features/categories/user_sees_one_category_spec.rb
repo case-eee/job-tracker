@@ -13,9 +13,7 @@ describe "When user visits the category show page" do
   end
 
   it "the page should also have links to the jobs show page" do
-    @category.jobs.each do |job|
-      expect(page).to have_link(job.title)
-    end
+    expect(page).to have_link("Visit Job")
     expect(@category.jobs.count).to eq(5)
   end
 
