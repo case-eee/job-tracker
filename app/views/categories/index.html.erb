@@ -1,6 +1,6 @@
 <h2>
   <h3>All Categories</h3>
-  <% if @user.current_admin? %>
+  <% if @user.admin? %>
     <td><%= link_to "Add a new category", new_category_path%></td>
   <% end %>
 </h2>

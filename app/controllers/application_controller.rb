@@ -6,14 +6,14 @@ class ApplicationController < ActionController::Base
 
   skip_before_action :require_login, only: [:new, :create]
 
- private
+  private
 
- def require_login
-   unless logged_in?
-     flash[:error] = "You must be logged in to access this section!"
-     redirect_to root_path # halts request cycle
-   end
- end
+  def require_login
+    unless logged_in?
+      flash[:error] = "You must be logged in to access this section!"
+      render file: "/public/404"
+    end
+  end
 
   def require_logged_in
     render file: "/public/404" unless logged_in?
