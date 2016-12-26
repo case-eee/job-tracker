@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :require_logged_in
+  before_action :require_login
   def index
     @companies = Company.all
   end

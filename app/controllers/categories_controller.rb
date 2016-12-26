@@ -1,9 +1,10 @@
 class CategoriesController < ApplicationController
 
-before_action :require_logged_in
+  before_action :require_login
 
   def index
     @categories = Category.all
+    @user = User.find(session[:user_id
   end
 
   def new

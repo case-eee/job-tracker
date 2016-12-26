@@ -1,6 +1,8 @@
 <h2>
   <h3>All Categories</h3>
-  <td><%= link_to "Add a new category", new_category_path%></td>
+  <% if @user.current_admin? %>
+    <td><%= link_to "Add a new category", new_category_path%></td>
+  <% end %>
 </h2>
 <table class="table table-condensed">
   <thead>
@@ -14,12 +16,12 @@
   <tbody class="categories">
     <th scope="row" id="total entries"></th>
     <% @categories.each do |category| %>
-    <tr>
-      <td><%= category.title %></td>
-      <td><%= link_to category.jobs.count, category_path(category) %></td>
-      <td><%= button_to "Edit", edit_category_path(category), method: :get %></td>
-      <td><%= button_to "Delete", category_path(category), method: :delete, data: {confirm: "Are you sure?"} %></td>
-    </tr>
+      <tr>
+        <td><%= category.title %></td>
+        <td><%= link_to category.jobs.count, category_path(category) %></td>
+        <td><%= button_to "Edit", edit_category_path(category), method: :get %></td>
+        <td><%= button_to "Delete", category_path(category), method: :delete, data: {confirm: "Are you sure?"} %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

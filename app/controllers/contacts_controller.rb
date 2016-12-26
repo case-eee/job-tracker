@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-before_action :require_logged_in
+  before_action :require_login
   def index
     @company =found_company
   end
