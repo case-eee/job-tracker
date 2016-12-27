@@ -1,0 +1,15 @@
+<h2><% if @city.errors.any? %>
+  <%= pluralize(@city.errors.count, "error") %>
+  2 2prohibited this record from being saved:</h2>
+  <ul><% @city.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+    <% end %>
+  </ul>
+  <%= form_for @city do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+  <%= f.submit %>
+  <% end %>

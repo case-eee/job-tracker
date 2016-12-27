@@ -1,6 +1,16 @@
-<%= form_for @company do |f| %>
+<h2>
+  <% if @company.errors.any? %>
+  <h2><%= pluralize(@company.errors.count, "error") %> prohibited this record from being saved:</h2>
+  <ul><% @company.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+    <% end %>
+  </h2>
+<div>
+  <%= form_for @company do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
   <%= f.submit %>
-<% end %>
+  <% end %>
+</div>

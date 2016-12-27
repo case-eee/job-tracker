@@ -1,0 +1,27 @@
+<h3>
+  <b>Name: </b><%= @job.company.name %>
+</h3>
+<div>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Content</th>
+        <th>Created at</th>
+        <th>Edit Comment</th>
+        <th>Delete Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <th scope="row" id="total entries"></th>
+      <% @job.comments.each do |comment| %>
+      <tr>
+        <td><%= comment.content %></td>
+        <td><%= comment.created_at %></td>
+        <td><%= link_to "Edit", edit_company_job_comment_path(@job.company,@job,comment) %></td>
+        <td><%= link_to "Delete", company_job_comment_path(@job.company, @job,comment), method: :delete, data: {confirm: "Are you sure?"}%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= render partial: "form" %>
+</div>

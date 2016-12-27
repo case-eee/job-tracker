@@ -1,8 +1,12 @@
 require 'rails_helper'
 
-describe "User edits an existing company" do
+describe "company #edit" do
+  before do
+    user = create(:user)
+    page.set_rack_session(user_id: user.id)
+  end
   scenario "a user can edit a company" do
-    company = Company.create!(name: "ESPN")
+    company = create(:company, name: "ESPN")
     visit edit_company_path(company)
 
     fill_in "company[name]", with: "EA Sports"

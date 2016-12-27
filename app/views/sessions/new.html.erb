@@ -1,0 +1,18 @@
+<div id="login_form"  class:"form-inline">
+  <%= form_tag '/login' do %>
+  <div class="form-group">
+    <span><%=label_tag :user_name, "User Name"%></span>
+    <span><%= text_field_tag :user_name%></span>
+  </div>
+  <div class="form-group">
+    <span><%= label_tag :password %></span>
+    <span><%= password_field_tag :password%></span>
+  </div>
+  <div class="form-group">
+    <%= submit_tag "Login" %>
+  </div>
+  <div class="form-group">
+    <%= button_to "Create a new account", new_user_path, method: :get %>
+  </div>
+  <% end %>
+</div>

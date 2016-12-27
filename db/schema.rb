@@ -11,16 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161214181533) do
+ActiveRecord::Schema.define(version: 20161222181326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "state"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["job_id"], name: "index_comments_on_job_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "position"
+    t.string   "email"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "contacts", ["company_id"], name: "index_contacts_on_company_id", using: :btree
 
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
@@ -29,10 +62,26 @@ ActiveRecord::Schema.define(version: 20161214181533) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "company_id"
-    t.string   "city"
+    t.integer  "category_id"
+    t.integer  "city_id"
+    t.integer  "user_id"
   end
 
+  add_index "jobs", ["category_id"], name: "index_jobs_on_category_id", using: :btree
+  add_index "jobs", ["city_id"], name: "index_jobs_on_city_id", using: :btree
   add_index "jobs", ["company_id"], name: "index_jobs_on_company_id", using: :btree
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
 
+  create_table "users", force: :cascade do |t|
+    t.string  "user_name"
+    t.string  "password_digest"
+    t.integer "admin",           default: 0
+  end
+
+  add_foreign_key "comments", "jobs"
+  add_foreign_key "contacts", "companies"
+  add_foreign_key "jobs", "categories"
+  add_foreign_key "jobs", "cities"
   add_foreign_key "jobs", "companies"
+  add_foreign_key "jobs", "users"
 end
