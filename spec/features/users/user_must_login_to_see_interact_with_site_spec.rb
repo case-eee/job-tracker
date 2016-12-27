@@ -8,7 +8,7 @@ describe "the user is not logged in" do
     expect(page).to_not have_content("Companies")
     expect(page).to_not have_content("Cities")
 
-    expect(page).to have_content("Welcome to Job Tracker ")
+    expect(page).to have_content("Welcome to Job Tracker")
     expect(page).to have_button("Login")
   end
 
