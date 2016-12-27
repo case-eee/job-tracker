@@ -15,7 +15,7 @@ describe "the user is not logged in" do
   scenario "the user attempts to visit the categories path" do
     visit(categories_path)
 
-    expect(page).to have_content("You must be logged in to access this section!")
+    expect(page).to have_content("You must be logged i n to access this section!")
     expect(page).to have_button("Back to home")
   end
 end
