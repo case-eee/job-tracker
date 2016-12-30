@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :require_admin, only: [:destroy, :new, :create, :edit, :update]
+
   def new
     @category = Category.new
   end
@@ -43,6 +45,13 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:title)
+  end
+
+  def require_admin
+    unless session[:current_user_id] && User.find(session[:current_user_id]).email == "admin@admin.com"
+      flash[:error] = "you must be an admin to access this section!"
+      redirect_to login_path
+    end
   end
 
 end

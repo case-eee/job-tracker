@@ -18,7 +18,7 @@
       </div>
       <div class="navbar-right login_link">
         <% if session[:current_user_id] %>
-          <%= "user #{session[:current_user_id]} is logged in" %> - 
+          <%= "#{User.find(session[:current_user_id]).name} is logged in" %> - 
           <%= link_to "logout", session_path(session[:current_user_id]), method: :delete %>
         <% else %>
           <%= link_to "login", login_path %>
