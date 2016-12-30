@@ -7,14 +7,23 @@
       </span>
     </div>
     <div class="dash">
-      <h1> 3 most interesting companies </h1>
-      <% @companies_by_max_interest.each do |k, v| %>
-        <%= "#{k} jobs have average interest level of #{v}"%>
-        <br>
-      <% end %>
+      <h1> sort by tag </h1>
+      <div class="tabs">
+        <% @tags.each do |tag| %>
+          <% if !params[:extra].nil? && params[:extra][:tag_ids] %>
+            <% if tag.id == params[:extra][:tag_ids].to_i %>
+              <%= link_to tag.title, dashboard_path(:extra => { :tag_ids => tag.id }), {:class=>"selected_tab"} %> 
+            <% else %>
+              <%= link_to tag.title, dashboard_path(:extra => { :tag_ids => tag.id }), {:class=>"normal_tab"} %> 
+            <% end %>
+          <% else %>
+            <%= link_to tag.title, dashboard_path(:extra => { :tag_ids => tag.id }), {:class=>"normal_tab"} %> 
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="dash">
-      <h1> by location </h1>
+      <h1> sort by location </h1>
       <div class="tabs">
         <% @locations.sort.each do |location| %>
           <% if !params[:extra].nil? && params[:extra][:location] %>
@@ -30,7 +39,7 @@
       </div>
     </div>
     <div class="dash">
-      <h1> by interest </h1>
+      <h1> sort by interest </h1>
       <div class="tabs">
         <% @interest_levels.each do |range| %>
           <% if !params[:extra].nil? && params[:extra][:interest] %>
@@ -46,23 +55,15 @@
       </div>
     </div>
     <div class="dash">
-      <h1> by tag </h1>
-      <div class="tabs">
-        <% @tags.each do |tag| %>
-          <% if !params[:extra].nil? && params[:extra][:tag_ids] %>
-            <% if tag.id == params[:extra][:tag_ids].to_i %>
-              <%= link_to tag.title, dashboard_path(:extra => { :tag_ids => tag.id }), {:class=>"selected_tab"} %> 
-            <% else %>
-              <%= link_to tag.title, dashboard_path(:extra => { :tag_ids => tag.id }), {:class=>"normal_tab"} %> 
-            <% end %>
-          <% else %>
-            <%= link_to tag.title, dashboard_path(:extra => { :tag_ids => tag.id }), {:class=>"normal_tab"} %> 
-          <% end %>
-        <% end %>
-      </div>
+      <h1> 3 most interesting companies </h1>
+      <% @companies_by_max_interest.each do |k, v| %>
+        <%= "#{k} jobs have average interest level of #{v}"%>
+        <br>
+      <% end %>
     </div>
   </div>
   <div class="dash col-md-6">
+    <h1> jobs </h1>
     <% @jobs.each do |job| %>
       <%= link_to "#{job.title} @ #{job.company.name}", company_job_path(job.company, job) %>
       <br>
