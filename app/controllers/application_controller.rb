@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     end
     @companies_by_max_interest = @company_interest.max_by(3) {|k,v|v}
     generate_jobs
-    generate_quotes
+    generate_quote
   end
 
   private
@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
     arr << "101+"
   end
 
-  def generate_quotes
+  def generate_quote
     @quotes = []
     CSV.foreach(Rails.root.join('app/assets/quotes.csv'), :headers=> true) do |row|
       @quotes << row[0]
