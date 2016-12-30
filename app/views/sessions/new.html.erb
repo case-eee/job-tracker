@@ -1,0 +1,13 @@
+<h1> login </h1>
+<%= form_for @user, :url=> sessions_path do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <br>
+
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <br>
+
+  <%= f.submit "Login"%>
+<% end %> 
+<%= link_to "create a user", new_user_path %>
