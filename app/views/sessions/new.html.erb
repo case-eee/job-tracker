@@ -1,0 +1,16 @@
+<h1 style="color:white;"> login </h1>
+<%= form_for @user, :url=> sessions_path do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <br>
+
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <br>
+
+  <%= f.submit "Login"%>
+<% end %> 
+<%= link_to "create a user", new_user_path, {:class=>"selected_tab"}  %>
+<p style="color:white;"> login as admin to create / destroy a category </p>
+<p style="color:white;"> email: admin@admin.com </p>
+<p style="color:white;"> password: admin </p>

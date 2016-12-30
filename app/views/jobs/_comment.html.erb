@@ -1,0 +1,17 @@
+<div> 
+  <p class="comment_<%= comment.id %>">
+    <% if !@edit_comment.nil? && @edit_comment.first.to_i == comment.id %>
+      <%= form_for [@company, @job, comment] do |f| %>
+        <%= f.label :content %>
+        <%= f.text_field :content %>
+
+        <%= f.submit %>
+      <% end %>
+    <% else %>
+      <strong><%= comment.content %></strong>
+      <br>
+      <%= link_to "Delete", company_job_comment_path(@company, @job, comment), method: "delete"  %>
+      <%= link_to "Edit", edit_company_job_comment_path(@company, @job, comment) %>
+    <% end %> 
+  </p>
+</div>

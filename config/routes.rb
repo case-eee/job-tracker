@@ -1,8 +1,21 @@
 Rails.application.routes.draw do
 
   resources :companies do
-    resources :jobs
+    resources :jobs do 
+      resources :comments
+    end
+
+    resources :contacts
+
   end
+  root 'jobs#dashboard'
+  resources :taggings, only: [:new, :create, :destroy]
+  resources :tags
+  resources :categories
+  resources :users, only: [:new, :create, :show]
+  resources :sessions, only: [:create, :destroy]
+  get '/dashboard' => "jobs#dashboard"
+  get '/login'     => "sessions#new"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

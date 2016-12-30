@@ -1,0 +1,10 @@
+<h1> jobs tagged with : <%= @tag.title %> </h1>
+<br>
+<%= link_to "Edit tag", edit_tag_path(@tag) %> | 
+<%= link_to "Delete tag", tag_path(@tag), method: :delete %>
+<br>
+<br>
+<% @tag.jobs.each do |job| %>
+  <%= link_to "#{job.company.name} - #{job.title}", company_job_path(job.company, job) %>
+<% end %>
+<br>
