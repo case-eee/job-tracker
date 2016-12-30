@@ -11,33 +11,42 @@ class ApplicationController < ActionController::Base
   def dashboard
     @tags = Tag.all
     @locations = Job.pluck(:city).uniq
-    @jobs_not_by_location = Job.group(:city).count
-    @jobs_by_interest = Job.group(:level_of_interest).count
+    @interest_levels = interest_range
     @company_interest = {}
     Company.all.each do |company|
       @company_interest[company.name] = company.jobs.average(:level_of_interest)
     end
     @companies_by_max_interest = @company_interest.max_by(3) {|k,v|v}
-    generate_params
+    generate_jobs
     generate_quotes
-    @jobs_reference = Job.group(:level_of_interest).count
   end
 
   private
 
-  def generate_params
+  def generate_jobs 
     if params[:extra].nil?
       @jobs = Job.all
-    elsif params[:extra][:tag_ids]
-      @selected_jobs = Tagging.where(tag_id:params[:extra][:tag_ids]).pluck(:job_id)
-      @jobs = Job.find(@selected_jobs)
-    elsif params[:extra][:location]
-      @jobs_by_location = Job.where(city: params[:extra][:location])
-      @jobs = Job.all
-    elsif params[:extra][:interest]
-      @jobs_by_interest = Job.where(level_of_interest: params[:extra][:interest])
-      @jobs = Job.all
+    else
+      if params[:extra][:tag_ids]
+        @selected_jobs = Tagging.where(tag_id:params[:extra][:tag_ids]).pluck(:job_id)
+        @jobs = Job.find(@selected_jobs)
+      elsif params[:extra][:location]
+        @jobs = Job.where(city: params[:extra][:location])
+      elsif params[:extra][:interest]
+        if params[:extra][:interest][0,3] == "101"
+          @jobs = Job.where(:level_of_interest => 101..150)      
+        else 
+          range = params[:extra][:interest].split("-")
+          @jobs = Job.where(:level_of_interest => range[0]..range[1])
+        end
+      end
     end
+    @jobs = Job.all if @jobs.nil?
+  end
+
+  def interest_range 
+    arr = (1..100).step(10).map {|x| "#{x}-#{x+9}"}
+    arr << "101+"
   end
 
   def generate_quotes
