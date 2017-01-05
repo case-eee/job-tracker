@@ -1,0 +1,47 @@
+module DashboardHelper
+    
+  def format_interest
+    low    = 0
+    medium = 0
+    high   = 0
+    counts = Job.all.group(:level_of_interest).count
+    count_parser(counts, low, medium, high)
+  end
+
+  def count_parser(counts, low, medium, high)
+    counts.each do |interest, count|
+      if (0..40).include? interest
+        low += count
+      elsif (41..79).include? interest
+        medium += count
+      else
+        high += count
+      end
+    hash_maker(low, medium, high)
+    end
+  end
+
+  def organize_jobs_by_city
+    Job.all.group(:city).count.sort_by { |city, count| count }.reverse
+  end
+
+  def hash_maker(low, medium, high)
+    @interest_levels = Hash.new(0)
+    @interest_levels[:low] += low
+    @interest_levels[:medium] += medium
+    @interest_levels[:high] += high
+    @interest_levels
+  end
+
+  def format_interest_averages
+    calculate_average_interest.sort_by { |name, interest| interest }.reverse[0..2]
+  end
+
+  def calculate_average_interest
+    average_interest = {}
+    Company.all.each do |company|
+      average_interest[company] = company.jobs.average(:level_of_interest).to_i
+    end
+    average_interest
+  end
+end

@@ -1,0 +1,11 @@
+<h1 class="index-title">All Categories</h1>
+
+<div id="jobs-index" class="row">
+<div class="short-form"><% @categories.each do |category| %>
+  <div id="jobs" class="col-md-3">
+    <%= link_to category.title, category_path(category) %><br>
+    <%= link_to "Edit |", edit_category_path(category) %>
+    <%= link_to "| Delete", category_path(category), method: "delete" %>
+    </div>
+<% end %></div></div>
+<div id="new-link" class="blurb"><%= link_to "Create a New Category", new_category_path %></div>

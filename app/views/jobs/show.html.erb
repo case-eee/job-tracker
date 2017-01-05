@@ -1,13 +1,47 @@
-Title: <%= @job.title %>
-<br>
+<h1 class="index-title"><%= @job.title %></h1>
+<div id="show" class="subtitle"><%= link_to "Edit |", edit_company_job_path(@company, @job) %>
+<%= link_to "| Delete", company_job_path(@company, @job), method: :delete, data: {confirm: "Are you sure?"} %></div>
 
-Description: <%= @job.description %>
-<br>
+<div id="jobs-index" class="row">
+  <div class="col-md-6">
+    <h3>Description: <%= @job.description %></h3>
+  </div>
+</div>
+  <div class="col-md-6">
+    <h3>Level of Interest: <%= @job.level_of_interest %></h3>
+  </div>
+  <div class="col-md-6">
+    <h3>City: <%= link_to @job.city, "/companies/#{@company.id}/jobs?location=#{@job.city}" %></h3>
+  </div>
+  <div class="col-md-6">
+    <h3>Company: <%= link_to @company.name, company_path(@company) %></h3>
+  </div>
+<% if @job.category %>
+  <div class="col-md-6">
+    <h3>Category: <%= link_to @job.category.title, category_path(@job.category) %></h3>
+  </div>
+</div>
+</div>
+<% end %>
 
-Level of Interest: <%= @job.level_of_interest %>
-<br>
+<% if @comments.count > 0 %>
+<div class="comments">
+<h4 id="notes"><strong>Notes:</strong></h4></br>
+  <% @comments.each do |comment| %>
+    <p><%= comment.created_at %></p>
+    <h5 id="content"><%= comment.content %></h5>
+    <%= link_to "Delete", company_job_comment_path(@company, @job, comment), method: :delete, data: {confirm: "Are you sure?"} %></br></br>
+  <% end %>
+<% end %>
+</div>
 
-City: <%= @job.city %>
-<br>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+  <div class="navbar-form navbar-left">
+  <div id="form" class="form-group-row">
+    <%= form_for([@company, @job, @comment]) do |f| %>
+    <%= f.label "Make a note:"%>
+    <%= f.text_field :content %>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+    <%= f.submit "Post" %>
+  <% end %></div></div></div></nav>

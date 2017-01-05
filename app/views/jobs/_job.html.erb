@@ -1,0 +1,12 @@
+<div id="jobs-index" class="row">
+  <% @jobs.each do |job| %>
+    <div id="jobs" class="col-md-3">
+      <%= link_to job.title, company_job_path(job.company, job) %> at <%= link_to job.company.name, company_path(job.company) %></br>
+      <%= link_to job.city, "/companies/#{@company.id}/jobs?location=#{job.city}" %></br>
+      <p>Level of Interest: <%= job.level_of_interest %></p>
+      <%= link_to "Edit |", edit_company_job_path(job.company, job) %>
+      <%= link_to "| Delete", company_job_path(job.company, job), method: "delete" %>
+      </br></br>
+    </div>
+  <% end %>
+</div></br></br>

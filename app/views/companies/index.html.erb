@@ -1,9 +1,11 @@
-<h3>All Companies</h3>
+<h1 class="index-title">All Companies</h1>
 
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
+<div id="jobs-index" class="row">
+<div class="short-form"><% @companies.each do |company| %>
+  <div id="jobs" class="col-md-3">
     <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+    <%= link_to "Edit |", edit_company_path(company) %>
+    <%= link_to "| Delete", company_path(company), method: "delete" %>
+  </div>
+<% end %></div></div>
+<div id="new-link" class="blurb"><%= link_to "Create a New Company", new_company_path %>

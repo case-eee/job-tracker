@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'pry'
 end
 
 group :development do
@@ -48,3 +49,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
+gem 'rails_12factor', group: :production

@@ -1,5 +1,58 @@
-All Jobs for <strong><%= @company.name %></strong>
+<% if @location %>
+    <h1 class="index-title">All Jobs in <strong><%= @location %></strong></h1>
+    <div id="links" class="row">
+    <div class="col-md-2" id="single-link">
+    <h5><%= link_to "Sort Jobs by Interest Level", "/companies/#{@company.id}/jobs?location=#{@location}&sort=interest" %></h5></div></div></div>
+      
+      <%= render partial: "job" %>
 
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
+<% else %>
+
+  <h1 class="index-title">All Jobs at <strong><%= @company.name %></strong></h1>
+  <div id="links" class="row">
+    <div id="link" class="col-md-2">
+      <h5><%= link_to "Sort Jobs by Location", "/companies/#{@company.id}/jobs?sort=location" %></h5>
+    </div>
+    <div id="link" class="col-md-2">
+      <h5><%= link_to "Sort Jobs by Interest Level", "/companies/#{@company.id}/jobs?sort=interest" %></h5>
+    </div>
+    <div id="link" class="col-md-2">
+      <h5><%= link_to "Create a New Job at #{@company.name}", new_company_job_path(@company) %></h5>
+    </div>
+  </div>
+  </br></br>
+
+  <% if @contacts.count > 0 %>
+  <div id="contacts">
+  <div class="col-md-4" >
+  <h4 id="contacts-header">Contacts:</h4></br>
+    <% @contacts.each do |contact| %>
+      <h5><strong><%= contact.full_name %></strong></h5>
+      <p><%= contact.position %></p>
+      <p><%= contact.email %></p>
+      <%= link_to "Delete", company_contact_path(@company, contact), method: :delete, data: {confirm: "Are you sure?"} %></br></br>
+    <% end %>
+    </br></br>
+  <% end %>
+  </div></div>
+
+  
+  <%= render partial: "job" %>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+  <div class="navbar-form navbar-left">
+  <div id="form" class="form-group-row">
+  <%= form_for([@company, @contact]) do |f| %>
+    <%= f.label :full_name %>
+    <%= f.text_field :full_name %>
+
+    <%= f.label :position %>
+    <%= f.text_field :position %>
+
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+
+    <%= f.submit %>
+<% end %></div></div></div>
 <% end %>
