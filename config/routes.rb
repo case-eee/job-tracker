@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   root to: "dashboard#index"
 
   resources :dashboard, only: [:index]
+  resources :jobs,      only: [:index]
+  resources :users,     only: [:new, :create, :show]
 
-  resources :jobs, only: [:index]
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
   resources :companies, only: [:index, :new, :create, :edit, :update, :destroy] do
     resources :contacts, only: [:create]
