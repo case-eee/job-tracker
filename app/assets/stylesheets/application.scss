@@ -1,0 +1,49 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "nav";
+
+@import url('https://fonts.googleapis.com/css?family=Space+Mono:400,700i');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+// put style components in this file
+li {
+  list-style: none;
+}
+
+.company, .category, .jobs {
+  background-color: #444;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.item {
+  font-size: 24px;
+  color: white;
+  font-family: 'Space Mono', monospace;
+}
+
+p {
+  font-size: 18px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.item:hover {
+  color: #33D0CB;
+  text-decoration: none;
+}
+
+.wrapper {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.clearfix {
+  text-align: center;
+}
+
+.dashboard-data {
+  font-size: 14px;
+  color: white;
+  font-family: 'Space Mono', monospace;
+}

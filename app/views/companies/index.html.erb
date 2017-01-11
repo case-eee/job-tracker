@@ -1,9 +1,16 @@
-<h3>All Companies</h3>
-
-<% @companies.each do |company| %>
-  <ul class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %><br>
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </ul>
-<% end %>
+<h3 class="text-center">All Companies</h3>
+<div class="clearfix">
+  <%= link_to "Add a New Company", new_company_path, class: "btn btn-success" %>
+  <%= link_to "Add a New Category", new_category_path, class: "btn btn-success" %> 
+</div>
+<ul>
+  <% @companies.each do |company| %>
+  <li><div class="row company">
+    <%= link_to company.name, company_path(company), class: "item" %>
+    <div class="pull-right">
+      <%= link_to "Edit", edit_company_path(company), class: "btn-primary btn"%>
+      <%= link_to "Delete", company_path(company), method: "delete", class: "btn-success btn"%>
+    </div>
+  </div></li>
+  <% end %>
+</ul>
