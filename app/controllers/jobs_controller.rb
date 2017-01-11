@@ -40,6 +40,7 @@ class JobsController < ApplicationController
     @job       = Job.find(params[:id])
     @job_order = Job.find(params[:id]).order_by_time_created
     @comment   = Comment.new
+    @tags      = @job.tags 
   end
 
   def edit
