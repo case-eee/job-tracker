@@ -10,38 +10,42 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     if @company.save
-      flash[:success] = "#{@company.name} added!"
+      flash[:success] = "Company, #{@company.name}, was successfully created!"
       redirect_to company_path(@company)
     else
+      @errors = @company.errors
       render :new
     end
   end
 
   def show
-    company = Company.find(params[:id])
-    redirect_to company_jobs_path(company)
+    @company = find_company(params[:id])
+    @jobs = @company.jobs
+    @contact = Contact.new
   end
 
   def edit
-    @company = Company.find(params[:id])
+    @company = find_company(params[:id])
   end
 
   def update
-    @company = Company.find(params[:id])
+    @company = find_company(params[:id])
     @company.update(company_params)
     if @company.save
       flash[:success] = "#{@company.name} updated!"
       redirect_to company_path(@company)
     else
+      @errors = @company.errors
       render :edit
     end
   end
 
   def destroy
-    company = Company.find(params[:id])
+    company = find_company(params[:id])
+    company.jobs.destroy_all
     company.delete
 
-    flash[:success] = "#{company.name} was successfully deleted!"
+    flash[:success] = "#{company.name} and all associated jobs for #{company.name} were successfully deleted!"
     redirect_to companies_path
   end
 

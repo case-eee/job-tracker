@@ -1,5 +1,44 @@
-All Jobs for <strong><%= @company.name %></strong>
+<h2><strong><%= @company.name %></strong></h2>
 
-<% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
+<h3>All jobs</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>City</th>
+      <th>Level of Interest</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr class="job_<%= job.id %>">
+        <td>
+          <%= link_to job.title, job_path(job), class: "table_name" %>
+        </td>
+        <td>
+          <%= link_to job.category_title, category_path(job.category), class: "table_name" %>
+        </td>
+        <td><%= job.city %></td>
+        <td><%= job.level_of_interest %></td>
+        <td><%= link_to "Edit", edit_company_job_path(@company, job) %></td>
+        <td><%= link_to "Delete", company_job_path(@company, job),
+          method: :delete,
+          data: {confirm: "Are you sure you would like to delete the job, #{job.title}, in #{job.city}?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "Add a new job", new_company_job_path(@company) %>
+
+<h3>Add information for a contact at <%= @company.name %></h3>
+<%= render partial: 'contacts/form' %>
+
+
+<% if @company.contacts.any? %>
+  <h3><strong>Contacts</strong></h3>
+  <div class="list=group">
+    <%= render partial: 'companies/contact', collection: @company.contacts.reverse %>
+  </div>
 <% end %>
