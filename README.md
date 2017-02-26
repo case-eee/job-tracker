@@ -7,6 +7,6 @@
 
 3. `rake db:setup`
 
-4. `rspec` 36/36 test passing
+4. `rspec` 36/36 tests passing
 
 5. [deployed using Heroku](https://awesome-job-tracker.herokuapp.com/)
