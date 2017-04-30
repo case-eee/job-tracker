@@ -12,6 +12,11 @@
       </table>
     </div>
 
+    <% @job.tags.each do |tag| %>
+      <%= tag.title %>
+      <%= "Tag count: #{tag.jobs.count}" %>
+      <% end %>
+
     <div class="col-md-4">
       <%= render partial: 'comments/form' %>
     </div>

@@ -3,6 +3,9 @@ class Job < ActiveRecord::Base
   belongs_to :company
   belongs_to :category
   has_many :comments, dependent: :destroy
+  has_many :job_tags
+  has_many :tags, through: :job_tags
+
 
   scope :location, -> (location) {where city: location}
   scope :interest, -> (interest) {where(level_of_interest: nil).order('level_of_interest desc')}
