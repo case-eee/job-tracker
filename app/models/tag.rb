@@ -1,4 +1,4 @@
 class Tag < ActiveRecord::Base
-  #has_many :tag_jobs
-  #has_many :jobs, through: :tag_jobs
+  has_many :job_tags
+  has_many :jobs, through: :job_tags
 end
