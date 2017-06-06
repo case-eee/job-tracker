@@ -9,7 +9,8 @@ describe "User visits a job page" do
     tag3 = Tag.create(title: "Dog Sitting")
 
     visit company_job_path(company, job)
-
+    save_and_open_page
+    
     expect(page).to have_content("ESPN")
     expect(page).to have_content("Developer")
     expect(page).to have_content("Aerospace")
