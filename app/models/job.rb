@@ -5,7 +5,7 @@ class Job < ActiveRecord::Base
   has_many :tags, through: :job_tags
 
   def count_tags
-
+    self.job_tags.count(:job_id)
   end
 
 end
